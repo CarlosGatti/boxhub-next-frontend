@@ -12,7 +12,7 @@ export default function Home() {
     const { '@token': token } = parseCookies()
 
     if (!token && !currentUser) {
-      router.push('/account/login')
+      router.push('home')
     } else {
       router.push('/qrcode-app/dashboard')
     }
