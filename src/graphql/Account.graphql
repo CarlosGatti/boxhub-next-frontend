@@ -1,0 +1,24 @@
+mutation Login($data: LoginUserInput!) {
+  login(user: $data) {
+    __typename
+    user {
+      id
+      email
+      firstName
+      lastName
+      profilePicture
+    }
+    token
+  }
+}
+
+mutation CreateUser($data: UserCreateInput!) {
+  createUser(data: $data) {
+    __typename
+    id
+  }
+}
+
+mutation refreshToken {
+  refreshToken
+}

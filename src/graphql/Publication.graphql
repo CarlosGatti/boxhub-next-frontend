@@ -1,0 +1,83 @@
+query PublicationById($id: Float!) {
+  publication(id: $id) {
+    ... on Publication {
+      id
+      post {
+        title
+        content
+      }
+      visibility
+      event {
+        title
+        content
+        published
+        startDate
+        endDate
+        address {
+          zipCode
+        }
+        onlineDetails {
+          link
+        }
+      }
+      user {
+        email
+      }
+      likes {
+        user {
+          nickname
+        }
+      }
+      comments {
+        id
+        content
+        user {
+          nickname
+        }
+      }
+      _count {
+        likes
+        comments
+      }
+    }
+
+    ... on BaseResult {
+      success
+      message
+    }
+  }
+}
+
+mutation CreatePublication($data: PublicationCreateArgs!) {
+  createPublication(data: $data) {
+    success
+    message
+  }
+}
+
+mutation Unpublish($id: Float!) {
+  unpublish(id: $id)
+}
+
+mutation LikePublication($id: Float!) {
+  likePublication(id: $id)
+}
+
+mutation UnlikePublication($id: Float!) {
+  unlikePublication(id: $id)
+}
+
+mutation CommentPublication($publicationId: Float!, $content: String!) {
+  commentPublication(id: $publicationId, content: $content)
+}
+
+mutation UncommentPublication($id: Float!, $commentId: Float!) {
+  uncommentPublication(id: $id, commentId: $commentId)
+}
+
+mutation UpdatePublication($id: Float!, $data: PublicationCreateArgs!) {
+  updatePublication(id: $id, data: $data) {
+    __typename
+    id
+  }
+}

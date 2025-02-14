@@ -1,0 +1,17 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+  - develop
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+  - script: npm install -g vercel
+    displayName: 'Install vercel cli'
+
+  - script: vercel deploy --prod --token=$(VERCEL_TOKEN)
+    displayName: 'Deploy to production'

@@ -1,0 +1,41 @@
+query Search($term: String, $userId: Float, $pagination: PaginationArgs) {
+  search(term: $term, userId: $userId, pagination: $pagination) {
+    users {
+      id
+      name
+      nickname
+      profilePicture
+      linkedinUrl
+      twitterUrl
+      githubUrl
+      about
+      peopleImFollowingCount
+      peopleFollowingMeCount
+      isFollowing
+    }
+    count
+  }
+}
+
+query SearchCommunities($term: String!) {
+  searchCommunities(term: $term) {
+    id
+    name
+    description
+    ownerId
+    postEnabledRole
+    profilePicture
+    banner
+    isMember
+    members {
+      user {
+        id
+        nickname
+        firstName
+        lastName
+        role
+        profilePicture
+      }
+    }
+  }
+}
