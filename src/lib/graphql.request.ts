@@ -18,8 +18,10 @@ const requestMiddleware = async (request: any) => {
 }
 
 const graphqlRequestClient = new GraphQLClient(
-  'https://192.168.0.16/graphql',
+  // 'https://192.168.0.16/graphql',
+  process.env.NEXT_PUBLIC_GRAPHQL_API_URL || 'https://192.168.0.16/graphql',
   {
+    mode: 'cors',
     requestMiddleware,
     headers() {
       const { '@token': token } = parseCookies()
