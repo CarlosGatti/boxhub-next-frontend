@@ -18,7 +18,7 @@ const requestMiddleware = async (request: any) => {
 }
 
 const graphqlRequestClient = new GraphQLClient(
-  'http://192.168.0.4:3000/graphql',
+  'https://192.168.0.16/graphql',
   {
     requestMiddleware,
     headers() {

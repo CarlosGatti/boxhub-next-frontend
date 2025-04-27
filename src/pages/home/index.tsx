@@ -16,6 +16,7 @@ const Home = () => {
               <a href="#features" className="text-gray-700 hover:text-gray-900">Features</a>
               <a href="#about" className="text-gray-700 hover:text-gray-900">About</a>
               <a href="#contact" className="text-gray-700 hover:text-gray-900">Contact</a>
+              <a href="/login" className="bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-600">Login</a>
             </nav>
           </div>
         </header>
