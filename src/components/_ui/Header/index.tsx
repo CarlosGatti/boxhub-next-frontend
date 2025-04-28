@@ -41,7 +41,7 @@ export const Header = () => {
           <WrapperIdentityCurrentUser>
             <IdentityCurrentUser displayName={false} />
           </WrapperIdentityCurrentUser>
-          <Link style={{ display: 'flex' }} href="/feed">
+          <Link style={{ display: 'flex' }} href="/qrcode-app/dashboard">
             <LogoDesktop
      width={60}
      height={60}

@@ -44,7 +44,7 @@ export const AuthProvider: React.FC<React.PropsWithChildren> = ({
               setCookie(undefined, '@token', data.login.token, {
                 maxAge: 60 * 60 * 24 * 3,
               })
-              router.push('/feed')
+              router.push('/qrcode-app/dashboard')
             }
           },
           onError() {
