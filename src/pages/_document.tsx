@@ -56,11 +56,11 @@ export default class MyDocument extends Document {
           />
           <meta
             name="description"
-            content="Create, manage, join communities and groups"
+            content="BoxHub is a platform for creating and managing communities and groups."
           />
           <meta
             property="og:description"
-            content="Create, manage, join communities and groups"
+            content="BoxHub is a platform for creating and managing communities and groups."
           />
           <meta property="og:type" content="website" />
           <meta property="og:url" content="#" />
