@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, ReactElement, useState } from 'react'
+import { ButtonHTMLAttributes, ReactElement } from 'react'
 import { FaBoxOpen, FaRegListAlt } from "react-icons/fa"
 
 import { BsFileBarGraph } from "react-icons/bs"
@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { MdFamilyRestroom } from "react-icons/md"
 import { PrivacyTerms } from '../../../components/_ui/SideBar/PrivacyTerms'
 
-interface MenuBtnProps {
+interface MenuBtnProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   icon: ReactElement
   item: string
   link: string
@@ -34,39 +34,13 @@ interface MenuBarProps {
 }
 
 export const MenuBar = ({ open = false }: MenuBarProps) => {
-  const [containerOpen, setContainerOpen] = useState(false)
-
   return (
     <aside className="flex flex-col w-64 min-h-screen p-6 bg-white border-r shadow-md">
       <div className="flex flex-col gap-6">
         <h2 className="text-xl font-bold text-gray-800">Menu</h2>
-
         <MenuBtn link="/qrcode-app/dashboard" icon={<BsFileBarGraph />} item="Dashboard" />
         <MenuBtn link="/qrcode-app/families" icon={<MdFamilyRestroom />} item="Families" />
-
-        {/* Containers with submenu */}
-        <button
-          onClick={() => setContainerOpen(!containerOpen)}
-          className="flex items-center gap-4 px-4 py-2 rounded-md hover:bg-gray-100 transition-all text-gray-700"
-        >
-          <div className="text-2xl">
-            <FaBoxOpen />
-          </div>
-          <span className="text-md font-medium">Containers</span>
-        </button>
-
-        {/* Submenu (Dropdown) */}
-        {containerOpen && (
-          <div className="ml-8 flex flex-col gap-2">
-            <Link href="/qrcode-app/container/list" className="text-gray-600 hover:text-gray-800 text-sm">
-              List Containers
-            </Link>
-            <Link href="/qrcode-app/container/create" className="text-gray-600 hover:text-gray-800 text-sm">
-              Create Container
-            </Link>
-          </div>
-        )}
-
+        <MenuBtn link="/qrcode-app/container/list" icon={<FaBoxOpen />} item="Containers" />
         <MenuBtn link="/qrcode-app/items/list" icon={<FaRegListAlt />} item="Items" />
         <MenuBtn link="/qrcode-app/scanner" icon={<FaQrcode />} item="Scanner" />
       </div>
@@ -77,4 +51,3 @@ export const MenuBar = ({ open = false }: MenuBarProps) => {
     </aside>
   )
 }
-export default MenuBar
