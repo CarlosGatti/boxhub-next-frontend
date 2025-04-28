@@ -35,7 +35,7 @@ function Header() {
           <Link href="#contact" className="text-sm font-medium transition-colors hover:text-primary">
             Contact
           </Link>
-          <Link href="/Account/login" className="text-sm font-medium transition-colors hover:text-primary">
+          <Link href="/account/login" className="text-sm font-medium transition-colors hover:text-primary">
             Login
           </Link>
         </nav>
