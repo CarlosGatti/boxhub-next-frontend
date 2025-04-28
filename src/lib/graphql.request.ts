@@ -18,7 +18,7 @@ const requestMiddleware = async (request: any) => {
 }
 
 const graphqlRequestClient = new GraphQLClient(
-  'https://discart.me/graphql',
+  'https://www.discart.me/graphql',
   {
     mode: 'cors',
     requestMiddleware,
