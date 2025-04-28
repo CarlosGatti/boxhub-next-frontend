@@ -19,7 +19,8 @@ export const Form = styled.form`
     text-align: center;
     padding: 20px;
   }
-`
+` as unknown as React.FC<React.FormHTMLAttributes<HTMLFormElement>>
+
 export const TitleForm = styled.div`
   display: flex;
   gap: 10px;
