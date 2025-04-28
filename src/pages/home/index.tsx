@@ -86,7 +86,7 @@ function MobileNav() {
               Contact
             </Link>
             <Link
-              href="/account/login"
+              href="/account/login/"
               className="text-lg font-medium transition-colors hover:text-primary"
               onClick={() => setIsOpen(false)}
             >
