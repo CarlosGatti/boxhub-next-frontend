@@ -12,6 +12,7 @@ export default function LandingPage() {
         <HeroSection />
         <FeaturesSection />
         <AboutSection />
+        <ContactSection />
       </main>
       <Footer />
     </div>
@@ -161,7 +162,34 @@ function AboutSection() {
     </section>
   );
 }
+function ContactSection() {
+  return (
+    <section id="contact" className="w-full py-16 md:py-20 bg-gray-50">
+      <div className="container mx-auto px-6">
+        <div className="text-center space-y-6">
+          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900">
+            Contact
+          </h2>
+          <p className="text-gray-600 md:text-lg max-w-2xl mx-auto">
+            We'd love to connect with you. Feel free to reach out anytime!
+          </p>
 
+          <div className="flex flex-col items-center space-y-2 text-gray-700 mt-8">
+            <p className="text-base md:text-lg">
+              🌐 Website: <a href="https://carlosgatti.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">carlosgatti.com</a>
+            </p>
+            <p className="text-base md:text-lg">
+              📧 Email: <a href="mailto:the@carlosgatti.com" className="text-blue-600 hover:underline">the@carlosgatti.com</a>
+            </p>
+            <p className="text-base md:text-lg">
+              📞 Phone: <a href="tel:+18573507504" className="text-blue-600 hover:underline">+1 (857) 350-7504</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 
 function Footer() {
