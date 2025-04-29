@@ -1,4 +1,3 @@
-readme_content = """
 # 📦 **BoxHub**  
 > Gestão inteligente de inventário pessoal e empresarial usando QR Codes.
 
