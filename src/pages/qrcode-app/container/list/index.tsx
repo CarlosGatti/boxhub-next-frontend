@@ -1,4 +1,5 @@
 import { Container, MainContent, WrapperBody } from '../../../../styles/qrcode';
+import React, {use, useEffect} from 'react';
 
 import { Header } from '../../../../components/_ui/Header';
 import { MainLayout } from '../../../../layouts/MainLayout';
@@ -10,6 +11,14 @@ import { useRouter } from 'next/router';
 const ContainersPage = () => {
   const { data, error, isLoading } = useGetAllContainersQuery(graphqlRequestClient);
   const router = useRouter();
+
+  useEffect(() => {
+    console.log('Data:', data);
+    if (data && data.getAllContainers.length === 0) {
+      router.push('/qrcode-app/container/create');
+    }
+  }
+  , [data, router]);
 
   if (isLoading) {
     return <div className="text-center text-gray-600">Loading containers...</div>;
