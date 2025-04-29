@@ -103,7 +103,7 @@ const handlePrintQrCode = (e: React.MouseEvent<HTMLButtonElement>) => {
       <Container>
         <Header />
         <WrapperBody>
-          <MenuBar />
+          {/* <MenuBar /> */}
 
           <MainContent>
   <div className="p-6 bg-white rounded-lg shadow-md max-w-md ">
