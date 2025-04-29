@@ -1,70 +1,159 @@
-# **BoxHub** 📦  
-
-**BoxHub** é uma plataforma moderna para **gerenciamento e organização de armazenamento**. Com a tecnologia de **QR Codes**, permite que os usuários registrem, classifiquem e rastreiem itens de forma eficiente, facilitando a organização de containers e objetos pessoais ou empresariais. O projeto foi desenvolvido com foco em **escalabilidade, acessibilidade e facilidade de uso**.  
-
-## **✨ Funcionalidades Principais**  
-
-✔️ **Gerenciamento de Containers** – Criação, edição e exclusão de containers para organizar seus itens de forma intuitiva.  
-✔️ **Cadastro de Itens** – Adição de itens com informações detalhadas, incluindo imagens e categorização.  
-✔️ **Geração e Leitura de QR Codes** – Criação automática de QR Codes para containers, permitindo leitura rápida via câmera.  
-✔️ **Busca e Filtragem Inteligente** – Pesquisa rápida de itens e containers por nome, categoria ou QR Code.  
-✔️ **Interface Responsiva** – Design otimizado para desktop e dispositivos móveis, garantindo uma experiência fluida.  
+readme_content = """
+# 📦 **BoxHub**  
+> Gestão inteligente de inventário pessoal e empresarial usando QR Codes.
 
 ---
 
-# 🚀 **Deploy do Frontend com Next.js na Vercel**  
+## 📖 **Visão Geral**  
 
-## **Passo 1: Preparar o Projeto para Produção**  
-Antes de implantar o projeto, execute:  
+**BoxHub** é uma plataforma moderna para **organizar, catalogar e gerenciar** itens em containers físicos, utilizando QR Codes para identificação rápida e precisa.  
+Ideal para uso pessoal, pequenas empresas, estoques e mudanças.  
+Construído focando em **eficiência, escalabilidade e experiência do usuário**.
 
-```sh
-npm run build
-```  
+---
 
-Isso gerará uma versão otimizada do aplicativo, pronta para o ambiente de produção.  
+## 🚀 **Conceitos Fundamentais**  
 
-## **Passo 2: Instalar a Vercel CLI**  
+- **Container:** Unidade principal de armazenamento (caixas, gavetas, prateleiras, etc.)
+- **Item:** Objetos individuais cadastrados dentro de containers.
+- **QR Code:** Código único para cada container, permitindo acesso rápido às suas informações.
+- **Família (Opcional):** Agrupamento de containers e itens, útil para empresas ou famílias grandes.
 
-```sh
-npm i -g vercel
-```  
+---
 
-## **Passo 3: Clonar o Repositório**  
+## 🛠 **Funcionalidades Principais**
 
-```sh
+- ✔️ Cadastro de Containers e Itens com fotos e descrições.
+- ✔️ Geração e Leitura de QR Codes para containers.
+- ✔️ Busca inteligente por nome, categoria ou QR Code.
+- ✔️ Interface adaptada para desktop e mobile.
+- ✔️ Dashboard com dados estatísticos.
+- ✔️ Gerenciamento de famílias de usuários (opcional).
+
+---
+
+## 📋 **Requisitos Técnicos**
+
+- Node.js 18+
+- Banco de Dados PostgreSQL
+- Hospedagem (Vercel ou similar)
+- Conta gratuita no ImgBB (upload de imagens)
+
+---
+
+## 🧠 **Tecnologias Utilizadas**
+
+- **Next.js 14** — Frontend e Server-side Rendering
+- **TailwindCSS** — Estilização moderna e responsiva
+- **GraphQL + graphql-request** — Comunicação eficiente com a API
+- **Prisma ORM** — Manipulação de banco de dados
+- **NestJS** — Backend estruturado e escalável
+- **ImgBB API** — Upload e armazenamento de imagens
+- **JWT Authentication** — Controle de acesso seguro
+
+---
+
+# 🏗 **Guia de Início Rápido (Get Started)**  
+
+### 📦 Clonando o Projeto
+
+\`\`\`bash
 git clone https://github.com/CarlosGatti/boxhub-frontend.git
-```
+cd boxhub-frontend
+npm install
+\`\`\`
 
-## **Passo 4: Implantação na Vercel**  
+### 🛠 Configuração das Variáveis de Ambiente (`.env.local`)
 
-1️⃣ Acesse [Vercel](https://vercel.com/import)  
-2️⃣ Clique em **"Import Git Repository"**  
-3️⃣ Selecione o repositório **boxhub-frontend** e clique em **"Continue"**  
-4️⃣ Escolha **Next.js** como framework e continue  
-5️⃣ Configure as variáveis de ambiente necessárias  
-6️⃣ Clique em **"Deploy"**  
+\`\`\`bash
+NEXT_PUBLIC_GRAPHQL_API_URL=https://your-api-url/graphql
+NEXT_PUBLIC_IMGBB_API_KEY=your-imgbb-api-key
+\`\`\`
 
-### **🎯 Configuração de Deploys Automáticos**  
+**No backend (NestJS)** configurar:
+\`\`\`bash
+DATABASE_URL=postgresql://user:password@host:port/dbname
+JWT_SECRET=your_jwt_secret
+\`\`\`
 
-1️⃣ Vá até a aba **Settings** do projeto na Vercel  
-2️⃣ Role até a seção **Git** e clique em **"Connect to GitHub"**  
-3️⃣ Autorize a Vercel para acessar sua conta do GitHub  
-4️⃣ Escolha o repositório e branch para implantações automáticas  
-5️⃣ Clique em **"Save"**  
+### 🚀 Executando Localmente
 
-Agora, toda atualização enviada para o repositório GitHub será **implantada automaticamente** na Vercel! 🎉  
+\`\`\`bash
+npm run dev
+\`\`\`
+Acesse: [http://localhost:3000](http://localhost:3000)
+
+---
+
+# 🌐 **Deploy do Frontend (Vercel)**
+
+### 🔥 Passos:
+
+1. **Build do Projeto:**
+   \`\`\`bash
+   npm run build
+   \`\`\`
+2. **Instalar CLI da Vercel:**
+   \`\`\`bash
+   npm install -g vercel
+   \`\`\`
+3. **Deploy:**
+   \`\`\`bash
+   vercel
+   \`\`\`
+4. Configure corretamente as **variáveis de ambiente** na plataforma Vercel.
 
 ---
 
-## **🌍 Acesse o BoxHub**  
-🔗 [www.BoxHub.us](https://www.BoxHub.us/)  
+## 📊 **Status Atual do Projeto**
 
-## **💰 Custos do Projeto**  
-🛠 **Domínio:** $1.99  
-🖥 **Hospedagem Frontend:** **Vercel Free**  
-
-## **📌 Repositório Conceitual**  
-Confira a base do projeto conceitual no GitHub:  
-🔗 [Projeto Conceitual](https://github.com/CarlosGatti/umass-bootcamp/blob/main/projects/78-project-capstone/Capstone.md)  
+- ✅ Cadastro de Containers e Itens.
+- ✅ Upload de imagens otimizadas.
+- ✅ Dashboard funcional.
+- ⏳ Em andamento: Busca avançada e gestão multiusuário.
 
 ---
+
+## 🌍 **Acesse o Projeto**
+
+🔗 [www.boxhub.us](https://www.boxhub.us/)
+
+---
+
+## 💰 **Custos de Manutenção**
+
+- Domínio: **$1.99/ano**  
+- Frontend (Vercel): **Plano Free**  
+- Backend (Hospedagem): **A definir (atualmente localhost para desenvolvimento)**
+
+---
+
+## 📚 **Documentação Extra**
+
+- [Documentação Conceitual e Capstone](https://github.com/CarlosGatti/umass-bootcamp/blob/main/projects/78-project-capstone/Capstone.md)
+- [Backend - NestJS API (em breve)]
+
+---
+
+# ✨ **Contribuição**
+
+Fique à vontade para abrir issues, propor melhorias ou contribuir com o projeto. Vamos tornar o **BoxHub** cada vez melhor!
+
+---
+
+# 📬 **Contato**
+
+Se precisar de ajuda, sugestões ou quiser colaborar:
+
+- GitHub: [CarlosGatti](https://github.com/CarlosGatti)
+- Email: [eduardo.gf@hotmail.com](mailto:eduardo.gf@hotmail.com)
+
+---
+
+## 🚀 Let's make organization simple again with **BoxHub**!
+"""
+
+with open("/mnt/data/README.md", "w") as file:
+    file.write(readme_content)
+
+"/mnt/data/README.md criado com sucesso!"
