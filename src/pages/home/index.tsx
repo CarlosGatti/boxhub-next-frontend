@@ -1,5 +1,6 @@
 import { Cloud, Menu, QrCode, Search, X } from "lucide-react"
 
+import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
 
@@ -25,7 +26,13 @@ function Header() {
     <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2">
-          <span className="text-xl font-bold">BoxHub</span>
+          <Image
+            src="/image/brand/rh-blue.png"
+            alt="Logo"
+            width={40}
+            height={40}
+        
+          />
         </Link>
 
         {/* Desktop Nav */}
@@ -138,31 +145,29 @@ function FeaturesSection() {
     </section>
   )
 }
-
 function AboutSection() {
   return (
-    <section id="about" className="w-full py-12 md:py-24 lg:py-32">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex flex-col items-center justify-center space-y-4 text-center">
-          <div className="space-y-2">
-            <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">About BoxHub</h2>
-            <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl/relaxed">
-              BoxHub is an intuitive inventory management system designed to help you organize and track your items with
-              ease.
-            </p>
-          </div>
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="text-muted-foreground">
-              Whether you're a business managing inventory or an individual organizing personal belongings, BoxHub
-              provides the tools you need to stay organized and efficient. Our platform combines simplicity with
-              powerful features to deliver an exceptional user experience.
-            </p>
-          </div>
+    <section id="about" className="w-full py-16 md:py-20 bg-white">
+      <div className="container mx-auto px-6">
+        <div className="text-center max-w-4xl mx-auto space-y-6">
+          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900">
+            About BoxHub
+          </h2>
+          <p className="text-gray-600 md:text-lg">
+            BoxHub is a simple and powerful inventory management system that helps you organize and track your items with ease.
+          </p>
+          <p className="text-gray-500 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
+            Whether you're managing business inventory or personal belongings, BoxHub offers a streamlined experience
+            focused on clarity and speed. Enjoy features like QR code generation, cloud storage, and smart filtering —
+            all designed to keep you efficient and in control.
+          </p>
         </div>
       </div>
     </section>
-  )
+  );
 }
+
+
 
 function Footer() {
   return (
