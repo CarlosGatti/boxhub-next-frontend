@@ -31,7 +31,7 @@ function Header() {
             alt="Logo"
             width={40}
             height={40}
-        
+            className="grayscale transition-all duration-300 hover:grayscale-0"
           />
         </Link>
 
