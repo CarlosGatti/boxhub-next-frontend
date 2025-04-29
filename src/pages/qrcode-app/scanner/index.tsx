@@ -84,7 +84,7 @@ const QrCodeScanner = () => {
       <Container>
         <Header />
         <WrapperBody>
-          <MenuBar />
+          {/* <MenuBar /> */}
 
           <MainContent>
           <div className="flex flex-col items-center min-h-screen bg-gray-100 p-4">

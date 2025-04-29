@@ -71,7 +71,7 @@ const ManageFamilies = () => {
       <Container>
         <Header />
         <WrapperBody>
-        <MenuBar />
+        {/* <MenuBar /> */}
   
         <MainContent>
     

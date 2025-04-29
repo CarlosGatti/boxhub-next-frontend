@@ -43,7 +43,7 @@ const ContainerDetailsPage = () => {
        <Container>
          <Header />
          <WrapperBody>
-           <MenuBar />
+           {/* <MenuBar /> */}
  
            <MainContent>
      

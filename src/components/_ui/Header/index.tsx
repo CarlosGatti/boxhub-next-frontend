@@ -1,16 +1,4 @@
 import { AiOutlineHome, AiOutlineMenu } from 'react-icons/ai'
-import {
-  ButtonMenuMobile,
-  Container,
-  ContainerOption,
-  Content,
-  LeftMobileWrapper,
-  LogoDesktop,
-  LogoMobile,
-  Option,
-  WrapperIdentityCurrentUser,
-  WrapperMenuMobile,
-} from './styles'
 import { IoCloseOutline, IoNotificationsOutline } from 'react-icons/io5'
 
 import { IdentityCurrentUser } from '../SideBar/IdentityCurrentUser'
@@ -18,71 +6,47 @@ import { IoMdLogOut } from 'react-icons/io'
 import Link from 'next/link'
 import { MenuBar } from '../MenuBar'
 import { SearchModal } from './SearchModal'
-import { useAuth } from '../../../hooks'
+import { useAuth } from '../../../hooks/useAuth'
 import { useState } from 'react'
 
-export const Header = () => {
+export function Header() {
   const { logout } = useAuth()
   const [isOpenMenu, setIsOpenMenu] = useState(false)
-  const handleOpenMenu = () => {
-    setIsOpenMenu(!isOpenMenu)
-  }
-  return (
-    <Container>
-      <Content>
-        <LeftMobileWrapper>
-          <ButtonMenuMobile
-            onClick={() => handleOpenMenu()}
-            aria-label="menu mobile"
-          >
-            {isOpenMenu ? <IoCloseOutline /> : <AiOutlineMenu />}
-          </ButtonMenuMobile>
 
-          <WrapperIdentityCurrentUser>
+  return (
+    <header className="sticky top-0 z-50 w-full border-b border-blue-700 bg-zinc-900 text-white">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
+        <div className="flex items-center gap-4">
+          <button onClick={() => setIsOpenMenu(!isOpenMenu)} className="md:hidden text-white">
+            {isOpenMenu ? <IoCloseOutline size={24} /> : <AiOutlineMenu size={24} />}
+          </button>
+
+          <Link href="/qrcode-app/dashboard">
+            <img src="/image/brand/rh-blue.png" alt="Logo" className="h-10 w-10" />
+          </Link>
+
+          <div className="block md:hidden">
             <IdentityCurrentUser displayName={false} />
-          </WrapperIdentityCurrentUser>
-          <Link style={{ display: 'flex' }} href="/qrcode-app/dashboard">
-            <LogoDesktop
-     width={60}
-     height={60}
-              src="/image/brand/rh-blue.png"
-              alt="Logo da BoxHub"
-            />
+          </div>
+        </div>
+
+        <div className="hidden md:flex items-center gap-4">
+          <Link href="/qrcode-app/dashboard">
+            <AiOutlineHome size={22} className="hover:text-blue-400 transition" />
           </Link>
-        </LeftMobileWrapper>
-        <Link style={{ display: 'flex' }} href="/qrcode-app/dashboard">
-          <LogoMobile
-     width={60}
-     height={60}
-            src="/image/brand/rh-blue.png"
-            alt="Icone BoxHub"
-          />
-        </Link>
-        <ContainerOption>
-          <Link href="/qrcode-app/dashboard" aria-label="Home">
-            <Option>
-              <AiOutlineHome />
-            </Option>
-          </Link>
-          <Option>
-            <SearchModal />
-          </Option>
-          {/* <Option type="button" aria-label="Chat">
-            <BsChatDots />
-          </Option> */}
-          <Option aria-label="Notificação">
-            <IoNotificationsOutline />
-          </Option>
-          <Link href="/account/login" aria-label="Sair">
-            <Option onClick={logout}>
-              <IoMdLogOut />
-            </Option>
-          </Link>
-        </ContainerOption>
-      </Content>
-      <WrapperMenuMobile open={isOpenMenu}>
-        <MenuBar open={isOpenMenu} />
-      </WrapperMenuMobile>
-    </Container>
+          <SearchModal />
+          <IoNotificationsOutline size={22} className="hover:text-blue-400 transition" />
+          <button onClick={logout}>
+            <IoMdLogOut size={22} className="hover:text-red-400 transition" />
+          </button>
+        </div>
+      </div>
+
+      {isOpenMenu && (
+        <div className="fixed inset-0 top-[60px] z-40 bg-black/70 backdrop-blur-md md:hidden">
+          <MenuBar open={isOpenMenu} />
+        </div>
+      )}
+    </header>
   )
 }

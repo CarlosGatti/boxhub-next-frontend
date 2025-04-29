@@ -30,7 +30,7 @@ const DashboardPage = () => {
       <Container>
         <Header />
         <WrapperBody>
-          <MenuBar />
+          {/* <MenuBar /> */}
 
           {/* Dashboard Content */}
           <div className="p-8 bg-white rounded-xl shadow-lg space-y-8">
