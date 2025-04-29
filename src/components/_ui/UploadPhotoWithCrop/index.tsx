@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { BsCamera } from 'react-icons/bs';
 import Image from 'next/image';
 import { MdOutlineShoppingBasket } from 'react-icons/md';
+import { resizeImage } from '../../../lib/resizeImage';
 
 interface UploadPhotoWithCropProps {
   imageUser?: string | null | undefined;
@@ -19,21 +20,20 @@ export const UploadPhotoWithCrop = ({
 }: UploadPhotoWithCropProps) => {
   const [image, setImage] = useState('');
 
-  const onChange = (e: any) => {
+  const onChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    let files;
-    if (e.dataTransfer) {
-      files = e.dataTransfer.files;
-    } else if (e.target) {
-      files = e.target.files;
-    }
-    const reader = new FileReader();
-    reader.onload = () => {
-      setImage(reader.result as string);
-    };
+    const files = e.target.files;
+    if (!files || files.length === 0) return;
 
-    if (files.length) {
-      reader.readAsDataURL(files[0]);
+    const file = files[0];
+    try {
+      const resizedImage = await resizeImage(file);
+      setImage(resizedImage);
+      if (setBanner) {
+        setBanner(resizedImage);
+      }
+    } catch (error) {
+      console.error('Error resizing image:', error);
     }
   };
 
