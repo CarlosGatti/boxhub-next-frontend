@@ -113,7 +113,7 @@ function FeaturesSection() {
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
           <div className="flex flex-col items-center text-center p-6 rounded-xl bg-white border shadow-sm hover:shadow-md transition-shadow">
             <div className="mb-4 rounded-full bg-gray-100 p-4">
-              <QrCode className="h-6 w-6 text-blue-600" />
+              <QrCode className="grayscale transition-all duration-300 hover:grayscale-0" />
             </div>
             <h3 className="text-xl font-medium text-gray-900">QR Code Management</h3>
             <p className="text-sm text-gray-600 mt-2">
@@ -123,7 +123,7 @@ function FeaturesSection() {
 
           <div className="flex flex-col items-center text-center p-6 rounded-xl bg-white border shadow-sm hover:shadow-md transition-shadow">
             <div className="mb-4 rounded-full bg-gray-100 p-4">
-              <Cloud className="h-6 w-6 text-blue-600" />
+              <Cloud className="grayscale transition-all duration-300 hover:grayscale-0"/>
             </div>
             <h3 className="text-xl font-medium text-gray-900">Cloud Storage</h3>
             <p className="text-sm text-gray-600 mt-2">
@@ -133,7 +133,7 @@ function FeaturesSection() {
 
           <div className="flex flex-col items-center text-center p-6 rounded-xl bg-white border shadow-sm hover:shadow-md transition-shadow">
             <div className="mb-4 rounded-full bg-gray-100 p-4">
-              <Search className="h-6 w-6 text-blue-600" />
+              <Search className="grayscale transition-all duration-300 hover:grayscale-0" />
             </div>
             <h3 className="text-xl font-medium text-gray-900">Advanced Search</h3>
             <p className="text-sm text-gray-600 mt-2">
