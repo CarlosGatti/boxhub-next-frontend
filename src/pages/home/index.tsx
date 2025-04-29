@@ -6,7 +6,6 @@ import { useState } from "react"
 
 export default function LandingPage() {
   return (
-
     <div className="flex min-h-screen flex-col">
       <Header />
       <main className="flex-1">
@@ -93,7 +92,6 @@ function HeroSection() {
       </div>
     </div>
   </section>
-  
   )
 }
 
@@ -109,7 +107,6 @@ function FeaturesSection() {
             Discover how BoxHub transforms inventory management with elegant tools and intuitive design.
           </p>
         </div>
-
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
           <div className="flex flex-col items-center text-center p-6 rounded-xl bg-white border shadow-sm hover:shadow-md transition-shadow">
             <div className="mb-4 rounded-full bg-gray-100 p-4">
@@ -120,7 +117,6 @@ function FeaturesSection() {
               Generate and scan QR codes to track your items with ease.
             </p>
           </div>
-
           <div className="flex flex-col items-center text-center p-6 rounded-xl bg-white border shadow-sm hover:shadow-md transition-shadow">
             <div className="mb-4 rounded-full bg-gray-100 p-4">
               <Cloud className="grayscale transition-all duration-300 hover:grayscale-0"/>
@@ -130,7 +126,6 @@ function FeaturesSection() {
               Access your data anywhere with our secure cloud system.
             </p>
           </div>
-
           <div className="flex flex-col items-center text-center p-6 rounded-xl bg-white border shadow-sm hover:shadow-md transition-shadow">
             <div className="mb-4 rounded-full bg-gray-100 p-4">
               <Search className="grayscale transition-all duration-300 hover:grayscale-0" />

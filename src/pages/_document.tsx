@@ -66,7 +66,7 @@ export default class MyDocument extends Document {
           <meta property="og:url" content="#" />
           <meta name="copyright" content="© Developed by CSA" />
           <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
-          <link rel="icon" href="/favicon.ico" />
+          <link rel="icon" href="/rh-blue.ico" />
         </Head>
         <body>
           <Main />
