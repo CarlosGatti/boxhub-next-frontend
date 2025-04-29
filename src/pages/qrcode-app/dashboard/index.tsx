@@ -16,83 +16,93 @@ const DashboardPage = () => {
   if (isLoading) return <p>Loading dashboard...</p>;
   if (error) return <p>Error loading dashboard: {error.message}</p>;
 
+    return (
+      <MainLayout headTitle="Dashboard" metaContent="Dashboard Overview" metaName="description">
+        <Container>
+          <Header />
+          <WrapperBody>
+          <div className="mt-6 md:mt-0 p-6 md:p-8 bg-white rounded-xl shadow-md space-y-10">
 
-  
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-
-
-  return (
-    <MainLayout
-      headTitle="Dashboard"
-      metaContent="Dashboard Overview"
-      metaName="description"
-    >
-      <Container>
-        <Header />
-        <WrapperBody>
-          {/* <MenuBar /> */}
-
-          {/* Dashboard Content */}
-          <div className="p-8 bg-white rounded-xl shadow-lg space-y-8">
-            {/* Greeting */}
-            {/* <h1 className="text-3xl font-bold text-gray-800">Welcome, {data.currentUser.firstName}!</h1> */}
-
-            {/* Cards Section */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {/* Total Containers */}
-              <div className="bg-blue-100 p-6 rounded-lg shadow-md flex items-center space-x-4">
-                <FaBox size={40} className="text-blue-500" />
-                <div>
-                  <p className="text-sm text-gray-600">Total Containers</p>
-                  <h2 className="text-2xl font-bold">{data.getDashboardData.totalContainers}</h2>
-                </div>
-              </div>
-
-              {/* Total Items */}
-              <div className="bg-green-100 p-6 rounded-lg shadow-md flex items-center space-x-4">
-                <FaCubes size={40} className="text-green-500" />
-                <div>
-                  <p className="text-sm text-gray-600">Total Items</p>
-                  <h2 className="text-2xl font-bold">{data.getDashboardData.totalItems}</h2>
-                </div>
-              </div>
-
-              {/* QR Code Actions */}
-              <div className="bg-yellow-100 p-6 rounded-lg shadow-md flex items-center space-x-4">
-                <FaQrcode size={40} className="text-yellow-500" />
-                <div>
-                  <p className="text-sm text-gray-600">Quick Actions</p>
-                  <button
-                    onClick={() => router.push('/qrcode-app/scanner')}
-                    className="text-blue-500 hover:underline"
-                  >
-                    Scan QR Code
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Recent Containers */}
-            <div className="bg-gray-100 p-6 rounded-lg shadow-md">
-              <h2 className="text-xl font-bold mb-4">Recent Containers</h2>
-              <ul className="space-y-2">
-                {data.getDashboardData.recentContainers.map((container) => (
-                  <li key={container.id} className="flex justify-between items-center">
-                    <span className="text-gray-800">{container.name}</span>
+              {/* Summary Cards */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <SummaryCard
+                  icon={<FaBox size={32} className="text-blue-600" />}
+                  title="Total Containers"
+                  value={data?.getDashboardData.totalContainers ?? 0}
+                  bgColor="bg-blue-50"
+                />
+                <SummaryCard
+                  icon={<FaCubes size={32} className="text-green-600" />}
+                  title="Total Items"
+                  value={data?.getDashboardData.totalItems ?? 0}
+                  bgColor="bg-green-50"
+                />
+                <SummaryCard
+                  icon={<FaQrcode size={32} className="text-yellow-600" />}
+                  title="Scan QR Code"
+                  value={
                     <button
-                      onClick={() => router.push(`/qrcode-app/container/view/${container.id}`)}
-                      className="text-blue-500 hover:underline"
+                      onClick={() => router.push('/qrcode-app/scanner')}
+                      className="text-sm text-blue-600 hover:underline"
                     >
-                      View
+                      Start Scan
                     </button>
-                  </li>
-                ))}
-              </ul>
+                  }
+                  bgColor="bg-yellow-50"
+                />
+              </div>
+  
+              {/* Recent Containers List */}
+              <div className="bg-gray-50 p-6 rounded-lg border shadow-sm">
+                <h2 className="text-lg font-semibold text-gray-800 mb-4">Recent Containers</h2>
+  
+                {data?.getDashboardData.recentContainers?.length === 0 ? (
+                  <p className="text-sm text-gray-500">No containers found yet.</p>
+                ) : (
+                  <ul className="space-y-3">
+                    {data?.getDashboardData.recentContainers.map((container) => (
+                      <li
+                        key={container.id}
+                        className="flex justify-between items-center bg-white p-3 rounded-md shadow-sm hover:bg-gray-100 transition"
+                      >
+                        <span className="font-medium text-gray-800">{container.name}</span>
+                        <button
+                          onClick={() => router.push(`/qrcode-app/container/view/${container.id}`)}
+                          className="text-sm text-blue-600 hover:underline"
+                        >
+                          View
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
             </div>
-          </div>
-        </WrapperBody>
-      </Container>
-    </MainLayout>
+          </WrapperBody>
+        </Container>
+      </MainLayout>
+    );
+};
+
+const SummaryCard = ({
+  icon,
+  title,
+  value,
+  bgColor,
+}: {
+  icon: JSX.Element;
+  title: string;
+  value: string | number | JSX.Element;
+  bgColor: string;
+}) => {
+  return (
+    <div className={`flex items-center gap-4 p-5 rounded-lg shadow-sm ${bgColor}`}>
+      <div className="flex-shrink-0">{icon}</div>
+      <div>
+        <p className="text-sm text-gray-500">{title}</p>
+        <h2 className="text-xl font-bold text-gray-800">{value}</h2>
+      </div>
+    </div>
   );
 };
 
