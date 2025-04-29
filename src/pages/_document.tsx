@@ -64,14 +64,14 @@ export default class MyDocument extends Document {
           <meta property="og:url" content="https://metatags.io/" />
           <meta property="og:title" content="BoxHub – Organize, Track & Manage Your Storage Effortlessly" />
           <meta property="og:description" content="BoxHub is an intuitive inventory system that uses QR codes to help you manage and locate your personal or business items with ease. Simplify your storage today." />
-          <meta property="og:image" content="https://metatags.io/images/meta-tags.png" />
+          <meta property="og:image" content="/landing/meta.png" />
 
           <!-- Twitter -->
           <meta property="twitter:card" content="summary_large_image" />
           <meta property="twitter:url" content="https://metatags.io/" />
           <meta property="twitter:title" content="BoxHub – Organize, Track & Manage Your Storage Effortlessly" />
           <meta property="twitter:description" content="BoxHub is an intuitive inventory system that uses QR codes to help you manage and locate your personal or business items with ease. Simplify your storage today." />
-          <meta property="twitter:image" content="https://metatags.io/images/meta-tags.png" />
+          <meta property="og:image" content="/landing/meta.png" />
 
           <!-- Meta Tags Generated with https://metatags.io -->
         </Head>
