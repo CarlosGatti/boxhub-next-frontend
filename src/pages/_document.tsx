@@ -42,7 +42,7 @@ export default class MyDocument extends Document {
     return (
       <Html lang="pt-br">
         <Head>
-          <meta property="og:site_name" content="BoxHub" />
+          {/* <meta property="og:site_name" content="BoxHub" />
           <meta property="og:title" content="BoxHub" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -53,20 +53,27 @@ export default class MyDocument extends Document {
           <link
             href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap"
             rel="stylesheet"
-          />
-          <meta
-            name="description"
-            content="BoxHub is a platform for creating and managing communities and groups."
-          />
-          <meta
-            property="og:description"
-            content="BoxHub is a platform for creating and managing communities and groups."
-          />
+          /> */}
+          <!-- Primary Meta Tags -->
+          <title>BoxHub – Organize, Track & Manage Your Storage Effortlessly</title>
+          <meta name="title" content="BoxHub – Organize, Track & Manage Your Storage Effortlessly" />
+          <meta name="description" content="BoxHub is an intuitive inventory system that uses QR codes to help you manage and locate your personal or business items with ease. Simplify your storage today." />
+
+          <!-- Open Graph / Facebook -->
           <meta property="og:type" content="website" />
-          <meta property="og:url" content="#" />
-          <meta name="copyright" content="© Developed by CSA" />
-          <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
-          <link rel="icon" href="/rh-blue.ico" />
+          <meta property="og:url" content="https://metatags.io/" />
+          <meta property="og:title" content="BoxHub – Organize, Track & Manage Your Storage Effortlessly" />
+          <meta property="og:description" content="BoxHub is an intuitive inventory system that uses QR codes to help you manage and locate your personal or business items with ease. Simplify your storage today." />
+          <meta property="og:image" content="https://metatags.io/images/meta-tags.png" />
+
+          <!-- Twitter -->
+          <meta property="twitter:card" content="summary_large_image" />
+          <meta property="twitter:url" content="https://metatags.io/" />
+          <meta property="twitter:title" content="BoxHub – Organize, Track & Manage Your Storage Effortlessly" />
+          <meta property="twitter:description" content="BoxHub is an intuitive inventory system that uses QR codes to help you manage and locate your personal or business items with ease. Simplify your storage today." />
+          <meta property="twitter:image" content="https://metatags.io/images/meta-tags.png" />
+
+          <!-- Meta Tags Generated with https://metatags.io -->
         </Head>
         <body>
           <Main />
