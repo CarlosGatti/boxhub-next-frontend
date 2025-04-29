@@ -1,164 +1,95 @@
-import { Container, ImageCrop, MainContent, WrapperBody } from '../../../styles/qrcode';
-import { useEffect, useState } from 'react';
+import { Container, MainContent, WrapperBody } from '../../../../styles/qrcode';
 
-import { Header } from '../../../components/_ui/Header';
-import { MainLayout } from '../../../layouts/MainLayout';
-import { MenuBar } from '../../../components/_ui/MenuBar';
-import { UploadPhotoWithCrop } from '../../../components/_ui/UploadPhotoWithCrop';
-import graphqlRequestClient from '../../../lib/graphql.request';
-import { uploadImages } from '../../../lib/imgBB';
-import { useCreateItemMutation } from '../../../generated/graphql';
-import { useRouter } from 'next/router';
+import { Header } from '../../../../components/_ui/Header';
+import Image from 'next/image';
+import { MainLayout } from '../../../../layouts/MainLayout';
+import graphqlRequestClient from '../../../../lib/graphql.request';
+import { useGetAllItemsQuery } from '../../../../generated/graphql';
+import { useState } from 'react';
 
-const AddItemPage = () => {
-    const router = useRouter();
-    const { id } = router.query;
-    const [name, setName] = useState('');
-    const [description, setDescription] = useState('');
-    const [imageUrl, setImageUrl] = useState('');
-    const [quantity, setQuantity] = useState(1);
-    const [category, setCategory] = useState('');
+const AllItemsPage = () => {
+  const { data, isLoading, error } = useGetAllItemsQuery(graphqlRequestClient);
+  const [searchTerm, setSearchTerm] = useState('');
 
-    const { mutateAsync: createItem } = useCreateItemMutation(graphqlRequestClient);
+  if (isLoading) {
+    return <div className="text-center text-gray-600">Loading items...</div>;
+  }
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        console.log('containerId:', id);
-        e.preventDefault();
-        if (!name || !description || !imageUrl || quantity < 1 || !category) {
-            alert('Please fill all fields!');
-            return;
-        }
+  if (error) {
+    return <div className="text-center text-red-600">Error loading items: {error.message}</div>;
+  }
 
-        if(imageUrl && !imageUrl.includes('imgbb')) {
-            const { data } = await uploadImages(imageUrl);
-            setImageUrl(data.url);
-        }
+  const filteredItems = data?.getAllItems.filter((item) =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    item.description.toLowerCase().includes(searchTerm.toLowerCase())
+  ) || [];
 
-        try {
-            await createItem({
-                name,
-                description,
-                imageUrl,
-                quantity,
-                category,
-                containerId: parseInt(id as string, 10),
-            });
+  return (
+    <MainLayout
+      headTitle="All Items"
+      metaContent="View all items and search for specific items"
+      metaName="description"
+    >
+      <Container>
+        <Header />
+        <WrapperBody>
+          <MainContent>
+            <div className="flex flex-col items-center min-h-screen bg-gray-100 p-6">
+              <div className="w-full max-w-7xl bg-white rounded-lg shadow-md p-4">
+                <h1 className="text-2xl font-bold text-gray-800 mb-8 text-center">All Items</h1>
 
-            alert('Item created successfully!');
-            router.push(`/qrcode-app/items/list`); // Redireciona para a página do container
-        } catch (error) {
-            console.error('Error creating item:', error);
-            alert('Failed to create item.');
-        }
-    };
+                {/* Search Bar */}
+                <div className="mb-8">
+                  <input
+                    type="text"
+                    placeholder="Search items..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
 
+                {/* Grid of Items */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 gap-8">
+                  {filteredItems.map((item) => (
+                    <div
+                      key={item.id}
+                      className="bg-white shadow-lg rounded-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col max-w-md mx-auto w-full"
+                    >
+                      {/* Item Image */}
+                      <div className="flex justify-center items-center bg-gray-100 p-4 border-b">
+                        <div className="relative w-32 h-32">
+                          <Image
+                            src={item.imageUrl}
+                            alt={item.name}
+                            layout="fill"
+                            objectFit="cover"
+                            className="rounded-md"
+                          />
+                        </div>
+                      </div>
 
-
-    return (
-     <MainLayout
-       headTitle="Scan QR Code"
-       metaContent="Scan QR Code to find a container"
-       metaName="description"
-     >
-       <Container>
-         <Header />
-         <WrapperBody>
-           {/* <MenuBar /> */}
- 
-           <MainContent>
-        <div className="min-h-screen bg-gray-100 p-4">
-            <div className="max-w-md mx-auto bg-white p-6 rounded-md shadow-md">
-
-        <h1 className="text-2xl font-bold text-gray-800 mb-6">Add Item</h1>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700">Item Name:</label>
-                        <input
-                            type="text"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            placeholder="Enter item name"
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                            required
-                        />
+                      {/* Info Section */}
+                      <div className="p-4 flex flex-col space-y-2">
+                        <h2 className="text-lg font-semibold text-gray-800 truncate">{item.name}</h2>
+                        <p className="text-sm text-gray-500">{item.description}</p>
+                        <p className="text-sm text-gray-600">Quantity: <span className="font-medium">{item.quantity}</span></p>
+                        <p className="text-sm text-gray-600">Category: <span className="font-medium">{item.category}</span></p>
+                        {item.container && (
+                          <p className="text-sm text-blue-600">Container: {item.container.name}</p>
+                        )}
+                      </div>
                     </div>
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700">Description:</label>
-                        <textarea
-                            value={description}
-                            onChange={(e) => setDescription(e.target.value)}
-                            placeholder="Enter item description"
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                            required
-                        ></textarea>
-                    </div>
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700">Image URL:</label>
-                        {/* <input
-                            type="url"
-                            value={imageUrl}
-                            onChange={(e) => setImageUrl(e.target.value)}
-                            placeholder="Enter image URL"
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                            required
-                        /> */}
-                        <ImageCrop>
-                        <UploadPhotoWithCrop
-                            setBanner={(value: string) => setImageUrl(value)}
-                            imageUser={imageUrl}
-                        />
-         
-                        </ImageCrop>
-                    </div>
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700">Qtt:</label>
-                        <input
-                            type="number"
-                            value={quantity}
-                            onChange={(e) => setQuantity(parseInt(e.target.value, 10))}
-                            min="1"
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700">Category:</label>
-                        <input
-                            type="text"
-                            value={category}
-                            onChange={(e) => setCategory(e.target.value)}
-                            placeholder="Enter category"
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                            required
-                        />
-                    </div>
-                    <div className="flex justify-between space-x-4">
-                        <button
-                            type="submit"
-                            className="w-full px-4 py-2 bg-blue-500 text-white rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                        >
-                            Save Item
-                        </button>
-                        <button
-                            type="button"
-                            onClick={() => router.back()}
-                            className="w-full px-4 py-2 bg-gray-300 text-black rounded-md shadow-sm hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-offset-2"
-                        >
-                            Cancel
-                        </button>
-                    </div>
-                </form>
+                  ))}
+                </div>
+
+              </div>
             </div>
-        </div>
-              </MainContent>
-     
-            </WrapperBody>
-            
-        </Container>
+          </MainContent>
+        </WrapperBody>
+      </Container>
     </MainLayout>
-    
-        
-    );
+  );
 };
 
-export default AddItemPage;
+export default AllItemsPage;
