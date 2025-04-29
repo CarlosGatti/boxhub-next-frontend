@@ -12,7 +12,9 @@ export default function LandingPage() {
         <HeroSection />
         <FeaturesSection />
         <AboutSection />
+      
         <ContactSection />
+      
       </main>
       <Footer />
     </div>
@@ -68,33 +70,50 @@ function Header() {
   )
 }
 
+
 function HeroSection() {
   return (
-    <section className="w-full py-20">
-    <div className="container mx-auto px-6 md:px-12 max-w-5xl">
-      <div className="text-center space-y-6">
-        <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-gray-900">
-          Simplify your inventory.
-        </h1>
-        <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
-          Organize and access your items effortlessly with BoxHub. A smooth, fast, and intuitive way to manage your storage.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-          <button className="rounded-lg bg-black text-white px-6 py-3 text-sm font-medium hover:bg-gray-800 transition">
-            Get Started
-          </button>
-          <Link
-            href="/account/login"
-            className="rounded-lg border border-gray-300 px-6 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 transition"
-          >
-            Login
-          </Link>
+    <section className="w-full py-16 md:py-24 bg-white">
+      <div className="container mx-auto flex flex-col-reverse md:flex-row items-center justify-between px-6 md:px-12 gap-10">
+        
+        {/* Lado Esquerdo: Texto */}
+        <div className="flex-1 text-center md:text-left space-y-6">
+          <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-gray-900">
+            Simplify your inventory.
+          </h1>
+          <p className="text-lg md:text-xl text-gray-600 max-w-xl">
+            Organize and access your items effortlessly with BoxHub. A smooth, fast, and intuitive way to manage your storage.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+            <button className="rounded-lg bg-black text-white px-6 py-3 text-sm font-medium hover:bg-gray-800 transition">
+              Get Started
+            </button>
+            <Link
+              href="/account/login"
+              className="rounded-lg border border-gray-300 px-6 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 transition"
+            >
+              Login
+            </Link>
+          </div>
         </div>
+
+        {/* Lado Direito: Imagem */}
+        <div className="flex-1">
+          <Image
+            src="/landing/garage-boxes.png"
+            alt="Organized garage with QR coded boxes"
+            width={500}
+            height={500}
+            className="rounded-lg shadow-lg mx-auto"
+            priority
+          />
+        </div>
+
       </div>
-    </div>
-  </section>
+    </section>
   )
 }
+
 
 function FeaturesSection() {
   return (
@@ -162,6 +181,7 @@ function AboutSection() {
     </section>
   );
 }
+
 function ContactSection() {
   return (
     <section id="contact" className="w-full py-16 md:py-20 bg-gray-50">
