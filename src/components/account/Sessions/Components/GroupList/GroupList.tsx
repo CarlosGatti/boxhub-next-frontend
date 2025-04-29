@@ -44,9 +44,10 @@ export const CommunitiesList = ({
       {
         onSuccess(data) {
           if (!data.unpublishCommunity.success) {
-            toast.error(`Não foi possível concluir essa ação, tente novamente.`)
+            toast.error('We couldn’t complete this action. Please try again!')
+
           } else {
-            toast.success(`Você removeu a comunidade ${values.name}`)
+            toast.success(`You have successfully removed the community  ${values.name}`)
             refetchCurrentUser()
           }
         },

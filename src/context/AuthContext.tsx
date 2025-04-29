@@ -48,12 +48,13 @@ export const AuthProvider: React.FC<React.PropsWithChildren> = ({
             }
           },
           onError() {
-            toast.error('Não foi possível acessar sua conta! Tente novamente.')
+            toast.error('We couldn’t complete this action. Please try again!')
+
           },
         },
       )
     } catch {
-      toast.error('Não foi possível acessar sua conta! Tente novamente.')
+      toast.error('We couldn’t complete this action. Please try again!')
     }
   }
 

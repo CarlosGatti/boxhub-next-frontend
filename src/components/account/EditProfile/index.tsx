@@ -90,13 +90,13 @@ export const EditProfileModal = () => {
             refetchCurrentUser()
             setIsLoading(false)
             setOpenModal(false)
-            toast.success('Conta atualizada com sucesso!')
+            toast.success('Profile updated successfully!')
           },
         },
       )
     } catch (error) {
       setIsLoading(false)
-      toast.error('Não foi possível editar sua conta. Tente novamente!')
+      toast.error('We couldn’t update your account. Please try again!')
     }
   }
 

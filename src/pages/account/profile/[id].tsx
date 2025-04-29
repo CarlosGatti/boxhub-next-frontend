@@ -74,7 +74,7 @@ const UserProfile: NextPage = () => {
       {
         onSuccess(data) {
           if (!data.followUser) {
-            toast.error(`Não foi possível concluir essa ação, tente novamente.`)
+            toast.error('We couldn’t complete this action. Please try again!')
           } else {
             refetchCurrentUser()
             toast.success(`Você seguiu ${name ?? ''}`)
@@ -92,7 +92,7 @@ const UserProfile: NextPage = () => {
       {
         onSuccess(data) {
           if (!data.unfollowUser) {
-            toast.error(`Não foi possível concluir essa ação, tente novamente.`)
+            toast.error('We couldn’t complete this action. Please try again!')
           } else {
             refetchCurrentUser()
             toast.success(`Você deixou de seguir ${name ?? ''}`)

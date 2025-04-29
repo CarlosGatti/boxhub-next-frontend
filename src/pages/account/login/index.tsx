@@ -47,7 +47,7 @@ const Login: NextPage = () => {
       await login(values)
     } catch (error) {
       console.error('Erro ao fazer login:', error)
-      toast.error('Não foi possível acessar sua conta! Tente novamente.', {
+      toast.error('Erro ao fazer login', {
         position: 'top-right',
         autoClose: 5000,
         hideProgressBar: false,

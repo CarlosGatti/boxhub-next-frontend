@@ -125,7 +125,7 @@ const DetailsCommunity: NextPage = () => {
             toast.success(data.joinCommunity.message)
           } else {
             toast.error(
-              'Não foi possível entrar na comunidade. Tente novamente!',
+              'Unable to join the community. Please try again!',
             )
           }
         },
@@ -146,7 +146,7 @@ const DetailsCommunity: NextPage = () => {
             refetchTimeline()
             toast.success(data.leaveCommunity.message)
           } else {
-            toast.error('Não foi possível sair na comunidade. Tente novamente!')
+            toast.error('Unable to leave the community. Please try again!')
           }
         },
       },
