@@ -23,7 +23,7 @@ const ContainersPage = () => {
   }
 
   if (error) {
-    return <div className="text-center text-red-600">Error loading containers: {error.message}</div>;
+    return <div className="text-center text-red-600">Error loading containers: {error}</div>
   }
 
   return (

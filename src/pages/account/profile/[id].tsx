@@ -59,7 +59,7 @@ const UserProfile: NextPage = () => {
   const isFollowingUser =
     data?.search?.users && data?.search?.users.length > 0
       ? currentUser?.peopleImFollowing.find(
-          (item) => Number(item.id) === data.search.users[0].id,
+          (item) => Number(item.id) === data.search.users[0].id 
         )
       : null
 
