@@ -2,6 +2,7 @@ import { Container, WrapperBody } from '../../../styles/qrcode';
 import { FaBox, FaCubes, FaQrcode } from 'react-icons/fa';
 
 import { Header } from '../../../components/_ui/Header';
+import { MainContent } from '../../../styles/qrcode';
 import { MainLayout } from '../../../layouts/MainLayout';
 import { MenuBar } from '../../../components/_ui/MenuBar';
 import graphqlRequestClient from '../../../lib/graphql.request';
@@ -20,7 +21,7 @@ const DashboardPage = () => {
     <MainLayout headTitle="Dashboard" metaContent="Dashboard Overview" metaName="description">
       <Container>
         <Header />
-        <WrapperBody>
+         <MainContent>
           <div className="flex flex-col items-center min-h-screen bg-gray-100 p-4">
             <div className="w-full max-w-7xl bg-white rounded-lg shadow-md p-6 md:p-8 space-y-10">
 
@@ -81,7 +82,7 @@ const DashboardPage = () => {
 
             </div>
           </div>
-        </WrapperBody>
+           </MainContent>
       </Container>
     </MainLayout>
   );
