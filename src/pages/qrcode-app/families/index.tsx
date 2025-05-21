@@ -78,21 +78,21 @@ const ManageFamilies = () => {
           <div className="flex flex-col items-center min-h-screen bg-gray-100 p-4">
             <div className="w-full max-w-3xl bg-white rounded-lg shadow-md p-6">
               <div className="border-b pb-4 mb-4">
-                <h1 className="text-2xl font-bold text-gray-800">Manage Families</h1>
+                <h1 className="text-2xl font-bold text-gray-800">Create Storare</h1>
               </div>
 
               {/* Form */}
               <form className="flex flex-col gap-4 mb-6">
                 <div className="flex flex-col gap-2">
                   <label htmlFor="familyName" className="text-sm font-medium text-gray-700">
-                    Family Name:
+                    Storage Name:
                   </label>
                   <input
                     type="text"
                     id="familyName"
                     value={newFamily}
                     onChange={(e) => setNewFamily(e.target.value)}
-                    placeholder="Enter family name"
+                    placeholder="Enter storage name"
                     className="p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
                   />
                 </div>
@@ -101,14 +101,14 @@ const ManageFamilies = () => {
                   onClick={handleAddFamily}
                   className="px-4 py-2 bg-gray-500 text-white font-medium rounded-md hover:bg-gray-600 focus:ring focus:ring-blue-200"
                 >
-                  Add Family
+                  Add Storage
                 </button>
               </form>
 
               {/* Family List */}
               {families.length > 0 && (
                 <div>
-                  <h2 className="text-lg font-bold text-gray-800 mb-4">Family List</h2>
+                  <h2 className="text-lg font-bold text-gray-800 mb-4">Storage List</h2>
                   <ul className="space-y-2">
                     {families.map((family: any, index: number) => (
                       <li

@@ -2,6 +2,7 @@ import { ButtonHTMLAttributes, ReactElement } from 'react'
 import { FaBoxOpen, FaRegListAlt } from "react-icons/fa"
 
 import { BsFileBarGraph } from "react-icons/bs"
+import { CiBoxes } from "react-icons/ci";
 import { FaQrcode } from "react-icons/fa"
 import Link from 'next/link'
 import { MdFamilyRestroom } from "react-icons/md"
@@ -39,7 +40,7 @@ export const MenuBar = ({ open = false }: MenuBarProps) => {
       <div className="flex flex-col gap-6">
         <h2 className="text-xl font-bold text-gray-800">Menu</h2>
         <MenuBtn link="/qrcode-app/dashboard" icon={<BsFileBarGraph />} item="Dashboard" />
-        <MenuBtn link="/qrcode-app/families" icon={<MdFamilyRestroom />} item="Families" />
+        <MenuBtn link="/qrcode-app/families" icon={<CiBoxes />} item="Storage" />
         <MenuBtn link="/qrcode-app/container/list" icon={<FaBoxOpen />} item="Containers" />
         <MenuBtn link="/qrcode-app/items/list" icon={<FaRegListAlt />} item="Items" />
         <MenuBtn link="/qrcode-app/scanner" icon={<FaQrcode />} item="Scanner" />
