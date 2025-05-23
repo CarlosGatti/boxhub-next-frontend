@@ -218,7 +218,7 @@ function FeaturesSection() {
 }
 function AboutSection() {
   return (
-    <section id="about" className="w-full py-16 md:py-20 bg-white">
+    <section id="about" className="w-full py-16 md:py-20 bg-gray-50">
       <div className="container mx-auto px-6">
         <div className="text-center max-w-4xl mx-auto space-y-6">
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900">
@@ -240,7 +240,7 @@ function AboutSection() {
 
 function ContactSection() {
   return (
-    <section id="contact" className="w-full py-16 md:py-20 bg-gray-50">
+    <section id="contact" className="w-full py-16 md:py-20 bg-white">
       <div className="container mx-auto px-6">
         <div className="text-center space-y-6">
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900">
