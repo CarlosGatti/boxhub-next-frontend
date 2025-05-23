@@ -1226,12 +1226,12 @@ export type Container = {
   code: Scalars['String'];
   createdAt: Scalars['DateTime'];
   description: Scalars['String'];
-  family: Family;
-  familyId: Scalars['Int'];
   id: Scalars['ID'];
   items?: Maybe<Array<Item>>;
   name: Scalars['String'];
   qrCode: Scalars['String'];
+  storage: Storage;
+  storageId: Scalars['Int'];
   updatedAt: Scalars['DateTime'];
 };
 
@@ -1241,7 +1241,7 @@ export type ContainerCount = {
   items: Scalars['Int'];
 };
 
-export type ContainerCreateManyFamilyInput = {
+export type ContainerCreateManyStorageInput = {
   code: Scalars['String'];
   createdAt?: InputMaybe<Scalars['DateTime']>;
   description: Scalars['String'];
@@ -1251,24 +1251,24 @@ export type ContainerCreateManyFamilyInput = {
   updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
 
-export type ContainerCreateManyFamilyInputEnvelope = {
-  data: Array<ContainerCreateManyFamilyInput>;
+export type ContainerCreateManyStorageInputEnvelope = {
+  data: Array<ContainerCreateManyStorageInput>;
   skipDuplicates?: InputMaybe<Scalars['Boolean']>;
 };
 
-export type ContainerCreateNestedManyWithoutFamilyInput = {
+export type ContainerCreateNestedManyWithoutStorageInput = {
   connect?: InputMaybe<Array<ContainerWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<Array<ContainerCreateOrConnectWithoutFamilyInput>>;
-  create?: InputMaybe<Array<ContainerCreateWithoutFamilyInput>>;
-  createMany?: InputMaybe<ContainerCreateManyFamilyInputEnvelope>;
+  connectOrCreate?: InputMaybe<Array<ContainerCreateOrConnectWithoutStorageInput>>;
+  create?: InputMaybe<Array<ContainerCreateWithoutStorageInput>>;
+  createMany?: InputMaybe<ContainerCreateManyStorageInputEnvelope>;
 };
 
-export type ContainerCreateOrConnectWithoutFamilyInput = {
-  create: ContainerCreateWithoutFamilyInput;
+export type ContainerCreateOrConnectWithoutStorageInput = {
+  create: ContainerCreateWithoutStorageInput;
   where: ContainerWhereUniqueInput;
 };
 
-export type ContainerCreateWithoutFamilyInput = {
+export type ContainerCreateWithoutStorageInput = {
   categories?: InputMaybe<CategoryCreateNestedManyWithoutContainersInput>;
   code: Scalars['String'];
   createdAt?: InputMaybe<Scalars['DateTime']>;
@@ -1297,10 +1297,10 @@ export type ContainerScalarWhereInput = {
   code?: InputMaybe<StringFilter>;
   createdAt?: InputMaybe<DateTimeFilter>;
   description?: InputMaybe<StringFilter>;
-  familyId?: InputMaybe<IntFilter>;
   id?: InputMaybe<IntFilter>;
   name?: InputMaybe<StringFilter>;
   qrCode?: InputMaybe<StringFilter>;
+  storageId?: InputMaybe<IntFilter>;
   updatedAt?: InputMaybe<DateTimeFilter>;
 };
 
@@ -1313,31 +1313,31 @@ export type ContainerUpdateManyMutationInput = {
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
 
-export type ContainerUpdateManyWithWhereWithoutFamilyInput = {
+export type ContainerUpdateManyWithWhereWithoutStorageInput = {
   data: ContainerUpdateManyMutationInput;
   where: ContainerScalarWhereInput;
 };
 
-export type ContainerUpdateManyWithoutFamilyNestedInput = {
+export type ContainerUpdateManyWithoutStorageNestedInput = {
   connect?: InputMaybe<Array<ContainerWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<Array<ContainerCreateOrConnectWithoutFamilyInput>>;
-  create?: InputMaybe<Array<ContainerCreateWithoutFamilyInput>>;
-  createMany?: InputMaybe<ContainerCreateManyFamilyInputEnvelope>;
+  connectOrCreate?: InputMaybe<Array<ContainerCreateOrConnectWithoutStorageInput>>;
+  create?: InputMaybe<Array<ContainerCreateWithoutStorageInput>>;
+  createMany?: InputMaybe<ContainerCreateManyStorageInputEnvelope>;
   delete?: InputMaybe<Array<ContainerWhereUniqueInput>>;
   deleteMany?: InputMaybe<Array<ContainerScalarWhereInput>>;
   disconnect?: InputMaybe<Array<ContainerWhereUniqueInput>>;
   set?: InputMaybe<Array<ContainerWhereUniqueInput>>;
-  update?: InputMaybe<Array<ContainerUpdateWithWhereUniqueWithoutFamilyInput>>;
-  updateMany?: InputMaybe<Array<ContainerUpdateManyWithWhereWithoutFamilyInput>>;
-  upsert?: InputMaybe<Array<ContainerUpsertWithWhereUniqueWithoutFamilyInput>>;
+  update?: InputMaybe<Array<ContainerUpdateWithWhereUniqueWithoutStorageInput>>;
+  updateMany?: InputMaybe<Array<ContainerUpdateManyWithWhereWithoutStorageInput>>;
+  upsert?: InputMaybe<Array<ContainerUpsertWithWhereUniqueWithoutStorageInput>>;
 };
 
-export type ContainerUpdateWithWhereUniqueWithoutFamilyInput = {
-  data: ContainerUpdateWithoutFamilyInput;
+export type ContainerUpdateWithWhereUniqueWithoutStorageInput = {
+  data: ContainerUpdateWithoutStorageInput;
   where: ContainerWhereUniqueInput;
 };
 
-export type ContainerUpdateWithoutFamilyInput = {
+export type ContainerUpdateWithoutStorageInput = {
   categories?: InputMaybe<CategoryUpdateManyWithoutContainersNestedInput>;
   code?: InputMaybe<StringFieldUpdateOperationsInput>;
   createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
@@ -1348,9 +1348,9 @@ export type ContainerUpdateWithoutFamilyInput = {
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
 
-export type ContainerUpsertWithWhereUniqueWithoutFamilyInput = {
-  create: ContainerCreateWithoutFamilyInput;
-  update: ContainerUpdateWithoutFamilyInput;
+export type ContainerUpsertWithWhereUniqueWithoutStorageInput = {
+  create: ContainerCreateWithoutStorageInput;
+  update: ContainerUpdateWithoutStorageInput;
   where: ContainerWhereUniqueInput;
 };
 
@@ -1362,12 +1362,12 @@ export type ContainerWhereInput = {
   code?: InputMaybe<StringFilter>;
   createdAt?: InputMaybe<DateTimeFilter>;
   description?: InputMaybe<StringFilter>;
-  family?: InputMaybe<FamilyRelationFilter>;
-  familyId?: InputMaybe<IntFilter>;
   id?: InputMaybe<IntFilter>;
   items?: InputMaybe<ItemListRelationFilter>;
   name?: InputMaybe<StringFilter>;
   qrCode?: InputMaybe<StringFilter>;
+  storage?: InputMaybe<StorageRelationFilter>;
+  storageId?: InputMaybe<IntFilter>;
   updatedAt?: InputMaybe<DateTimeFilter>;
 };
 
@@ -1379,12 +1379,12 @@ export type ContainerWhereUniqueInput = {
   code?: InputMaybe<Scalars['String']>;
   createdAt?: InputMaybe<DateTimeFilter>;
   description?: InputMaybe<StringFilter>;
-  family?: InputMaybe<FamilyRelationFilter>;
-  familyId?: InputMaybe<IntFilter>;
   id?: InputMaybe<Scalars['Int']>;
   items?: InputMaybe<ItemListRelationFilter>;
   name?: InputMaybe<StringFilter>;
   qrCode?: InputMaybe<StringFilter>;
+  storage?: InputMaybe<StorageRelationFilter>;
+  storageId?: InputMaybe<IntFilter>;
   updatedAt?: InputMaybe<DateTimeFilter>;
 };
 
@@ -1431,6 +1431,7 @@ export type DashboardData = {
   recentContainers: Array<RecentContainer>;
   totalContainers: Scalars['Int'];
   totalItems: Scalars['Int'];
+  totalStorages: Scalars['Int'];
 };
 
 export type DateTimeFieldUpdateOperationsInput = {
@@ -1512,6 +1513,17 @@ export type EnumRoleFilter = {
   in?: InputMaybe<Array<Role>>;
   not?: InputMaybe<NestedEnumRoleFilter>;
   notIn?: InputMaybe<Array<Role>>;
+};
+
+export type EnumStorageRoleFieldUpdateOperationsInput = {
+  set?: InputMaybe<StorageRole>;
+};
+
+export type EnumStorageRoleFilter = {
+  equals?: InputMaybe<StorageRole>;
+  in?: InputMaybe<Array<StorageRole>>;
+  not?: InputMaybe<NestedEnumStorageRoleFilter>;
+  notIn?: InputMaybe<Array<StorageRole>>;
 };
 
 export type EnumVisibilityFieldUpdateOperationsInput = {
@@ -3024,103 +3036,6 @@ export type FacetWhereUniqueInput = {
   values?: InputMaybe<FacetValueListRelationFilter>;
 };
 
-export type Family = {
-  __typename?: 'Family';
-  _count: FamilyCount;
-  containers?: Maybe<Array<Container>>;
-  createdAt: Scalars['DateTime'];
-  id: Scalars['ID'];
-  members?: Maybe<Array<User>>;
-  name: Scalars['String'];
-  updatedAt: Scalars['DateTime'];
-};
-
-export type FamilyCount = {
-  __typename?: 'FamilyCount';
-  containers: Scalars['Int'];
-  members: Scalars['Int'];
-};
-
-export type FamilyCreateNestedOneWithoutMembersInput = {
-  connect?: InputMaybe<FamilyWhereUniqueInput>;
-  connectOrCreate?: InputMaybe<FamilyCreateOrConnectWithoutMembersInput>;
-  create?: InputMaybe<FamilyCreateWithoutMembersInput>;
-};
-
-export type FamilyCreateOrConnectWithoutMembersInput = {
-  create: FamilyCreateWithoutMembersInput;
-  where: FamilyWhereUniqueInput;
-};
-
-export type FamilyCreateWithoutMembersInput = {
-  containers?: InputMaybe<ContainerCreateNestedManyWithoutFamilyInput>;
-  createdAt?: InputMaybe<Scalars['DateTime']>;
-  name: Scalars['String'];
-  updatedAt?: InputMaybe<Scalars['DateTime']>;
-};
-
-export type FamilyNullableRelationFilter = {
-  is?: InputMaybe<FamilyWhereInput>;
-  isNot?: InputMaybe<FamilyWhereInput>;
-};
-
-export type FamilyRelationFilter = {
-  is?: InputMaybe<FamilyWhereInput>;
-  isNot?: InputMaybe<FamilyWhereInput>;
-};
-
-export type FamilyUpdateOneWithoutMembersNestedInput = {
-  connect?: InputMaybe<FamilyWhereUniqueInput>;
-  connectOrCreate?: InputMaybe<FamilyCreateOrConnectWithoutMembersInput>;
-  create?: InputMaybe<FamilyCreateWithoutMembersInput>;
-  delete?: InputMaybe<FamilyWhereInput>;
-  disconnect?: InputMaybe<FamilyWhereInput>;
-  update?: InputMaybe<FamilyUpdateToOneWithWhereWithoutMembersInput>;
-  upsert?: InputMaybe<FamilyUpsertWithoutMembersInput>;
-};
-
-export type FamilyUpdateToOneWithWhereWithoutMembersInput = {
-  data: FamilyUpdateWithoutMembersInput;
-  where?: InputMaybe<FamilyWhereInput>;
-};
-
-export type FamilyUpdateWithoutMembersInput = {
-  containers?: InputMaybe<ContainerUpdateManyWithoutFamilyNestedInput>;
-  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
-  name?: InputMaybe<StringFieldUpdateOperationsInput>;
-  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
-};
-
-export type FamilyUpsertWithoutMembersInput = {
-  create: FamilyCreateWithoutMembersInput;
-  update: FamilyUpdateWithoutMembersInput;
-  where?: InputMaybe<FamilyWhereInput>;
-};
-
-export type FamilyWhereInput = {
-  AND?: InputMaybe<Array<FamilyWhereInput>>;
-  NOT?: InputMaybe<Array<FamilyWhereInput>>;
-  OR?: InputMaybe<Array<FamilyWhereInput>>;
-  containers?: InputMaybe<ContainerListRelationFilter>;
-  createdAt?: InputMaybe<DateTimeFilter>;
-  id?: InputMaybe<IntFilter>;
-  members?: InputMaybe<UserListRelationFilter>;
-  name?: InputMaybe<StringFilter>;
-  updatedAt?: InputMaybe<DateTimeFilter>;
-};
-
-export type FamilyWhereUniqueInput = {
-  AND?: InputMaybe<Array<FamilyWhereInput>>;
-  NOT?: InputMaybe<Array<FamilyWhereInput>>;
-  OR?: InputMaybe<Array<FamilyWhereInput>>;
-  containers?: InputMaybe<ContainerListRelationFilter>;
-  createdAt?: InputMaybe<DateTimeFilter>;
-  id?: InputMaybe<Scalars['Int']>;
-  members?: InputMaybe<UserListRelationFilter>;
-  name?: InputMaybe<StringFilter>;
-  updatedAt?: InputMaybe<DateTimeFilter>;
-};
-
 export type FloatFieldUpdateOperationsInput = {
   decrement?: InputMaybe<Scalars['Float']>;
   divide?: InputMaybe<Scalars['Float']>;
@@ -3540,8 +3455,6 @@ export type MeDto = {
   eventMember?: Maybe<Array<EventMember>>;
   eventTicket?: Maybe<Array<EventTicket>>;
   events?: Maybe<Array<Event>>;
-  family?: Maybe<Family>;
-  familyId?: Maybe<Scalars['Int']>;
   firstName: Scalars['String'];
   followers?: Maybe<Array<Follows>>;
   following?: Maybe<Array<Follows>>;
@@ -3559,6 +3472,7 @@ export type MeDto = {
   public: Scalars['Boolean'];
   publications?: Maybe<Array<Publication>>;
   role: Role;
+  storageMemberships?: Maybe<Array<StorageMember>>;
   twitterUrl?: Maybe<Scalars['String']>;
   updatedAt: Scalars['DateTime'];
 };
@@ -3572,16 +3486,16 @@ export enum MembershipStatus {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  addMemberToFamily: Family;
+  addMemberToStorage: Storage;
   approveCommunityMember: BaseResult;
   beepTicket: BaseResult;
   commentPublication: Scalars['Boolean'];
   communityEvents: CommunityEventsProps;
   createCommunity: Community;
   createContainer: BaseResult;
-  createFamily: Family;
   createItem: BaseResult;
   createPublication: BaseResult;
+  createStorage: Storage;
   createTicket: BaseResult;
   createUser: User;
   createUserWithoutPassword: BaseResult;
@@ -3595,7 +3509,7 @@ export type Mutation = {
   publishCommunity: BaseResult;
   refreshToken: Scalars['String'];
   registerUserEvent: BaseResult;
-  removeFamily: Family;
+  removeStorage: Storage;
   requestPasswordReset: BaseResult;
   resetPassword: BaseResult;
   uncommentPublication: Scalars['Boolean'];
@@ -3609,8 +3523,8 @@ export type Mutation = {
 };
 
 
-export type MutationAddMemberToFamilyArgs = {
-  familyId: Scalars['Float'];
+export type MutationAddMemberToStorageArgs = {
+  storageId: Scalars['Float'];
   userId: Scalars['Float'];
 };
 
@@ -3645,14 +3559,9 @@ export type MutationCreateCommunityArgs = {
 export type MutationCreateContainerArgs = {
   code: Scalars['String'];
   description: Scalars['String'];
-  familyId: Scalars['Float'];
   name: Scalars['String'];
   qrCode: Scalars['String'];
-};
-
-
-export type MutationCreateFamilyArgs = {
-  name: Scalars['String'];
+  storageId: Scalars['Float'];
 };
 
 
@@ -3668,6 +3577,11 @@ export type MutationCreateItemArgs = {
 
 export type MutationCreatePublicationArgs = {
   data: PublicationCreateArgs;
+};
+
+
+export type MutationCreateStorageArgs = {
+  name: Scalars['String'];
 };
 
 
@@ -3731,7 +3645,7 @@ export type MutationRegisterUserEventArgs = {
 };
 
 
-export type MutationRemoveFamilyArgs = {
+export type MutationRemoveStorageArgs = {
   id: Scalars['Float'];
 };
 
@@ -3853,6 +3767,13 @@ export type NestedEnumRoleFilter = {
   in?: InputMaybe<Array<Role>>;
   not?: InputMaybe<NestedEnumRoleFilter>;
   notIn?: InputMaybe<Array<Role>>;
+};
+
+export type NestedEnumStorageRoleFilter = {
+  equals?: InputMaybe<StorageRole>;
+  in?: InputMaybe<Array<StorageRole>>;
+  not?: InputMaybe<NestedEnumStorageRoleFilter>;
+  notIn?: InputMaybe<Array<StorageRole>>;
 };
 
 export type NestedEnumVisibilityFilter = {
@@ -5178,13 +5099,14 @@ export type Query = {
   findEventsByCommunity: Array<Event>;
   findEventsByUser: Array<Event>;
   getAllContainers: Array<Container>;
-  getAllFamilies: Array<Family>;
   getAllItems: Array<Item>;
+  getAllStorages: Array<Storage>;
   getContainerByCode: Container;
   getContainerById: Container;
   getDashboardData: DashboardData;
-  getFamily: Family;
+  getMyStorages: Array<Storage>;
   getPendingCommunityMember: Array<User>;
+  getStorage: Storage;
   me: MeDto;
   publication: PublicationResult;
   search?: Maybe<SearchDto>;
@@ -5226,13 +5148,13 @@ export type QueryGetContainerByIdArgs = {
 };
 
 
-export type QueryGetFamilyArgs = {
-  id: Scalars['Float'];
+export type QueryGetPendingCommunityMemberArgs = {
+  communityId: Scalars['Float'];
 };
 
 
-export type QueryGetPendingCommunityMemberArgs = {
-  communityId: Scalars['Float'];
+export type QueryGetStorageArgs = {
+  id: Scalars['Float'];
 };
 
 
@@ -5300,6 +5222,240 @@ export type SearchUserDto = {
   peopleImFollowingCount?: Maybe<Scalars['Int']>;
   profilePicture?: Maybe<Scalars['String']>;
   twitterUrl?: Maybe<Scalars['String']>;
+};
+
+export type Storage = {
+  __typename?: 'Storage';
+  _count: StorageCount;
+  containers?: Maybe<Array<Container>>;
+  createdAt: Scalars['DateTime'];
+  id: Scalars['ID'];
+  members?: Maybe<Array<StorageMember>>;
+  name: Scalars['String'];
+  updatedAt: Scalars['DateTime'];
+};
+
+export type StorageCount = {
+  __typename?: 'StorageCount';
+  containers: Scalars['Int'];
+  members: Scalars['Int'];
+};
+
+export type StorageCreateNestedOneWithoutMembersInput = {
+  connect?: InputMaybe<StorageWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<StorageCreateOrConnectWithoutMembersInput>;
+  create?: InputMaybe<StorageCreateWithoutMembersInput>;
+};
+
+export type StorageCreateOrConnectWithoutMembersInput = {
+  create: StorageCreateWithoutMembersInput;
+  where: StorageWhereUniqueInput;
+};
+
+export type StorageCreateWithoutMembersInput = {
+  containers?: InputMaybe<ContainerCreateNestedManyWithoutStorageInput>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  name: Scalars['String'];
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type StorageMember = {
+  __typename?: 'StorageMember';
+  createdAt: Scalars['DateTime'];
+  id: Scalars['ID'];
+  role: StorageRole;
+  storage: Storage;
+  storageId: Scalars['Int'];
+  updatedAt: Scalars['DateTime'];
+  user: User;
+  userId: Scalars['Int'];
+};
+
+export type StorageMemberCreateManyUserInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['Int']>;
+  role?: InputMaybe<StorageRole>;
+  storageId: Scalars['Int'];
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type StorageMemberCreateManyUserInputEnvelope = {
+  data: Array<StorageMemberCreateManyUserInput>;
+  skipDuplicates?: InputMaybe<Scalars['Boolean']>;
+};
+
+export type StorageMemberCreateNestedManyWithoutUserInput = {
+  connect?: InputMaybe<Array<StorageMemberWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<StorageMemberCreateOrConnectWithoutUserInput>>;
+  create?: InputMaybe<Array<StorageMemberCreateWithoutUserInput>>;
+  createMany?: InputMaybe<StorageMemberCreateManyUserInputEnvelope>;
+};
+
+export type StorageMemberCreateOrConnectWithoutUserInput = {
+  create: StorageMemberCreateWithoutUserInput;
+  where: StorageMemberWhereUniqueInput;
+};
+
+export type StorageMemberCreateWithoutUserInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  role?: InputMaybe<StorageRole>;
+  storage: StorageCreateNestedOneWithoutMembersInput;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type StorageMemberListRelationFilter = {
+  every?: InputMaybe<StorageMemberWhereInput>;
+  none?: InputMaybe<StorageMemberWhereInput>;
+  some?: InputMaybe<StorageMemberWhereInput>;
+};
+
+export type StorageMemberScalarWhereInput = {
+  AND?: InputMaybe<Array<StorageMemberScalarWhereInput>>;
+  NOT?: InputMaybe<Array<StorageMemberScalarWhereInput>>;
+  OR?: InputMaybe<Array<StorageMemberScalarWhereInput>>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  id?: InputMaybe<IntFilter>;
+  role?: InputMaybe<EnumStorageRoleFilter>;
+  storageId?: InputMaybe<IntFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
+  userId?: InputMaybe<IntFilter>;
+};
+
+export type StorageMemberUpdateManyMutationInput = {
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  role?: InputMaybe<EnumStorageRoleFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type StorageMemberUpdateManyWithWhereWithoutUserInput = {
+  data: StorageMemberUpdateManyMutationInput;
+  where: StorageMemberScalarWhereInput;
+};
+
+export type StorageMemberUpdateManyWithoutUserNestedInput = {
+  connect?: InputMaybe<Array<StorageMemberWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<StorageMemberCreateOrConnectWithoutUserInput>>;
+  create?: InputMaybe<Array<StorageMemberCreateWithoutUserInput>>;
+  createMany?: InputMaybe<StorageMemberCreateManyUserInputEnvelope>;
+  delete?: InputMaybe<Array<StorageMemberWhereUniqueInput>>;
+  deleteMany?: InputMaybe<Array<StorageMemberScalarWhereInput>>;
+  disconnect?: InputMaybe<Array<StorageMemberWhereUniqueInput>>;
+  set?: InputMaybe<Array<StorageMemberWhereUniqueInput>>;
+  update?: InputMaybe<Array<StorageMemberUpdateWithWhereUniqueWithoutUserInput>>;
+  updateMany?: InputMaybe<Array<StorageMemberUpdateManyWithWhereWithoutUserInput>>;
+  upsert?: InputMaybe<Array<StorageMemberUpsertWithWhereUniqueWithoutUserInput>>;
+};
+
+export type StorageMemberUpdateWithWhereUniqueWithoutUserInput = {
+  data: StorageMemberUpdateWithoutUserInput;
+  where: StorageMemberWhereUniqueInput;
+};
+
+export type StorageMemberUpdateWithoutUserInput = {
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  role?: InputMaybe<EnumStorageRoleFieldUpdateOperationsInput>;
+  storage?: InputMaybe<StorageUpdateOneRequiredWithoutMembersNestedInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type StorageMemberUpsertWithWhereUniqueWithoutUserInput = {
+  create: StorageMemberCreateWithoutUserInput;
+  update: StorageMemberUpdateWithoutUserInput;
+  where: StorageMemberWhereUniqueInput;
+};
+
+export type StorageMemberUserIdStorageIdCompoundUniqueInput = {
+  storageId: Scalars['Int'];
+  userId: Scalars['Int'];
+};
+
+export type StorageMemberWhereInput = {
+  AND?: InputMaybe<Array<StorageMemberWhereInput>>;
+  NOT?: InputMaybe<Array<StorageMemberWhereInput>>;
+  OR?: InputMaybe<Array<StorageMemberWhereInput>>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  id?: InputMaybe<IntFilter>;
+  role?: InputMaybe<EnumStorageRoleFilter>;
+  storage?: InputMaybe<StorageRelationFilter>;
+  storageId?: InputMaybe<IntFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
+  user?: InputMaybe<UserRelationFilter>;
+  userId?: InputMaybe<IntFilter>;
+};
+
+export type StorageMemberWhereUniqueInput = {
+  AND?: InputMaybe<Array<StorageMemberWhereInput>>;
+  NOT?: InputMaybe<Array<StorageMemberWhereInput>>;
+  OR?: InputMaybe<Array<StorageMemberWhereInput>>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  id?: InputMaybe<Scalars['Int']>;
+  role?: InputMaybe<EnumStorageRoleFilter>;
+  storage?: InputMaybe<StorageRelationFilter>;
+  storageId?: InputMaybe<IntFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
+  user?: InputMaybe<UserRelationFilter>;
+  userId?: InputMaybe<IntFilter>;
+  userId_storageId?: InputMaybe<StorageMemberUserIdStorageIdCompoundUniqueInput>;
+};
+
+export type StorageRelationFilter = {
+  is?: InputMaybe<StorageWhereInput>;
+  isNot?: InputMaybe<StorageWhereInput>;
+};
+
+export enum StorageRole {
+  Admin = 'ADMIN',
+  Member = 'MEMBER'
+}
+
+export type StorageUpdateOneRequiredWithoutMembersNestedInput = {
+  connect?: InputMaybe<StorageWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<StorageCreateOrConnectWithoutMembersInput>;
+  create?: InputMaybe<StorageCreateWithoutMembersInput>;
+  update?: InputMaybe<StorageUpdateToOneWithWhereWithoutMembersInput>;
+  upsert?: InputMaybe<StorageUpsertWithoutMembersInput>;
+};
+
+export type StorageUpdateToOneWithWhereWithoutMembersInput = {
+  data: StorageUpdateWithoutMembersInput;
+  where?: InputMaybe<StorageWhereInput>;
+};
+
+export type StorageUpdateWithoutMembersInput = {
+  containers?: InputMaybe<ContainerUpdateManyWithoutStorageNestedInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type StorageUpsertWithoutMembersInput = {
+  create: StorageCreateWithoutMembersInput;
+  update: StorageUpdateWithoutMembersInput;
+  where?: InputMaybe<StorageWhereInput>;
+};
+
+export type StorageWhereInput = {
+  AND?: InputMaybe<Array<StorageWhereInput>>;
+  NOT?: InputMaybe<Array<StorageWhereInput>>;
+  OR?: InputMaybe<Array<StorageWhereInput>>;
+  containers?: InputMaybe<ContainerListRelationFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  id?: InputMaybe<IntFilter>;
+  members?: InputMaybe<StorageMemberListRelationFilter>;
+  name?: InputMaybe<StringFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
+};
+
+export type StorageWhereUniqueInput = {
+  AND?: InputMaybe<Array<StorageWhereInput>>;
+  NOT?: InputMaybe<Array<StorageWhereInput>>;
+  OR?: InputMaybe<Array<StorageWhereInput>>;
+  containers?: InputMaybe<ContainerListRelationFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  id?: InputMaybe<Scalars['Int']>;
+  members?: InputMaybe<StorageMemberListRelationFilter>;
+  name?: InputMaybe<StringFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
 };
 
 export type StringFieldUpdateOperationsInput = {
@@ -5407,8 +5563,6 @@ export type User = {
   eventMember?: Maybe<Array<EventMember>>;
   eventTicket?: Maybe<Array<EventTicket>>;
   events?: Maybe<Array<Event>>;
-  family?: Maybe<Family>;
-  familyId?: Maybe<Scalars['Int']>;
   firstName: Scalars['String'];
   followers?: Maybe<Array<Follows>>;
   following?: Maybe<Array<Follows>>;
@@ -5424,6 +5578,7 @@ export type User = {
   public: Scalars['Boolean'];
   publications?: Maybe<Array<Publication>>;
   role: Role;
+  storageMemberships?: Maybe<Array<StorageMember>>;
   twitterUrl?: Maybe<Scalars['String']>;
   updatedAt: Scalars['DateTime'];
 };
@@ -5441,6 +5596,7 @@ export type UserCount = {
   memberCommunities: Scalars['Int'];
   posts: Scalars['Int'];
   publications: Scalars['Int'];
+  storageMemberships: Scalars['Int'];
 };
 
 export type UserCreateInput = {
@@ -5454,7 +5610,6 @@ export type UserCreateInput = {
   eventMember?: InputMaybe<EventMemberCreateNestedManyWithoutUserInput>;
   eventTicket?: InputMaybe<EventTicketCreateNestedManyWithoutUserInput>;
   events?: InputMaybe<EventCreateNestedManyWithoutOwnerInput>;
-  family?: InputMaybe<FamilyCreateNestedOneWithoutMembersInput>;
   firstName: Scalars['String'];
   followers?: InputMaybe<FollowsCreateNestedManyWithoutFollowingInput>;
   following?: InputMaybe<FollowsCreateNestedManyWithoutFollowerInput>;
@@ -5469,6 +5624,7 @@ export type UserCreateInput = {
   public?: InputMaybe<Scalars['Boolean']>;
   publications?: InputMaybe<PublicationCreateNestedManyWithoutUserInput>;
   role?: InputMaybe<Role>;
+  storageMemberships?: InputMaybe<StorageMemberCreateNestedManyWithoutUserInput>;
   twitterUrl?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
@@ -5604,7 +5760,6 @@ export type UserCreateWithoutAdminCommunitiesInput = {
   eventMember?: InputMaybe<EventMemberCreateNestedManyWithoutUserInput>;
   eventTicket?: InputMaybe<EventTicketCreateNestedManyWithoutUserInput>;
   events?: InputMaybe<EventCreateNestedManyWithoutOwnerInput>;
-  family?: InputMaybe<FamilyCreateNestedOneWithoutMembersInput>;
   firstName: Scalars['String'];
   followers?: InputMaybe<FollowsCreateNestedManyWithoutFollowingInput>;
   following?: InputMaybe<FollowsCreateNestedManyWithoutFollowerInput>;
@@ -5619,6 +5774,7 @@ export type UserCreateWithoutAdminCommunitiesInput = {
   public?: InputMaybe<Scalars['Boolean']>;
   publications?: InputMaybe<PublicationCreateNestedManyWithoutUserInput>;
   role?: InputMaybe<Role>;
+  storageMemberships?: InputMaybe<StorageMemberCreateNestedManyWithoutUserInput>;
   twitterUrl?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
@@ -5633,7 +5789,6 @@ export type UserCreateWithoutAllPublicationCommentsInput = {
   eventMember?: InputMaybe<EventMemberCreateNestedManyWithoutUserInput>;
   eventTicket?: InputMaybe<EventTicketCreateNestedManyWithoutUserInput>;
   events?: InputMaybe<EventCreateNestedManyWithoutOwnerInput>;
-  family?: InputMaybe<FamilyCreateNestedOneWithoutMembersInput>;
   firstName: Scalars['String'];
   followers?: InputMaybe<FollowsCreateNestedManyWithoutFollowingInput>;
   following?: InputMaybe<FollowsCreateNestedManyWithoutFollowerInput>;
@@ -5648,6 +5803,7 @@ export type UserCreateWithoutAllPublicationCommentsInput = {
   public?: InputMaybe<Scalars['Boolean']>;
   publications?: InputMaybe<PublicationCreateNestedManyWithoutUserInput>;
   role?: InputMaybe<Role>;
+  storageMemberships?: InputMaybe<StorageMemberCreateNestedManyWithoutUserInput>;
   twitterUrl?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
@@ -5662,7 +5818,6 @@ export type UserCreateWithoutAllPublicationLikesInput = {
   eventMember?: InputMaybe<EventMemberCreateNestedManyWithoutUserInput>;
   eventTicket?: InputMaybe<EventTicketCreateNestedManyWithoutUserInput>;
   events?: InputMaybe<EventCreateNestedManyWithoutOwnerInput>;
-  family?: InputMaybe<FamilyCreateNestedOneWithoutMembersInput>;
   firstName: Scalars['String'];
   followers?: InputMaybe<FollowsCreateNestedManyWithoutFollowingInput>;
   following?: InputMaybe<FollowsCreateNestedManyWithoutFollowerInput>;
@@ -5677,6 +5832,7 @@ export type UserCreateWithoutAllPublicationLikesInput = {
   public?: InputMaybe<Scalars['Boolean']>;
   publications?: InputMaybe<PublicationCreateNestedManyWithoutUserInput>;
   role?: InputMaybe<Role>;
+  storageMemberships?: InputMaybe<StorageMemberCreateNestedManyWithoutUserInput>;
   twitterUrl?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
@@ -5691,7 +5847,6 @@ export type UserCreateWithoutEventMemberInput = {
   emailVerified?: InputMaybe<Scalars['Boolean']>;
   eventTicket?: InputMaybe<EventTicketCreateNestedManyWithoutUserInput>;
   events?: InputMaybe<EventCreateNestedManyWithoutOwnerInput>;
-  family?: InputMaybe<FamilyCreateNestedOneWithoutMembersInput>;
   firstName: Scalars['String'];
   followers?: InputMaybe<FollowsCreateNestedManyWithoutFollowingInput>;
   following?: InputMaybe<FollowsCreateNestedManyWithoutFollowerInput>;
@@ -5706,6 +5861,7 @@ export type UserCreateWithoutEventMemberInput = {
   public?: InputMaybe<Scalars['Boolean']>;
   publications?: InputMaybe<PublicationCreateNestedManyWithoutUserInput>;
   role?: InputMaybe<Role>;
+  storageMemberships?: InputMaybe<StorageMemberCreateNestedManyWithoutUserInput>;
   twitterUrl?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
@@ -5720,7 +5876,6 @@ export type UserCreateWithoutEventTicketInput = {
   emailVerified?: InputMaybe<Scalars['Boolean']>;
   eventMember?: InputMaybe<EventMemberCreateNestedManyWithoutUserInput>;
   events?: InputMaybe<EventCreateNestedManyWithoutOwnerInput>;
-  family?: InputMaybe<FamilyCreateNestedOneWithoutMembersInput>;
   firstName: Scalars['String'];
   followers?: InputMaybe<FollowsCreateNestedManyWithoutFollowingInput>;
   following?: InputMaybe<FollowsCreateNestedManyWithoutFollowerInput>;
@@ -5735,6 +5890,7 @@ export type UserCreateWithoutEventTicketInput = {
   public?: InputMaybe<Scalars['Boolean']>;
   publications?: InputMaybe<PublicationCreateNestedManyWithoutUserInput>;
   role?: InputMaybe<Role>;
+  storageMemberships?: InputMaybe<StorageMemberCreateNestedManyWithoutUserInput>;
   twitterUrl?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
@@ -5749,7 +5905,6 @@ export type UserCreateWithoutEventsInput = {
   emailVerified?: InputMaybe<Scalars['Boolean']>;
   eventMember?: InputMaybe<EventMemberCreateNestedManyWithoutUserInput>;
   eventTicket?: InputMaybe<EventTicketCreateNestedManyWithoutUserInput>;
-  family?: InputMaybe<FamilyCreateNestedOneWithoutMembersInput>;
   firstName: Scalars['String'];
   followers?: InputMaybe<FollowsCreateNestedManyWithoutFollowingInput>;
   following?: InputMaybe<FollowsCreateNestedManyWithoutFollowerInput>;
@@ -5764,6 +5919,7 @@ export type UserCreateWithoutEventsInput = {
   public?: InputMaybe<Scalars['Boolean']>;
   publications?: InputMaybe<PublicationCreateNestedManyWithoutUserInput>;
   role?: InputMaybe<Role>;
+  storageMemberships?: InputMaybe<StorageMemberCreateNestedManyWithoutUserInput>;
   twitterUrl?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
@@ -5779,7 +5935,6 @@ export type UserCreateWithoutFollowersInput = {
   eventMember?: InputMaybe<EventMemberCreateNestedManyWithoutUserInput>;
   eventTicket?: InputMaybe<EventTicketCreateNestedManyWithoutUserInput>;
   events?: InputMaybe<EventCreateNestedManyWithoutOwnerInput>;
-  family?: InputMaybe<FamilyCreateNestedOneWithoutMembersInput>;
   firstName: Scalars['String'];
   following?: InputMaybe<FollowsCreateNestedManyWithoutFollowerInput>;
   githubUrl?: InputMaybe<Scalars['String']>;
@@ -5793,6 +5948,7 @@ export type UserCreateWithoutFollowersInput = {
   public?: InputMaybe<Scalars['Boolean']>;
   publications?: InputMaybe<PublicationCreateNestedManyWithoutUserInput>;
   role?: InputMaybe<Role>;
+  storageMemberships?: InputMaybe<StorageMemberCreateNestedManyWithoutUserInput>;
   twitterUrl?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
@@ -5808,7 +5964,6 @@ export type UserCreateWithoutFollowingInput = {
   eventMember?: InputMaybe<EventMemberCreateNestedManyWithoutUserInput>;
   eventTicket?: InputMaybe<EventTicketCreateNestedManyWithoutUserInput>;
   events?: InputMaybe<EventCreateNestedManyWithoutOwnerInput>;
-  family?: InputMaybe<FamilyCreateNestedOneWithoutMembersInput>;
   firstName: Scalars['String'];
   followers?: InputMaybe<FollowsCreateNestedManyWithoutFollowingInput>;
   githubUrl?: InputMaybe<Scalars['String']>;
@@ -5822,6 +5977,7 @@ export type UserCreateWithoutFollowingInput = {
   public?: InputMaybe<Scalars['Boolean']>;
   publications?: InputMaybe<PublicationCreateNestedManyWithoutUserInput>;
   role?: InputMaybe<Role>;
+  storageMemberships?: InputMaybe<StorageMemberCreateNestedManyWithoutUserInput>;
   twitterUrl?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
@@ -5837,7 +5993,6 @@ export type UserCreateWithoutMemberCommunitiesInput = {
   eventMember?: InputMaybe<EventMemberCreateNestedManyWithoutUserInput>;
   eventTicket?: InputMaybe<EventTicketCreateNestedManyWithoutUserInput>;
   events?: InputMaybe<EventCreateNestedManyWithoutOwnerInput>;
-  family?: InputMaybe<FamilyCreateNestedOneWithoutMembersInput>;
   firstName: Scalars['String'];
   followers?: InputMaybe<FollowsCreateNestedManyWithoutFollowingInput>;
   following?: InputMaybe<FollowsCreateNestedManyWithoutFollowerInput>;
@@ -5851,6 +6006,7 @@ export type UserCreateWithoutMemberCommunitiesInput = {
   public?: InputMaybe<Scalars['Boolean']>;
   publications?: InputMaybe<PublicationCreateNestedManyWithoutUserInput>;
   role?: InputMaybe<Role>;
+  storageMemberships?: InputMaybe<StorageMemberCreateNestedManyWithoutUserInput>;
   twitterUrl?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
@@ -5866,7 +6022,6 @@ export type UserCreateWithoutPostsInput = {
   eventMember?: InputMaybe<EventMemberCreateNestedManyWithoutUserInput>;
   eventTicket?: InputMaybe<EventTicketCreateNestedManyWithoutUserInput>;
   events?: InputMaybe<EventCreateNestedManyWithoutOwnerInput>;
-  family?: InputMaybe<FamilyCreateNestedOneWithoutMembersInput>;
   firstName: Scalars['String'];
   followers?: InputMaybe<FollowsCreateNestedManyWithoutFollowingInput>;
   following?: InputMaybe<FollowsCreateNestedManyWithoutFollowerInput>;
@@ -5880,6 +6035,7 @@ export type UserCreateWithoutPostsInput = {
   public?: InputMaybe<Scalars['Boolean']>;
   publications?: InputMaybe<PublicationCreateNestedManyWithoutUserInput>;
   role?: InputMaybe<Role>;
+  storageMemberships?: InputMaybe<StorageMemberCreateNestedManyWithoutUserInput>;
   twitterUrl?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
@@ -5895,7 +6051,6 @@ export type UserCreateWithoutPublicationsInput = {
   eventMember?: InputMaybe<EventMemberCreateNestedManyWithoutUserInput>;
   eventTicket?: InputMaybe<EventTicketCreateNestedManyWithoutUserInput>;
   events?: InputMaybe<EventCreateNestedManyWithoutOwnerInput>;
-  family?: InputMaybe<FamilyCreateNestedOneWithoutMembersInput>;
   firstName: Scalars['String'];
   followers?: InputMaybe<FollowsCreateNestedManyWithoutFollowingInput>;
   following?: InputMaybe<FollowsCreateNestedManyWithoutFollowerInput>;
@@ -5909,14 +6064,9 @@ export type UserCreateWithoutPublicationsInput = {
   profilePicture?: InputMaybe<Scalars['String']>;
   public?: InputMaybe<Scalars['Boolean']>;
   role?: InputMaybe<Role>;
+  storageMemberships?: InputMaybe<StorageMemberCreateNestedManyWithoutUserInput>;
   twitterUrl?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
-};
-
-export type UserListRelationFilter = {
-  every?: InputMaybe<UserWhereInput>;
-  none?: InputMaybe<UserWhereInput>;
-  some?: InputMaybe<UserWhereInput>;
 };
 
 export type UserNullableRelationFilter = {
@@ -5948,7 +6098,6 @@ export type UserUpdateInput = {
   eventMember?: InputMaybe<EventMemberUpdateManyWithoutUserNestedInput>;
   eventTicket?: InputMaybe<EventTicketUpdateManyWithoutUserNestedInput>;
   events?: InputMaybe<EventUpdateManyWithoutOwnerNestedInput>;
-  family?: InputMaybe<FamilyUpdateOneWithoutMembersNestedInput>;
   firstName?: InputMaybe<StringFieldUpdateOperationsInput>;
   followers?: InputMaybe<FollowsUpdateManyWithoutFollowingNestedInput>;
   following?: InputMaybe<FollowsUpdateManyWithoutFollowerNestedInput>;
@@ -5963,6 +6112,7 @@ export type UserUpdateInput = {
   public?: InputMaybe<BoolFieldUpdateOperationsInput>;
   publications?: InputMaybe<PublicationUpdateManyWithoutUserNestedInput>;
   role?: InputMaybe<EnumRoleFieldUpdateOperationsInput>;
+  storageMemberships?: InputMaybe<StorageMemberUpdateManyWithoutUserNestedInput>;
   twitterUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
@@ -6132,7 +6282,6 @@ export type UserUpdateWithoutAdminCommunitiesInput = {
   eventMember?: InputMaybe<EventMemberUpdateManyWithoutUserNestedInput>;
   eventTicket?: InputMaybe<EventTicketUpdateManyWithoutUserNestedInput>;
   events?: InputMaybe<EventUpdateManyWithoutOwnerNestedInput>;
-  family?: InputMaybe<FamilyUpdateOneWithoutMembersNestedInput>;
   firstName?: InputMaybe<StringFieldUpdateOperationsInput>;
   followers?: InputMaybe<FollowsUpdateManyWithoutFollowingNestedInput>;
   following?: InputMaybe<FollowsUpdateManyWithoutFollowerNestedInput>;
@@ -6147,6 +6296,7 @@ export type UserUpdateWithoutAdminCommunitiesInput = {
   public?: InputMaybe<BoolFieldUpdateOperationsInput>;
   publications?: InputMaybe<PublicationUpdateManyWithoutUserNestedInput>;
   role?: InputMaybe<EnumRoleFieldUpdateOperationsInput>;
+  storageMemberships?: InputMaybe<StorageMemberUpdateManyWithoutUserNestedInput>;
   twitterUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
@@ -6161,7 +6311,6 @@ export type UserUpdateWithoutAllPublicationCommentsInput = {
   eventMember?: InputMaybe<EventMemberUpdateManyWithoutUserNestedInput>;
   eventTicket?: InputMaybe<EventTicketUpdateManyWithoutUserNestedInput>;
   events?: InputMaybe<EventUpdateManyWithoutOwnerNestedInput>;
-  family?: InputMaybe<FamilyUpdateOneWithoutMembersNestedInput>;
   firstName?: InputMaybe<StringFieldUpdateOperationsInput>;
   followers?: InputMaybe<FollowsUpdateManyWithoutFollowingNestedInput>;
   following?: InputMaybe<FollowsUpdateManyWithoutFollowerNestedInput>;
@@ -6176,6 +6325,7 @@ export type UserUpdateWithoutAllPublicationCommentsInput = {
   public?: InputMaybe<BoolFieldUpdateOperationsInput>;
   publications?: InputMaybe<PublicationUpdateManyWithoutUserNestedInput>;
   role?: InputMaybe<EnumRoleFieldUpdateOperationsInput>;
+  storageMemberships?: InputMaybe<StorageMemberUpdateManyWithoutUserNestedInput>;
   twitterUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
@@ -6190,7 +6340,6 @@ export type UserUpdateWithoutAllPublicationLikesInput = {
   eventMember?: InputMaybe<EventMemberUpdateManyWithoutUserNestedInput>;
   eventTicket?: InputMaybe<EventTicketUpdateManyWithoutUserNestedInput>;
   events?: InputMaybe<EventUpdateManyWithoutOwnerNestedInput>;
-  family?: InputMaybe<FamilyUpdateOneWithoutMembersNestedInput>;
   firstName?: InputMaybe<StringFieldUpdateOperationsInput>;
   followers?: InputMaybe<FollowsUpdateManyWithoutFollowingNestedInput>;
   following?: InputMaybe<FollowsUpdateManyWithoutFollowerNestedInput>;
@@ -6205,6 +6354,7 @@ export type UserUpdateWithoutAllPublicationLikesInput = {
   public?: InputMaybe<BoolFieldUpdateOperationsInput>;
   publications?: InputMaybe<PublicationUpdateManyWithoutUserNestedInput>;
   role?: InputMaybe<EnumRoleFieldUpdateOperationsInput>;
+  storageMemberships?: InputMaybe<StorageMemberUpdateManyWithoutUserNestedInput>;
   twitterUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
@@ -6219,7 +6369,6 @@ export type UserUpdateWithoutEventMemberInput = {
   emailVerified?: InputMaybe<BoolFieldUpdateOperationsInput>;
   eventTicket?: InputMaybe<EventTicketUpdateManyWithoutUserNestedInput>;
   events?: InputMaybe<EventUpdateManyWithoutOwnerNestedInput>;
-  family?: InputMaybe<FamilyUpdateOneWithoutMembersNestedInput>;
   firstName?: InputMaybe<StringFieldUpdateOperationsInput>;
   followers?: InputMaybe<FollowsUpdateManyWithoutFollowingNestedInput>;
   following?: InputMaybe<FollowsUpdateManyWithoutFollowerNestedInput>;
@@ -6234,6 +6383,7 @@ export type UserUpdateWithoutEventMemberInput = {
   public?: InputMaybe<BoolFieldUpdateOperationsInput>;
   publications?: InputMaybe<PublicationUpdateManyWithoutUserNestedInput>;
   role?: InputMaybe<EnumRoleFieldUpdateOperationsInput>;
+  storageMemberships?: InputMaybe<StorageMemberUpdateManyWithoutUserNestedInput>;
   twitterUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
@@ -6248,7 +6398,6 @@ export type UserUpdateWithoutEventTicketInput = {
   emailVerified?: InputMaybe<BoolFieldUpdateOperationsInput>;
   eventMember?: InputMaybe<EventMemberUpdateManyWithoutUserNestedInput>;
   events?: InputMaybe<EventUpdateManyWithoutOwnerNestedInput>;
-  family?: InputMaybe<FamilyUpdateOneWithoutMembersNestedInput>;
   firstName?: InputMaybe<StringFieldUpdateOperationsInput>;
   followers?: InputMaybe<FollowsUpdateManyWithoutFollowingNestedInput>;
   following?: InputMaybe<FollowsUpdateManyWithoutFollowerNestedInput>;
@@ -6263,6 +6412,7 @@ export type UserUpdateWithoutEventTicketInput = {
   public?: InputMaybe<BoolFieldUpdateOperationsInput>;
   publications?: InputMaybe<PublicationUpdateManyWithoutUserNestedInput>;
   role?: InputMaybe<EnumRoleFieldUpdateOperationsInput>;
+  storageMemberships?: InputMaybe<StorageMemberUpdateManyWithoutUserNestedInput>;
   twitterUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
@@ -6277,7 +6427,6 @@ export type UserUpdateWithoutEventsInput = {
   emailVerified?: InputMaybe<BoolFieldUpdateOperationsInput>;
   eventMember?: InputMaybe<EventMemberUpdateManyWithoutUserNestedInput>;
   eventTicket?: InputMaybe<EventTicketUpdateManyWithoutUserNestedInput>;
-  family?: InputMaybe<FamilyUpdateOneWithoutMembersNestedInput>;
   firstName?: InputMaybe<StringFieldUpdateOperationsInput>;
   followers?: InputMaybe<FollowsUpdateManyWithoutFollowingNestedInput>;
   following?: InputMaybe<FollowsUpdateManyWithoutFollowerNestedInput>;
@@ -6292,6 +6441,7 @@ export type UserUpdateWithoutEventsInput = {
   public?: InputMaybe<BoolFieldUpdateOperationsInput>;
   publications?: InputMaybe<PublicationUpdateManyWithoutUserNestedInput>;
   role?: InputMaybe<EnumRoleFieldUpdateOperationsInput>;
+  storageMemberships?: InputMaybe<StorageMemberUpdateManyWithoutUserNestedInput>;
   twitterUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
@@ -6307,7 +6457,6 @@ export type UserUpdateWithoutFollowersInput = {
   eventMember?: InputMaybe<EventMemberUpdateManyWithoutUserNestedInput>;
   eventTicket?: InputMaybe<EventTicketUpdateManyWithoutUserNestedInput>;
   events?: InputMaybe<EventUpdateManyWithoutOwnerNestedInput>;
-  family?: InputMaybe<FamilyUpdateOneWithoutMembersNestedInput>;
   firstName?: InputMaybe<StringFieldUpdateOperationsInput>;
   following?: InputMaybe<FollowsUpdateManyWithoutFollowerNestedInput>;
   githubUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
@@ -6321,6 +6470,7 @@ export type UserUpdateWithoutFollowersInput = {
   public?: InputMaybe<BoolFieldUpdateOperationsInput>;
   publications?: InputMaybe<PublicationUpdateManyWithoutUserNestedInput>;
   role?: InputMaybe<EnumRoleFieldUpdateOperationsInput>;
+  storageMemberships?: InputMaybe<StorageMemberUpdateManyWithoutUserNestedInput>;
   twitterUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
@@ -6336,7 +6486,6 @@ export type UserUpdateWithoutFollowingInput = {
   eventMember?: InputMaybe<EventMemberUpdateManyWithoutUserNestedInput>;
   eventTicket?: InputMaybe<EventTicketUpdateManyWithoutUserNestedInput>;
   events?: InputMaybe<EventUpdateManyWithoutOwnerNestedInput>;
-  family?: InputMaybe<FamilyUpdateOneWithoutMembersNestedInput>;
   firstName?: InputMaybe<StringFieldUpdateOperationsInput>;
   followers?: InputMaybe<FollowsUpdateManyWithoutFollowingNestedInput>;
   githubUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
@@ -6350,6 +6499,7 @@ export type UserUpdateWithoutFollowingInput = {
   public?: InputMaybe<BoolFieldUpdateOperationsInput>;
   publications?: InputMaybe<PublicationUpdateManyWithoutUserNestedInput>;
   role?: InputMaybe<EnumRoleFieldUpdateOperationsInput>;
+  storageMemberships?: InputMaybe<StorageMemberUpdateManyWithoutUserNestedInput>;
   twitterUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
@@ -6365,7 +6515,6 @@ export type UserUpdateWithoutMemberCommunitiesInput = {
   eventMember?: InputMaybe<EventMemberUpdateManyWithoutUserNestedInput>;
   eventTicket?: InputMaybe<EventTicketUpdateManyWithoutUserNestedInput>;
   events?: InputMaybe<EventUpdateManyWithoutOwnerNestedInput>;
-  family?: InputMaybe<FamilyUpdateOneWithoutMembersNestedInput>;
   firstName?: InputMaybe<StringFieldUpdateOperationsInput>;
   followers?: InputMaybe<FollowsUpdateManyWithoutFollowingNestedInput>;
   following?: InputMaybe<FollowsUpdateManyWithoutFollowerNestedInput>;
@@ -6379,6 +6528,7 @@ export type UserUpdateWithoutMemberCommunitiesInput = {
   public?: InputMaybe<BoolFieldUpdateOperationsInput>;
   publications?: InputMaybe<PublicationUpdateManyWithoutUserNestedInput>;
   role?: InputMaybe<EnumRoleFieldUpdateOperationsInput>;
+  storageMemberships?: InputMaybe<StorageMemberUpdateManyWithoutUserNestedInput>;
   twitterUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
@@ -6394,7 +6544,6 @@ export type UserUpdateWithoutPostsInput = {
   eventMember?: InputMaybe<EventMemberUpdateManyWithoutUserNestedInput>;
   eventTicket?: InputMaybe<EventTicketUpdateManyWithoutUserNestedInput>;
   events?: InputMaybe<EventUpdateManyWithoutOwnerNestedInput>;
-  family?: InputMaybe<FamilyUpdateOneWithoutMembersNestedInput>;
   firstName?: InputMaybe<StringFieldUpdateOperationsInput>;
   followers?: InputMaybe<FollowsUpdateManyWithoutFollowingNestedInput>;
   following?: InputMaybe<FollowsUpdateManyWithoutFollowerNestedInput>;
@@ -6408,6 +6557,7 @@ export type UserUpdateWithoutPostsInput = {
   public?: InputMaybe<BoolFieldUpdateOperationsInput>;
   publications?: InputMaybe<PublicationUpdateManyWithoutUserNestedInput>;
   role?: InputMaybe<EnumRoleFieldUpdateOperationsInput>;
+  storageMemberships?: InputMaybe<StorageMemberUpdateManyWithoutUserNestedInput>;
   twitterUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
@@ -6423,7 +6573,6 @@ export type UserUpdateWithoutPublicationsInput = {
   eventMember?: InputMaybe<EventMemberUpdateManyWithoutUserNestedInput>;
   eventTicket?: InputMaybe<EventTicketUpdateManyWithoutUserNestedInput>;
   events?: InputMaybe<EventUpdateManyWithoutOwnerNestedInput>;
-  family?: InputMaybe<FamilyUpdateOneWithoutMembersNestedInput>;
   firstName?: InputMaybe<StringFieldUpdateOperationsInput>;
   followers?: InputMaybe<FollowsUpdateManyWithoutFollowingNestedInput>;
   following?: InputMaybe<FollowsUpdateManyWithoutFollowerNestedInput>;
@@ -6437,6 +6586,7 @@ export type UserUpdateWithoutPublicationsInput = {
   profilePicture?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   public?: InputMaybe<BoolFieldUpdateOperationsInput>;
   role?: InputMaybe<EnumRoleFieldUpdateOperationsInput>;
+  storageMemberships?: InputMaybe<StorageMemberUpdateManyWithoutUserNestedInput>;
   twitterUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
@@ -6521,8 +6671,6 @@ export type UserWhereInput = {
   eventMember?: InputMaybe<EventMemberListRelationFilter>;
   eventTicket?: InputMaybe<EventTicketListRelationFilter>;
   events?: InputMaybe<EventListRelationFilter>;
-  family?: InputMaybe<FamilyNullableRelationFilter>;
-  familyId?: InputMaybe<IntNullableFilter>;
   firstName?: InputMaybe<StringFilter>;
   followers?: InputMaybe<FollowsListRelationFilter>;
   following?: InputMaybe<FollowsListRelationFilter>;
@@ -6538,6 +6686,7 @@ export type UserWhereInput = {
   public?: InputMaybe<BoolFilter>;
   publications?: InputMaybe<PublicationListRelationFilter>;
   role?: InputMaybe<EnumRoleFilter>;
+  storageMemberships?: InputMaybe<StorageMemberListRelationFilter>;
   twitterUrl?: InputMaybe<StringNullableFilter>;
   updatedAt?: InputMaybe<DateTimeFilter>;
 };
@@ -6556,8 +6705,6 @@ export type UserWhereUniqueInput = {
   eventMember?: InputMaybe<EventMemberListRelationFilter>;
   eventTicket?: InputMaybe<EventTicketListRelationFilter>;
   events?: InputMaybe<EventListRelationFilter>;
-  family?: InputMaybe<FamilyNullableRelationFilter>;
-  familyId?: InputMaybe<IntNullableFilter>;
   firstName?: InputMaybe<StringFilter>;
   followers?: InputMaybe<FollowsListRelationFilter>;
   following?: InputMaybe<FollowsListRelationFilter>;
@@ -6573,6 +6720,7 @@ export type UserWhereUniqueInput = {
   public?: InputMaybe<BoolFilter>;
   publications?: InputMaybe<PublicationListRelationFilter>;
   role?: InputMaybe<EnumRoleFilter>;
+  storageMemberships?: InputMaybe<StorageMemberListRelationFilter>;
   twitterUrl?: InputMaybe<StringNullableFilter>;
   updatedAt?: InputMaybe<DateTimeFilter>;
 };
@@ -6724,27 +6872,27 @@ export type UpdatePublicationMutationVariables = Exact<{
 
 export type UpdatePublicationMutation = { __typename?: 'Mutation', updatePublication: { __typename: 'Publication', id: string } };
 
-export type GetAllFamiliesQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetAllStoragesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetAllFamiliesQuery = { __typename?: 'Query', getAllFamilies: Array<{ __typename?: 'Family', id: string, name: string }> };
+export type GetAllStoragesQuery = { __typename?: 'Query', getAllStorages: Array<{ __typename?: 'Storage', id: string, name: string }> };
 
-export type CreateFamilyMutationVariables = Exact<{
+export type CreateStorageMutationVariables = Exact<{
   name: Scalars['String'];
 }>;
 
 
-export type CreateFamilyMutation = { __typename?: 'Mutation', createFamily: { __typename?: 'Family', id: string, name: string } };
+export type CreateStorageMutation = { __typename?: 'Mutation', createStorage: { __typename?: 'Storage', id: string, name: string } };
 
-export type RemoveFamilyMutationVariables = Exact<{
+export type RemoveStorageMutationVariables = Exact<{
   id: Scalars['Float'];
 }>;
 
 
-export type RemoveFamilyMutation = { __typename?: 'Mutation', removeFamily: { __typename?: 'Family', name: string } };
+export type RemoveStorageMutation = { __typename?: 'Mutation', removeStorage: { __typename?: 'Storage', name: string } };
 
 export type CreateContainerMutationVariables = Exact<{
-  familyId: Scalars['Float'];
+  storageId: Scalars['Float'];
   name: Scalars['String'];
   description: Scalars['String'];
   qrCode: Scalars['String'];
@@ -6759,7 +6907,12 @@ export type GetContainerByCodeQueryVariables = Exact<{
 }>;
 
 
-export type GetContainerByCodeQuery = { __typename?: 'Query', getContainerByCode: { __typename?: 'Container', id: string, name: string, description: string, qrCode: string, code: string, family: { __typename?: 'Family', id: string, name: string }, items?: Array<{ __typename?: 'Item', id: string, name: string, description: string, imageUrl: string, quantity: number, category: string }> | null } };
+export type GetContainerByCodeQuery = { __typename?: 'Query', getContainerByCode: { __typename?: 'Container', id: string, name: string, description: string, qrCode: string, code: string, storage: { __typename?: 'Storage', id: string, name: string }, items?: Array<{ __typename?: 'Item', id: string, name: string, description: string, imageUrl: string, quantity: number, category: string }> | null } };
+
+export type GetMyStoragesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetMyStoragesQuery = { __typename?: 'Query', getMyStorages: Array<{ __typename?: 'Storage', id: string, name: string, members?: Array<{ __typename?: 'StorageMember', id: string, role: StorageRole, user: { __typename?: 'User', id: string, firstName: string, lastName: string, email: string } }> | null, containers?: Array<{ __typename?: 'Container', id: string, name: string, description: string, code: string, qrCode: string, createdAt: any, updatedAt: any, items?: Array<{ __typename?: 'Item', id: string, name: string, quantity: number }> | null }> | null }> };
 
 export type CreateItemMutationVariables = Exact<{
   name: Scalars['String'];
@@ -6778,7 +6931,7 @@ export type GetContainerByIdQueryVariables = Exact<{
 }>;
 
 
-export type GetContainerByIdQuery = { __typename?: 'Query', getContainerById: { __typename?: 'Container', id: string, name: string, description: string, qrCode: string, code: string, family: { __typename?: 'Family', id: string, name: string }, items?: Array<{ __typename?: 'Item', id: string, name: string, description: string, imageUrl: string, quantity: number, category: string }> | null } };
+export type GetContainerByIdQuery = { __typename?: 'Query', getContainerById: { __typename?: 'Container', id: string, name: string, description: string, qrCode: string, code: string, storage: { __typename?: 'Storage', id: string, name: string }, items?: Array<{ __typename?: 'Item', id: string, name: string, description: string, imageUrl: string, quantity: number, category: string }> | null } };
 
 export type GetAllContainersQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -6793,7 +6946,7 @@ export type GetAllItemsQuery = { __typename?: 'Query', getAllItems: Array<{ __ty
 export type GetDashboardDataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetDashboardDataQuery = { __typename?: 'Query', getDashboardData: { __typename?: 'DashboardData', totalContainers: number, totalItems: number, recentContainers: Array<{ __typename?: 'RecentContainer', id: number, name: string }> } };
+export type GetDashboardDataQuery = { __typename?: 'Query', getDashboardData: { __typename?: 'DashboardData', totalStorages: number, totalContainers: number, totalItems: number, recentContainers: Array<{ __typename?: 'RecentContainer', id: number, name: string }> } };
 
 export type SearchQueryVariables = Exact<{
   term?: InputMaybe<Scalars['String']>;
@@ -6822,7 +6975,7 @@ export type TimelineQuery = { __typename?: 'Query', timeline: { __typename?: 'Ba
 export type MeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type MeQuery = { __typename?: 'Query', me: { __typename?: 'MeDto', id: string, email: string, firstName: string, lastName: string, nickname?: string | null, familyId?: number | null, profilePicture?: string | null, about?: string | null, linkedinUrl?: string | null, twitterUrl?: string | null, githubUrl?: string | null, memberCommunities?: Array<{ __typename?: 'CommunityMember', id: string, status: MembershipStatus, community: { __typename?: 'Community', id: string, name: string, banner?: string | null, description: string, profilePicture?: string | null, members?: Array<{ __typename?: 'CommunityMember', user?: { __typename?: 'User', firstName: string, lastName: string, profilePicture?: string | null } | null }> | null } }> | null, adminCommunities?: Array<{ __typename?: 'Community', id: string, name: string, banner?: string | null, description: string, profilePicture?: string | null }> | null, peopleImFollowing: Array<{ __typename?: 'User', id: string, firstName: string, lastName: string, profilePicture?: string | null }>, peopleFollowingMe: Array<{ __typename?: 'User', id: string, firstName: string, lastName: string, profilePicture?: string | null }>, family?: { __typename?: 'Family', id: string, name: string } | null } };
+export type MeQuery = { __typename?: 'Query', me: { __typename?: 'MeDto', id: string, email: string, firstName: string, lastName: string, nickname?: string | null, profilePicture?: string | null, about?: string | null, linkedinUrl?: string | null, twitterUrl?: string | null, githubUrl?: string | null, memberCommunities?: Array<{ __typename?: 'CommunityMember', id: string, status: MembershipStatus, community: { __typename?: 'Community', id: string, name: string, banner?: string | null, description: string, profilePicture?: string | null, members?: Array<{ __typename?: 'CommunityMember', user?: { __typename?: 'User', firstName: string, lastName: string, profilePicture?: string | null } | null }> | null } }> | null, adminCommunities?: Array<{ __typename?: 'Community', id: string, name: string, banner?: string | null, description: string, profilePicture?: string | null }> | null, peopleImFollowing: Array<{ __typename?: 'User', id: string, firstName: string, lastName: string, profilePicture?: string | null }>, peopleFollowingMe: Array<{ __typename?: 'User', id: string, firstName: string, lastName: string, profilePicture?: string | null }>, storageMemberships?: Array<{ __typename?: 'StorageMember', role: StorageRole, storage: { __typename?: 'Storage', id: string, name: string } }> | null } };
 
 export type FollowUserMutationVariables = Exact<{
   userId: Scalars['Float'];
@@ -7322,73 +7475,73 @@ export const useUpdatePublicationMutation = <
       (variables?: UpdatePublicationMutationVariables) => fetcher<UpdatePublicationMutation, UpdatePublicationMutationVariables>(client, UpdatePublicationDocument, variables, headers)(),
       options
     );
-export const GetAllFamiliesDocument = `
-    query GetAllFamilies {
-  getAllFamilies {
+export const GetAllStoragesDocument = `
+    query GetAllStorages {
+  getAllStorages {
     id
     name
   }
 }
     `;
-export const useGetAllFamiliesQuery = <
-      TData = GetAllFamiliesQuery,
+export const useGetAllStoragesQuery = <
+      TData = GetAllStoragesQuery,
       TError = unknown
     >(
       client: GraphQLClient,
-      variables?: GetAllFamiliesQueryVariables,
-      options?: UseQueryOptions<GetAllFamiliesQuery, TError, TData>,
+      variables?: GetAllStoragesQueryVariables,
+      options?: UseQueryOptions<GetAllStoragesQuery, TError, TData>,
       headers?: RequestInit['headers']
     ) =>
-    useQuery<GetAllFamiliesQuery, TError, TData>(
-      variables === undefined ? ['GetAllFamilies'] : ['GetAllFamilies', variables],
-      fetcher<GetAllFamiliesQuery, GetAllFamiliesQueryVariables>(client, GetAllFamiliesDocument, variables, headers),
+    useQuery<GetAllStoragesQuery, TError, TData>(
+      variables === undefined ? ['GetAllStorages'] : ['GetAllStorages', variables],
+      fetcher<GetAllStoragesQuery, GetAllStoragesQueryVariables>(client, GetAllStoragesDocument, variables, headers),
       options
     );
-export const CreateFamilyDocument = `
-    mutation CreateFamily($name: String!) {
-  createFamily(name: $name) {
+export const CreateStorageDocument = `
+    mutation CreateStorage($name: String!) {
+  createStorage(name: $name) {
     id
     name
   }
 }
     `;
-export const useCreateFamilyMutation = <
+export const useCreateStorageMutation = <
       TError = unknown,
       TContext = unknown
     >(
       client: GraphQLClient,
-      options?: UseMutationOptions<CreateFamilyMutation, TError, CreateFamilyMutationVariables, TContext>,
+      options?: UseMutationOptions<CreateStorageMutation, TError, CreateStorageMutationVariables, TContext>,
       headers?: RequestInit['headers']
     ) =>
-    useMutation<CreateFamilyMutation, TError, CreateFamilyMutationVariables, TContext>(
-      ['CreateFamily'],
-      (variables?: CreateFamilyMutationVariables) => fetcher<CreateFamilyMutation, CreateFamilyMutationVariables>(client, CreateFamilyDocument, variables, headers)(),
+    useMutation<CreateStorageMutation, TError, CreateStorageMutationVariables, TContext>(
+      ['CreateStorage'],
+      (variables?: CreateStorageMutationVariables) => fetcher<CreateStorageMutation, CreateStorageMutationVariables>(client, CreateStorageDocument, variables, headers)(),
       options
     );
-export const RemoveFamilyDocument = `
-    mutation RemoveFamily($id: Float!) {
-  removeFamily(id: $id) {
+export const RemoveStorageDocument = `
+    mutation RemoveStorage($id: Float!) {
+  removeStorage(id: $id) {
     name
   }
 }
     `;
-export const useRemoveFamilyMutation = <
+export const useRemoveStorageMutation = <
       TError = unknown,
       TContext = unknown
     >(
       client: GraphQLClient,
-      options?: UseMutationOptions<RemoveFamilyMutation, TError, RemoveFamilyMutationVariables, TContext>,
+      options?: UseMutationOptions<RemoveStorageMutation, TError, RemoveStorageMutationVariables, TContext>,
       headers?: RequestInit['headers']
     ) =>
-    useMutation<RemoveFamilyMutation, TError, RemoveFamilyMutationVariables, TContext>(
-      ['RemoveFamily'],
-      (variables?: RemoveFamilyMutationVariables) => fetcher<RemoveFamilyMutation, RemoveFamilyMutationVariables>(client, RemoveFamilyDocument, variables, headers)(),
+    useMutation<RemoveStorageMutation, TError, RemoveStorageMutationVariables, TContext>(
+      ['RemoveStorage'],
+      (variables?: RemoveStorageMutationVariables) => fetcher<RemoveStorageMutation, RemoveStorageMutationVariables>(client, RemoveStorageDocument, variables, headers)(),
       options
     );
 export const CreateContainerDocument = `
-    mutation CreateContainer($familyId: Float!, $name: String!, $description: String!, $qrCode: String!, $code: String!) {
+    mutation CreateContainer($storageId: Float!, $name: String!, $description: String!, $qrCode: String!, $code: String!) {
   createContainer(
-    familyId: $familyId
+    storageId: $storageId
     name: $name
     description: $description
     qrCode: $qrCode
@@ -7420,7 +7573,7 @@ export const GetContainerByCodeDocument = `
     description
     qrCode
     code
-    family {
+    storage {
       id
       name
     }
@@ -7447,6 +7600,52 @@ export const useGetContainerByCodeQuery = <
     useQuery<GetContainerByCodeQuery, TError, TData>(
       ['GetContainerByCode', variables],
       fetcher<GetContainerByCodeQuery, GetContainerByCodeQueryVariables>(client, GetContainerByCodeDocument, variables, headers),
+      options
+    );
+export const GetMyStoragesDocument = `
+    query GetMyStorages {
+  getMyStorages {
+    id
+    name
+    members {
+      id
+      role
+      user {
+        id
+        firstName
+        lastName
+        email
+      }
+    }
+    containers {
+      id
+      name
+      description
+      code
+      qrCode
+      createdAt
+      updatedAt
+      items {
+        id
+        name
+        quantity
+      }
+    }
+  }
+}
+    `;
+export const useGetMyStoragesQuery = <
+      TData = GetMyStoragesQuery,
+      TError = unknown
+    >(
+      client: GraphQLClient,
+      variables?: GetMyStoragesQueryVariables,
+      options?: UseQueryOptions<GetMyStoragesQuery, TError, TData>,
+      headers?: RequestInit['headers']
+    ) =>
+    useQuery<GetMyStoragesQuery, TError, TData>(
+      variables === undefined ? ['GetMyStorages'] : ['GetMyStorages', variables],
+      fetcher<GetMyStoragesQuery, GetMyStoragesQueryVariables>(client, GetMyStoragesDocument, variables, headers),
       options
     );
 export const CreateItemDocument = `
@@ -7485,7 +7684,7 @@ export const GetContainerByIdDocument = `
     description
     qrCode
     code
-    family {
+    storage {
       id
       name
     }
@@ -7582,6 +7781,7 @@ export const useGetAllItemsQuery = <
 export const GetDashboardDataDocument = `
     query GetDashboardData {
   getDashboardData {
+    totalStorages
     totalContainers
     totalItems
     recentContainers {
@@ -7742,7 +7942,6 @@ export const MeDocument = `
     firstName
     lastName
     nickname
-    familyId
     memberCommunities {
       id
       status
@@ -7795,9 +7994,12 @@ export const MeDocument = `
         profilePicture
       }
     }
-    family {
-      id
-      name
+    storageMemberships {
+      role
+      storage {
+        id
+        name
+      }
     }
   }
 }

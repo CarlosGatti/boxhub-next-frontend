@@ -14,7 +14,7 @@ import { useState } from 'react';
 
 const CreateContainer: React.FC = () => {
   const router = useRouter();
-  const { id: familyId } = router.query;
+  const { id: storageId } = router.query;
   const { currentUser } = useCurrentUser();
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
@@ -25,7 +25,7 @@ const CreateContainer: React.FC = () => {
 
   // Gera o código QR e a URL correspondente
   const handleGenerateCode = async () => {
-    const generatedCode = `container-${familyId}-${Date.now()}`;
+    const generatedCode = `container-${storageId}-${Date.now()}`;
     setQrCode(generatedCode);
 
     try {
@@ -49,7 +49,7 @@ const CreateContainer: React.FC = () => {
         description,
         qrCode,
         code: qrCode, // Aqui o código gerado é o mesmo do QR Code
-        familyId: parseInt(familyId as string, 10),
+        storageId: parseInt(storageId as string, 10),
       });
       alert('Container created successfully!');
       router.push(`/qrcode-app/container/list`);

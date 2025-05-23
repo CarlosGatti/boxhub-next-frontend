@@ -58,6 +58,7 @@ const AllItemsPage = () => {
                       key={item.id}
                       className="bg-white shadow-lg rounded-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col max-w-md mx-auto w-full"
                     >
+                      
                       {/* Header Section */}
                       <div
                         className="p-4 border-b border-gray-200 cursor-pointer"
@@ -68,17 +69,15 @@ const AllItemsPage = () => {
                       </div>
 
                       {/* Image Section */}
-                {/* Image Section */}
-<div className="flex justify-center items-center bg-gray-100 p-4 border-b">
-  <div className="w-full max-w-[160px] aspect-square relative rounded-md overflow-hidden">
-    <img
-      src={item.imageUrl}
-      alt={item.name}
-      className="object-cover w-full h-full"
-    />
-  </div>
-</div>
-
+                      <div className="flex justify-center items-center bg-gray-100 p-4 border-b">
+                        <div className="w-full max-w-[160px] aspect-square relative rounded-md overflow-hidden">
+                          <img
+                            src={item.imageUrl}
+                            alt={item.name}
+                            className="object-cover w-full h-full"
+                          />
+                        </div>
+                      </div>
 
                       {/* Footer Section */}
                       <div className="p-4 bg-gray-50 flex flex-col items-start space-y-2">

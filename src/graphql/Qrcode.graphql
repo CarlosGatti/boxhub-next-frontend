@@ -1,48 +1,79 @@
-query GetAllFamilies{
-  getAllFamilies{
-    id
-    name
-  }
-} 
-
-mutation CreateFamily($name: String!){
-  createFamily(name: $name){
+query GetAllStorages {
+  getAllStorages {
     id
     name
   }
 }
 
-mutation RemoveFamily($id: Float!){
-  removeFamily(id: $id){
+mutation CreateStorage($name: String!){
+  createStorage(name: $name){
+    id
     name
   }
 }
 
-mutation CreateContainer($familyId: Float!, $name: String!, $description: String!, $qrCode: String!, $code: String!){
-  createContainer(familyId: $familyId, name: $name, description: $description, qrCode: $qrCode, code: $code){
+mutation RemoveStorage($id: Float!){
+  removeStorage(id: $id){
+    name
+  }
+}
+
+mutation CreateContainer($storageId: Float!, $name: String!, $description: String!, $qrCode: String!, $code: String!){
+  createContainer(storageId: $storageId, name: $name, description: $description, qrCode: $qrCode, code: $code){
     success
     message
   }
 }
 
-query GetContainerByCode($code: String!){
-  getContainerByCode(code: $code){
+query GetContainerByCode($code: String!) {
+  getContainerByCode(code: $code) {
     id
     name
     description
     qrCode
     code
-    family{
+    storage {
       id
       name
     }
-    items{
+    items {
       id
       name
       description
       imageUrl
       quantity
       category
+    }
+  }
+}
+
+query GetMyStorages {
+  getMyStorages {
+    id
+    name
+    members {
+      id
+      role
+      user {
+        id
+        firstName
+        lastName
+        email
+      }
+    }
+    containers {
+      id
+      name
+      description
+      code
+      qrCode
+      createdAt
+      updatedAt
+      items {
+        id
+        name
+        quantity
+      }
     }
   }
 }
@@ -69,18 +100,18 @@ mutation CreateItem(
 }
 
 
-query GetContainerById($id: Float!){
-  getContainerById(id: $id){
+query GetContainerById($id: Float!) {
+  getContainerById(id: $id) {
     id
     name
     description
     qrCode
     code
-    family{
+    storage {
       id
       name
     }
-    items{
+    items {
       id
       name
       description
@@ -110,7 +141,6 @@ query GetAllContainers {
     }
   }
 }
-
 query GetAllItems {
   getAllItems {
     id
@@ -126,8 +156,10 @@ query GetAllItems {
   }
 }
 
+
 query GetDashboardData {
   getDashboardData {
+    totalStorages
     totalContainers
     totalItems
     recentContainers {
