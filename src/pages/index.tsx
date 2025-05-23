@@ -56,6 +56,7 @@ function Header() {
         <div className="md:hidden bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-t">
           <nav className="flex flex-col px-4 py-4 space-y-4">
             <Link href="#features" className="text-lg font-medium" onClick={() => setIsOpen(false)}>Features</Link>
+            <Link href="#usecases" className="text-lg font-medium" onClick={() => setIsOpen(false)}>Use Cases</Link>
             <Link href="#about" className="text-lg font-medium" onClick={() => setIsOpen(false)}>About</Link>
             <Link href="#contact" className="text-lg font-medium" onClick={() => setIsOpen(false)}>Contact</Link>
             <Link href="/account/login" className="text-lg font-medium" onClick={() => setIsOpen(false)}>Login</Link>
