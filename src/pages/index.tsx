@@ -23,6 +23,7 @@ export default function LandingPage() {
 }
 
 function Header() {
+  
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -42,6 +43,7 @@ function Header() {
         <nav className="hidden md:flex gap-6">
           <Link href="#features" className="text-sm font-medium transition-colors hover:text-primary">Features</Link>
           <Link href="#about" className="text-sm font-medium transition-colors hover:text-primary">About</Link>
+          <Link href="#usecases" className="text-sm font-medium transition-colors hover:text-primary">Use Cases</Link>
           <Link href="#contact" className="text-sm font-medium transition-colors hover:text-primary">Contact</Link>
           <Link href="/account/login" className="text-sm font-medium transition-colors hover:text-primary">Login</Link>
         </nav>
