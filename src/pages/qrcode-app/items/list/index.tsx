@@ -73,13 +73,14 @@ const AllItemsPage = () => {
 
                       {/* Image Section */}
                       <div className="flex justify-center items-center bg-gray-100 p-4 border-b">
-                        <div className="w-full max-w-[160px] aspect-square relative rounded-md overflow-hidden">
-                          <img
-                            src={item.imageUrl}
-                            alt={item.name}
-                            className="object-cover w-full h-full"
-                          />
-                        </div>
+                                <div className="relative w-full h-40 overflow-hidden">
+                                               <Image
+                                                 src={item.imageUrl}
+                                                 alt={item.name}
+                                                 fill
+                                                 className="object-cover w-full h-full"
+                                               />
+                                             </div>
                       </div>
 
                       {/* Footer Section */}

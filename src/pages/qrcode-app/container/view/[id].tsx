@@ -60,14 +60,14 @@ const ContainerDetailsPage = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                   {container.items.map((item) => (
                     <div key={item.id} className="bg-white shadow-sm rounded-lg overflow-hidden">
-                   <div className="relative w-full h-40 overflow-hidden">
-  <Image
-    src={item.imageUrl}
-    alt={item.name}
-    fill
-    className="object-cover w-full h-full"
-  />
-</div>
+                      <div className="relative w-full h-40 overflow-hidden">
+                        <Image
+                          src={item.imageUrl}
+                          alt={item.name}
+                          fill
+                          className="object-cover w-full h-full"
+                        />
+                      </div>
                       <div className="p-4">
                         <h3 className="text-lg font-semibold text-gray-800">{item.name}</h3>
                         <p className="text-sm text-gray-500 mb-2">{item.description}</p>
