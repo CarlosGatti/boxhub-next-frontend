@@ -11,6 +11,7 @@ export default function LandingPage() {
       <main className="flex-1">
         <HeroSection />
         <FeaturesSection />
+        <UseCasesSection />
         <AboutSection />
       
         <ContactSection />
@@ -70,6 +71,61 @@ function Header() {
   )
 }
 
+function UseCasesSection() {
+  return (
+    <section id="usecases" className="w-full py-16 md:py-20 bg-white">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-12 space-y-4">
+          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900">
+            Versatility in Action
+          </h2>
+          <p className="text-gray-600 max-w-2xl mx-auto md:text-lg">
+            Whether you're at home or on the job, BoxHub adapts to your workflow. See it in action.
+          </p>
+        </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+  {/* Bloco 1 */}
+  <div className="text-center">
+    <div className="relative w-full max-w-md h-80 rounded-lg overflow-hidden shadow-md mx-auto">
+      <Image
+        src="/image/cia-storage.png"
+        alt="Home storage with QR boxes"
+        fill
+        className="object-cover"
+      />
+    </div>
+    <div className="p-4">
+      <h3 className="text-xl font-semibold text-gray-800">Organized Garage</h3>
+      <p className="text-sm text-gray-600 mt-2">
+        Keep seasonal items and tools in order with easy-to-scan labels.
+      </p>
+    </div>
+  </div>
+
+  {/* Bloco 2 */}
+  <div className="text-center">
+    <div className="relative w-full max-w-md h-80 rounded-lg overflow-hidden shadow-md mx-auto">
+      <Image
+        src="/image/van-storage.png"
+        alt="Worker placing box in a van"
+        fill
+        className="object-cover"
+      />
+    </div>
+    <div className="p-4">
+      <h3 className="text-xl font-semibold text-gray-800">Professional On-the-Go</h3>
+      <p className="text-sm text-gray-600 mt-2">
+        Quickly locate and transport essential tools and materials to any job site.
+      </p>
+    </div>
+  </div>
+</div>
+
+      </div>
+    </section>
+  )
+}
 
 function HeroSection() {
   return (
@@ -100,9 +156,9 @@ function HeroSection() {
         {/* Lado Direito: Imagem */}
         <div className="flex-1">
           <Image
-            src="/landing/garage-boxes.png"
+            src="/image/garage-storage.png"
             alt="Organized garage with QR coded boxes"
-            width={500}
+            width={300}
             height={500}
             className="rounded-lg shadow-lg mx-auto"
             priority
