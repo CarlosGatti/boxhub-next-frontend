@@ -68,6 +68,7 @@ const Login: NextPage = () => {
       <Container>
         <Form onSubmit={handleSubmit(handleLogin)}>
           <TitleForm>
+            <Link href="/">
             <Image
               width={150}
               height={150}
@@ -75,6 +76,7 @@ const Login: NextPage = () => {
               src="/image/brand/rh-blue.png"
               alt="Ícone BoxHub"
             />
+            </Link>
           </TitleForm>
 
           <Input

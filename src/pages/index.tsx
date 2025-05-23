@@ -13,9 +13,7 @@ export default function LandingPage() {
         <FeaturesSection />
         <UseCasesSection />
         <AboutSection />
-      
         <ContactSection />
-      
       </main>
       <Footer />
     </div>
@@ -23,9 +21,7 @@ export default function LandingPage() {
 }
 
 function Header() {
-  
   const [isOpen, setIsOpen] = useState(false)
-
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
@@ -38,7 +34,6 @@ function Header() {
             className="grayscale transition-all duration-300 hover:grayscale-0"
           />
         </Link>
-
         {/* Desktop Nav */}
         <nav className="hidden md:flex gap-6">
           <Link href="#features" className="text-sm font-medium transition-colors hover:text-primary">Features</Link>
@@ -47,7 +42,6 @@ function Header() {
           <Link href="#contact" className="text-sm font-medium transition-colors hover:text-primary">Contact</Link>
           <Link href="/account/login" className="text-sm font-medium transition-colors hover:text-primary">Login</Link>
         </nav>
-
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
@@ -57,7 +51,6 @@ function Header() {
           {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>
-
       {/* Mobile Menu Panel */}
       {isOpen && (
         <div className="md:hidden bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-t">
@@ -85,45 +78,40 @@ function UseCasesSection() {
             Whether you're at home or on the job, BoxHub adapts to your workflow. See it in action.
           </p>
         </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-  {/* Bloco 1 */}
-  <div className="text-center">
-    <div className="relative w-full max-w-md h-80 rounded-lg overflow-hidden shadow-md mx-auto">
-      <Image
-        src="/image/cia-storage.png"
-        alt="Home storage with QR boxes"
-        fill
-        className="object-cover"
-      />
-    </div>
-    <div className="p-4">
-      <h3 className="text-xl font-semibold text-gray-800">Organized Garage</h3>
-      <p className="text-sm text-gray-600 mt-2">
-        Keep seasonal items and tools in order with easy-to-scan labels.
-      </p>
-    </div>
-  </div>
-
-  {/* Bloco 2 */}
-  <div className="text-center">
-    <div className="relative w-full max-w-md h-80 rounded-lg overflow-hidden shadow-md mx-auto">
-      <Image
-        src="/image/van-storage.png"
-        alt="Worker placing box in a van"
-        fill
-        className="object-cover"
-      />
-    </div>
-    <div className="p-4">
-      <h3 className="text-xl font-semibold text-gray-800">Professional On-the-Go</h3>
-      <p className="text-sm text-gray-600 mt-2">
-        Quickly locate and transport essential tools and materials to any job site.
-      </p>
-    </div>
-  </div>
-</div>
-
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <div className="text-center">
+            <div className="relative w-full max-w-md h-80 rounded-lg overflow-hidden shadow-md mx-auto">
+              <Image
+                src="/image/cia-storage.png"
+                alt="Home storage with QR boxes"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="p-4">
+              <h3 className="text-xl font-semibold text-gray-800">Organized Garage</h3>
+              <p className="text-sm text-gray-600 mt-2">
+                Keep seasonal items and tools in order with easy-to-scan labels.
+              </p>
+            </div>
+          </div>
+          <div className="text-center">
+            <div className="relative w-full max-w-md h-80 rounded-lg overflow-hidden shadow-md mx-auto">
+              <Image
+                src="/image/van-storage.png"
+                alt="Worker placing box in a van"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="p-4">
+              <h3 className="text-xl font-semibold text-gray-800">Professional On-the-Go</h3>
+              <p className="text-sm text-gray-600 mt-2">
+                Quickly locate and transport essential tools and materials to any job site.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   )
@@ -133,8 +121,6 @@ function HeroSection() {
   return (
     <section className="w-full py-16 md:py-24 bg-white">
       <div className="container mx-auto flex flex-col-reverse md:flex-row items-center justify-between px-6 md:px-12 gap-10">
-        
-        {/* Lado Esquerdo: Texto */}
         <div className="flex-1 text-center md:text-left space-y-6">
           <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-gray-900">
             Simplify your inventory.
@@ -197,7 +183,7 @@ function FeaturesSection() {
           </div>
           <div className="flex flex-col items-center text-center p-6 rounded-xl bg-white border shadow-sm hover:shadow-md transition-shadow">
             <div className="mb-4 rounded-full bg-gray-100 p-4">
-              <Cloud className="grayscale transition-all duration-300 hover:grayscale-0"/>
+              <Cloud className="grayscale transition-all duration-300 hover:grayscale-0" />
             </div>
             <h3 className="text-xl font-medium text-gray-900">Cloud Storage</h3>
             <p className="text-sm text-gray-600 mt-2">
