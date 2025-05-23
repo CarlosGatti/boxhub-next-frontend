@@ -1,6 +1,7 @@
 import { Container, MainContent, WrapperBody } from '../../../../styles/qrcode';
 import React, { useEffect } from 'react';
 
+import { FiPrinter } from 'react-icons/fi'
 import { Header } from '../../../../components/_ui/Header';
 import { MainLayout } from '../../../../layouts/MainLayout';
 import { QRCodeSVG } from 'qrcode.react';
@@ -22,6 +23,39 @@ const ContainersPage = () => {
 
   if (error || !data) {
     return <div className="text-center text-red-600">Error loading storages</div>;
+  }
+
+  const printQRCode = (id: string) => {
+    const qrElement = document.getElementById(`qr-${id}`)
+    if (!qrElement) return
+
+    const printWindow = window.open('', '_blank')
+    if (!printWindow) return
+
+    printWindow.document.write(`
+    <html>
+      <head>
+        <title>Print QR Code</title>
+        <style>
+          body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+          }
+        </style>
+      </head>
+      <body>
+        ${qrElement.outerHTML}
+      </body>
+    </html>
+  `)
+
+    printWindow.document.close()
+    printWindow.focus()
+    printWindow.print()
+    printWindow.close()
   }
 
   return (
@@ -67,8 +101,23 @@ const ContainersPage = () => {
 
                               {/* QR Code */}
                               <div className="flex justify-center p-4 border-b bg-white">
-                                <QRCodeSVG value={container.code} size={100} />
+                                <div id={`qr-${container.id}`}>
+                                  <QRCodeSVG value={container.code} size={100} />
+
+                                  <button
+                                    onClick={() => printQRCode(container.id.toString())}
+                                    className="mt-2 text-sm text-blue-600 hover:underline flex items-center justify-center"
+                                  >
+                                    <FiPrinter className="mr-1" />
+                                    Print QR Code
+                                  </button>
+                                </div>
+
+
                               </div>
+
+
+
 
                               {/* Footer */}
                               <div className="p-4 bg-gray-50 flex flex-col items-start space-y-2">

@@ -26,6 +26,9 @@ const AllItemsPage = () => {
     item.description.toLowerCase().includes(searchTerm.toLowerCase())
   ) || [];
 
+
+  
+
   return (
     <MainLayout
       headTitle="All Items"
