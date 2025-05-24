@@ -2,70 +2,21 @@ import { Cloud, Menu, QrCode, Search, X } from "lucide-react"
 
 import Image from "next/image"
 import Link from "next/link"
+import { PublicLayout } from "../layouts/PublicLayout"
 import { useState } from "react"
 
 export default function LandingPage() {
   return (
-    <div className="flex min-h-screen flex-col">
-      <Header />
-      <main className="flex-1">
-        <HeroSection />
-        <FeaturesSection />
-        <UseCasesSection />
-        <AboutSection />
-        <ContactSection />
-      </main>
-      <Footer />
-    </div>
+    <PublicLayout>
+    <HeroSection />
+    <FeaturesSection />
+    <UseCasesSection />
+    <AboutSection />
+    <ContactSection />
+  </PublicLayout>
   )
 }
 
-function Header() {
-  const [isOpen, setIsOpen] = useState(false)
-  return (
-    <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4">
-        <Link href="/" className="flex items-center gap-2">
-          <Image
-            src="/image/brand/rh-blue.png"
-            alt="Logo"
-            width={40}
-            height={40}
-            className="grayscale transition-all duration-300 hover:grayscale-0"
-          />
-        </Link>
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex gap-6">
-          <Link href="#features" className="text-sm font-medium transition-colors hover:text-primary">Features</Link>
-          <Link href="#about" className="text-sm font-medium transition-colors hover:text-primary">About</Link>
-          <Link href="#usecases" className="text-sm font-medium transition-colors hover:text-primary">Use Cases</Link>
-          <Link href="#contact" className="text-sm font-medium transition-colors hover:text-primary">Contact</Link>
-          <Link href="/account/login" className="text-sm font-medium transition-colors hover:text-primary">Login</Link>
-        </nav>
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label={isOpen ? 'Close menu' : 'Open menu'}
-          className="md:hidden p-2 rounded-md hover:bg-gray-100 focus:outline-none focus:ring"
-        >
-          {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
-      </div>
-      {/* Mobile Menu Panel */}
-      {isOpen && (
-        <div className="md:hidden bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-t">
-          <nav className="flex flex-col px-4 py-4 space-y-4">
-            <Link href="#features" className="text-lg font-medium" onClick={() => setIsOpen(false)}>Features</Link>
-            <Link href="#usecases" className="text-lg font-medium" onClick={() => setIsOpen(false)}>Use Cases</Link>
-            <Link href="#about" className="text-lg font-medium" onClick={() => setIsOpen(false)}>About</Link>
-            <Link href="#contact" className="text-lg font-medium" onClick={() => setIsOpen(false)}>Contact</Link>
-            <Link href="/account/login" className="text-lg font-medium" onClick={() => setIsOpen(false)}>Login</Link>
-          </nav>
-        </div>
-      )}
-    </header>
-  )
-}
 
 function UseCasesSection() {
   return (
@@ -130,9 +81,11 @@ function HeroSection() {
             Organize and access your items effortlessly with BoxHub. A smooth, fast, and intuitive way to manage your storage.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+            <Link href="/get-started">
             <button className="rounded-lg bg-black text-white px-6 py-3 text-sm font-medium hover:bg-gray-800 transition">
               Get Started
             </button>
+            </Link>
             <Link
               href="/account/login"
               className="rounded-lg border border-gray-300 px-6 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 transition"
