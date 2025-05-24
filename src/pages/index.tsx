@@ -81,11 +81,12 @@ function HeroSection() {
             Organize and access your items effortlessly with BoxHub. A smooth, fast, and intuitive way to manage your storage.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-            <Link href="/get-started">
-            <button className="rounded-lg bg-black text-white px-6 py-3 text-sm font-medium hover:bg-gray-800 transition">
+            <Link 
+            href="/get-started"
+             className="rounded-lg bg-black border border-black text-white px-6 py-3 text-sm font-medium hover:bg-gray-800 transition">
               Get Started
-            </button>
             </Link>
+            
             <Link
               href="/account/login"
               className="rounded-lg border border-gray-300 px-6 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 transition"
