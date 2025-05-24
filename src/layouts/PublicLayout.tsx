@@ -42,14 +42,14 @@ export function PublicLayout({ children }: { children: ReactNode }) {
         </div>
 
         {isOpen && (
-          <nav className="md:hidden border-t bg-white px-4 py-4 space-y-2 text-lg font-medium">
-            <Link href="/#features" onClick={() => setIsOpen(false)}>Features</Link>
-            <Link href="/#usecases" onClick={() => setIsOpen(false)}>Use Cases</Link>
-            <Link href="/#about" onClick={() => setIsOpen(false)}>About</Link>
-            <Link href="/#contact" onClick={() => setIsOpen(false)}>Contact</Link>
-            <Link href="/account/login" onClick={() => setIsOpen(false)}>Login</Link>
-          </nav>
-        )}
+  <nav className="md:hidden border-t bg-white px-4 py-4 space-y-4 text-lg font-medium transition-all duration-300 ease-in-out">
+    <Link href="/#features" onClick={() => setIsOpen(false)} className="block">Features</Link>
+    <Link href="/#usecases" onClick={() => setIsOpen(false)} className="block">Use Cases</Link>
+    <Link href="/#about" onClick={() => setIsOpen(false)} className="block">About</Link>
+    <Link href="/#contact" onClick={() => setIsOpen(false)} className="block">Contact</Link>
+    <Link href="/account/login" onClick={() => setIsOpen(false)} className="block">Login</Link>
+  </nav>
+)}
       </header>
 
       <main className="flex-1">{children}</main>
