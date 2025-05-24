@@ -54,6 +54,7 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap"
             rel="stylesheet"
           /> */}
+
           
           <title>BoxHub – Organize, Track & Manage Your Storage Effortlessly</title>
           <meta name="title" content="BoxHub – Organize, Track & Manage Your Storage Effortlessly" />
@@ -64,16 +65,17 @@ export default class MyDocument extends Document {
           <meta property="og:url" content="https://metatags.io/" />
           <meta property="og:title" content="BoxHub – Organize, Track & Manage Your Storage Effortlessly" />
           <meta property="og:description" content="BoxHub is an intuitive inventory system that uses QR codes to help you manage and locate your personal or business items with ease. Simplify your storage today." />
-          <meta property="og:image" content="/landing/meta.png" />
+          <meta property="og:image" content="https://metatags.io/images/meta-tags.png" />
 
           
           <meta property="twitter:card" content="summary_large_image" />
           <meta property="twitter:url" content="https://metatags.io/" />
           <meta property="twitter:title" content="BoxHub – Organize, Track & Manage Your Storage Effortlessly" />
           <meta property="twitter:description" content="BoxHub is an intuitive inventory system that uses QR codes to help you manage and locate your personal or business items with ease. Simplify your storage today." />
-          <meta property="og:image" content="/landing/meta.png" />
+          <meta property="twitter:image" content="https://metatags.io/images/meta-tags.png" />
 
           
+
         </Head>
         <body>
           <Main />
