@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 
 import { FiPrinter } from 'react-icons/fi'
 import { Header } from '../../../../components/_ui/Header';
-import { MainLayout } from '../../../../layouts/MainLayout';
+import { PrivateLayout } from '../../../../layouts/PrivateLayout';
 import { QRCodeSVG } from 'qrcode.react';
 import graphqlRequestClient from '../../../../lib/graphql.request';
 import { useGetMyStoragesQuery } from '../../../../generated/graphql';
@@ -59,16 +59,13 @@ const ContainersPage = () => {
   }
 
   return (
-    <MainLayout
-      headTitle="All Containers"
-      metaContent="List of all containers grouped by storage"
-      metaName="description"
+    <PrivateLayout
+      title="All Containers"
+      description="List of all containers grouped by storage"
     >
       <Container>
-        <Header />
-        <WrapperBody>
           <MainContent>
-            <div className="flex flex-col items-center min-h-screen bg-gray-100 p-6">
+            <div className="flex flex-col items-center min-h-screen">
               <div className="w-full max-w-7xl bg-white rounded-lg shadow-md p-4">
                 <h1 className="text-2xl font-bold text-gray-800 mb-8">Your Storages & Containers</h1>
 
@@ -116,9 +113,6 @@ const ContainersPage = () => {
 
                               </div>
 
-
-
-
                               {/* Footer */}
                               <div className="p-4 bg-gray-50 flex flex-col items-start space-y-2">
                                 <p className="text-sm text-gray-600">
@@ -154,9 +148,9 @@ const ContainersPage = () => {
               </div>
             </div>
           </MainContent>
-        </WrapperBody>
+        
       </Container>
-    </MainLayout>
+    </PrivateLayout>
   );
 };
 

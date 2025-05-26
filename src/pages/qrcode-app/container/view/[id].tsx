@@ -1,10 +1,8 @@
-import { Container, MainContent, WrapperBody } from '../../../../styles/qrcode';
+import { Container, MainContent } from '../../../../styles/qrcode';
 
 import { Header } from '../../../../components/_ui/Header';
 import Image from 'next/image';
-import ItemCard from '../../../../components/Card/ItemCard';
-import { MainLayout } from '../../../../layouts/MainLayout';
-import { MenuBar } from '../../../../components/_ui/MenuBar';
+import { PrivateLayout } from '../../../../layouts/PrivateLayout';
 import graphqlRequestClient from '../../../../lib/graphql.request';
 import { useGetContainerByIdQuery } from '../../../../generated/graphql';
 import { useRouter } from 'next/router';
@@ -35,14 +33,14 @@ const ContainerDetailsPage = () => {
   const container = data.getContainerById;
 
   return (
-    <MainLayout
-      headTitle="Scan QR Code"
-      metaContent="Scan QR Code to find a container"
-      metaName="description"
+    <PrivateLayout
+      title="Scan QR Code"
+      description="Scan QR Code to find a container"
+      
     >
       <Container>
         <Header />
-        <WrapperBody>
+        
           {/* <MenuBar /> */}
 
           <MainContent>
@@ -92,9 +90,9 @@ const ContainerDetailsPage = () => {
             </div>
 
           </MainContent>
-        </WrapperBody>
+        
       </Container>
-    </MainLayout>
+    </PrivateLayout>
   );
 };
 

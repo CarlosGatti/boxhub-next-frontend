@@ -1,8 +1,8 @@
-import { Container, MainContent, WrapperBody } from '../../../../styles/qrcode';
+import { Container, MainContent } from '../../../../styles/qrcode';
 
 import { Header } from '../../../../components/_ui/Header';
 import Image from 'next/image';
-import { MainLayout } from '../../../../layouts/MainLayout';
+import { PrivateLayout } from '../../../../layouts/PrivateLayout';
 import graphqlRequestClient from '../../../../lib/graphql.request';
 import { useGetAllItemsQuery } from '../../../../generated/graphql';
 import { useRouter } from 'next/router';
@@ -30,16 +30,16 @@ const AllItemsPage = () => {
   
 
   return (
-    <MainLayout
-      headTitle="All Items"
-      metaContent="View all items and search for specific items"
-      metaName="description"
+    <PrivateLayout
+      title="All Items"
+      description="View all items and search for specific items"
+      
     >
       <Container>
-        <Header />
-        <WrapperBody>
+      
+        
           <MainContent>
-            <div className="flex flex-col items-center min-h-screen bg-gray-100 p-6">
+            <div className="flex flex-col items-center min-h-screen">
               <div className="w-full max-w-7xl bg-white rounded-lg shadow-md p-4">
                 <h1 className="text-2xl font-bold text-gray-800 mb-8">All Items</h1>
 
@@ -110,9 +110,9 @@ const AllItemsPage = () => {
               </div>
             </div>
           </MainContent>
-        </WrapperBody>
+        
       </Container>
-    </MainLayout>
+    </PrivateLayout>
   );
 };
 

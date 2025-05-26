@@ -1,12 +1,10 @@
-import { Container, MainContent, WrapperBody } from '../../../styles/qrcode';
+import { Container, MainContent } from '../../../styles/qrcode';
 import { useEffect, useRef, useState } from 'react';
 
-import { Header } from '../../../components/_ui/Header';
 import { Html5QrcodeScanner } from 'html5-qrcode';
 import Image from 'next/image';
 import Link from 'next/link';
-import { MainLayout } from '../../../layouts/MainLayout';
-import { MenuBar } from '../../../components/_ui/MenuBar';
+import { PrivateLayout } from '../../../layouts/PrivateLayout';
 import graphqlRequestClient from '../../../lib/graphql.request';
 import { useGetContainerByCodeQuery } from '../../../generated/graphql';
 
@@ -76,18 +74,17 @@ const QrCodeScanner = () => {
   };
 
   return (
-    <MainLayout
-      headTitle="Scan QR Code"
-      metaContent="Scan QR Code to find a container"
-      metaName="description"
+    <PrivateLayout
+      title="Scan QR Code"
+      description="Scan QR Code to find a container"
+      
     >
       <Container>
-        <Header />
-        <WrapperBody>
+ 
           {/* <MenuBar /> */}
 
           <MainContent>
-          <div className="flex flex-col items-center min-h-screen bg-gray-100 p-4">
+          <div className="flex flex-col items-center min-h-screen">
           <div className="w-full max-w-3xl bg-white rounded-lg shadow-md p-6">
               <h1 className="text-2xl font-bold text-gray-800 mb-6">Scan QR Code</h1>
               <div id="reader" className="mb-6 border border-gray-300 rounded-lg"></div>
@@ -151,9 +148,9 @@ const QrCodeScanner = () => {
             </div>
             </div>
           </MainContent>
-        </WrapperBody>
+        
       </Container>
-    </MainLayout>
+    </PrivateLayout>
   );
 };
 

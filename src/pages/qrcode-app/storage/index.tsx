@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 
 import { Header } from '../../../components/_ui/Header';
 import Link from 'next/link';
-import { MainLayout } from '../../../layouts/MainLayout';
+import { PrivateLayout } from '../../../layouts/PrivateLayout';
 import graphqlRequestClient from '../../../lib/graphql.request';
 
 const ManageStorage = () => {
@@ -47,16 +47,16 @@ const ManageStorage = () => {
   }, [data]);
 
   return (
-    <MainLayout
+    <PrivateLayout
       headTitle="Manage Storage"
       metaContent="Create and manage QR code storage boxes"
       metaName="description"
     >
       <Container>
-        <Header />
-        <WrapperBody>
+        
+        
           <MainContent>
-            <div className="flex flex-col items-center min-h-screen bg-gray-100 p-4">
+          <div className="min-h-screen bg-gray-100 flex justify-center">  
               <div className="w-full max-w-3xl bg-white rounded-lg shadow-md p-6">
                 <div className="border-b pb-4 mb-4">
                   <h1 className="text-2xl font-bold text-gray-800">Create Storage</h1>
@@ -116,9 +116,8 @@ const ManageStorage = () => {
               </div>
             </div>
           </MainContent>
-        </WrapperBody>
       </Container>
-    </MainLayout>
+    </PrivateLayout>
   );
 };
 
