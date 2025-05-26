@@ -6,6 +6,7 @@ import { Header } from '../../../components/_ui/Header';
 import { MainContent } from '../../../styles/qrcode';
 import { MainLayout } from '../../../layouts/MainLayout';
 import { MenuBar } from '../../../components/_ui/MenuBar';
+import { PrivateLayout } from '../../../layouts/PrivateLayout';
 import graphqlRequestClient from '../../../lib/graphql.request';
 import { useGetDashboardDataQuery } from '../../../generated/graphql';
 import { useRouter } from 'next/router';
@@ -19,14 +20,9 @@ const DashboardPage = () => {
   if (error) return <p>Error loading dashboard: {error.message}</p>;
 
   return (
-    <MainLayout headTitle="Dashboard" metaContent="Dashboard Overview" metaName="description">
+    <PrivateLayout title="BoxHub | Dashboard" description="Overview of your containers and items">
       <Container>
-             
-        <Header />
-
          <MainContent>
-
-  
           <div className="min-h-screen bg-gray-100 p-4 flex justify-center">                        
             <div className="w-full max-w-7xl bg-white rounded-lg shadow-md p-6 md:p-8 space-y-10">
               {/* Summary Cards */}
@@ -94,7 +90,7 @@ const DashboardPage = () => {
           </div>
            </MainContent>
       </Container>
-    </MainLayout>
+    </PrivateLayout>
   );
 };
 
