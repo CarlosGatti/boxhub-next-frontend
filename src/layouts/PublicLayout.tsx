@@ -25,6 +25,7 @@ export function PublicLayout({ children }: { children: ReactNode }) {
           {/* Desktop Nav */}
           <nav className="hidden md:flex gap-6 text-sm font-medium">
             <Link href="/#features" className="hover:text-primary">Features</Link>
+            <Link href="/get-started" className="hover:text-primary">Get Started</Link>
             <Link href="/#usecases" className="hover:text-primary">Use Cases</Link>
             <Link href="/#about" className="hover:text-primary">About</Link>
             <Link href="/#contact" className="hover:text-primary">Contact</Link>
@@ -44,6 +45,7 @@ export function PublicLayout({ children }: { children: ReactNode }) {
         {isOpen && (
   <nav className="md:hidden border-t bg-white px-4 py-4 space-y-4 text-lg font-medium transition-all duration-300 ease-in-out">
     <Link href="/#features" onClick={() => setIsOpen(false)} className="block">Features</Link>
+    <Link href="/get-started" onClick={() => setIsOpen(false)} className="block">Get Started</Link>
     <Link href="/#usecases" onClick={() => setIsOpen(false)} className="block">Use Cases</Link>
     <Link href="/#about" onClick={() => setIsOpen(false)} className="block">About</Link>
     <Link href="/#contact" onClick={() => setIsOpen(false)} className="block">Contact</Link>
