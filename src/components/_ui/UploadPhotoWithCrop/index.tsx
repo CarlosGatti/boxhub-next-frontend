@@ -64,18 +64,17 @@ export const UploadPhotoWithCrop = ({
             </div>
           </div>
         ) : (
-          <div className="relative w-full h-full flex items-center justify-center">
-            <Image
-              src={image}
-              alt="Uploaded"
-              width={imageWidth}
-              height={imageHeight}
-              className="object-cover rounded-lg"
-            />
-            <div className="absolute bottom-2 right-2 p-2 bg-white rounded-full shadow">
-              <BsCamera size={20} className="text-gray-600" />
-            </div>
+          <div className="relative w-full h-40 rounded-lg overflow-hidden">
+          <Image
+            src={image}
+            alt="Uploaded"
+            fill
+            className="object-cover rounded-lg"
+          />
+          <div className="absolute bottom-2 right-2 p-2 bg-white rounded-full shadow">
+            <BsCamera size={20} className="text-gray-600" />
           </div>
+        </div>
         )}
         <input
           id="file-upload"

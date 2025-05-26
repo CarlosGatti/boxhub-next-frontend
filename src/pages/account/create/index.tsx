@@ -1,219 +1,155 @@
 import * as yup from 'yup'
 
-import {
-  Back,
-  Container,
-  Description,
-  Form,
-  HeaderSimpleWrapper,
-  HeaderWrapper,
-  ImageUploadPhoto,
-  ServiceTerms,
-  Title,
-  TwoColumn,
-  WrapperForm,
-  WrapperStep,
-} from '../../../styles/signup'
-import {
-  UserCreateInput,
-  useCreateUserMutation,
-} from '../../../generated/graphql'
-
 import { AllRightsReserved } from '../../../components/account/AllRightsReserved'
 import { Button } from '../../../components/_ui/Button'
-import { HorizontalDivider } from '../../../components/_ui/Divider'
 import Image from 'next/image'
 import { Input } from '../../../components/_ui/Input/textInput'
 import Link from 'next/link'
-import { MainLayout } from '../../../layouts/MainLayout'
 import { ModalServiceTerms } from '../../../components/account/ModalServiceTerms'
-import { NextPage } from 'next'
+import { PublicLayout } from '../../../layouts/PublicLayout'
 import { UploadPhotoWithCrop } from '../../../components/_ui/UploadPhotoWithCrop'
 import graphqlRequestClient from '../../../lib/graphql.request'
 import { toast } from 'react-toastify'
-import { uploadImages } from '../../../lib/imgBB'
+import { useCreateUserMutation } from '../../../generated/graphql'
 import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { yupResolver } from '@hookform/resolvers/yup'
 
-interface StepsProps {
-  id: string
-  title: string
-  description: string
-}
-
 const createUserSchema = yup.object().shape({
-  firstName: yup.string().required('Nome obrigatório'),
-  lastName: yup.string().required('Sobrenome obrigatório'),
-  nickname: yup.string().required('Nome de usuário obrigatório'),
-  email: yup
-    .string()
-    .required('E-mail obrigatório')
-    .email('Digite um e-mail válido'),
-  password: yup
-    .string()
-    .required('Senha obrigatória')
-    .min(6, 'Senha deve ter no mínimo 6 caracteres'),
+  firstName: yup.string().required('First name is required'),
+  lastName: yup.string().required('Last name is required'),
+  nickname: yup.string().required('Username is required'),
+  email: yup.string().required('Email is required').email('Invalid email'),
+  password: yup.string().required('Password is required').min(6, 'Min. 6 characters'),
   passwordConfirmation: yup
     .string()
-    .oneOf([null, yup.ref('password')], 'As senhas não conferem'),
+    .oneOf([yup.ref('password')], 'Passwords must match')
 })
 
-const CreateUser: NextPage = () => {
+export default function RegisterPage() {
+  const [step, setStep] = useState<'form' | 'uploadPhoto'>('form')
+  const [profilePicture, setProfilePicture] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter()
+
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm<any>({
-    resolver: yupResolver(createUserSchema),
-  })
+    formState: { errors }
+  } = useForm({ resolver: yupResolver(createUserSchema) })
 
-  const { mutate: _createUser } = useCreateUserMutation(graphqlRequestClient)
+  const { mutate: createUser } = useCreateUserMutation(graphqlRequestClient)
 
-  const router = useRouter()
-
-  const [profilePicture, setProfilePicture] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
-  const [step, setStep] = useState<StepsProps>({
-    id: 'form',
-    title: 'Register',
-    description: 'Its fast and easy',
-  })
-
-  const createUser = async (
-    values: UserCreateInput & { passwordConfirmation: string | undefined },
-  ) => {
-    delete values.passwordConfirmation
-
-    if (step.id === 'uploadPhoto') {
-      const newImage = ''
-
-      if (profilePicture) {
-        // const response = await uploadImages(profilePicture)
-        //  newImage = response.data.data.display_url
-      }
-
-      await _createUser(
-        {
-          data: {
-            ...values,
-            public: true,
-            profilePicture: newImage || '',
-          },
-        },
-        {
-          onSuccess(data) {
-            if (data.createUser?.id) {
-              router.push('/account/login')
-              toast.success('Account successfully created!')
-              setIsLoading(false)
-            } else {
-              toast.error('Unable to create your account! Try again.')
-              setIsLoading(false)
-            }
-          },
-        },
-      )
-      setIsLoading(false)
+  const onSubmit = async (values: any) => {
+    if (step === 'form') {
+      setStep('uploadPhoto')
+      return
     }
-    setStep({
-      id: 'uploadPhoto',
-      title: 'Foto de perfil',
-      description: 'Escolha uma foto para usar',
-    })
+
+    setIsLoading(true)
+    const payload = {
+      ...values,
+      profilePicture: profilePicture || '',
+      public: true
+    }
+    delete payload.passwordConfirmation
+
+    createUser(
+      { data: payload },
+      {
+        onSuccess: (data) => {
+          if (data.createUser?.id) {
+            toast.success('Account created successfully!')
+
+            const redirect = router.query.redirect
+
+            if (redirect === 'paid') {
+              // Redireciona para o checkout LemonSqueezy
+              router.push('https://boxhub.lemonsqueezy.com/buy/9bd599bf-e31b-4c81-abbc-bed560e0a6d3')
+            } else {
+              // Redireciona para o login normal
+              router.push('/account/login')
+            }
+
+
+          } else {
+            toast.error('Error creating account.')
+          }
+          setIsLoading(false)
+        },
+        onError: () => {
+          toast.error('Something went wrong.')
+          setIsLoading(false)
+        }
+      }
+    )
   }
 
   return (
-    <MainLayout
-      headTitle="BoxHub | Register"
-      metaName="description"
-      metaContent="register an account"
-    >
-      <HeaderWrapper>
-        <HeaderSimpleWrapper>
+    <PublicLayout>
+      <div className="max-w-2xl mx-auto py-12 px-4">
+        <div className="flex justify-center mb-6">
           <Image
             src="/image/brand/rh-blue.png"
-            width={150}
-            height={70}
-            alt="Logo da BoxHub - CSA"
+            alt="BoxHub logo"
+            width={120}
+            height={60}
+            className="grayscale transition duration-300 hover:grayscale-0"
           />
-        </HeaderSimpleWrapper>
-      </HeaderWrapper>
-      <Container>
-        <WrapperForm>
-          <Title>{step.title}</Title>
-          <Description>{step.description}</Description>
-          <Form onSubmit={handleSubmit(createUser)}>
-            {step.id === 'form' && (
-              <WrapperStep>
-                <TwoColumn>
-                  <Input
-                    placeholder="First name"
-                    error={errors.firstName}
-                    {...register('firstName')}
-                  />
-                  <Input
-                    placeholder="Last name"
-                    {...register('lastName')}
-                    error={errors.lastName}
-                  />
-                </TwoColumn>
-                <Input
-                  placeholder="E-mail"
-                  {...register('email')}
-                  error={errors.email}
-                />
-                <Input
-                  placeholder="User name"
-                  {...register('nickname')}
-                  error={errors.nickname}
-                />
-                <HorizontalDivider style={{ marginBottom: 23 }} />
-                <Input
-                  type="password"
-                  placeholder="Password"
-                  {...register('password')}
-                  error={errors.password}
-                />
-                <Input
-                  type="password"
-                  placeholder="Confirm password"
-                  {...register('passwordConfirmation')}
-                  error={errors.passwordConfirmation}
-                />
+        </div>
+        <h1 className="text-3xl font-semibold text-center mb-2">
+          {step === 'form' ? 'Create your account' : 'Upload your photo'}
+        </h1>
+        <p className="text-gray-600 text-center mb-6">
+          {step === 'form' ? "It's fast and easy." : 'Choose a profile picture.'}
+        </p>
 
-                <ServiceTerms>
-                  <ModalServiceTerms />
-                </ServiceTerms>
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          {step === 'form' && (
+            <>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <Input placeholder="First Name" {...register('firstName')} error={errors.firstName} />
+                <Input placeholder="Last Name" {...register('lastName')} error={errors.lastName} />
+              </div>
+              <Input placeholder="Email" {...register('email')} error={errors.email} />
+              <Input placeholder="Username" {...register('nickname')} error={errors.nickname} />
+              <Input type="password" placeholder="Password" {...register('password')} error={errors.password} />
+              <Input
+                type="password"
+                placeholder="Confirm Password"
+                {...register('passwordConfirmation')}
+                error={errors.passwordConfirmation}
+              />
 
-                <Button buttonStyle={{ width: '100%' }}>Proxímo</Button>
-                <Link href="/account/login">
-                  <Back>Back to login</Back>
-                </Link>
-              </WrapperStep>
-            )}
-            {step.id === 'uploadPhoto' && (
-              <WrapperStep>
-                <ImageUploadPhoto>
-                  <div>
-                    <UploadPhotoWithCrop
-                      imageUser={profilePicture}
-                      setBanner={(value: string) => setProfilePicture(value)}
-                    />
-                  </div>
-                </ImageUploadPhoto>
-                <Button type="submit" isLoading={isLoading}>
-                  Save and continue
-                </Button>
-              </WrapperStep>
-            )}
-          </Form>
-        </WrapperForm>
+              <div className="text-sm text-gray-600">
+                <ModalServiceTerms />
+              </div>
 
-        <AllRightsReserved style={{ marginTop: 40 }} />
-      </Container>
-    </MainLayout>
+              <Button className="w-full">Next</Button>
+              <Link href="/account/login" className="block text-center text-blue-600 hover:underline">
+                Back to login
+              </Link>
+            </>
+          )}
+
+          {step === 'uploadPhoto' && (
+            <div className="space-y-6">
+              <UploadPhotoWithCrop
+                imageUser={profilePicture}
+                setBanner={(value: string) => setProfilePicture(value)}
+              />
+              <Button type="submit" isLoading={isLoading} className="w-full">
+                Save and continue
+              </Button>
+            </div>
+          )}
+        </form>
+
+        <div className="mt-8">
+          <AllRightsReserved />
+        </div>
+      </div>
+    </PublicLayout>
   )
 }
-export default CreateUser
