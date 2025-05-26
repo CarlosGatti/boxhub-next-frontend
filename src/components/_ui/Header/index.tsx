@@ -4,6 +4,7 @@ import { IoCloseOutline, IoNotificationsOutline } from 'react-icons/io5'
 import { IdentityCurrentUser } from '../SideBar/IdentityCurrentUser'
 import { IoMdLogOut } from 'react-icons/io'
 import Link from 'next/link'
+import { MenuBar } from '../MenuBar'
 import { SearchModal } from './SearchModal'
 import { useAuth } from '../../../hooks/useAuth'
 import { useState } from 'react'
@@ -47,14 +48,15 @@ export function Header() {
 
       {/* Mobile Menu Overlay */}
       {isOpenMenu && (
-        <div className="fixed inset-0 top-[60px] z-40 bg-black/70 backdrop-blur-md md:hidden">
-          <div className="bg-zinc-900 w-64 h-full">
-            {/* Você pode usar <MenuBar open /> aqui também */}
-            <IdentityCurrentUser displayName />
-            {/* Adicione seus links ou componentes de menu aqui */}
-          </div>
-        </div>
-      )}
+  <div className="fixed inset-0 top-[60px] z-40 bg-black/70 backdrop-blur-md md:hidden">
+    <div className="bg-white w-64 h-full shadow-lg overflow-y-auto">
+      <div className="px-4 pt-4 pb-2 border-b">
+        <IdentityCurrentUser displayName />
+      </div>
+      <MenuBar open /> {/* <- isso vai funcionar desde que o MenuBar seja adaptável */}
+    </div>
+  </div>
+)}
     </header>
   )
 }

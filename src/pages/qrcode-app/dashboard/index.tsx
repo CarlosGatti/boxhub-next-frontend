@@ -23,7 +23,7 @@ const DashboardPage = () => {
     <PrivateLayout title="BoxHub | Dashboard" description="Overview of your containers and items">
       <Container>
          <MainContent>
-          <div className="min-h-screen bg-gray-100 p-4 flex justify-center">                        
+          <div className="min-h-screen bg-gray-100 flex justify-center">                        
             <div className="w-full max-w-7xl bg-white rounded-lg shadow-md p-6 md:p-8 space-y-10">
               {/* Summary Cards */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
