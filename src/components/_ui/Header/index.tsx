@@ -38,7 +38,7 @@ export function Header() {
           <Link href="/qrcode-app/dashboard">
             <AiOutlineHome size={22} className="hover:text-blue-400 transition" />
           </Link>
-          <SearchModal />
+          {/* <SearchModal /> */}
           <IoNotificationsOutline size={22} className="hover:text-blue-400 transition" />
           <button onClick={logout}>
             <IoMdLogOut size={22} className="hover:text-red-400 transition" />
