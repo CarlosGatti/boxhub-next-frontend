@@ -31,6 +31,8 @@ export default function RegisterPage() {
   const [step, setStep] = useState<'form' | 'uploadPhoto'>('form')
   const [profilePicture, setProfilePicture] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const [isRedirecting, setIsRedirecting] = useState(false)
+
   const router = useRouter()
 
   const {
@@ -65,13 +67,13 @@ export default function RegisterPage() {
             const redirect = router.query.redirect
 
             if (redirect === 'paid') {
-              // Redireciona para o checkout LemonSqueezy
-              router.push('https://boxhub.lemonsqueezy.com/buy/9bd599bf-e31b-4c81-abbc-bed560e0a6d3')
+              setIsRedirecting(true)
+              setTimeout(() => {
+                router.push('https://boxhub.lemonsqueezy.com/buy/9bd599bf-e31b-4c81-abbc-bed560e0a6d3')
+              }, 2000)
             } else {
-              // Redireciona para o login normal
               router.push('/account/login')
             }
-
 
           } else {
             toast.error('Error creating account.')
@@ -142,6 +144,15 @@ export default function RegisterPage() {
               <Button type="submit" isLoading={isLoading} className="w-full">
                 Save and continue
               </Button>
+
+              {isRedirecting && (
+                <div className="mt-6">
+                  <div className="flex justify-center items-center space-x-2">
+                    <div className="w-5 h-5 border-2 border-gray-300 border-t-black rounded-full animate-spin"></div>
+                    <span className="text-sm text-gray-600">Redirecting to checkout...</span>
+                  </div>
+                </div>
+              )}
             </div>
           )}
         </form>
@@ -150,6 +161,9 @@ export default function RegisterPage() {
           <AllRightsReserved />
         </div>
       </div>
+
     </PublicLayout>
+
+
   )
 }
