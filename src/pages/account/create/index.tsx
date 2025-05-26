@@ -2,6 +2,7 @@ import * as yup from 'yup'
 
 import { AllRightsReserved } from '../../../components/account/AllRightsReserved'
 import { Button } from '../../../components/_ui/Button'
+import { EmailAvailableDocument } from '../../../generated/graphql'
 import Image from 'next/image'
 import { Input } from '../../../components/_ui/Input/textInput'
 import Link from 'next/link'
@@ -11,6 +12,7 @@ import { UploadPhotoWithCrop } from '../../../components/_ui/UploadPhotoWithCrop
 import graphqlRequestClient from '../../../lib/graphql.request'
 import { toast } from 'react-toastify'
 import { useCreateUserMutation } from '../../../generated/graphql'
+import { useEmailAvailableQuery } from '../../../generated/graphql'
 import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
@@ -20,7 +22,33 @@ const createUserSchema = yup.object().shape({
   firstName: yup.string().required('First name is required'),
   lastName: yup.string().required('Last name is required'),
   nickname: yup.string().required('Username is required'),
-  email: yup.string().required('Email is required').email('Invalid email'),
+  email: yup
+  .string()
+  .required('Email is required')
+  .email('Invalid email')
+  .test(
+    'email-available',
+    'This email is already in use',
+    async function (value) {
+      if (!value) return false
+      try {
+        const response = await graphqlRequestClient.request(
+          EmailAvailableDocument,
+          { email: value }
+        )
+        const { emailAvailable } = response as { emailAvailable: boolean }
+
+        if (!emailAvailable) {
+          return this.createError({ message: 'This email is already in use' })
+        }
+
+        return true
+      } catch (error) {
+        return this.createError({ message: 'Could not validate email' })
+      }
+    }
+  )
+  ,
   password: yup.string().required('Password is required').min(6, 'Min. 6 characters'),
   passwordConfirmation: yup
     .string()
@@ -39,7 +67,9 @@ export default function RegisterPage() {
     register,
     handleSubmit,
     formState: { errors }
-  } = useForm({ resolver: yupResolver(createUserSchema) })
+  } = useForm({ resolver: yupResolver(createUserSchema),
+    mode: 'onBlur',
+   })
 
   const { mutate: createUser } = useCreateUserMutation(graphqlRequestClient)
 
@@ -115,6 +145,7 @@ export default function RegisterPage() {
                 <Input placeholder="Last Name" {...register('lastName')} error={errors.lastName} />
               </div>
               <Input placeholder="Email" {...register('email')} error={errors.email} />
+              
               <Input placeholder="Username" {...register('nickname')} error={errors.nickname} />
               <Input type="password" placeholder="Password" {...register('password')} error={errors.password} />
               <Input

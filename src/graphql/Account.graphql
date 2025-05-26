@@ -19,6 +19,10 @@ mutation CreateUser($data: UserCreateInput!) {
   }
 }
 
+query EmailAvailable($email: String!) {
+  emailAvailable(email: $email)
+}
+
 mutation refreshToken {
   refreshToken
 }

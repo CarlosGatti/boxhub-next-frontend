@@ -3455,11 +3455,13 @@ export type MeDto = {
   eventMember?: Maybe<Array<EventMember>>;
   eventTicket?: Maybe<Array<EventTicket>>;
   events?: Maybe<Array<Event>>;
+  expiresAt?: Maybe<Scalars['DateTime']>;
   firstName: Scalars['String'];
   followers?: Maybe<Array<Follows>>;
   following?: Maybe<Array<Follows>>;
   githubUrl?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
+  isPremium: Scalars['Boolean'];
   lastName: Scalars['String'];
   linkedinUrl?: Maybe<Scalars['String']>;
   memberCommunities?: Maybe<Array<CommunityMember>>;
@@ -3473,8 +3475,10 @@ export type MeDto = {
   publications?: Maybe<Array<Publication>>;
   role: Role;
   storageMemberships?: Maybe<Array<StorageMember>>;
+  subscriptionId?: Maybe<Scalars['String']>;
   twitterUrl?: Maybe<Scalars['String']>;
   updatedAt: Scalars['DateTime'];
+  willExpireAt?: Maybe<Scalars['DateTime']>;
 };
 
 export enum MembershipStatus {
@@ -5094,6 +5098,7 @@ export type PublicationWhereUniqueInput = {
 export type Query = {
   __typename?: 'Query';
   communityById: Community;
+  emailAvailable: Scalars['Boolean'];
   findCommentsByPublication: Array<PublicationComment>;
   findEvent: EventDetails;
   findEventsByCommunity: Array<Event>;
@@ -5119,6 +5124,11 @@ export type Query = {
 
 export type QueryCommunityByIdArgs = {
   id: Scalars['Float'];
+};
+
+
+export type QueryEmailAvailableArgs = {
+  email: Scalars['String'];
 };
 
 
@@ -5563,11 +5573,13 @@ export type User = {
   eventMember?: Maybe<Array<EventMember>>;
   eventTicket?: Maybe<Array<EventTicket>>;
   events?: Maybe<Array<Event>>;
+  expiresAt?: Maybe<Scalars['DateTime']>;
   firstName: Scalars['String'];
   followers?: Maybe<Array<Follows>>;
   following?: Maybe<Array<Follows>>;
   githubUrl?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
+  isPremium: Scalars['Boolean'];
   lastName: Scalars['String'];
   linkedinUrl?: Maybe<Scalars['String']>;
   memberCommunities?: Maybe<Array<CommunityMember>>;
@@ -5579,8 +5591,10 @@ export type User = {
   publications?: Maybe<Array<Publication>>;
   role: Role;
   storageMemberships?: Maybe<Array<StorageMember>>;
+  subscriptionId?: Maybe<Scalars['String']>;
   twitterUrl?: Maybe<Scalars['String']>;
   updatedAt: Scalars['DateTime'];
+  willExpireAt?: Maybe<Scalars['DateTime']>;
 };
 
 export type UserCount = {
@@ -5610,10 +5624,12 @@ export type UserCreateInput = {
   eventMember?: InputMaybe<EventMemberCreateNestedManyWithoutUserInput>;
   eventTicket?: InputMaybe<EventTicketCreateNestedManyWithoutUserInput>;
   events?: InputMaybe<EventCreateNestedManyWithoutOwnerInput>;
+  expiresAt?: InputMaybe<Scalars['DateTime']>;
   firstName: Scalars['String'];
   followers?: InputMaybe<FollowsCreateNestedManyWithoutFollowingInput>;
   following?: InputMaybe<FollowsCreateNestedManyWithoutFollowerInput>;
   githubUrl?: InputMaybe<Scalars['String']>;
+  isPremium?: InputMaybe<Scalars['Boolean']>;
   lastName: Scalars['String'];
   linkedinUrl?: InputMaybe<Scalars['String']>;
   memberCommunities?: InputMaybe<CommunityMemberCreateNestedManyWithoutUserInput>;
@@ -5625,8 +5641,10 @@ export type UserCreateInput = {
   publications?: InputMaybe<PublicationCreateNestedManyWithoutUserInput>;
   role?: InputMaybe<Role>;
   storageMemberships?: InputMaybe<StorageMemberCreateNestedManyWithoutUserInput>;
+  subscriptionId?: InputMaybe<Scalars['String']>;
   twitterUrl?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
+  willExpireAt?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type UserCreateNestedOneWithoutAdminCommunitiesInput = {
@@ -5760,10 +5778,12 @@ export type UserCreateWithoutAdminCommunitiesInput = {
   eventMember?: InputMaybe<EventMemberCreateNestedManyWithoutUserInput>;
   eventTicket?: InputMaybe<EventTicketCreateNestedManyWithoutUserInput>;
   events?: InputMaybe<EventCreateNestedManyWithoutOwnerInput>;
+  expiresAt?: InputMaybe<Scalars['DateTime']>;
   firstName: Scalars['String'];
   followers?: InputMaybe<FollowsCreateNestedManyWithoutFollowingInput>;
   following?: InputMaybe<FollowsCreateNestedManyWithoutFollowerInput>;
   githubUrl?: InputMaybe<Scalars['String']>;
+  isPremium?: InputMaybe<Scalars['Boolean']>;
   lastName: Scalars['String'];
   linkedinUrl?: InputMaybe<Scalars['String']>;
   memberCommunities?: InputMaybe<CommunityMemberCreateNestedManyWithoutUserInput>;
@@ -5775,8 +5795,10 @@ export type UserCreateWithoutAdminCommunitiesInput = {
   publications?: InputMaybe<PublicationCreateNestedManyWithoutUserInput>;
   role?: InputMaybe<Role>;
   storageMemberships?: InputMaybe<StorageMemberCreateNestedManyWithoutUserInput>;
+  subscriptionId?: InputMaybe<Scalars['String']>;
   twitterUrl?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
+  willExpireAt?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type UserCreateWithoutAllPublicationCommentsInput = {
@@ -5789,10 +5811,12 @@ export type UserCreateWithoutAllPublicationCommentsInput = {
   eventMember?: InputMaybe<EventMemberCreateNestedManyWithoutUserInput>;
   eventTicket?: InputMaybe<EventTicketCreateNestedManyWithoutUserInput>;
   events?: InputMaybe<EventCreateNestedManyWithoutOwnerInput>;
+  expiresAt?: InputMaybe<Scalars['DateTime']>;
   firstName: Scalars['String'];
   followers?: InputMaybe<FollowsCreateNestedManyWithoutFollowingInput>;
   following?: InputMaybe<FollowsCreateNestedManyWithoutFollowerInput>;
   githubUrl?: InputMaybe<Scalars['String']>;
+  isPremium?: InputMaybe<Scalars['Boolean']>;
   lastName: Scalars['String'];
   linkedinUrl?: InputMaybe<Scalars['String']>;
   memberCommunities?: InputMaybe<CommunityMemberCreateNestedManyWithoutUserInput>;
@@ -5804,8 +5828,10 @@ export type UserCreateWithoutAllPublicationCommentsInput = {
   publications?: InputMaybe<PublicationCreateNestedManyWithoutUserInput>;
   role?: InputMaybe<Role>;
   storageMemberships?: InputMaybe<StorageMemberCreateNestedManyWithoutUserInput>;
+  subscriptionId?: InputMaybe<Scalars['String']>;
   twitterUrl?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
+  willExpireAt?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type UserCreateWithoutAllPublicationLikesInput = {
@@ -5818,10 +5844,12 @@ export type UserCreateWithoutAllPublicationLikesInput = {
   eventMember?: InputMaybe<EventMemberCreateNestedManyWithoutUserInput>;
   eventTicket?: InputMaybe<EventTicketCreateNestedManyWithoutUserInput>;
   events?: InputMaybe<EventCreateNestedManyWithoutOwnerInput>;
+  expiresAt?: InputMaybe<Scalars['DateTime']>;
   firstName: Scalars['String'];
   followers?: InputMaybe<FollowsCreateNestedManyWithoutFollowingInput>;
   following?: InputMaybe<FollowsCreateNestedManyWithoutFollowerInput>;
   githubUrl?: InputMaybe<Scalars['String']>;
+  isPremium?: InputMaybe<Scalars['Boolean']>;
   lastName: Scalars['String'];
   linkedinUrl?: InputMaybe<Scalars['String']>;
   memberCommunities?: InputMaybe<CommunityMemberCreateNestedManyWithoutUserInput>;
@@ -5833,8 +5861,10 @@ export type UserCreateWithoutAllPublicationLikesInput = {
   publications?: InputMaybe<PublicationCreateNestedManyWithoutUserInput>;
   role?: InputMaybe<Role>;
   storageMemberships?: InputMaybe<StorageMemberCreateNestedManyWithoutUserInput>;
+  subscriptionId?: InputMaybe<Scalars['String']>;
   twitterUrl?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
+  willExpireAt?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type UserCreateWithoutEventMemberInput = {
@@ -5847,10 +5877,12 @@ export type UserCreateWithoutEventMemberInput = {
   emailVerified?: InputMaybe<Scalars['Boolean']>;
   eventTicket?: InputMaybe<EventTicketCreateNestedManyWithoutUserInput>;
   events?: InputMaybe<EventCreateNestedManyWithoutOwnerInput>;
+  expiresAt?: InputMaybe<Scalars['DateTime']>;
   firstName: Scalars['String'];
   followers?: InputMaybe<FollowsCreateNestedManyWithoutFollowingInput>;
   following?: InputMaybe<FollowsCreateNestedManyWithoutFollowerInput>;
   githubUrl?: InputMaybe<Scalars['String']>;
+  isPremium?: InputMaybe<Scalars['Boolean']>;
   lastName: Scalars['String'];
   linkedinUrl?: InputMaybe<Scalars['String']>;
   memberCommunities?: InputMaybe<CommunityMemberCreateNestedManyWithoutUserInput>;
@@ -5862,8 +5894,10 @@ export type UserCreateWithoutEventMemberInput = {
   publications?: InputMaybe<PublicationCreateNestedManyWithoutUserInput>;
   role?: InputMaybe<Role>;
   storageMemberships?: InputMaybe<StorageMemberCreateNestedManyWithoutUserInput>;
+  subscriptionId?: InputMaybe<Scalars['String']>;
   twitterUrl?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
+  willExpireAt?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type UserCreateWithoutEventTicketInput = {
@@ -5876,10 +5910,12 @@ export type UserCreateWithoutEventTicketInput = {
   emailVerified?: InputMaybe<Scalars['Boolean']>;
   eventMember?: InputMaybe<EventMemberCreateNestedManyWithoutUserInput>;
   events?: InputMaybe<EventCreateNestedManyWithoutOwnerInput>;
+  expiresAt?: InputMaybe<Scalars['DateTime']>;
   firstName: Scalars['String'];
   followers?: InputMaybe<FollowsCreateNestedManyWithoutFollowingInput>;
   following?: InputMaybe<FollowsCreateNestedManyWithoutFollowerInput>;
   githubUrl?: InputMaybe<Scalars['String']>;
+  isPremium?: InputMaybe<Scalars['Boolean']>;
   lastName: Scalars['String'];
   linkedinUrl?: InputMaybe<Scalars['String']>;
   memberCommunities?: InputMaybe<CommunityMemberCreateNestedManyWithoutUserInput>;
@@ -5891,8 +5927,10 @@ export type UserCreateWithoutEventTicketInput = {
   publications?: InputMaybe<PublicationCreateNestedManyWithoutUserInput>;
   role?: InputMaybe<Role>;
   storageMemberships?: InputMaybe<StorageMemberCreateNestedManyWithoutUserInput>;
+  subscriptionId?: InputMaybe<Scalars['String']>;
   twitterUrl?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
+  willExpireAt?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type UserCreateWithoutEventsInput = {
@@ -5905,10 +5943,12 @@ export type UserCreateWithoutEventsInput = {
   emailVerified?: InputMaybe<Scalars['Boolean']>;
   eventMember?: InputMaybe<EventMemberCreateNestedManyWithoutUserInput>;
   eventTicket?: InputMaybe<EventTicketCreateNestedManyWithoutUserInput>;
+  expiresAt?: InputMaybe<Scalars['DateTime']>;
   firstName: Scalars['String'];
   followers?: InputMaybe<FollowsCreateNestedManyWithoutFollowingInput>;
   following?: InputMaybe<FollowsCreateNestedManyWithoutFollowerInput>;
   githubUrl?: InputMaybe<Scalars['String']>;
+  isPremium?: InputMaybe<Scalars['Boolean']>;
   lastName: Scalars['String'];
   linkedinUrl?: InputMaybe<Scalars['String']>;
   memberCommunities?: InputMaybe<CommunityMemberCreateNestedManyWithoutUserInput>;
@@ -5920,8 +5960,10 @@ export type UserCreateWithoutEventsInput = {
   publications?: InputMaybe<PublicationCreateNestedManyWithoutUserInput>;
   role?: InputMaybe<Role>;
   storageMemberships?: InputMaybe<StorageMemberCreateNestedManyWithoutUserInput>;
+  subscriptionId?: InputMaybe<Scalars['String']>;
   twitterUrl?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
+  willExpireAt?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type UserCreateWithoutFollowersInput = {
@@ -5935,9 +5977,11 @@ export type UserCreateWithoutFollowersInput = {
   eventMember?: InputMaybe<EventMemberCreateNestedManyWithoutUserInput>;
   eventTicket?: InputMaybe<EventTicketCreateNestedManyWithoutUserInput>;
   events?: InputMaybe<EventCreateNestedManyWithoutOwnerInput>;
+  expiresAt?: InputMaybe<Scalars['DateTime']>;
   firstName: Scalars['String'];
   following?: InputMaybe<FollowsCreateNestedManyWithoutFollowerInput>;
   githubUrl?: InputMaybe<Scalars['String']>;
+  isPremium?: InputMaybe<Scalars['Boolean']>;
   lastName: Scalars['String'];
   linkedinUrl?: InputMaybe<Scalars['String']>;
   memberCommunities?: InputMaybe<CommunityMemberCreateNestedManyWithoutUserInput>;
@@ -5949,8 +5993,10 @@ export type UserCreateWithoutFollowersInput = {
   publications?: InputMaybe<PublicationCreateNestedManyWithoutUserInput>;
   role?: InputMaybe<Role>;
   storageMemberships?: InputMaybe<StorageMemberCreateNestedManyWithoutUserInput>;
+  subscriptionId?: InputMaybe<Scalars['String']>;
   twitterUrl?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
+  willExpireAt?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type UserCreateWithoutFollowingInput = {
@@ -5964,9 +6010,11 @@ export type UserCreateWithoutFollowingInput = {
   eventMember?: InputMaybe<EventMemberCreateNestedManyWithoutUserInput>;
   eventTicket?: InputMaybe<EventTicketCreateNestedManyWithoutUserInput>;
   events?: InputMaybe<EventCreateNestedManyWithoutOwnerInput>;
+  expiresAt?: InputMaybe<Scalars['DateTime']>;
   firstName: Scalars['String'];
   followers?: InputMaybe<FollowsCreateNestedManyWithoutFollowingInput>;
   githubUrl?: InputMaybe<Scalars['String']>;
+  isPremium?: InputMaybe<Scalars['Boolean']>;
   lastName: Scalars['String'];
   linkedinUrl?: InputMaybe<Scalars['String']>;
   memberCommunities?: InputMaybe<CommunityMemberCreateNestedManyWithoutUserInput>;
@@ -5978,8 +6026,10 @@ export type UserCreateWithoutFollowingInput = {
   publications?: InputMaybe<PublicationCreateNestedManyWithoutUserInput>;
   role?: InputMaybe<Role>;
   storageMemberships?: InputMaybe<StorageMemberCreateNestedManyWithoutUserInput>;
+  subscriptionId?: InputMaybe<Scalars['String']>;
   twitterUrl?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
+  willExpireAt?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type UserCreateWithoutMemberCommunitiesInput = {
@@ -5993,10 +6043,12 @@ export type UserCreateWithoutMemberCommunitiesInput = {
   eventMember?: InputMaybe<EventMemberCreateNestedManyWithoutUserInput>;
   eventTicket?: InputMaybe<EventTicketCreateNestedManyWithoutUserInput>;
   events?: InputMaybe<EventCreateNestedManyWithoutOwnerInput>;
+  expiresAt?: InputMaybe<Scalars['DateTime']>;
   firstName: Scalars['String'];
   followers?: InputMaybe<FollowsCreateNestedManyWithoutFollowingInput>;
   following?: InputMaybe<FollowsCreateNestedManyWithoutFollowerInput>;
   githubUrl?: InputMaybe<Scalars['String']>;
+  isPremium?: InputMaybe<Scalars['Boolean']>;
   lastName: Scalars['String'];
   linkedinUrl?: InputMaybe<Scalars['String']>;
   nickname?: InputMaybe<Scalars['String']>;
@@ -6007,8 +6059,10 @@ export type UserCreateWithoutMemberCommunitiesInput = {
   publications?: InputMaybe<PublicationCreateNestedManyWithoutUserInput>;
   role?: InputMaybe<Role>;
   storageMemberships?: InputMaybe<StorageMemberCreateNestedManyWithoutUserInput>;
+  subscriptionId?: InputMaybe<Scalars['String']>;
   twitterUrl?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
+  willExpireAt?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type UserCreateWithoutPostsInput = {
@@ -6022,10 +6076,12 @@ export type UserCreateWithoutPostsInput = {
   eventMember?: InputMaybe<EventMemberCreateNestedManyWithoutUserInput>;
   eventTicket?: InputMaybe<EventTicketCreateNestedManyWithoutUserInput>;
   events?: InputMaybe<EventCreateNestedManyWithoutOwnerInput>;
+  expiresAt?: InputMaybe<Scalars['DateTime']>;
   firstName: Scalars['String'];
   followers?: InputMaybe<FollowsCreateNestedManyWithoutFollowingInput>;
   following?: InputMaybe<FollowsCreateNestedManyWithoutFollowerInput>;
   githubUrl?: InputMaybe<Scalars['String']>;
+  isPremium?: InputMaybe<Scalars['Boolean']>;
   lastName: Scalars['String'];
   linkedinUrl?: InputMaybe<Scalars['String']>;
   memberCommunities?: InputMaybe<CommunityMemberCreateNestedManyWithoutUserInput>;
@@ -6036,8 +6092,10 @@ export type UserCreateWithoutPostsInput = {
   publications?: InputMaybe<PublicationCreateNestedManyWithoutUserInput>;
   role?: InputMaybe<Role>;
   storageMemberships?: InputMaybe<StorageMemberCreateNestedManyWithoutUserInput>;
+  subscriptionId?: InputMaybe<Scalars['String']>;
   twitterUrl?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
+  willExpireAt?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type UserCreateWithoutPublicationsInput = {
@@ -6051,10 +6109,12 @@ export type UserCreateWithoutPublicationsInput = {
   eventMember?: InputMaybe<EventMemberCreateNestedManyWithoutUserInput>;
   eventTicket?: InputMaybe<EventTicketCreateNestedManyWithoutUserInput>;
   events?: InputMaybe<EventCreateNestedManyWithoutOwnerInput>;
+  expiresAt?: InputMaybe<Scalars['DateTime']>;
   firstName: Scalars['String'];
   followers?: InputMaybe<FollowsCreateNestedManyWithoutFollowingInput>;
   following?: InputMaybe<FollowsCreateNestedManyWithoutFollowerInput>;
   githubUrl?: InputMaybe<Scalars['String']>;
+  isPremium?: InputMaybe<Scalars['Boolean']>;
   lastName: Scalars['String'];
   linkedinUrl?: InputMaybe<Scalars['String']>;
   memberCommunities?: InputMaybe<CommunityMemberCreateNestedManyWithoutUserInput>;
@@ -6065,8 +6125,10 @@ export type UserCreateWithoutPublicationsInput = {
   public?: InputMaybe<Scalars['Boolean']>;
   role?: InputMaybe<Role>;
   storageMemberships?: InputMaybe<StorageMemberCreateNestedManyWithoutUserInput>;
+  subscriptionId?: InputMaybe<Scalars['String']>;
   twitterUrl?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
+  willExpireAt?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type UserNullableRelationFilter = {
@@ -6098,10 +6160,12 @@ export type UserUpdateInput = {
   eventMember?: InputMaybe<EventMemberUpdateManyWithoutUserNestedInput>;
   eventTicket?: InputMaybe<EventTicketUpdateManyWithoutUserNestedInput>;
   events?: InputMaybe<EventUpdateManyWithoutOwnerNestedInput>;
+  expiresAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
   firstName?: InputMaybe<StringFieldUpdateOperationsInput>;
   followers?: InputMaybe<FollowsUpdateManyWithoutFollowingNestedInput>;
   following?: InputMaybe<FollowsUpdateManyWithoutFollowerNestedInput>;
   githubUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  isPremium?: InputMaybe<BoolFieldUpdateOperationsInput>;
   lastName?: InputMaybe<StringFieldUpdateOperationsInput>;
   linkedinUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   memberCommunities?: InputMaybe<CommunityMemberUpdateManyWithoutUserNestedInput>;
@@ -6113,8 +6177,10 @@ export type UserUpdateInput = {
   publications?: InputMaybe<PublicationUpdateManyWithoutUserNestedInput>;
   role?: InputMaybe<EnumRoleFieldUpdateOperationsInput>;
   storageMemberships?: InputMaybe<StorageMemberUpdateManyWithoutUserNestedInput>;
+  subscriptionId?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   twitterUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  willExpireAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
 };
 
 export type UserUpdateOneRequiredWithoutAllPublicationCommentsNestedInput = {
@@ -6282,10 +6348,12 @@ export type UserUpdateWithoutAdminCommunitiesInput = {
   eventMember?: InputMaybe<EventMemberUpdateManyWithoutUserNestedInput>;
   eventTicket?: InputMaybe<EventTicketUpdateManyWithoutUserNestedInput>;
   events?: InputMaybe<EventUpdateManyWithoutOwnerNestedInput>;
+  expiresAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
   firstName?: InputMaybe<StringFieldUpdateOperationsInput>;
   followers?: InputMaybe<FollowsUpdateManyWithoutFollowingNestedInput>;
   following?: InputMaybe<FollowsUpdateManyWithoutFollowerNestedInput>;
   githubUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  isPremium?: InputMaybe<BoolFieldUpdateOperationsInput>;
   lastName?: InputMaybe<StringFieldUpdateOperationsInput>;
   linkedinUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   memberCommunities?: InputMaybe<CommunityMemberUpdateManyWithoutUserNestedInput>;
@@ -6297,8 +6365,10 @@ export type UserUpdateWithoutAdminCommunitiesInput = {
   publications?: InputMaybe<PublicationUpdateManyWithoutUserNestedInput>;
   role?: InputMaybe<EnumRoleFieldUpdateOperationsInput>;
   storageMemberships?: InputMaybe<StorageMemberUpdateManyWithoutUserNestedInput>;
+  subscriptionId?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   twitterUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  willExpireAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
 };
 
 export type UserUpdateWithoutAllPublicationCommentsInput = {
@@ -6311,10 +6381,12 @@ export type UserUpdateWithoutAllPublicationCommentsInput = {
   eventMember?: InputMaybe<EventMemberUpdateManyWithoutUserNestedInput>;
   eventTicket?: InputMaybe<EventTicketUpdateManyWithoutUserNestedInput>;
   events?: InputMaybe<EventUpdateManyWithoutOwnerNestedInput>;
+  expiresAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
   firstName?: InputMaybe<StringFieldUpdateOperationsInput>;
   followers?: InputMaybe<FollowsUpdateManyWithoutFollowingNestedInput>;
   following?: InputMaybe<FollowsUpdateManyWithoutFollowerNestedInput>;
   githubUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  isPremium?: InputMaybe<BoolFieldUpdateOperationsInput>;
   lastName?: InputMaybe<StringFieldUpdateOperationsInput>;
   linkedinUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   memberCommunities?: InputMaybe<CommunityMemberUpdateManyWithoutUserNestedInput>;
@@ -6326,8 +6398,10 @@ export type UserUpdateWithoutAllPublicationCommentsInput = {
   publications?: InputMaybe<PublicationUpdateManyWithoutUserNestedInput>;
   role?: InputMaybe<EnumRoleFieldUpdateOperationsInput>;
   storageMemberships?: InputMaybe<StorageMemberUpdateManyWithoutUserNestedInput>;
+  subscriptionId?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   twitterUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  willExpireAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
 };
 
 export type UserUpdateWithoutAllPublicationLikesInput = {
@@ -6340,10 +6414,12 @@ export type UserUpdateWithoutAllPublicationLikesInput = {
   eventMember?: InputMaybe<EventMemberUpdateManyWithoutUserNestedInput>;
   eventTicket?: InputMaybe<EventTicketUpdateManyWithoutUserNestedInput>;
   events?: InputMaybe<EventUpdateManyWithoutOwnerNestedInput>;
+  expiresAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
   firstName?: InputMaybe<StringFieldUpdateOperationsInput>;
   followers?: InputMaybe<FollowsUpdateManyWithoutFollowingNestedInput>;
   following?: InputMaybe<FollowsUpdateManyWithoutFollowerNestedInput>;
   githubUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  isPremium?: InputMaybe<BoolFieldUpdateOperationsInput>;
   lastName?: InputMaybe<StringFieldUpdateOperationsInput>;
   linkedinUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   memberCommunities?: InputMaybe<CommunityMemberUpdateManyWithoutUserNestedInput>;
@@ -6355,8 +6431,10 @@ export type UserUpdateWithoutAllPublicationLikesInput = {
   publications?: InputMaybe<PublicationUpdateManyWithoutUserNestedInput>;
   role?: InputMaybe<EnumRoleFieldUpdateOperationsInput>;
   storageMemberships?: InputMaybe<StorageMemberUpdateManyWithoutUserNestedInput>;
+  subscriptionId?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   twitterUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  willExpireAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
 };
 
 export type UserUpdateWithoutEventMemberInput = {
@@ -6369,10 +6447,12 @@ export type UserUpdateWithoutEventMemberInput = {
   emailVerified?: InputMaybe<BoolFieldUpdateOperationsInput>;
   eventTicket?: InputMaybe<EventTicketUpdateManyWithoutUserNestedInput>;
   events?: InputMaybe<EventUpdateManyWithoutOwnerNestedInput>;
+  expiresAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
   firstName?: InputMaybe<StringFieldUpdateOperationsInput>;
   followers?: InputMaybe<FollowsUpdateManyWithoutFollowingNestedInput>;
   following?: InputMaybe<FollowsUpdateManyWithoutFollowerNestedInput>;
   githubUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  isPremium?: InputMaybe<BoolFieldUpdateOperationsInput>;
   lastName?: InputMaybe<StringFieldUpdateOperationsInput>;
   linkedinUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   memberCommunities?: InputMaybe<CommunityMemberUpdateManyWithoutUserNestedInput>;
@@ -6384,8 +6464,10 @@ export type UserUpdateWithoutEventMemberInput = {
   publications?: InputMaybe<PublicationUpdateManyWithoutUserNestedInput>;
   role?: InputMaybe<EnumRoleFieldUpdateOperationsInput>;
   storageMemberships?: InputMaybe<StorageMemberUpdateManyWithoutUserNestedInput>;
+  subscriptionId?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   twitterUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  willExpireAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
 };
 
 export type UserUpdateWithoutEventTicketInput = {
@@ -6398,10 +6480,12 @@ export type UserUpdateWithoutEventTicketInput = {
   emailVerified?: InputMaybe<BoolFieldUpdateOperationsInput>;
   eventMember?: InputMaybe<EventMemberUpdateManyWithoutUserNestedInput>;
   events?: InputMaybe<EventUpdateManyWithoutOwnerNestedInput>;
+  expiresAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
   firstName?: InputMaybe<StringFieldUpdateOperationsInput>;
   followers?: InputMaybe<FollowsUpdateManyWithoutFollowingNestedInput>;
   following?: InputMaybe<FollowsUpdateManyWithoutFollowerNestedInput>;
   githubUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  isPremium?: InputMaybe<BoolFieldUpdateOperationsInput>;
   lastName?: InputMaybe<StringFieldUpdateOperationsInput>;
   linkedinUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   memberCommunities?: InputMaybe<CommunityMemberUpdateManyWithoutUserNestedInput>;
@@ -6413,8 +6497,10 @@ export type UserUpdateWithoutEventTicketInput = {
   publications?: InputMaybe<PublicationUpdateManyWithoutUserNestedInput>;
   role?: InputMaybe<EnumRoleFieldUpdateOperationsInput>;
   storageMemberships?: InputMaybe<StorageMemberUpdateManyWithoutUserNestedInput>;
+  subscriptionId?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   twitterUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  willExpireAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
 };
 
 export type UserUpdateWithoutEventsInput = {
@@ -6427,10 +6513,12 @@ export type UserUpdateWithoutEventsInput = {
   emailVerified?: InputMaybe<BoolFieldUpdateOperationsInput>;
   eventMember?: InputMaybe<EventMemberUpdateManyWithoutUserNestedInput>;
   eventTicket?: InputMaybe<EventTicketUpdateManyWithoutUserNestedInput>;
+  expiresAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
   firstName?: InputMaybe<StringFieldUpdateOperationsInput>;
   followers?: InputMaybe<FollowsUpdateManyWithoutFollowingNestedInput>;
   following?: InputMaybe<FollowsUpdateManyWithoutFollowerNestedInput>;
   githubUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  isPremium?: InputMaybe<BoolFieldUpdateOperationsInput>;
   lastName?: InputMaybe<StringFieldUpdateOperationsInput>;
   linkedinUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   memberCommunities?: InputMaybe<CommunityMemberUpdateManyWithoutUserNestedInput>;
@@ -6442,8 +6530,10 @@ export type UserUpdateWithoutEventsInput = {
   publications?: InputMaybe<PublicationUpdateManyWithoutUserNestedInput>;
   role?: InputMaybe<EnumRoleFieldUpdateOperationsInput>;
   storageMemberships?: InputMaybe<StorageMemberUpdateManyWithoutUserNestedInput>;
+  subscriptionId?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   twitterUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  willExpireAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
 };
 
 export type UserUpdateWithoutFollowersInput = {
@@ -6457,9 +6547,11 @@ export type UserUpdateWithoutFollowersInput = {
   eventMember?: InputMaybe<EventMemberUpdateManyWithoutUserNestedInput>;
   eventTicket?: InputMaybe<EventTicketUpdateManyWithoutUserNestedInput>;
   events?: InputMaybe<EventUpdateManyWithoutOwnerNestedInput>;
+  expiresAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
   firstName?: InputMaybe<StringFieldUpdateOperationsInput>;
   following?: InputMaybe<FollowsUpdateManyWithoutFollowerNestedInput>;
   githubUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  isPremium?: InputMaybe<BoolFieldUpdateOperationsInput>;
   lastName?: InputMaybe<StringFieldUpdateOperationsInput>;
   linkedinUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   memberCommunities?: InputMaybe<CommunityMemberUpdateManyWithoutUserNestedInput>;
@@ -6471,8 +6563,10 @@ export type UserUpdateWithoutFollowersInput = {
   publications?: InputMaybe<PublicationUpdateManyWithoutUserNestedInput>;
   role?: InputMaybe<EnumRoleFieldUpdateOperationsInput>;
   storageMemberships?: InputMaybe<StorageMemberUpdateManyWithoutUserNestedInput>;
+  subscriptionId?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   twitterUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  willExpireAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
 };
 
 export type UserUpdateWithoutFollowingInput = {
@@ -6486,9 +6580,11 @@ export type UserUpdateWithoutFollowingInput = {
   eventMember?: InputMaybe<EventMemberUpdateManyWithoutUserNestedInput>;
   eventTicket?: InputMaybe<EventTicketUpdateManyWithoutUserNestedInput>;
   events?: InputMaybe<EventUpdateManyWithoutOwnerNestedInput>;
+  expiresAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
   firstName?: InputMaybe<StringFieldUpdateOperationsInput>;
   followers?: InputMaybe<FollowsUpdateManyWithoutFollowingNestedInput>;
   githubUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  isPremium?: InputMaybe<BoolFieldUpdateOperationsInput>;
   lastName?: InputMaybe<StringFieldUpdateOperationsInput>;
   linkedinUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   memberCommunities?: InputMaybe<CommunityMemberUpdateManyWithoutUserNestedInput>;
@@ -6500,8 +6596,10 @@ export type UserUpdateWithoutFollowingInput = {
   publications?: InputMaybe<PublicationUpdateManyWithoutUserNestedInput>;
   role?: InputMaybe<EnumRoleFieldUpdateOperationsInput>;
   storageMemberships?: InputMaybe<StorageMemberUpdateManyWithoutUserNestedInput>;
+  subscriptionId?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   twitterUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  willExpireAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
 };
 
 export type UserUpdateWithoutMemberCommunitiesInput = {
@@ -6515,10 +6613,12 @@ export type UserUpdateWithoutMemberCommunitiesInput = {
   eventMember?: InputMaybe<EventMemberUpdateManyWithoutUserNestedInput>;
   eventTicket?: InputMaybe<EventTicketUpdateManyWithoutUserNestedInput>;
   events?: InputMaybe<EventUpdateManyWithoutOwnerNestedInput>;
+  expiresAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
   firstName?: InputMaybe<StringFieldUpdateOperationsInput>;
   followers?: InputMaybe<FollowsUpdateManyWithoutFollowingNestedInput>;
   following?: InputMaybe<FollowsUpdateManyWithoutFollowerNestedInput>;
   githubUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  isPremium?: InputMaybe<BoolFieldUpdateOperationsInput>;
   lastName?: InputMaybe<StringFieldUpdateOperationsInput>;
   linkedinUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   nickname?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
@@ -6529,8 +6629,10 @@ export type UserUpdateWithoutMemberCommunitiesInput = {
   publications?: InputMaybe<PublicationUpdateManyWithoutUserNestedInput>;
   role?: InputMaybe<EnumRoleFieldUpdateOperationsInput>;
   storageMemberships?: InputMaybe<StorageMemberUpdateManyWithoutUserNestedInput>;
+  subscriptionId?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   twitterUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  willExpireAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
 };
 
 export type UserUpdateWithoutPostsInput = {
@@ -6544,10 +6646,12 @@ export type UserUpdateWithoutPostsInput = {
   eventMember?: InputMaybe<EventMemberUpdateManyWithoutUserNestedInput>;
   eventTicket?: InputMaybe<EventTicketUpdateManyWithoutUserNestedInput>;
   events?: InputMaybe<EventUpdateManyWithoutOwnerNestedInput>;
+  expiresAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
   firstName?: InputMaybe<StringFieldUpdateOperationsInput>;
   followers?: InputMaybe<FollowsUpdateManyWithoutFollowingNestedInput>;
   following?: InputMaybe<FollowsUpdateManyWithoutFollowerNestedInput>;
   githubUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  isPremium?: InputMaybe<BoolFieldUpdateOperationsInput>;
   lastName?: InputMaybe<StringFieldUpdateOperationsInput>;
   linkedinUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   memberCommunities?: InputMaybe<CommunityMemberUpdateManyWithoutUserNestedInput>;
@@ -6558,8 +6662,10 @@ export type UserUpdateWithoutPostsInput = {
   publications?: InputMaybe<PublicationUpdateManyWithoutUserNestedInput>;
   role?: InputMaybe<EnumRoleFieldUpdateOperationsInput>;
   storageMemberships?: InputMaybe<StorageMemberUpdateManyWithoutUserNestedInput>;
+  subscriptionId?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   twitterUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  willExpireAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
 };
 
 export type UserUpdateWithoutPublicationsInput = {
@@ -6573,10 +6679,12 @@ export type UserUpdateWithoutPublicationsInput = {
   eventMember?: InputMaybe<EventMemberUpdateManyWithoutUserNestedInput>;
   eventTicket?: InputMaybe<EventTicketUpdateManyWithoutUserNestedInput>;
   events?: InputMaybe<EventUpdateManyWithoutOwnerNestedInput>;
+  expiresAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
   firstName?: InputMaybe<StringFieldUpdateOperationsInput>;
   followers?: InputMaybe<FollowsUpdateManyWithoutFollowingNestedInput>;
   following?: InputMaybe<FollowsUpdateManyWithoutFollowerNestedInput>;
   githubUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  isPremium?: InputMaybe<BoolFieldUpdateOperationsInput>;
   lastName?: InputMaybe<StringFieldUpdateOperationsInput>;
   linkedinUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   memberCommunities?: InputMaybe<CommunityMemberUpdateManyWithoutUserNestedInput>;
@@ -6587,8 +6695,10 @@ export type UserUpdateWithoutPublicationsInput = {
   public?: InputMaybe<BoolFieldUpdateOperationsInput>;
   role?: InputMaybe<EnumRoleFieldUpdateOperationsInput>;
   storageMemberships?: InputMaybe<StorageMemberUpdateManyWithoutUserNestedInput>;
+  subscriptionId?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   twitterUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  willExpireAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
 };
 
 export type UserUpsertWithoutAdminCommunitiesInput = {
@@ -6671,11 +6781,13 @@ export type UserWhereInput = {
   eventMember?: InputMaybe<EventMemberListRelationFilter>;
   eventTicket?: InputMaybe<EventTicketListRelationFilter>;
   events?: InputMaybe<EventListRelationFilter>;
+  expiresAt?: InputMaybe<DateTimeNullableFilter>;
   firstName?: InputMaybe<StringFilter>;
   followers?: InputMaybe<FollowsListRelationFilter>;
   following?: InputMaybe<FollowsListRelationFilter>;
   githubUrl?: InputMaybe<StringNullableFilter>;
   id?: InputMaybe<IntFilter>;
+  isPremium?: InputMaybe<BoolFilter>;
   lastName?: InputMaybe<StringFilter>;
   linkedinUrl?: InputMaybe<StringNullableFilter>;
   memberCommunities?: InputMaybe<CommunityMemberListRelationFilter>;
@@ -6687,8 +6799,10 @@ export type UserWhereInput = {
   publications?: InputMaybe<PublicationListRelationFilter>;
   role?: InputMaybe<EnumRoleFilter>;
   storageMemberships?: InputMaybe<StorageMemberListRelationFilter>;
+  subscriptionId?: InputMaybe<StringNullableFilter>;
   twitterUrl?: InputMaybe<StringNullableFilter>;
   updatedAt?: InputMaybe<DateTimeFilter>;
+  willExpireAt?: InputMaybe<DateTimeNullableFilter>;
 };
 
 export type UserWhereUniqueInput = {
@@ -6705,11 +6819,13 @@ export type UserWhereUniqueInput = {
   eventMember?: InputMaybe<EventMemberListRelationFilter>;
   eventTicket?: InputMaybe<EventTicketListRelationFilter>;
   events?: InputMaybe<EventListRelationFilter>;
+  expiresAt?: InputMaybe<DateTimeNullableFilter>;
   firstName?: InputMaybe<StringFilter>;
   followers?: InputMaybe<FollowsListRelationFilter>;
   following?: InputMaybe<FollowsListRelationFilter>;
   githubUrl?: InputMaybe<StringNullableFilter>;
   id?: InputMaybe<Scalars['Int']>;
+  isPremium?: InputMaybe<BoolFilter>;
   lastName?: InputMaybe<StringFilter>;
   linkedinUrl?: InputMaybe<StringNullableFilter>;
   memberCommunities?: InputMaybe<CommunityMemberListRelationFilter>;
@@ -6721,8 +6837,10 @@ export type UserWhereUniqueInput = {
   publications?: InputMaybe<PublicationListRelationFilter>;
   role?: InputMaybe<EnumRoleFilter>;
   storageMemberships?: InputMaybe<StorageMemberListRelationFilter>;
+  subscriptionId?: InputMaybe<StringNullableFilter>;
   twitterUrl?: InputMaybe<StringNullableFilter>;
   updatedAt?: InputMaybe<DateTimeFilter>;
+  willExpireAt?: InputMaybe<DateTimeNullableFilter>;
 };
 
 export enum Visibility {
@@ -6743,6 +6861,13 @@ export type CreateUserMutationVariables = Exact<{
 
 
 export type CreateUserMutation = { __typename?: 'Mutation', createUser: { __typename: 'User', id: string } };
+
+export type EmailAvailableQueryVariables = Exact<{
+  email: Scalars['String'];
+}>;
+
+
+export type EmailAvailableQuery = { __typename?: 'Query', emailAvailable: boolean };
 
 export type RefreshTokenMutationVariables = Exact<{ [key: string]: never; }>;
 
@@ -7046,6 +7171,25 @@ export const useCreateUserMutation = <
     useMutation<CreateUserMutation, TError, CreateUserMutationVariables, TContext>(
       ['CreateUser'],
       (variables?: CreateUserMutationVariables) => fetcher<CreateUserMutation, CreateUserMutationVariables>(client, CreateUserDocument, variables, headers)(),
+      options
+    );
+export const EmailAvailableDocument = `
+    query EmailAvailable($email: String!) {
+  emailAvailable(email: $email)
+}
+    `;
+export const useEmailAvailableQuery = <
+      TData = EmailAvailableQuery,
+      TError = unknown
+    >(
+      client: GraphQLClient,
+      variables: EmailAvailableQueryVariables,
+      options?: UseQueryOptions<EmailAvailableQuery, TError, TData>,
+      headers?: RequestInit['headers']
+    ) =>
+    useQuery<EmailAvailableQuery, TError, TData>(
+      ['EmailAvailable', variables],
+      fetcher<EmailAvailableQuery, EmailAvailableQueryVariables>(client, EmailAvailableDocument, variables, headers),
       options
     );
 export const RefreshTokenDocument = `

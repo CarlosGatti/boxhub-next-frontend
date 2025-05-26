@@ -1,6 +1,5 @@
 import * as yup from 'yup'
 
-import { Container, Form, SignUp, TitleForm } from '../../../styles/login'
 import { GetServerSideProps, NextPage } from 'next'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
@@ -9,7 +8,7 @@ import { Button } from '../../../components/_ui/Button'
 import Image from 'next/image'
 import { Input } from '../../../components/_ui/Input/textInput'
 import Link from 'next/link'
-import { MainLayout } from '../../../layouts/MainLayout'
+import { PublicLayout } from '../../../layouts/PublicLayout'
 import { parseCookies } from 'nookies'
 import { toast } from 'react-toastify'
 import { useAuth } from '../../../hooks'
@@ -21,94 +20,81 @@ interface LoginData {
 }
 
 const loginSchema = yup.object().shape({
-  email: yup
-    .string()
-    .required('E-mail obrigatório')
-    .email('Digite um e-mail válido'),
-  password: yup
-    .string()
-    .required('Senha obrigatória')
-    .min(5, 'Senha deve conter pelo menos 5 dígitos'), // Corrigida a mensagem para refletir a regra
+  email: yup.string().required('E-mail obrigatório').email('Digite um e-mail válido'),
+  password: yup.string().required('Senha obrigatória').min(5, 'Mínimo 5 caracteres'),
 })
 
-const Login: NextPage = () => {
+const LoginPage: NextPage = () => {
   const { login, isLoadingLogin } = useAuth()
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors }
   } = useForm<LoginData>({
-    resolver: yupResolver(loginSchema),
+    resolver: yupResolver(loginSchema)
   })
 
   const handleLogin: SubmitHandler<LoginData> = async (values) => {
     try {
       await login(values)
     } catch (error) {
-      console.error('Erro ao fazer login:', error)
-      toast.error('Erro ao fazer login', {
-        position: 'top-right',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      })
+      console.error('Login error:', error)
+      toast.error('Erro ao fazer login')
     }
   }
 
   return (
-    <MainLayout
-      headTitle="BoxHub | Login"
-      metaName="description"
-      metaContent="fazer login"
-    >
-      <Container>
-        <Form onSubmit={handleSubmit(handleLogin)}>
-          <TitleForm>
-            <Link href="/">
+    <PublicLayout>
+      <div className="max-w-md mx-auto py-12 px-6">
+        <div className="flex justify-center mb-6">
+          <Link href="/">
             <Image
-              width={150}
-              height={150}
-              className="mb-4"
               src="/image/brand/rh-blue.png"
-              alt="Ícone BoxHub"
+              alt="BoxHub logo"
+              width={120}
+              height={60}
+              className="grayscale transition duration-300 hover:grayscale-0"
             />
-            </Link>
-          </TitleForm>
+          </Link>
+        </div>
 
+        <h1 className="text-2xl font-semibold text-center mb-2">Sign in to BoxHub</h1>
+        <p className="text-sm text-gray-600 text-center mb-8">Enter your credentials to access your account</p>
+
+        <form onSubmit={handleSubmit(handleLogin)} className="space-y-4">
           <Input
             placeholder="E-mail"
             error={errors.email}
             {...register('email')}
           />
-
           <Input
             type="password"
-            placeholder="Senha"
+            placeholder="Password"
             error={errors.password}
             {...register('password')}
           />
-
-          <Button type="submit" isLoading={isLoadingLogin}>
+          <Button type="submit" isLoading={isLoadingLogin} className="w-full">
             Sign in
           </Button>
+        </form>
 
-          <SignUp>
-            <p>Don't have an account?</p>
-            <Link href="/account/create">Create an account</Link>
-          </SignUp>
-        </Form>
+        <div className="text-center text-sm text-gray-700 mt-4">
+          Don’t have an account?{' '}
+          <Link href="/account/create" className="text-blue-600 hover:underline">
+            Create one
+          </Link>
+        </div>
 
-        <AllRightsReserved style={{ marginTop: 40 }} />
-      </Container>
-    </MainLayout>
+        <div className="mt-10">
+          <AllRightsReserved />
+        </div>
+      </div>
+    </PublicLayout>
   )
 }
 
-export default Login
+export default LoginPage
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { '@token': token } = parseCookies(ctx)
@@ -117,12 +103,12 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     return {
       redirect: {
         destination: '/qrcode-app/dashboard',
-        permanent: false,
-      },
+        permanent: false
+      }
     }
   }
 
   return {
-    props: {},
+    props: {}
   }
 }
