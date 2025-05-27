@@ -1,23 +1,12 @@
 import * as yup from 'yup'
 
-import {
-  Back,
-  Container,
-  Description,
-  Form,
-  SentEmail,
-  Title,
-  WrapperForm,
-} from '../../../styles/forgotPassword'
-import { SubmitHandler, useForm } from 'react-hook-form'
-
 import { AiFillCheckCircle } from 'react-icons/ai'
-import { AllRightsReserved } from '../../../components/account/AllRightsReserved'
 import { Button } from '../../../components/_ui/Button'
 import { Input } from '../../../components/_ui/Input/textInput'
 import Link from 'next/link'
-import { MainLayout } from '../../../layouts/MainLayout'
 import { NextPage } from 'next'
+import { PublicLayout } from '../../../layouts/PublicLayout'
+import { useForm } from 'react-hook-form'
 import { useState } from 'react'
 import { yupResolver } from '@hookform/resolvers/yup'
 
@@ -26,15 +15,12 @@ interface ForgotPasswordData {
 }
 
 const forgotPasswordSchema = yup.object().shape({
-  email: yup
-    .string()
-    .required('E-mail obrigatório')
-    .email('Digite um e-mail válido'),
+  email: yup.string().required('E-mail obrigatório').email('Digite um e-mail válido'),
 })
 
 const ForgotPassword: NextPage = () => {
   const [messageSent, setMessageSent] = useState(false)
-  const [valueInput, setValueInput] = useState(true)
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true)
 
   const {
     register,
@@ -44,61 +30,56 @@ const ForgotPassword: NextPage = () => {
     resolver: yupResolver(forgotPasswordSchema),
   })
 
-  const handleForgotPassword: SubmitHandler<ForgotPasswordData> = async () => {
+  const handleForgotPassword = async () => {
     await new Promise((resolve) => setTimeout(resolve, 2000))
     setMessageSent(true)
   }
 
   return (
-    <MainLayout
-      headTitle="BoxHub | Recuperar senha"
-      metaContent="recuperar senha"
-      metaName="description"
-    >
-      <Container>
-        <WrapperForm>
-          <Title>Esqueceu sua senha?</Title>
-          <Form onSubmit={handleSubmit(handleForgotPassword)}>
-            <Description>
-              Informe o seu email para receber o link de recuperação de senha
-            </Description>
-            <SentEmail>
-              {messageSent && (
-                <>
-                  <AiFillCheckCircle color="#66B734" />
-                  <p>Link enviado com sucesso!</p>
-                </>
-              )}
-            </SentEmail>
-            <Input
-              placeholder="E-mail"
-              error={errors.email}
-              {...register('email')}
-              onChange={(e: { target: HTMLInputElement }) =>
-                e.target.value.length > 3
-                  ? setValueInput(false)
-                  : setValueInput(true)
-              }
-            />
+    <PublicLayout>
+      <div className="max-w-md mx-auto py-16">
+        <h1 className="text-3xl font-semibold text-center mb-4 text-gray-900">Forgot your password?</h1>
+        <p className="text-center text-gray-600 mb-6">
+          Enter your email to receive the password reset link.
+        </p>
 
-            <Button
-              type="submit"
-              backgroundColor={valueInput ? '#DDDCDF' : ''}
-              labelColor={valueInput ? '#2C3136' : '#fff'}
-              buttonStyle={{ width: '100%' }}
-              isDisabled={valueInput}
-              isLoading={isSubmitting}
-            >
-              Enviar código
-            </Button>
-            <Link href="/account/login">
-              <Back>voltar para login</Back>
-            </Link>
-          </Form>
-        </WrapperForm>
-        <AllRightsReserved style={{ marginTop: 16 }} />
-      </Container>
-    </MainLayout>
+        {messageSent && (
+          <div className="flex items-center gap-2 bg-green-50 border border-green-200 text-green-700 p-3 rounded-md mb-4 text-sm">
+            <AiFillCheckCircle size={20} />
+            Link enviado com sucesso!
+          </div>
+        )}
+
+        <form onSubmit={handleSubmit(handleForgotPassword)}>
+
+          <div className='space-y-2'>
+          <Input
+            placeholder="E-mail"
+            error={errors.email}
+            {...register('email')}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setIsButtonDisabled(e.target.value.length <= 3)
+            }
+            className='w-full'
+          />
+</div>  
+<div className='space-y-2'>
+          <Button
+            type="submit"
+            className="w-full"
+            isLoading={isSubmitting}
+            isDisabled={isButtonDisabled}
+          >
+            Send code
+          </Button>
+          </div>  
+          <Link href="/account/login" className="block text-center text-blue-600 hover:underline text-sm py-4">
+           Back to login
+          </Link>
+        </form>
+      </div>
+    </PublicLayout>
   )
 }
+
 export default ForgotPassword

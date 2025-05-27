@@ -74,6 +74,11 @@ const LoginPage: NextPage = () => {
             error={errors.password}
             {...register('password')}
           />
+          <div className="text-right text-sm">
+            <Link href="/account/forgot-password" className="text-blue-600 hover:underline">
+              Forgot your password?
+            </Link>
+          </div>
           <Button type="submit" isLoading={isLoadingLogin} className="w-full">
             Sign in
           </Button>

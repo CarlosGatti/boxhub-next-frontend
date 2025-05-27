@@ -1,6 +1,5 @@
 import * as yup from 'yup'
 
-import { AllRightsReserved } from '../../../components/account/AllRightsReserved'
 import { Button } from '../../../components/_ui/Button'
 import { EmailAvailableDocument } from '../../../generated/graphql'
 import Image from 'next/image'
@@ -12,7 +11,6 @@ import { UploadPhotoWithCrop } from '../../../components/_ui/UploadPhotoWithCrop
 import graphqlRequestClient from '../../../lib/graphql.request'
 import { toast } from 'react-toastify'
 import { useCreateUserMutation } from '../../../generated/graphql'
-import { useEmailAvailableQuery } from '../../../generated/graphql'
 import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
@@ -187,10 +185,6 @@ export default function RegisterPage() {
             </div>
           )}
         </form>
-
-        <div className="mt-8">
-          <AllRightsReserved />
-        </div>
       </div>
 
     </PublicLayout>
