@@ -182,31 +182,100 @@ function AboutSection() {
 }
 
 function ContactSection() {
+
+
+  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Aqui você pode integrar com um serviço como Formspree, Resend, ou API própria.
+    console.log('Form submitted:', form);
+    setSubmitted(true);
+  };
+
+
   return (
     <section id="contact" className="w-full py-16 md:py-20 bg-white">
-      <div className="container mx-auto px-6">
-        <div className="text-center space-y-6">
-          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900">
-            Contact
-          </h2>
-          <p className="text-gray-600 md:text-lg max-w-2xl mx-auto">
-            We'd love to connect with you. Feel free to reach out anytime!
-          </p>
+    <div className="container mx-auto px-6">
+      <div className="text-center space-y-6">
+        <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900">
+          Contact
+        </h2>
+        <p className="text-gray-600 md:text-lg max-w-2xl mx-auto">
+          We'd love to connect with you. Send a message or reach out directly!
+        </p>
+      </div>
 
-          <div className="flex flex-col items-center space-y-2 text-gray-700 mt-8">
-            <p className="text-base md:text-lg">
-              🌐 Website: <a href="https://carlosgatti.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">carlosgatti.com</a>
-            </p>
-            <p className="text-base md:text-lg">
-              📧 Email: <a href="mailto:the@carlosgatti.com" className="text-blue-600 hover:underline">the@carlosgatti.com</a>
-            </p>
-            <p className="text-base md:text-lg">
-              📞 Phone: <a href="tel:+18573507504" className="text-blue-600 hover:underline">+1 (857) 350-7504</a>
-            </p>
+      <div className="mt-12 grid md:grid-cols-2 gap-12">
+        {/* Contact Form */}
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
+            <input
+              type="text"
+              name="name"
+              required
+              value={form.name}
+              onChange={handleChange}
+              className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+            />
           </div>
+
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+            <input
+              type="email"
+              name="email"
+              required
+              value={form.email}
+              onChange={handleChange}
+              className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="message" className="block text-sm font-medium text-gray-700">Message</label>
+            <textarea
+              name="message"
+              required
+              rows={4}
+              value={form.message}
+              onChange={handleChange}
+              className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="bg-gray-600 text-white px-6 py-2 rounded-md hover:bg-gray-700 transition"
+          >
+            {submitted ? 'Thank you!' : 'Send Message'}
+          </button>
+        </form>
+
+        {/* Contact Info */}
+        <div className="flex flex-col justify-center space-y-4 text-gray-700">
+          <p className="text-base md:text-lg">
+            🌐 Website: <a href="https://carlosgatti.com" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:underline">carlosgatti.com</a>
+          </p>
+          <p className="text-base md:text-lg">
+            📧 Email: <a href="mailto:the@carlosgatti.com" className="text-gray-600 hover:underline">the@carlosgatti.com</a>
+          </p>
+          <p className="text-base md:text-lg">
+            📞 Phone: <a href="tel:+18573507504" className="text-gray-600 hover:underline">+1 (857) 350-7504</a>
+          </p>
+          <p className="text-base text-gray-500 pt-4">
+            Support available Monday to Friday, 9 AM to 6 PM (MT)
+          </p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
   );
 }
 

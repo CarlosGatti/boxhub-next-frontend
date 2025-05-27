@@ -39,7 +39,7 @@ const ContainerDetailsPage = () => {
       
     >
       <Container>
-        <Header />
+
         
           {/* <MenuBar /> */}
 
