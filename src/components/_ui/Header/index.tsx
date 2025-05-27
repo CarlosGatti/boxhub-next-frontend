@@ -5,17 +5,9 @@ import { IdentityCurrentUser } from '../SideBar/IdentityCurrentUser'
 import { IoMdLogOut } from 'react-icons/io'
 import Link from 'next/link'
 import { MenuBar } from '../MenuBar'
-import { SearchModal } from './SearchModal'
+// import { SearchModal } from './SearchModal'
 import { useAuth } from '../../../hooks/useAuth'
 import { useState } from 'react'
-
-<motion.h1
-  initial={{ opacity: 0, y: 30 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.8 }}
->
-  Welcome to BoxHub
-</motion.h1>
 
 export function Header() {
   const { logout } = useAuth()
@@ -31,11 +23,11 @@ export function Header() {
           </button>
 
           {/* Logo */}
-          <motion.div whileHover={{ rotate: 10 }} transition={{ type: "spring" }}>
+          
           <Link href="/qrcode-app/dashboard">
             <img src="/image/brand/rh-blue.png" alt="Logo" className="h-10 w-10" />
           </Link>
-          </motion.div>
+   
           {/* User Info (Mobile) */}
           <div className="block md:hidden">
             <IdentityCurrentUser displayName={false} />
