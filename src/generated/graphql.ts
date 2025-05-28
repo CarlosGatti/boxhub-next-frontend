@@ -7115,7 +7115,7 @@ export type TimelineQuery = { __typename?: 'Query', timeline: { __typename?: 'Ba
 export type MeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type MeQuery = { __typename?: 'Query', me: { __typename?: 'MeDto', id: string, email: string, firstName: string, lastName: string, nickname?: string | null, profilePicture?: string | null, about?: string | null, linkedinUrl?: string | null, twitterUrl?: string | null, githubUrl?: string | null, memberCommunities?: Array<{ __typename?: 'CommunityMember', id: string, status: MembershipStatus, community: { __typename?: 'Community', id: string, name: string, banner?: string | null, description: string, profilePicture?: string | null, members?: Array<{ __typename?: 'CommunityMember', user?: { __typename?: 'User', firstName: string, lastName: string, profilePicture?: string | null } | null }> | null } }> | null, adminCommunities?: Array<{ __typename?: 'Community', id: string, name: string, banner?: string | null, description: string, profilePicture?: string | null }> | null, peopleImFollowing: Array<{ __typename?: 'User', id: string, firstName: string, lastName: string, profilePicture?: string | null }>, peopleFollowingMe: Array<{ __typename?: 'User', id: string, firstName: string, lastName: string, profilePicture?: string | null }>, storageMemberships?: Array<{ __typename?: 'StorageMember', role: StorageRole, storage: { __typename?: 'Storage', id: string, name: string } }> | null } };
+export type MeQuery = { __typename?: 'Query', me: { __typename?: 'MeDto', id: string, email: string, firstName: string, lastName: string, nickname?: string | null, isPremium: boolean, subscriptionId?: string | null, expiresAt?: any | null, willExpireAt?: any | null, profilePicture?: string | null, about?: string | null, linkedinUrl?: string | null, twitterUrl?: string | null, githubUrl?: string | null, memberCommunities?: Array<{ __typename?: 'CommunityMember', id: string, status: MembershipStatus, community: { __typename?: 'Community', id: string, name: string, banner?: string | null, description: string, profilePicture?: string | null, members?: Array<{ __typename?: 'CommunityMember', user?: { __typename?: 'User', firstName: string, lastName: string, profilePicture?: string | null } | null }> | null } }> | null, adminCommunities?: Array<{ __typename?: 'Community', id: string, name: string, banner?: string | null, description: string, profilePicture?: string | null }> | null, peopleImFollowing: Array<{ __typename?: 'User', id: string, firstName: string, lastName: string, profilePicture?: string | null }>, peopleFollowingMe: Array<{ __typename?: 'User', id: string, firstName: string, lastName: string, profilePicture?: string | null }>, storageMemberships?: Array<{ __typename?: 'StorageMember', role: StorageRole, storage: { __typename?: 'Storage', id: string, name: string } }> | null } };
 
 export type FollowUserMutationVariables = Exact<{
   userId: Scalars['Float'];
@@ -8143,6 +8143,10 @@ export const MeDocument = `
     firstName
     lastName
     nickname
+    isPremium
+    subscriptionId
+    expiresAt
+    willExpireAt
     memberCommunities {
       id
       status

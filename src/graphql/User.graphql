@@ -5,6 +5,10 @@ query Me {
     firstName
     lastName
     nickname
+    isPremium
+    subscriptionId
+    expiresAt
+    willExpireAt
     memberCommunities {
       id
       status
