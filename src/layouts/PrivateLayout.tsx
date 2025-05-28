@@ -30,20 +30,23 @@ export function PrivateLayout({ children, title, description }: PrivateLayoutPro
           </aside>
 
           <main className="flex-1 bg-gray-50 p-4">
-            {!isPro && isTrialActive && (
-              <div className="bg-yellow-100 border border-yellow-300 text-yellow-800 px-4 py-2 rounded mb-4 text-sm text-center">
-                Você está no período de teste gratuito. Seu trial termina em {trialDaysLeft} dia(s).
-              </div>
-            )}
+  {/* Aviso para trial ativo (mesmo se for considerado Pro) */}
+  {isTrialActive && (
+    <div className="bg-yellow-100 border border-yellow-300 text-yellow-800 px-4 py-2 rounded mb-4 text-sm text-center">
+      Você está no período de teste gratuito. Seu trial termina em {trialDaysLeft} dia(s).
+    </div>
+  )}
 
-            {!isPro && !isTrialActive && (
-              <div className="bg-red-100 border border-red-300 text-red-800 px-4 py-2 rounded text-sm text-center">
-                Seu acesso expirou. Faça upgrade para acessar novamente o sistema.
-              </div>
-            )}
+  {/* Acesso expirado (não é Pro e trial expirado) */}
+  {!isPremiumActive && !isTrialActive && (
+    <div className="bg-red-100 border border-red-300 text-red-800 px-4 py-2 rounded text-sm text-center">
+      Seu acesso expirou. Faça upgrade para acessar novamente o sistema.
+    </div>
+  )}
 
-            {isPro && children}
-          </main>
+  {/* Conteúdo do sistema visível somente se estiver em trial ou premium válido */}
+  {(isTrialActive || isPremiumActive) && children}
+</main>
         </div>
       </div>
 

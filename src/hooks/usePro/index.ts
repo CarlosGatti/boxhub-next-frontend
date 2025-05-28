@@ -14,7 +14,7 @@ export function useProAccess() {
     ? Math.max(Math.ceil((trialUntil.getTime() - now.getTime()) / (1000 * 60 * 60 * 24)), 0)
     : 0
 
-  const isPro = isPremiumActive || isTrialActive
+  const isPro = isTrialActive || isPremiumActive
 
   return {
     isPro,
