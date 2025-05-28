@@ -6874,6 +6874,21 @@ export type RefreshTokenMutationVariables = Exact<{ [key: string]: never; }>;
 
 export type RefreshTokenMutation = { __typename?: 'Mutation', refreshToken: string };
 
+export type RequestPasswordResetMutationVariables = Exact<{
+  email: Scalars['String'];
+}>;
+
+
+export type RequestPasswordResetMutation = { __typename?: 'Mutation', requestPasswordReset: { __typename?: 'BaseResult', success: boolean, message: string } };
+
+export type ResetPasswordMutationVariables = Exact<{
+  token: Scalars['String'];
+  password: Scalars['String'];
+}>;
+
+
+export type ResetPasswordMutation = { __typename?: 'Mutation', resetPassword: { __typename?: 'BaseResult', success: boolean, message: string } };
+
 export type CreateCommunityMutationVariables = Exact<{
   data: CreateCommunityInput;
 }>;
@@ -7208,6 +7223,48 @@ export const useRefreshTokenMutation = <
     useMutation<RefreshTokenMutation, TError, RefreshTokenMutationVariables, TContext>(
       ['refreshToken'],
       (variables?: RefreshTokenMutationVariables) => fetcher<RefreshTokenMutation, RefreshTokenMutationVariables>(client, RefreshTokenDocument, variables, headers)(),
+      options
+    );
+export const RequestPasswordResetDocument = `
+    mutation requestPasswordReset($email: String!) {
+  requestPasswordReset(email: $email) {
+    success
+    message
+  }
+}
+    `;
+export const useRequestPasswordResetMutation = <
+      TError = unknown,
+      TContext = unknown
+    >(
+      client: GraphQLClient,
+      options?: UseMutationOptions<RequestPasswordResetMutation, TError, RequestPasswordResetMutationVariables, TContext>,
+      headers?: RequestInit['headers']
+    ) =>
+    useMutation<RequestPasswordResetMutation, TError, RequestPasswordResetMutationVariables, TContext>(
+      ['requestPasswordReset'],
+      (variables?: RequestPasswordResetMutationVariables) => fetcher<RequestPasswordResetMutation, RequestPasswordResetMutationVariables>(client, RequestPasswordResetDocument, variables, headers)(),
+      options
+    );
+export const ResetPasswordDocument = `
+    mutation resetPassword($token: String!, $password: String!) {
+  resetPassword(token: $token, password: $password) {
+    success
+    message
+  }
+}
+    `;
+export const useResetPasswordMutation = <
+      TError = unknown,
+      TContext = unknown
+    >(
+      client: GraphQLClient,
+      options?: UseMutationOptions<ResetPasswordMutation, TError, ResetPasswordMutationVariables, TContext>,
+      headers?: RequestInit['headers']
+    ) =>
+    useMutation<ResetPasswordMutation, TError, ResetPasswordMutationVariables, TContext>(
+      ['resetPassword'],
+      (variables?: ResetPasswordMutationVariables) => fetcher<ResetPasswordMutation, ResetPasswordMutationVariables>(client, ResetPasswordDocument, variables, headers)(),
       options
     );
 export const CreateCommunityDocument = `

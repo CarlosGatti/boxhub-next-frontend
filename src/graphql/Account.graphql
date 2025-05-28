@@ -26,3 +26,17 @@ query EmailAvailable($email: String!) {
 mutation refreshToken {
   refreshToken
 }
+
+mutation requestPasswordReset($email: String!) {
+  requestPasswordReset(email: $email) {
+    success
+    message
+  }
+}
+
+mutation resetPassword($token: String!, $password: String!) {
+  resetPassword(token: $token, password: $password) {
+    success
+    message
+  }
+}
