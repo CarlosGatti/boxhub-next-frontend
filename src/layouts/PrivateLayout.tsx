@@ -11,8 +11,7 @@ interface PrivateLayoutProps {
 }
 
 export function PrivateLayout({ children, title, description }: PrivateLayoutProps) {
-  const { isPro, isTrialActive, isPremiumActive, trialDaysLeft } = useProAccess()
-  console.log({ isPro, isTrialActive, isPremiumActive, trialDaysLeft })
+  const { isTrialActive, isPremiumActive, trialDaysLeft } = useProAccess()
 
   return (
     <div className="flex min-h-screen flex-col bg-gray-100 text-gray-900">
@@ -20,36 +19,27 @@ export function PrivateLayout({ children, title, description }: PrivateLayoutPro
         <title>{title}</title>
         <meta name="description" content={description} />
       </Head>
-
       <div className="flex flex-col min-h-screen">
         <Header />
-
         <div className="flex flex-1">
           <aside className="hidden md:block w-64 bg-white border-r shadow-sm">
             <MenuBar />
           </aside>
-
           <main className="flex-1 bg-gray-50 p-4">
-  {/* Aviso para trial ativo (mesmo se for considerado Pro) */}
-  {isTrialActive && (
-    <div className="bg-yellow-100 border border-yellow-300 text-yellow-800 px-4 py-2 rounded mb-4 text-sm text-center">
-      Você está no período de teste gratuito. Seu trial termina em {trialDaysLeft} dia(s).
-    </div>
-  )}
-
-  {/* Acesso expirado (não é Pro e trial expirado) */}
-  {!isPremiumActive && !isTrialActive && (
-    <div className="bg-red-100 border border-red-300 text-red-800 px-4 py-2 rounded text-sm text-center">
-      Seu acesso expirou. Faça upgrade para acessar novamente o sistema.
-    </div>
-  )}
-
-  {/* Conteúdo do sistema visível somente se estiver em trial ou premium válido */}
-  {(isTrialActive || isPremiumActive) && children}
-</main>
+            {isTrialActive && (
+              <div className="bg-yellow-100 border border-yellow-300 text-yellow-800 px-4 py-2 rounded mb-4 text-sm text-center">
+                You are currently on a free trial. Your trial ends in {trialDaysLeft} day(s).          
+              </div>
+            )}
+            {!isPremiumActive && !isTrialActive && (
+              <div className="bg-red-100 border border-red-300 text-red-800 px-4 py-2 rounded text-sm text-center">
+                Your access has expired. Please upgrade to regain access to the system.
+              </div>
+            )}
+            {(isTrialActive || isPremiumActive) && children}
+          </main>
         </div>
       </div>
-
       <footer className="w-full border-t py-4 bg-white text-center text-sm text-gray-500">
         © 2025 BoxHub — Internal
       </footer>
