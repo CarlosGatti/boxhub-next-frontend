@@ -1,11 +1,16 @@
 import { Cloud, Menu, QrCode, Search, X } from "lucide-react"
+import { SendEmailDocument, useSendEmailMutation } from "../generated/graphql"
 
 import Image from "next/image"
 import Link from "next/link"
 import { PublicLayout } from "../layouts/PublicLayout"
+import graphqlRequestClient from "../lib/graphql.request"
+import { useMutation } from "@tanstack/react-query"
 import { useState } from "react"
 
 export default function LandingPage() {
+
+
   return (
     <PublicLayout>
     <HeroSection />
@@ -184,6 +189,8 @@ function AboutSection() {
 function ContactSection() {
 
 
+  const { mutate: sendEmailMutation, data, isLoading, error } = useSendEmailMutation(graphqlRequestClient);
+
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
 
@@ -191,12 +198,26 @@ function ContactSection() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Aqui você pode integrar com um serviço como Formspree, Resend, ou API própria.
-    console.log('Form submitted:', form);
-    setSubmitted(true);
+  
+    try {
+      await sendEmailMutation({
+        to: "eduardo.gf@hotmail.com",
+        subject: 'Email Contact Form - Website BoxHub',
+        name: form.name,
+        email: form.email,
+        message: form.message
+      });
+  
+      // Marca como enviado
+      setSubmitted(true);
+  
+    } catch (error) {
+      console.error('Erro ao enviar email:', error);
+    }
   };
+  
 
 
   return (
@@ -214,49 +235,56 @@ function ContactSection() {
       <div className="mt-12 grid md:grid-cols-2 gap-12">
         {/* Contact Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
-            <input
-              type="text"
-              name="name"
-              required
-              value={form.name}
-              onChange={handleChange}
-              className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-            />
-          </div>
+  <div>
+    <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
+    <input
+      type="text"
+      name="name"
+      required
+      value={form.name}
+      onChange={handleChange}
+      className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+    />
+  </div>
 
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
-            <input
-              type="email"
-              name="email"
-              required
-              value={form.email}
-              onChange={handleChange}
-              className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-            />
-          </div>
+  <div>
+    <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+    <input
+      type="email"
+      name="email"
+      required
+      value={form.email}
+      onChange={handleChange}
+      className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+    />
+  </div>
 
-          <div>
-            <label htmlFor="message" className="block text-sm font-medium text-gray-700">Message</label>
-            <textarea
-              name="message"
-              required
-              rows={4}
-              value={form.message}
-              onChange={handleChange}
-              className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-            />
-          </div>
+  <div>
+    <label htmlFor="message" className="block text-sm font-medium text-gray-700">Message</label>
+    <textarea
+      name="message"
+      required
+      rows={4}
+      value={form.message}
+      onChange={handleChange}
+      className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+    />
+  </div>
 
-          <button
-            type="submit"
-            className="bg-gray-600 text-white px-6 py-2 rounded-md hover:bg-gray-700 transition"
-          >
-            {submitted ? 'Thank you!' : 'Send Message'}
-          </button>
-        </form>
+  {submitted && (
+    <div className="mt-4 text-green-600 font-medium">
+      Thank you for your message! We will get back to you within 24 hours.
+    </div>
+  )}
+
+  <button
+    type="submit"
+    className="bg-gray-600 text-white px-6 py-2 rounded-md hover:bg-gray-700 transition"
+    disabled={submitted}
+  >
+    {submitted ? 'Thank you!' : 'Send Message'}
+  </button>
+</form>
 
         {/* Contact Info */}
         <div className="flex flex-col justify-center space-y-4 text-gray-700">
@@ -277,15 +305,4 @@ function ContactSection() {
     </div>
   </section>
   );
-}
-
-
-function Footer() {
-  return (
-    <footer id="contact" className="w-full border-t py-6 md:py-8">
-      <div className="container mx-auto flex flex-col items-center justify-center gap-4 px-4 md:px-6">
-        <p className="text-center text-sm text-muted-foreground">© 2025 BoxHub - All Rights Reserved.</p>
-      </div>
-    </footer>
-  )
 }

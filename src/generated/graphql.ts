@@ -3516,6 +3516,7 @@ export type Mutation = {
   removeStorage: Storage;
   requestPasswordReset: BaseResult;
   resetPassword: BaseResult;
+  sendEmail: BaseResult;
   uncommentPublication: Scalars['Boolean'];
   unfollowUser: Scalars['Boolean'];
   unlikePublication: Scalars['Boolean'];
@@ -3662,6 +3663,15 @@ export type MutationRequestPasswordResetArgs = {
 export type MutationResetPasswordArgs = {
   password: Scalars['String'];
   token: Scalars['String'];
+};
+
+
+export type MutationSendEmailArgs = {
+  email: Scalars['String'];
+  message: Scalars['String'];
+  name: Scalars['String'];
+  subject: Scalars['String'];
+  to: Scalars['String'];
 };
 
 
@@ -6953,6 +6963,17 @@ export type PublishCommunityMutationVariables = Exact<{
 
 export type PublishCommunityMutation = { __typename?: 'Mutation', publishCommunity: { __typename?: 'BaseResult', success: boolean, message: string } };
 
+export type SendEmailMutationVariables = Exact<{
+  to: Scalars['String'];
+  subject: Scalars['String'];
+  name: Scalars['String'];
+  email: Scalars['String'];
+  message: Scalars['String'];
+}>;
+
+
+export type SendEmailMutation = { __typename?: 'Mutation', sendEmail: { __typename?: 'BaseResult', success: boolean, message: string } };
+
 export type PublicationByIdQueryVariables = Exact<{
   id: Scalars['Float'];
 }>;
@@ -7478,6 +7499,33 @@ export const usePublishCommunityMutation = <
     useMutation<PublishCommunityMutation, TError, PublishCommunityMutationVariables, TContext>(
       ['PublishCommunity'],
       (variables?: PublishCommunityMutationVariables) => fetcher<PublishCommunityMutation, PublishCommunityMutationVariables>(client, PublishCommunityDocument, variables, headers)(),
+      options
+    );
+export const SendEmailDocument = `
+    mutation SendEmail($to: String!, $subject: String!, $name: String!, $email: String!, $message: String!) {
+  sendEmail(
+    to: $to
+    subject: $subject
+    name: $name
+    email: $email
+    message: $message
+  ) {
+    success
+    message
+  }
+}
+    `;
+export const useSendEmailMutation = <
+      TError = unknown,
+      TContext = unknown
+    >(
+      client: GraphQLClient,
+      options?: UseMutationOptions<SendEmailMutation, TError, SendEmailMutationVariables, TContext>,
+      headers?: RequestInit['headers']
+    ) =>
+    useMutation<SendEmailMutation, TError, SendEmailMutationVariables, TContext>(
+      ['SendEmail'],
+      (variables?: SendEmailMutationVariables) => fetcher<SendEmailMutation, SendEmailMutationVariables>(client, SendEmailDocument, variables, headers)(),
       options
     );
 export const PublicationByIdDocument = `
