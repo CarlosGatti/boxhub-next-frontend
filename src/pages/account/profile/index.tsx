@@ -1,127 +1,121 @@
-import {
-  ButtonsBottom,
-  Contact,
-  Container,
-  Follow,
-  ImageProfile,
-  InfoPersonal,
-  Main,
-  Name,
-  Wrapper,
-  WrapperContact,
-  WrapperFollow,
-  WrapperMain,
-} from '../../../styles/profile'
-import { GetServerSideProps, NextPage } from 'next'
+import * as yup from 'yup'
+
+import { useEffect, useState } from 'react'
+import { useMeQuery, useUpdateUserMutation } from '../../../generated/graphql'
 
 import { Button } from '../../../components/_ui/Button'
-import { EditProfileModal } from '../../../components/account/EditProfile'
-import { Header } from '../../../components/_ui/Header'
+import Image from 'next/image'
+import { Input } from '../../../components/_ui/Input/textInput'
 import Link from 'next/link'
-import { MainLayout } from '../../../layouts/MainLayout'
-import { MdOutlineEmail } from 'react-icons/md'
-import { MenuBar } from '../../../components/_ui/MenuBar'
-import { SessionProfile } from '../../../components/account/Sessions'
-import { SidebarProfile } from '../../../components/account/SidebarProfile'
-import { parseCookies } from 'nookies'
-import { useCurrentUser } from '../../../context/CurrentUser'
+import { PrivateLayout } from '../../../layouts/PrivateLayout'
+import { UploadPhotoWithCrop } from '../../../components/_ui/UploadPhotoWithCrop'
+import graphqlRequestClient from '../../../lib/graphql.request'
+import { toast } from 'react-toastify'
+import { useForm } from 'react-hook-form'
+import { useRouter } from 'next/router'
+import { yupResolver } from '@hookform/resolvers/yup'
 
-const Profile: NextPage = () => {
-  const { currentUser } = useCurrentUser()
+const editUserSchema = yup.object().shape({
+  firstName: yup.string().required('First name is required'),
+  lastName: yup.string().required('Last name is required'),
+  nickname: yup.string().required('Username is required'),
+  email: yup.string().email('Invalid email').required('Email is required'),
+})
+
+export default function EditUserPage() {
+  const router = useRouter()
+  const [profilePicture, setProfilePicture] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+
+  const { data, refetch } = useMeQuery(graphqlRequestClient)
+  const { mutate: updateUser } = useUpdateUserMutation(graphqlRequestClient)
+
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(editUserSchema),
+    mode: 'onBlur',
+  })
+
+  useEffect(() => {
+    if (data?.me) {
+      const user = data.me
+      setValue('firstName', user.firstName)
+      setValue('lastName', user.lastName)
+      setValue('nickname', user.nickname || '')
+      setValue('email', user.email)
+      setProfilePicture(user.profilePicture || '')
+    }
+  }, [data, setValue])
+
+  const onSubmit = async (values: any) => {
+    setIsLoading(true)
+    const payload = {
+      ...values,
+      profilePicture: profilePicture || '',
+    }
+
+    updateUser(
+      { data: 
+        {
+          firstName: { set: payload.firstName },
+          lastName: { set: payload.lastName },
+          nickname: { set: payload.nickname },
+          email: { set: payload.email },
+          profilePicture: { set: payload.profilePicture },
+        }
+       },
+      {
+        onSuccess: () => {
+          toast.success('Profile updated successfully!')
+          refetch()
+          router.push('/account/profile')
+          setIsLoading(false)
+        },
+        onError: () => {
+          toast.error('Error updating profile.')
+          setIsLoading(false)
+        },
+      }
+    )
+  }
 
   return (
-    <MainLayout
-      headTitle="BoxHub | Profile"
-      metaName="description"
-      metaContent="ver perfil"
-    >
-      <Container>
-        <Header />
-        <Wrapper>
-          <Main>
-            <MenuBar />
-            <div
-              style={{
-                width: '100%',
-                display: 'flex',
-                flexDirection: 'column',
-              }}
-            >
-              <WrapperMain>
-                <InfoPersonal>
-                  <ImageProfile
-                    alt="imagem de perfil"
-                    src={currentUser?.profilePicture || '/image/no-photo.png'}
-                    width={136}
-                    height={136}
-                  />
-                  <Name>{`${currentUser?.firstName ?? ''} ${
-                    currentUser?.lastName ?? ''
-                  }`}</Name>
-                  <WrapperContact>
-                    <Contact>
-                      <MdOutlineEmail />
-                      <span>{currentUser?.email}</span>
-                    </Contact>
-                  </WrapperContact>
-                  <WrapperFollow>
-                    <Link href="/connections?type=Seguidores">
-                      <Follow>
-                        <strong>
-                          {currentUser?.peopleFollowingMe?.length ?? 0}
-                        </strong>
-                        <span>seguidores</span>
-                      </Follow>
-                    </Link>
-                    <Link href="/connections?type=Seguindo">
-                      <Follow>
-                        <strong>
-                          {currentUser?.peopleImFollowing?.length ?? 0}
-                        </strong>
-                        <span>seguindo</span>
-                      </Follow>
-                    </Link>
-                  </WrapperFollow>
-                  {currentUser && (
-                    <ButtonsBottom>
-                      <EditProfileModal />
-                      <Link
-                        href="/feed"
-                        style={{ width: '100%', maxWidth: 312 }}
-                      >
-                        <Button typeButton="primary" maxWidth={312}>
-                          Adicionar publicação
-                        </Button>
-                      </Link>
-                    </ButtonsBottom>
-                  )}
-                </InfoPersonal>
-              </WrapperMain>
-              <SessionProfile user={currentUser} />
-            </div>
-            <SidebarProfile user={currentUser} />
-          </Main>
-        </Wrapper>
-      </Container>
-    </MainLayout>
+    <PrivateLayout>
+         <div className="p-6 bg-white rounded-lg shadow-md max-w-md ">
+    
+        <h1 className="text-3xl font-semibold text-center mb-2">
+          Edit your profile
+        </h1>
+        <p className="text-gray-600 text-center mb-6">
+          Keep your information up to date.
+        </p>
+
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+
+
+          <UploadPhotoWithCrop
+            imageUser={profilePicture}
+            setBanner={(value: string) => setProfilePicture(value)}
+          />
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <Input placeholder="First Name" {...register('firstName')} error={errors.firstName} />
+            <Input placeholder="Last Name" {...register('lastName')} error={errors.lastName} />
+          </div>
+          <Input placeholder="Email" {...register('email')} error={errors.email} />
+          <Input placeholder="Username" {...register('nickname')} error={errors.nickname} />
+
+
+          <Button type="submit" isLoading={isLoading} className="w-full">
+            Save changes
+          </Button>
+
+        </form>
+      </div>
+    </PrivateLayout>
   )
-}
-
-export default Profile
-
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const { '@token': token } = parseCookies(ctx)
-
-  if (!token) {
-    return {
-      redirect: {
-        destination: '/account/login',
-        permanent: false,
-      },
-    }
-  }
-
-  return {
-    props: {},
-  }
 }
