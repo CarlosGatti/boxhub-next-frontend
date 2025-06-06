@@ -9,59 +9,13 @@ query Me {
     subscriptionId
     expiresAt
     willExpireAt
-    memberCommunities {
-      id
-      status
-      community {
-        id
-        name
-        banner
-        description
-        members {
-          user {
-            firstName
-            lastName
-            profilePicture
-          }
-        }
-      }
-    }
-    adminCommunities {
-      id
-      name
-      banner
-      description
-    }
+
     profilePicture
     about
     linkedinUrl
     twitterUrl
     githubUrl
 
-    peopleImFollowing {
-      id
-      firstName
-      lastName
-      profilePicture
-    }
-    peopleFollowingMe {
-      id
-      firstName
-      lastName
-      profilePicture
-    }
-    adminCommunities {
-      id
-      name
-      profilePicture
-    }
-    memberCommunities {
-      community {
-        id
-        name
-        profilePicture
-      }
-    }
 storageMemberships {
       role
       storage {
@@ -72,13 +26,6 @@ storageMemberships {
   }
 }
 
-mutation FollowUser($userId: Float!) {
-  followUser(userId: $userId)
-}
-
-mutation UnfollowUser($userId: Float!) {
-  unfollowUser(userId: $userId)
-}
 
 mutation UpdateUser($data: UserUpdateInput!) {
   updateUser(data: $data) {

@@ -84,61 +84,51 @@ const ContainersPage = () => {
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 gap-8">
                           {storage.containers.map((container) => (
                             <div
-                              key={container.id}
-                              className="bg-white shadow-lg rounded-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col max-w-md mx-auto w-full"
-                            >
-                              {/* Header */}
-                              <div
-                                className="p-4 border-b border-gray-200 cursor-pointer"
-                                onClick={() => router.push(`/qrcode-app/container/view/${container.id}`)}
-                              >
-                                <h3 className="text-lg font-semibold text-gray-800 truncate">{container.name}</h3>
-                                <p className="text-sm text-gray-500 mt-1">{container.description}</p>
-                              </div>
+  key={container.id}
+  className="bg-gradient-to-r from-[#0042FF] to-[#0032CC] rounded-3xl shadow-lg overflow-hidden flex flex-col max-w-md mx-auto w-full text-white"
+>
+  {/* Header */}
+  <div
+    className="p-4 border-b border-blue-200 bg-transparent cursor-pointer"
+    onClick={() => router.push(`/qrcode-app/container/view/${container.id}`)}
+  >
+    <h3 className="text-lg font-semibold truncate">{container.name}</h3>
+    <p className="text-sm text-blue-100 mt-1">{container.description}</p>
+  </div>
 
-                              {/* QR Code */}
-                              <div className="flex justify-center p-4 border-b bg-white">
-                                <div id={`qr-${container.id}`}>
-                                  <QRCodeSVG value={container.code} size={100} />
+  {/* QR Code */}
+  <div className="flex justify-center p-6">
+    <div className="bg-white rounded-2xl p-4">
+      <QRCodeSVG value={container.code} size={150} />
+    </div>
+  </div>
 
-                                  <button
-                                    onClick={() => printQRCode(container.id.toString())}
-                                    className="mt-2 text-sm text-blue-600 hover:underline flex items-center justify-center"
-                                  >
-                                    <FiPrinter className="mr-1" />
-                                    Print QR Code
-                                  </button>
-                                </div>
+  {/* Footer */}
+  <div className="p-4 bg-transparent flex flex-col items-start space-y-2">
+    <p className="text-sm">
+      Items: <span className="font-medium">{container.items.length}</span>
+    </p>
+    <p className="text-sm">
+      Code: <span className="font-medium">{container.code}</span>
+    </p>
 
+    {container.items.length > 0 && (
+      <button
+        className="mt-4 bg-white text-[#0042FF] px-4 py-2 text-sm font-medium rounded-md hover:bg-blue-100 w-full"
+        onClick={() => router.push(`/qrcode-app/container/view/${container.id}`)}
+      >
+        View Items
+      </button>
+    )}
 
-                              </div>
-
-                              {/* Footer */}
-                              <div className="p-4 bg-gray-50 flex flex-col items-start space-y-2">
-                                <p className="text-sm text-gray-600">
-                                  Items: <span className="font-medium">{container.items.length}</span>
-                                </p>
-                                <p className="text-sm text-gray-600">
-                                  Code: <span className="font-medium">{container.code}</span>
-                                </p>
-
-                                {container.items.length > 0 && (
-                                  <button
-                                    className="mt-4 bg-blue-500 text-white px-4 py-2 text-sm font-medium rounded-md hover:bg-blue-600 w-full"
-                                    onClick={() => router.push(`/qrcode-app/container/view/${container.id}`)}
-                                  >
-                                    View Items
-                                  </button>
-                                )}
-
-                                <button
-                                  className="mt-2 bg-gray-500 text-white px-4 py-2 text-sm font-medium rounded-md hover:bg-gray-600 w-full"
-                                  onClick={() => router.push(`/qrcode-app/items/${container.id}`)}
-                                >
-                                  Add Item
-                                </button>
-                              </div>
-                            </div>
+    <button
+      className="mt-2 bg-white text-[#0042FF] px-4 py-2 text-sm font-medium rounded-md hover:bg-blue-100 w-full"
+      onClick={() => router.push(`/qrcode-app/items/${container.id}`)}
+    >
+      Add Item
+    </button>
+  </div>
+</div>
                           ))}
                         </div>
                       )}

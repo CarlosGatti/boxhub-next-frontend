@@ -10,9 +10,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import type { AppProps } from 'next/app'
 import { AuthProvider } from '../context/AuthContext'
 import { GlobalStyle } from '../styles/global'
-import { TimelineProvider } from '../context/TimelineContext'
 import { ToastContainer } from 'react-toastify'
-import { UserActionsProvider } from '../context/UserActionsContext'
 import { UserProvider } from '../context/UserContext'
 import { parseCookies } from 'nookies'
 import { useAuth } from '../hooks'
@@ -34,12 +32,8 @@ export default function App({
         <AuthProvider>
           <CurrentUserProvider>
             <UserProvider>
-              <UserActionsProvider>
-                <TimelineProvider>
-                  <GlobalStyle />
-                  <Component {...pageProps} />
-                </TimelineProvider>
-              </UserActionsProvider>
+              <GlobalStyle />
+              <Component {...pageProps} />
             </UserProvider>
           </CurrentUserProvider>
         </AuthProvider>
