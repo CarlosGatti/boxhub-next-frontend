@@ -62,26 +62,30 @@ const LoginPage: NextPage = () => {
         <h1 className="text-2xl font-semibold text-center mb-2">Sign in to BoxHub</h1>
         <p className="text-sm text-gray-600 text-center mb-8">Enter your credentials to access your account</p>
 
-        <form onSubmit={handleSubmit(handleLogin)} className="space-y-4">
+        <form onSubmit={handleSubmit(handleLogin)} className="space-y-2">
           <Input
             placeholder="E-mail"
             error={errors.email}
             {...register('email')}
           />
+          <div>
           <Input
             type="password"
             placeholder="Password"
             error={errors.password}
             {...register('password')}
           />
+          
           <div className="text-right text-sm">
             <Link href="/account/forgot-password" className="text-blue-600 hover:underline">
               Forgot your password?
             </Link>
           </div>
+          </div>
           <Button type="submit" isLoading={isLoadingLogin} className="w-full">
             Sign in
           </Button>
+          
         </form>
 
         <div className="text-center text-sm text-gray-700 mt-4">
@@ -90,10 +94,10 @@ const LoginPage: NextPage = () => {
             Create one
           </Link>
         </div>
-
+{/* 
         <div className="mt-10">
           <AllRightsReserved />
-        </div>
+        </div> */}
       </div>
     </PublicLayout>
   )

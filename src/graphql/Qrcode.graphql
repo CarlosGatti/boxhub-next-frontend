@@ -169,4 +169,37 @@ query GetDashboardData {
   }
 }
 
+mutation EditItem(
+  $id: Float!
+  $name: String!
+  $description: String!
+  $imageUrl: String!
+  $quantity: Float!
+  $category: String!
+) {
+  editItem(
+    id: $id
+    name: $name
+    description: $description
+    imageUrl: $imageUrl
+    quantity: $quantity
+    category: $category
+  ) {
+    success
+    message
+  }
+}
+
+query GetItemById($id: Float!) {
+  getItemById(id: $id) {
+    id
+    name
+    description
+    imageUrl
+    quantity
+    category
+  }
+}
+
+
 

@@ -1,0 +1,105 @@
+mutation CreateProject($data: ProjectCreateInput!) {
+  createProject(data: $data) {
+    id
+    name
+    client
+    location
+    status
+    startDate
+    endDate
+    createdAt
+    updatedAt
+  }
+}
+
+query GetAllProjects {
+  getAllProjects {
+    id
+    name
+    client
+    location
+    status
+    startDate
+    endDate
+    createdAt
+    updatedAt
+  }
+}
+
+query GetProjectById($id: Int!) {
+  getProjectById(id: $id) {
+    id
+    name
+    client
+    location
+    status
+    startDate
+    endDate
+    createdAt
+    updatedAt
+  }
+}
+
+# NOVAS OPERAÇÕES PARA CONSTRUCTION LOG
+
+mutation AddConstructionLog($projectId: Int!, $data: ConstructionLogCreateInput!) {
+  addConstructionLog(projectId: $projectId, data: $data) {
+    id
+    title
+    description
+    type
+    images
+    createdAt
+    user {
+      id
+      firstName
+    }
+  }
+}
+
+
+mutation DeleteConstructionLog($logId: Int!) {
+  deleteConstructionLog(logId: $logId) {
+    id
+  }
+}
+
+query GetLogsByProject($projectId: Int!) {
+  getLogsByProject(projectId: $projectId) {
+  id
+  title
+  description
+
+  type
+  images
+  createdAt
+  projectId
+  }
+} 
+
+query GetLogByLogId($logId: Int!) {
+  getLogByLogId(logId: $logId) {
+    id
+    title
+    description
+    type
+    images
+    createdAt
+    user {
+      id
+      firstName
+      lastName
+      profilePicture
+    }
+    project {
+      id
+      name
+      client
+      location
+      status
+      startDate
+      endDate
+    }
+  }
+}
+

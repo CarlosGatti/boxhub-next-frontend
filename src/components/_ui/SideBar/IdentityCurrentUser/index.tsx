@@ -1,38 +1,39 @@
-import { Avatar, Container, Name, Wrapper } from './styles'
-
-import Link from 'next/link'
-import { useCurrentUser } from '../../../../context/CurrentUser'
+import Link from 'next/link';
+import { useCurrentUser } from '../../../../context/CurrentUser';
 
 interface IdentityCurrentUserProps {
-  displayName?: boolean
+  displayName?: boolean;
 }
 
 export const IdentityCurrentUser = ({
   displayName = true,
 }: IdentityCurrentUserProps) => {
-  const { currentUser } = useCurrentUser()
+  const { currentUser } = useCurrentUser();
 
   return (
-    <Container>
-      <Link href="/account/profile" style={{ height: '100%' }}>
-        <Wrapper>
-          <Avatar
-            alt="foto de perfil"
+    <div className="flex items-center">
+      <Link href="/account/profile">
+        <div className="flex items-center cursor-pointer">
+          <img
             src={
               currentUser?.profilePicture?.replace('https', 'http') ||
               '/image/no-photo.png'
             }
+            alt="foto de perfil"
+            className="w-10 h-10 rounded-full object-cover"
           />
           {displayName && (
-            <Name>
-              <strong>
+            <div className="ml-3">
+              <strong className="block text-sm font-semibold">
                 {currentUser?.firstName} {currentUser?.lastName}
               </strong>
-              <span>{currentUser?.nickname}</span>
-            </Name>
+              <span className="text-xs text-gray-500">
+                {currentUser?.nickname}
+              </span>
+            </div>
           )}
-        </Wrapper>
+        </div>
       </Link>
-    </Container>
-  )
-}
+    </div>
+  );
+};

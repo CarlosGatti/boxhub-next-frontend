@@ -1,0 +1,37 @@
+mutation AddProjectDocument(
+  $projectId: Int!
+  $name: String!
+  $fileUrl: String!
+  $type: DocumentType!
+) {
+  addProjectDocument(
+    projectId: $projectId
+    name: $name
+    fileUrl: $fileUrl
+    type: $type
+  ) {
+    id
+    name
+    fileUrl
+    type
+    createdAt
+  }
+}
+
+
+query GetDocumentsByProject($projectId: Int!) {
+  getDocumentsByProject(projectId: $projectId) {
+    id
+    name
+    fileUrl
+    type
+    createdAt
+  }
+}
+
+mutation RemoveProjectDocument($id: Int!) {
+  removeProjectDocument(id: $id) {
+    id
+    name
+  }
+}

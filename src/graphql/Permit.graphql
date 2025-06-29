@@ -1,0 +1,32 @@
+mutation AddPermit(
+  $projectId: Int!
+  $number: String!
+  $kind: PermitKind!
+  $status: PermitStatus!
+  $file: Upload!
+) {
+  addPermitInspection(
+    projectId: $projectId
+    number: $number
+    kind: $kind
+    status: $status
+    file: $file
+  ) {
+    id
+    number
+    status
+    fileUrl
+  }
+}
+
+
+query GetPermits($projectId: Int!) {
+  getPermitsByProject(projectId: $projectId) {
+    id
+    number
+    kind
+    status
+    fileUrl
+    createdAt
+  }
+}

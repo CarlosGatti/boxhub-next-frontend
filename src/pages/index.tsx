@@ -1,11 +1,10 @@
-import { Cloud, Menu, QrCode, Search, X } from "lucide-react"
-import { SendEmailDocument, useSendEmailMutation } from "../generated/graphql"
+import { Cloud, QrCode, Search } from "lucide-react"
 
 import Image from "next/image"
 import Link from "next/link"
 import { PublicLayout } from "../layouts/PublicLayout"
 import graphqlRequestClient from "../lib/graphql.request"
-import { useMutation } from "@tanstack/react-query"
+import { useSendEmailMutation } from "../generated/graphql"
 import { useState } from "react"
 
 export default function LandingPage() {

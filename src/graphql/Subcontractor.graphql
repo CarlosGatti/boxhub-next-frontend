@@ -1,0 +1,71 @@
+mutation CreateSubcontractor($data: SubcontractorCreateInput!) {
+  createSubcontractor(data: $data) {
+    id
+    companyName
+    contactName
+    email
+    phone
+    trade
+  }
+}
+
+query GetAllSubcontractors {
+  getAllSubcontractors {
+    id
+    companyName
+    contactName
+    email
+    phone
+    trade
+  }
+}
+
+query GetSubcontractorById($id: Int!) {
+  getSubcontractorById(id: $id) {
+    id
+    companyName
+    contactName
+    email
+    phone
+    trade
+    bankAccount
+    paymentPreference
+    notes
+    priority
+    createdViaPublicForm
+    insurances {
+      id
+      company
+      expiration
+      documentUrl
+    }
+  }
+}
+
+mutation CreateInsurance($subcontractorId: Int!, $data: InsuranceCreateInput!) {
+  createInsurance(subcontractorId: $subcontractorId, data: $data) {
+    id
+    insurances {
+      id
+      company
+      expiration
+      documentUrl
+    }
+  }
+}
+mutation CreateSubcontractorInsurance($subcontractorId: Int!, $data: InsuranceCreateInput!) {
+  createInsurance(subcontractorId: $subcontractorId, data: $data) {
+    id
+    companyName
+    contactName
+    trade
+    email
+    phone
+    insurances {
+      id
+      company
+      expiration
+      documentUrl
+    }
+  }
+}

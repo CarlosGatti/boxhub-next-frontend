@@ -158,6 +158,313 @@ export type CategoryWhereUniqueInput = {
   updatedAt?: InputMaybe<DateTimeFilter>;
 };
 
+export type ConstructionLog = {
+  __typename?: 'ConstructionLog';
+  _count: ConstructionLogCount;
+  comments?: Maybe<Array<LogComment>>;
+  createdAt: Scalars['DateTime'];
+  description: Scalars['String'];
+  id: Scalars['ID'];
+  images?: Maybe<Scalars['JSON']>;
+  project: Project;
+  projectId: Scalars['Int'];
+  title: Scalars['String'];
+  type: LogType;
+  user: User;
+  userId: Scalars['Int'];
+};
+
+export type ConstructionLogCount = {
+  __typename?: 'ConstructionLogCount';
+  comments: Scalars['Int'];
+};
+
+export type ConstructionLogCreateInput = {
+  comments?: InputMaybe<LogCommentCreateNestedManyWithoutLogInput>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  description: Scalars['String'];
+  images?: InputMaybe<Scalars['JSON']>;
+  project: ProjectCreateNestedOneWithoutLogsInput;
+  title: Scalars['String'];
+  type: LogType;
+  user: UserCreateNestedOneWithoutConstructionLogsInput;
+};
+
+export type ConstructionLogCreateManyProjectInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  description: Scalars['String'];
+  id?: InputMaybe<Scalars['Int']>;
+  images?: InputMaybe<Scalars['JSON']>;
+  title: Scalars['String'];
+  type: LogType;
+  userId: Scalars['Int'];
+};
+
+export type ConstructionLogCreateManyProjectInputEnvelope = {
+  data: Array<ConstructionLogCreateManyProjectInput>;
+  skipDuplicates?: InputMaybe<Scalars['Boolean']>;
+};
+
+export type ConstructionLogCreateManyUserInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  description: Scalars['String'];
+  id?: InputMaybe<Scalars['Int']>;
+  images?: InputMaybe<Scalars['JSON']>;
+  projectId: Scalars['Int'];
+  title: Scalars['String'];
+  type: LogType;
+};
+
+export type ConstructionLogCreateManyUserInputEnvelope = {
+  data: Array<ConstructionLogCreateManyUserInput>;
+  skipDuplicates?: InputMaybe<Scalars['Boolean']>;
+};
+
+export type ConstructionLogCreateNestedManyWithoutProjectInput = {
+  connect?: InputMaybe<Array<ConstructionLogWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<ConstructionLogCreateOrConnectWithoutProjectInput>>;
+  create?: InputMaybe<Array<ConstructionLogCreateWithoutProjectInput>>;
+  createMany?: InputMaybe<ConstructionLogCreateManyProjectInputEnvelope>;
+};
+
+export type ConstructionLogCreateNestedManyWithoutUserInput = {
+  connect?: InputMaybe<Array<ConstructionLogWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<ConstructionLogCreateOrConnectWithoutUserInput>>;
+  create?: InputMaybe<Array<ConstructionLogCreateWithoutUserInput>>;
+  createMany?: InputMaybe<ConstructionLogCreateManyUserInputEnvelope>;
+};
+
+export type ConstructionLogCreateNestedOneWithoutCommentsInput = {
+  connect?: InputMaybe<ConstructionLogWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<ConstructionLogCreateOrConnectWithoutCommentsInput>;
+  create?: InputMaybe<ConstructionLogCreateWithoutCommentsInput>;
+};
+
+export type ConstructionLogCreateOrConnectWithoutCommentsInput = {
+  create: ConstructionLogCreateWithoutCommentsInput;
+  where: ConstructionLogWhereUniqueInput;
+};
+
+export type ConstructionLogCreateOrConnectWithoutProjectInput = {
+  create: ConstructionLogCreateWithoutProjectInput;
+  where: ConstructionLogWhereUniqueInput;
+};
+
+export type ConstructionLogCreateOrConnectWithoutUserInput = {
+  create: ConstructionLogCreateWithoutUserInput;
+  where: ConstructionLogWhereUniqueInput;
+};
+
+export type ConstructionLogCreateWithoutCommentsInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  description: Scalars['String'];
+  images?: InputMaybe<Scalars['JSON']>;
+  project: ProjectCreateNestedOneWithoutLogsInput;
+  title: Scalars['String'];
+  type: LogType;
+  user: UserCreateNestedOneWithoutConstructionLogsInput;
+};
+
+export type ConstructionLogCreateWithoutProjectInput = {
+  comments?: InputMaybe<LogCommentCreateNestedManyWithoutLogInput>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  description: Scalars['String'];
+  images?: InputMaybe<Scalars['JSON']>;
+  title: Scalars['String'];
+  type: LogType;
+  user: UserCreateNestedOneWithoutConstructionLogsInput;
+};
+
+export type ConstructionLogCreateWithoutUserInput = {
+  comments?: InputMaybe<LogCommentCreateNestedManyWithoutLogInput>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  description: Scalars['String'];
+  images?: InputMaybe<Scalars['JSON']>;
+  project: ProjectCreateNestedOneWithoutLogsInput;
+  title: Scalars['String'];
+  type: LogType;
+};
+
+export type ConstructionLogListRelationFilter = {
+  every?: InputMaybe<ConstructionLogWhereInput>;
+  none?: InputMaybe<ConstructionLogWhereInput>;
+  some?: InputMaybe<ConstructionLogWhereInput>;
+};
+
+export type ConstructionLogOrderByRelationAggregateInput = {
+  _count?: InputMaybe<SortOrder>;
+};
+
+export type ConstructionLogRelationFilter = {
+  is?: InputMaybe<ConstructionLogWhereInput>;
+  isNot?: InputMaybe<ConstructionLogWhereInput>;
+};
+
+export type ConstructionLogScalarWhereInput = {
+  AND?: InputMaybe<Array<ConstructionLogScalarWhereInput>>;
+  NOT?: InputMaybe<Array<ConstructionLogScalarWhereInput>>;
+  OR?: InputMaybe<Array<ConstructionLogScalarWhereInput>>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  description?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IntFilter>;
+  images?: InputMaybe<JsonNullableFilter>;
+  projectId?: InputMaybe<IntFilter>;
+  title?: InputMaybe<StringFilter>;
+  type?: InputMaybe<EnumLogTypeFilter>;
+  userId?: InputMaybe<IntFilter>;
+};
+
+export type ConstructionLogUpdateManyMutationInput = {
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  description?: InputMaybe<StringFieldUpdateOperationsInput>;
+  images?: InputMaybe<Scalars['JSON']>;
+  title?: InputMaybe<StringFieldUpdateOperationsInput>;
+  type?: InputMaybe<EnumLogTypeFieldUpdateOperationsInput>;
+};
+
+export type ConstructionLogUpdateManyWithWhereWithoutProjectInput = {
+  data: ConstructionLogUpdateManyMutationInput;
+  where: ConstructionLogScalarWhereInput;
+};
+
+export type ConstructionLogUpdateManyWithWhereWithoutUserInput = {
+  data: ConstructionLogUpdateManyMutationInput;
+  where: ConstructionLogScalarWhereInput;
+};
+
+export type ConstructionLogUpdateManyWithoutProjectNestedInput = {
+  connect?: InputMaybe<Array<ConstructionLogWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<ConstructionLogCreateOrConnectWithoutProjectInput>>;
+  create?: InputMaybe<Array<ConstructionLogCreateWithoutProjectInput>>;
+  createMany?: InputMaybe<ConstructionLogCreateManyProjectInputEnvelope>;
+  delete?: InputMaybe<Array<ConstructionLogWhereUniqueInput>>;
+  deleteMany?: InputMaybe<Array<ConstructionLogScalarWhereInput>>;
+  disconnect?: InputMaybe<Array<ConstructionLogWhereUniqueInput>>;
+  set?: InputMaybe<Array<ConstructionLogWhereUniqueInput>>;
+  update?: InputMaybe<Array<ConstructionLogUpdateWithWhereUniqueWithoutProjectInput>>;
+  updateMany?: InputMaybe<Array<ConstructionLogUpdateManyWithWhereWithoutProjectInput>>;
+  upsert?: InputMaybe<Array<ConstructionLogUpsertWithWhereUniqueWithoutProjectInput>>;
+};
+
+export type ConstructionLogUpdateManyWithoutUserNestedInput = {
+  connect?: InputMaybe<Array<ConstructionLogWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<ConstructionLogCreateOrConnectWithoutUserInput>>;
+  create?: InputMaybe<Array<ConstructionLogCreateWithoutUserInput>>;
+  createMany?: InputMaybe<ConstructionLogCreateManyUserInputEnvelope>;
+  delete?: InputMaybe<Array<ConstructionLogWhereUniqueInput>>;
+  deleteMany?: InputMaybe<Array<ConstructionLogScalarWhereInput>>;
+  disconnect?: InputMaybe<Array<ConstructionLogWhereUniqueInput>>;
+  set?: InputMaybe<Array<ConstructionLogWhereUniqueInput>>;
+  update?: InputMaybe<Array<ConstructionLogUpdateWithWhereUniqueWithoutUserInput>>;
+  updateMany?: InputMaybe<Array<ConstructionLogUpdateManyWithWhereWithoutUserInput>>;
+  upsert?: InputMaybe<Array<ConstructionLogUpsertWithWhereUniqueWithoutUserInput>>;
+};
+
+export type ConstructionLogUpdateOneRequiredWithoutCommentsNestedInput = {
+  connect?: InputMaybe<ConstructionLogWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<ConstructionLogCreateOrConnectWithoutCommentsInput>;
+  create?: InputMaybe<ConstructionLogCreateWithoutCommentsInput>;
+  update?: InputMaybe<ConstructionLogUpdateToOneWithWhereWithoutCommentsInput>;
+  upsert?: InputMaybe<ConstructionLogUpsertWithoutCommentsInput>;
+};
+
+export type ConstructionLogUpdateToOneWithWhereWithoutCommentsInput = {
+  data: ConstructionLogUpdateWithoutCommentsInput;
+  where?: InputMaybe<ConstructionLogWhereInput>;
+};
+
+export type ConstructionLogUpdateWithWhereUniqueWithoutProjectInput = {
+  data: ConstructionLogUpdateWithoutProjectInput;
+  where: ConstructionLogWhereUniqueInput;
+};
+
+export type ConstructionLogUpdateWithWhereUniqueWithoutUserInput = {
+  data: ConstructionLogUpdateWithoutUserInput;
+  where: ConstructionLogWhereUniqueInput;
+};
+
+export type ConstructionLogUpdateWithoutCommentsInput = {
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  description?: InputMaybe<StringFieldUpdateOperationsInput>;
+  images?: InputMaybe<Scalars['JSON']>;
+  project?: InputMaybe<ProjectUpdateOneRequiredWithoutLogsNestedInput>;
+  title?: InputMaybe<StringFieldUpdateOperationsInput>;
+  type?: InputMaybe<EnumLogTypeFieldUpdateOperationsInput>;
+  user?: InputMaybe<UserUpdateOneRequiredWithoutConstructionLogsNestedInput>;
+};
+
+export type ConstructionLogUpdateWithoutProjectInput = {
+  comments?: InputMaybe<LogCommentUpdateManyWithoutLogNestedInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  description?: InputMaybe<StringFieldUpdateOperationsInput>;
+  images?: InputMaybe<Scalars['JSON']>;
+  title?: InputMaybe<StringFieldUpdateOperationsInput>;
+  type?: InputMaybe<EnumLogTypeFieldUpdateOperationsInput>;
+  user?: InputMaybe<UserUpdateOneRequiredWithoutConstructionLogsNestedInput>;
+};
+
+export type ConstructionLogUpdateWithoutUserInput = {
+  comments?: InputMaybe<LogCommentUpdateManyWithoutLogNestedInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  description?: InputMaybe<StringFieldUpdateOperationsInput>;
+  images?: InputMaybe<Scalars['JSON']>;
+  project?: InputMaybe<ProjectUpdateOneRequiredWithoutLogsNestedInput>;
+  title?: InputMaybe<StringFieldUpdateOperationsInput>;
+  type?: InputMaybe<EnumLogTypeFieldUpdateOperationsInput>;
+};
+
+export type ConstructionLogUpsertWithWhereUniqueWithoutProjectInput = {
+  create: ConstructionLogCreateWithoutProjectInput;
+  update: ConstructionLogUpdateWithoutProjectInput;
+  where: ConstructionLogWhereUniqueInput;
+};
+
+export type ConstructionLogUpsertWithWhereUniqueWithoutUserInput = {
+  create: ConstructionLogCreateWithoutUserInput;
+  update: ConstructionLogUpdateWithoutUserInput;
+  where: ConstructionLogWhereUniqueInput;
+};
+
+export type ConstructionLogUpsertWithoutCommentsInput = {
+  create: ConstructionLogCreateWithoutCommentsInput;
+  update: ConstructionLogUpdateWithoutCommentsInput;
+  where?: InputMaybe<ConstructionLogWhereInput>;
+};
+
+export type ConstructionLogWhereInput = {
+  AND?: InputMaybe<Array<ConstructionLogWhereInput>>;
+  NOT?: InputMaybe<Array<ConstructionLogWhereInput>>;
+  OR?: InputMaybe<Array<ConstructionLogWhereInput>>;
+  comments?: InputMaybe<LogCommentListRelationFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  description?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IntFilter>;
+  images?: InputMaybe<JsonNullableFilter>;
+  project?: InputMaybe<ProjectRelationFilter>;
+  projectId?: InputMaybe<IntFilter>;
+  title?: InputMaybe<StringFilter>;
+  type?: InputMaybe<EnumLogTypeFilter>;
+  user?: InputMaybe<UserRelationFilter>;
+  userId?: InputMaybe<IntFilter>;
+};
+
+export type ConstructionLogWhereUniqueInput = {
+  AND?: InputMaybe<Array<ConstructionLogWhereInput>>;
+  NOT?: InputMaybe<Array<ConstructionLogWhereInput>>;
+  OR?: InputMaybe<Array<ConstructionLogWhereInput>>;
+  comments?: InputMaybe<LogCommentListRelationFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  description?: InputMaybe<StringFilter>;
+  id?: InputMaybe<Scalars['Int']>;
+  images?: InputMaybe<JsonNullableFilter>;
+  project?: InputMaybe<ProjectRelationFilter>;
+  projectId?: InputMaybe<IntFilter>;
+  title?: InputMaybe<StringFilter>;
+  type?: InputMaybe<EnumLogTypeFilter>;
+  user?: InputMaybe<UserRelationFilter>;
+  userId?: InputMaybe<IntFilter>;
+};
+
 export type Container = {
   __typename?: 'Container';
   _count: ContainerCount;
@@ -367,6 +674,26 @@ export type DateTimeNullableFilter = {
   notIn?: InputMaybe<Array<Scalars['DateTime']>>;
 };
 
+export enum DocumentType {
+  Contract = 'CONTRACT',
+  Invoice = 'INVOICE',
+  Other = 'OTHER',
+  Permit = 'PERMIT',
+  Photo = 'PHOTO',
+  Plan = 'PLAN'
+}
+
+export type EnumDocumentTypeFieldUpdateOperationsInput = {
+  set?: InputMaybe<DocumentType>;
+};
+
+export type EnumDocumentTypeFilter = {
+  equals?: InputMaybe<DocumentType>;
+  in?: InputMaybe<Array<DocumentType>>;
+  not?: InputMaybe<NestedEnumDocumentTypeFilter>;
+  notIn?: InputMaybe<Array<DocumentType>>;
+};
+
 export type EnumLogActionFieldUpdateOperationsInput = {
   set?: InputMaybe<LogAction>;
 };
@@ -376,6 +703,61 @@ export type EnumLogActionFilter = {
   in?: InputMaybe<Array<LogAction>>;
   not?: InputMaybe<NestedEnumLogActionFilter>;
   notIn?: InputMaybe<Array<LogAction>>;
+};
+
+export type EnumLogTypeFieldUpdateOperationsInput = {
+  set?: InputMaybe<LogType>;
+};
+
+export type EnumLogTypeFilter = {
+  equals?: InputMaybe<LogType>;
+  in?: InputMaybe<Array<LogType>>;
+  not?: InputMaybe<NestedEnumLogTypeFilter>;
+  notIn?: InputMaybe<Array<LogType>>;
+};
+
+export type EnumPermitKindFieldUpdateOperationsInput = {
+  set?: InputMaybe<PermitKind>;
+};
+
+export type EnumPermitKindFilter = {
+  equals?: InputMaybe<PermitKind>;
+  in?: InputMaybe<Array<PermitKind>>;
+  not?: InputMaybe<NestedEnumPermitKindFilter>;
+  notIn?: InputMaybe<Array<PermitKind>>;
+};
+
+export type EnumPermitStatusFieldUpdateOperationsInput = {
+  set?: InputMaybe<PermitStatus>;
+};
+
+export type EnumPermitStatusFilter = {
+  equals?: InputMaybe<PermitStatus>;
+  in?: InputMaybe<Array<PermitStatus>>;
+  not?: InputMaybe<NestedEnumPermitStatusFilter>;
+  notIn?: InputMaybe<Array<PermitStatus>>;
+};
+
+export type EnumPhotoCategoryFieldUpdateOperationsInput = {
+  set?: InputMaybe<PhotoCategory>;
+};
+
+export type EnumPhotoCategoryFilter = {
+  equals?: InputMaybe<PhotoCategory>;
+  in?: InputMaybe<Array<PhotoCategory>>;
+  not?: InputMaybe<NestedEnumPhotoCategoryFilter>;
+  notIn?: InputMaybe<Array<PhotoCategory>>;
+};
+
+export type EnumProjectStatusFieldUpdateOperationsInput = {
+  set?: InputMaybe<ProjectStatus>;
+};
+
+export type EnumProjectStatusFilter = {
+  equals?: InputMaybe<ProjectStatus>;
+  in?: InputMaybe<Array<ProjectStatus>>;
+  not?: InputMaybe<NestedEnumProjectStatusFilter>;
+  notIn?: InputMaybe<Array<ProjectStatus>>;
 };
 
 export type EnumRoleFieldUpdateOperationsInput = {
@@ -398,6 +780,108 @@ export type EnumStorageRoleFilter = {
   in?: InputMaybe<Array<StorageRole>>;
   not?: InputMaybe<NestedEnumStorageRoleFilter>;
   notIn?: InputMaybe<Array<StorageRole>>;
+};
+
+export type FloatFieldUpdateOperationsInput = {
+  decrement?: InputMaybe<Scalars['Float']>;
+  divide?: InputMaybe<Scalars['Float']>;
+  increment?: InputMaybe<Scalars['Float']>;
+  multiply?: InputMaybe<Scalars['Float']>;
+  set?: InputMaybe<Scalars['Float']>;
+};
+
+export type FloatFilter = {
+  equals?: InputMaybe<Scalars['Float']>;
+  gt?: InputMaybe<Scalars['Float']>;
+  gte?: InputMaybe<Scalars['Float']>;
+  in?: InputMaybe<Array<Scalars['Float']>>;
+  lt?: InputMaybe<Scalars['Float']>;
+  lte?: InputMaybe<Scalars['Float']>;
+  not?: InputMaybe<NestedFloatFilter>;
+  notIn?: InputMaybe<Array<Scalars['Float']>>;
+};
+
+export type Insurance = {
+  __typename?: 'Insurance';
+  company: Scalars['String'];
+  createdAt: Scalars['DateTime'];
+  documentUrl: Scalars['String'];
+  expiration: Scalars['DateTime'];
+  id: Scalars['ID'];
+  subcontractor: Subcontractor;
+  subcontractorId: Scalars['Int'];
+};
+
+export type InsuranceCreateInput = {
+  company: Scalars['String'];
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  documentUrl: Scalars['String'];
+  expiration: Scalars['DateTime'];
+  subcontractor: SubcontractorCreateNestedOneWithoutInsurancesInput;
+};
+
+export type InsuranceCreateManySubcontractorInput = {
+  company: Scalars['String'];
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  documentUrl: Scalars['String'];
+  expiration: Scalars['DateTime'];
+  id?: InputMaybe<Scalars['Int']>;
+};
+
+export type InsuranceCreateManySubcontractorInputEnvelope = {
+  data: Array<InsuranceCreateManySubcontractorInput>;
+  skipDuplicates?: InputMaybe<Scalars['Boolean']>;
+};
+
+export type InsuranceCreateNestedManyWithoutSubcontractorInput = {
+  connect?: InputMaybe<Array<InsuranceWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<InsuranceCreateOrConnectWithoutSubcontractorInput>>;
+  create?: InputMaybe<Array<InsuranceCreateWithoutSubcontractorInput>>;
+  createMany?: InputMaybe<InsuranceCreateManySubcontractorInputEnvelope>;
+};
+
+export type InsuranceCreateOrConnectWithoutSubcontractorInput = {
+  create: InsuranceCreateWithoutSubcontractorInput;
+  where: InsuranceWhereUniqueInput;
+};
+
+export type InsuranceCreateWithoutSubcontractorInput = {
+  company: Scalars['String'];
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  documentUrl: Scalars['String'];
+  expiration: Scalars['DateTime'];
+};
+
+export type InsuranceListRelationFilter = {
+  every?: InputMaybe<InsuranceWhereInput>;
+  none?: InputMaybe<InsuranceWhereInput>;
+  some?: InputMaybe<InsuranceWhereInput>;
+};
+
+export type InsuranceWhereInput = {
+  AND?: InputMaybe<Array<InsuranceWhereInput>>;
+  NOT?: InputMaybe<Array<InsuranceWhereInput>>;
+  OR?: InputMaybe<Array<InsuranceWhereInput>>;
+  company?: InputMaybe<StringFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  documentUrl?: InputMaybe<StringFilter>;
+  expiration?: InputMaybe<DateTimeFilter>;
+  id?: InputMaybe<IntFilter>;
+  subcontractor?: InputMaybe<SubcontractorRelationFilter>;
+  subcontractorId?: InputMaybe<IntFilter>;
+};
+
+export type InsuranceWhereUniqueInput = {
+  AND?: InputMaybe<Array<InsuranceWhereInput>>;
+  NOT?: InputMaybe<Array<InsuranceWhereInput>>;
+  OR?: InputMaybe<Array<InsuranceWhereInput>>;
+  company?: InputMaybe<StringFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  documentUrl?: InputMaybe<StringFilter>;
+  expiration?: InputMaybe<DateTimeFilter>;
+  id?: InputMaybe<Scalars['Int']>;
+  subcontractor?: InputMaybe<SubcontractorRelationFilter>;
+  subcontractorId?: InputMaybe<IntFilter>;
 };
 
 export type IntFieldUpdateOperationsInput = {
@@ -621,11 +1105,499 @@ export enum LogAction {
   CustomAction = 'CUSTOM_ACTION',
   ItemCreated = 'ITEM_CREATED',
   ItemDeleted = 'ITEM_DELETED',
+  ItemUpdated = 'ITEM_UPDATED',
   PageViewed = 'PAGE_VIEWED',
+  PasswordReset = 'PASSWORD_RESET',
+  RequestPasswordReset = 'REQUEST_PASSWORD_RESET',
   SearchUsed = 'SEARCH_USED',
+  StorageCreated = 'STORAGE_CREATED',
+  StorageDeleted = 'STORAGE_DELETED',
+  SubcontractorCreated = 'SUBCONTRACTOR_CREATED',
+  SubcontractorDeleted = 'SUBCONTRACTOR_DELETED',
+  SubcontractorUpdated = 'SUBCONTRACTOR_UPDATED',
+  SubcontractorViewed = 'SUBCONTRACTOR_VIEWED',
+  UserDeleted = 'USER_DELETED',
   UserLogin = 'USER_LOGIN',
-  UserLogout = 'USER_LOGOUT'
+  UserLogout = 'USER_LOGOUT',
+  UserProfileUpdated = 'USER_PROFILE_UPDATED',
+  UserRegistered = 'USER_REGISTERED'
 }
+
+export type LogComment = {
+  __typename?: 'LogComment';
+  _count: LogCommentCount;
+  content: Scalars['String'];
+  createdAt: Scalars['DateTime'];
+  id: Scalars['ID'];
+  log: ConstructionLog;
+  logId: Scalars['Int'];
+  replies?: Maybe<Array<LogCommentReply>>;
+  updatedAt: Scalars['DateTime'];
+  user: User;
+  userId: Scalars['Int'];
+};
+
+export type LogCommentCount = {
+  __typename?: 'LogCommentCount';
+  replies: Scalars['Int'];
+};
+
+export type LogCommentCreateManyLogInput = {
+  content: Scalars['String'];
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['Int']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  userId: Scalars['Int'];
+};
+
+export type LogCommentCreateManyLogInputEnvelope = {
+  data: Array<LogCommentCreateManyLogInput>;
+  skipDuplicates?: InputMaybe<Scalars['Boolean']>;
+};
+
+export type LogCommentCreateManyUserInput = {
+  content: Scalars['String'];
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['Int']>;
+  logId: Scalars['Int'];
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type LogCommentCreateManyUserInputEnvelope = {
+  data: Array<LogCommentCreateManyUserInput>;
+  skipDuplicates?: InputMaybe<Scalars['Boolean']>;
+};
+
+export type LogCommentCreateNestedManyWithoutLogInput = {
+  connect?: InputMaybe<Array<LogCommentWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<LogCommentCreateOrConnectWithoutLogInput>>;
+  create?: InputMaybe<Array<LogCommentCreateWithoutLogInput>>;
+  createMany?: InputMaybe<LogCommentCreateManyLogInputEnvelope>;
+};
+
+export type LogCommentCreateNestedManyWithoutUserInput = {
+  connect?: InputMaybe<Array<LogCommentWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<LogCommentCreateOrConnectWithoutUserInput>>;
+  create?: InputMaybe<Array<LogCommentCreateWithoutUserInput>>;
+  createMany?: InputMaybe<LogCommentCreateManyUserInputEnvelope>;
+};
+
+export type LogCommentCreateNestedOneWithoutRepliesInput = {
+  connect?: InputMaybe<LogCommentWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<LogCommentCreateOrConnectWithoutRepliesInput>;
+  create?: InputMaybe<LogCommentCreateWithoutRepliesInput>;
+};
+
+export type LogCommentCreateOrConnectWithoutLogInput = {
+  create: LogCommentCreateWithoutLogInput;
+  where: LogCommentWhereUniqueInput;
+};
+
+export type LogCommentCreateOrConnectWithoutRepliesInput = {
+  create: LogCommentCreateWithoutRepliesInput;
+  where: LogCommentWhereUniqueInput;
+};
+
+export type LogCommentCreateOrConnectWithoutUserInput = {
+  create: LogCommentCreateWithoutUserInput;
+  where: LogCommentWhereUniqueInput;
+};
+
+export type LogCommentCreateWithoutLogInput = {
+  content: Scalars['String'];
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  replies?: InputMaybe<LogCommentReplyCreateNestedManyWithoutCommentInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  user: UserCreateNestedOneWithoutLogCommentsInput;
+};
+
+export type LogCommentCreateWithoutRepliesInput = {
+  content: Scalars['String'];
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  log: ConstructionLogCreateNestedOneWithoutCommentsInput;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  user: UserCreateNestedOneWithoutLogCommentsInput;
+};
+
+export type LogCommentCreateWithoutUserInput = {
+  content: Scalars['String'];
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  log: ConstructionLogCreateNestedOneWithoutCommentsInput;
+  replies?: InputMaybe<LogCommentReplyCreateNestedManyWithoutCommentInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type LogCommentListRelationFilter = {
+  every?: InputMaybe<LogCommentWhereInput>;
+  none?: InputMaybe<LogCommentWhereInput>;
+  some?: InputMaybe<LogCommentWhereInput>;
+};
+
+export type LogCommentOrderByRelationAggregateInput = {
+  _count?: InputMaybe<SortOrder>;
+};
+
+export type LogCommentRelationFilter = {
+  is?: InputMaybe<LogCommentWhereInput>;
+  isNot?: InputMaybe<LogCommentWhereInput>;
+};
+
+export type LogCommentReply = {
+  __typename?: 'LogCommentReply';
+  comment: LogComment;
+  commentId: Scalars['Int'];
+  content: Scalars['String'];
+  createdAt: Scalars['DateTime'];
+  id: Scalars['ID'];
+  updatedAt: Scalars['DateTime'];
+  user: User;
+  userId: Scalars['Int'];
+};
+
+export type LogCommentReplyCreateManyCommentInput = {
+  content: Scalars['String'];
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['Int']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  userId: Scalars['Int'];
+};
+
+export type LogCommentReplyCreateManyCommentInputEnvelope = {
+  data: Array<LogCommentReplyCreateManyCommentInput>;
+  skipDuplicates?: InputMaybe<Scalars['Boolean']>;
+};
+
+export type LogCommentReplyCreateManyUserInput = {
+  commentId: Scalars['Int'];
+  content: Scalars['String'];
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['Int']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type LogCommentReplyCreateManyUserInputEnvelope = {
+  data: Array<LogCommentReplyCreateManyUserInput>;
+  skipDuplicates?: InputMaybe<Scalars['Boolean']>;
+};
+
+export type LogCommentReplyCreateNestedManyWithoutCommentInput = {
+  connect?: InputMaybe<Array<LogCommentReplyWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<LogCommentReplyCreateOrConnectWithoutCommentInput>>;
+  create?: InputMaybe<Array<LogCommentReplyCreateWithoutCommentInput>>;
+  createMany?: InputMaybe<LogCommentReplyCreateManyCommentInputEnvelope>;
+};
+
+export type LogCommentReplyCreateNestedManyWithoutUserInput = {
+  connect?: InputMaybe<Array<LogCommentReplyWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<LogCommentReplyCreateOrConnectWithoutUserInput>>;
+  create?: InputMaybe<Array<LogCommentReplyCreateWithoutUserInput>>;
+  createMany?: InputMaybe<LogCommentReplyCreateManyUserInputEnvelope>;
+};
+
+export type LogCommentReplyCreateOrConnectWithoutCommentInput = {
+  create: LogCommentReplyCreateWithoutCommentInput;
+  where: LogCommentReplyWhereUniqueInput;
+};
+
+export type LogCommentReplyCreateOrConnectWithoutUserInput = {
+  create: LogCommentReplyCreateWithoutUserInput;
+  where: LogCommentReplyWhereUniqueInput;
+};
+
+export type LogCommentReplyCreateWithoutCommentInput = {
+  content: Scalars['String'];
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  user: UserCreateNestedOneWithoutLogCommentRepliesInput;
+};
+
+export type LogCommentReplyCreateWithoutUserInput = {
+  comment: LogCommentCreateNestedOneWithoutRepliesInput;
+  content: Scalars['String'];
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type LogCommentReplyListRelationFilter = {
+  every?: InputMaybe<LogCommentReplyWhereInput>;
+  none?: InputMaybe<LogCommentReplyWhereInput>;
+  some?: InputMaybe<LogCommentReplyWhereInput>;
+};
+
+export type LogCommentReplyOrderByRelationAggregateInput = {
+  _count?: InputMaybe<SortOrder>;
+};
+
+export type LogCommentReplyScalarWhereInput = {
+  AND?: InputMaybe<Array<LogCommentReplyScalarWhereInput>>;
+  NOT?: InputMaybe<Array<LogCommentReplyScalarWhereInput>>;
+  OR?: InputMaybe<Array<LogCommentReplyScalarWhereInput>>;
+  commentId?: InputMaybe<IntFilter>;
+  content?: InputMaybe<StringFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  id?: InputMaybe<IntFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
+  userId?: InputMaybe<IntFilter>;
+};
+
+export type LogCommentReplyUpdateManyMutationInput = {
+  content?: InputMaybe<StringFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type LogCommentReplyUpdateManyWithWhereWithoutCommentInput = {
+  data: LogCommentReplyUpdateManyMutationInput;
+  where: LogCommentReplyScalarWhereInput;
+};
+
+export type LogCommentReplyUpdateManyWithWhereWithoutUserInput = {
+  data: LogCommentReplyUpdateManyMutationInput;
+  where: LogCommentReplyScalarWhereInput;
+};
+
+export type LogCommentReplyUpdateManyWithoutCommentNestedInput = {
+  connect?: InputMaybe<Array<LogCommentReplyWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<LogCommentReplyCreateOrConnectWithoutCommentInput>>;
+  create?: InputMaybe<Array<LogCommentReplyCreateWithoutCommentInput>>;
+  createMany?: InputMaybe<LogCommentReplyCreateManyCommentInputEnvelope>;
+  delete?: InputMaybe<Array<LogCommentReplyWhereUniqueInput>>;
+  deleteMany?: InputMaybe<Array<LogCommentReplyScalarWhereInput>>;
+  disconnect?: InputMaybe<Array<LogCommentReplyWhereUniqueInput>>;
+  set?: InputMaybe<Array<LogCommentReplyWhereUniqueInput>>;
+  update?: InputMaybe<Array<LogCommentReplyUpdateWithWhereUniqueWithoutCommentInput>>;
+  updateMany?: InputMaybe<Array<LogCommentReplyUpdateManyWithWhereWithoutCommentInput>>;
+  upsert?: InputMaybe<Array<LogCommentReplyUpsertWithWhereUniqueWithoutCommentInput>>;
+};
+
+export type LogCommentReplyUpdateManyWithoutUserNestedInput = {
+  connect?: InputMaybe<Array<LogCommentReplyWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<LogCommentReplyCreateOrConnectWithoutUserInput>>;
+  create?: InputMaybe<Array<LogCommentReplyCreateWithoutUserInput>>;
+  createMany?: InputMaybe<LogCommentReplyCreateManyUserInputEnvelope>;
+  delete?: InputMaybe<Array<LogCommentReplyWhereUniqueInput>>;
+  deleteMany?: InputMaybe<Array<LogCommentReplyScalarWhereInput>>;
+  disconnect?: InputMaybe<Array<LogCommentReplyWhereUniqueInput>>;
+  set?: InputMaybe<Array<LogCommentReplyWhereUniqueInput>>;
+  update?: InputMaybe<Array<LogCommentReplyUpdateWithWhereUniqueWithoutUserInput>>;
+  updateMany?: InputMaybe<Array<LogCommentReplyUpdateManyWithWhereWithoutUserInput>>;
+  upsert?: InputMaybe<Array<LogCommentReplyUpsertWithWhereUniqueWithoutUserInput>>;
+};
+
+export type LogCommentReplyUpdateWithWhereUniqueWithoutCommentInput = {
+  data: LogCommentReplyUpdateWithoutCommentInput;
+  where: LogCommentReplyWhereUniqueInput;
+};
+
+export type LogCommentReplyUpdateWithWhereUniqueWithoutUserInput = {
+  data: LogCommentReplyUpdateWithoutUserInput;
+  where: LogCommentReplyWhereUniqueInput;
+};
+
+export type LogCommentReplyUpdateWithoutCommentInput = {
+  content?: InputMaybe<StringFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  user?: InputMaybe<UserUpdateOneRequiredWithoutLogCommentRepliesNestedInput>;
+};
+
+export type LogCommentReplyUpdateWithoutUserInput = {
+  comment?: InputMaybe<LogCommentUpdateOneRequiredWithoutRepliesNestedInput>;
+  content?: InputMaybe<StringFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type LogCommentReplyUpsertWithWhereUniqueWithoutCommentInput = {
+  create: LogCommentReplyCreateWithoutCommentInput;
+  update: LogCommentReplyUpdateWithoutCommentInput;
+  where: LogCommentReplyWhereUniqueInput;
+};
+
+export type LogCommentReplyUpsertWithWhereUniqueWithoutUserInput = {
+  create: LogCommentReplyCreateWithoutUserInput;
+  update: LogCommentReplyUpdateWithoutUserInput;
+  where: LogCommentReplyWhereUniqueInput;
+};
+
+export type LogCommentReplyWhereInput = {
+  AND?: InputMaybe<Array<LogCommentReplyWhereInput>>;
+  NOT?: InputMaybe<Array<LogCommentReplyWhereInput>>;
+  OR?: InputMaybe<Array<LogCommentReplyWhereInput>>;
+  comment?: InputMaybe<LogCommentRelationFilter>;
+  commentId?: InputMaybe<IntFilter>;
+  content?: InputMaybe<StringFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  id?: InputMaybe<IntFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
+  user?: InputMaybe<UserRelationFilter>;
+  userId?: InputMaybe<IntFilter>;
+};
+
+export type LogCommentReplyWhereUniqueInput = {
+  AND?: InputMaybe<Array<LogCommentReplyWhereInput>>;
+  NOT?: InputMaybe<Array<LogCommentReplyWhereInput>>;
+  OR?: InputMaybe<Array<LogCommentReplyWhereInput>>;
+  comment?: InputMaybe<LogCommentRelationFilter>;
+  commentId?: InputMaybe<IntFilter>;
+  content?: InputMaybe<StringFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  id?: InputMaybe<Scalars['Int']>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
+  user?: InputMaybe<UserRelationFilter>;
+  userId?: InputMaybe<IntFilter>;
+};
+
+export type LogCommentScalarWhereInput = {
+  AND?: InputMaybe<Array<LogCommentScalarWhereInput>>;
+  NOT?: InputMaybe<Array<LogCommentScalarWhereInput>>;
+  OR?: InputMaybe<Array<LogCommentScalarWhereInput>>;
+  content?: InputMaybe<StringFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  id?: InputMaybe<IntFilter>;
+  logId?: InputMaybe<IntFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
+  userId?: InputMaybe<IntFilter>;
+};
+
+export type LogCommentUpdateManyMutationInput = {
+  content?: InputMaybe<StringFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type LogCommentUpdateManyWithWhereWithoutLogInput = {
+  data: LogCommentUpdateManyMutationInput;
+  where: LogCommentScalarWhereInput;
+};
+
+export type LogCommentUpdateManyWithWhereWithoutUserInput = {
+  data: LogCommentUpdateManyMutationInput;
+  where: LogCommentScalarWhereInput;
+};
+
+export type LogCommentUpdateManyWithoutLogNestedInput = {
+  connect?: InputMaybe<Array<LogCommentWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<LogCommentCreateOrConnectWithoutLogInput>>;
+  create?: InputMaybe<Array<LogCommentCreateWithoutLogInput>>;
+  createMany?: InputMaybe<LogCommentCreateManyLogInputEnvelope>;
+  delete?: InputMaybe<Array<LogCommentWhereUniqueInput>>;
+  deleteMany?: InputMaybe<Array<LogCommentScalarWhereInput>>;
+  disconnect?: InputMaybe<Array<LogCommentWhereUniqueInput>>;
+  set?: InputMaybe<Array<LogCommentWhereUniqueInput>>;
+  update?: InputMaybe<Array<LogCommentUpdateWithWhereUniqueWithoutLogInput>>;
+  updateMany?: InputMaybe<Array<LogCommentUpdateManyWithWhereWithoutLogInput>>;
+  upsert?: InputMaybe<Array<LogCommentUpsertWithWhereUniqueWithoutLogInput>>;
+};
+
+export type LogCommentUpdateManyWithoutUserNestedInput = {
+  connect?: InputMaybe<Array<LogCommentWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<LogCommentCreateOrConnectWithoutUserInput>>;
+  create?: InputMaybe<Array<LogCommentCreateWithoutUserInput>>;
+  createMany?: InputMaybe<LogCommentCreateManyUserInputEnvelope>;
+  delete?: InputMaybe<Array<LogCommentWhereUniqueInput>>;
+  deleteMany?: InputMaybe<Array<LogCommentScalarWhereInput>>;
+  disconnect?: InputMaybe<Array<LogCommentWhereUniqueInput>>;
+  set?: InputMaybe<Array<LogCommentWhereUniqueInput>>;
+  update?: InputMaybe<Array<LogCommentUpdateWithWhereUniqueWithoutUserInput>>;
+  updateMany?: InputMaybe<Array<LogCommentUpdateManyWithWhereWithoutUserInput>>;
+  upsert?: InputMaybe<Array<LogCommentUpsertWithWhereUniqueWithoutUserInput>>;
+};
+
+export type LogCommentUpdateOneRequiredWithoutRepliesNestedInput = {
+  connect?: InputMaybe<LogCommentWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<LogCommentCreateOrConnectWithoutRepliesInput>;
+  create?: InputMaybe<LogCommentCreateWithoutRepliesInput>;
+  update?: InputMaybe<LogCommentUpdateToOneWithWhereWithoutRepliesInput>;
+  upsert?: InputMaybe<LogCommentUpsertWithoutRepliesInput>;
+};
+
+export type LogCommentUpdateToOneWithWhereWithoutRepliesInput = {
+  data: LogCommentUpdateWithoutRepliesInput;
+  where?: InputMaybe<LogCommentWhereInput>;
+};
+
+export type LogCommentUpdateWithWhereUniqueWithoutLogInput = {
+  data: LogCommentUpdateWithoutLogInput;
+  where: LogCommentWhereUniqueInput;
+};
+
+export type LogCommentUpdateWithWhereUniqueWithoutUserInput = {
+  data: LogCommentUpdateWithoutUserInput;
+  where: LogCommentWhereUniqueInput;
+};
+
+export type LogCommentUpdateWithoutLogInput = {
+  content?: InputMaybe<StringFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  replies?: InputMaybe<LogCommentReplyUpdateManyWithoutCommentNestedInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  user?: InputMaybe<UserUpdateOneRequiredWithoutLogCommentsNestedInput>;
+};
+
+export type LogCommentUpdateWithoutRepliesInput = {
+  content?: InputMaybe<StringFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  log?: InputMaybe<ConstructionLogUpdateOneRequiredWithoutCommentsNestedInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  user?: InputMaybe<UserUpdateOneRequiredWithoutLogCommentsNestedInput>;
+};
+
+export type LogCommentUpdateWithoutUserInput = {
+  content?: InputMaybe<StringFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  log?: InputMaybe<ConstructionLogUpdateOneRequiredWithoutCommentsNestedInput>;
+  replies?: InputMaybe<LogCommentReplyUpdateManyWithoutCommentNestedInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type LogCommentUpsertWithWhereUniqueWithoutLogInput = {
+  create: LogCommentCreateWithoutLogInput;
+  update: LogCommentUpdateWithoutLogInput;
+  where: LogCommentWhereUniqueInput;
+};
+
+export type LogCommentUpsertWithWhereUniqueWithoutUserInput = {
+  create: LogCommentCreateWithoutUserInput;
+  update: LogCommentUpdateWithoutUserInput;
+  where: LogCommentWhereUniqueInput;
+};
+
+export type LogCommentUpsertWithoutRepliesInput = {
+  create: LogCommentCreateWithoutRepliesInput;
+  update: LogCommentUpdateWithoutRepliesInput;
+  where?: InputMaybe<LogCommentWhereInput>;
+};
+
+export type LogCommentWhereInput = {
+  AND?: InputMaybe<Array<LogCommentWhereInput>>;
+  NOT?: InputMaybe<Array<LogCommentWhereInput>>;
+  OR?: InputMaybe<Array<LogCommentWhereInput>>;
+  content?: InputMaybe<StringFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  id?: InputMaybe<IntFilter>;
+  log?: InputMaybe<ConstructionLogRelationFilter>;
+  logId?: InputMaybe<IntFilter>;
+  replies?: InputMaybe<LogCommentReplyListRelationFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
+  user?: InputMaybe<UserRelationFilter>;
+  userId?: InputMaybe<IntFilter>;
+};
+
+export type LogCommentWhereUniqueInput = {
+  AND?: InputMaybe<Array<LogCommentWhereInput>>;
+  NOT?: InputMaybe<Array<LogCommentWhereInput>>;
+  OR?: InputMaybe<Array<LogCommentWhereInput>>;
+  content?: InputMaybe<StringFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  id?: InputMaybe<Scalars['Int']>;
+  log?: InputMaybe<ConstructionLogRelationFilter>;
+  logId?: InputMaybe<IntFilter>;
+  replies?: InputMaybe<LogCommentReplyListRelationFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
+  user?: InputMaybe<UserRelationFilter>;
+  userId?: InputMaybe<IntFilter>;
+};
 
 export type LogCreateManyUserInput = {
   action: LogAction;
@@ -669,6 +1641,10 @@ export type LogListRelationFilter = {
   some?: InputMaybe<LogWhereInput>;
 };
 
+export type LogOrderByRelationAggregateInput = {
+  _count?: InputMaybe<SortOrder>;
+};
+
 export type LogScalarWhereInput = {
   AND?: InputMaybe<Array<LogScalarWhereInput>>;
   NOT?: InputMaybe<Array<LogScalarWhereInput>>;
@@ -682,6 +1658,15 @@ export type LogScalarWhereInput = {
   route?: InputMaybe<StringNullableFilter>;
   userId?: InputMaybe<IntNullableFilter>;
 };
+
+export enum LogType {
+  DailyCheckin = 'DAILY_CHECKIN',
+  GoodPractice = 'GOOD_PRACTICE',
+  Issue = 'ISSUE',
+  MaterialReceipt = 'MATERIAL_RECEIPT',
+  Observation = 'OBSERVATION',
+  Other = 'OTHER'
+}
 
 export type LogUpdateManyMutationInput = {
   action?: InputMaybe<EnumLogActionFieldUpdateOperationsInput>;
@@ -772,50 +1757,342 @@ export type LoginUserInput = {
   password: Scalars['String'];
 };
 
+export type MaterialEntry = {
+  __typename?: 'MaterialEntry';
+  createdAt: Scalars['DateTime'];
+  id: Scalars['ID'];
+  imageUrls?: Maybe<Scalars['JSON']>;
+  name: Scalars['String'];
+  note?: Maybe<Scalars['String']>;
+  project: Project;
+  projectId: Scalars['Int'];
+  quantity: Scalars['Float'];
+  receivedAt: Scalars['DateTime'];
+  receivedBy?: Maybe<User>;
+  receivedById?: Maybe<Scalars['Int']>;
+  supplier: Scalars['String'];
+};
+
+export type MaterialEntryCreateManyProjectInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['Int']>;
+  imageUrls?: InputMaybe<Scalars['JSON']>;
+  name: Scalars['String'];
+  note?: InputMaybe<Scalars['String']>;
+  quantity: Scalars['Float'];
+  receivedAt: Scalars['DateTime'];
+  receivedById?: InputMaybe<Scalars['Int']>;
+  supplier: Scalars['String'];
+};
+
+export type MaterialEntryCreateManyProjectInputEnvelope = {
+  data: Array<MaterialEntryCreateManyProjectInput>;
+  skipDuplicates?: InputMaybe<Scalars['Boolean']>;
+};
+
+export type MaterialEntryCreateManyReceivedByInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['Int']>;
+  imageUrls?: InputMaybe<Scalars['JSON']>;
+  name: Scalars['String'];
+  note?: InputMaybe<Scalars['String']>;
+  projectId: Scalars['Int'];
+  quantity: Scalars['Float'];
+  receivedAt: Scalars['DateTime'];
+  supplier: Scalars['String'];
+};
+
+export type MaterialEntryCreateManyReceivedByInputEnvelope = {
+  data: Array<MaterialEntryCreateManyReceivedByInput>;
+  skipDuplicates?: InputMaybe<Scalars['Boolean']>;
+};
+
+export type MaterialEntryCreateNestedManyWithoutProjectInput = {
+  connect?: InputMaybe<Array<MaterialEntryWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<MaterialEntryCreateOrConnectWithoutProjectInput>>;
+  create?: InputMaybe<Array<MaterialEntryCreateWithoutProjectInput>>;
+  createMany?: InputMaybe<MaterialEntryCreateManyProjectInputEnvelope>;
+};
+
+export type MaterialEntryCreateNestedManyWithoutReceivedByInput = {
+  connect?: InputMaybe<Array<MaterialEntryWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<MaterialEntryCreateOrConnectWithoutReceivedByInput>>;
+  create?: InputMaybe<Array<MaterialEntryCreateWithoutReceivedByInput>>;
+  createMany?: InputMaybe<MaterialEntryCreateManyReceivedByInputEnvelope>;
+};
+
+export type MaterialEntryCreateOrConnectWithoutProjectInput = {
+  create: MaterialEntryCreateWithoutProjectInput;
+  where: MaterialEntryWhereUniqueInput;
+};
+
+export type MaterialEntryCreateOrConnectWithoutReceivedByInput = {
+  create: MaterialEntryCreateWithoutReceivedByInput;
+  where: MaterialEntryWhereUniqueInput;
+};
+
+export type MaterialEntryCreateWithoutProjectInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  imageUrls?: InputMaybe<Scalars['JSON']>;
+  name: Scalars['String'];
+  note?: InputMaybe<Scalars['String']>;
+  quantity: Scalars['Float'];
+  receivedAt: Scalars['DateTime'];
+  receivedBy?: InputMaybe<UserCreateNestedOneWithoutReceivedMaterialsInput>;
+  supplier: Scalars['String'];
+};
+
+export type MaterialEntryCreateWithoutReceivedByInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  imageUrls?: InputMaybe<Scalars['JSON']>;
+  name: Scalars['String'];
+  note?: InputMaybe<Scalars['String']>;
+  project: ProjectCreateNestedOneWithoutMaterialsInput;
+  quantity: Scalars['Float'];
+  receivedAt: Scalars['DateTime'];
+  supplier: Scalars['String'];
+};
+
+export type MaterialEntryListRelationFilter = {
+  every?: InputMaybe<MaterialEntryWhereInput>;
+  none?: InputMaybe<MaterialEntryWhereInput>;
+  some?: InputMaybe<MaterialEntryWhereInput>;
+};
+
+export type MaterialEntryOrderByRelationAggregateInput = {
+  _count?: InputMaybe<SortOrder>;
+};
+
+export type MaterialEntryScalarWhereInput = {
+  AND?: InputMaybe<Array<MaterialEntryScalarWhereInput>>;
+  NOT?: InputMaybe<Array<MaterialEntryScalarWhereInput>>;
+  OR?: InputMaybe<Array<MaterialEntryScalarWhereInput>>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  id?: InputMaybe<IntFilter>;
+  imageUrls?: InputMaybe<JsonNullableFilter>;
+  name?: InputMaybe<StringFilter>;
+  note?: InputMaybe<StringNullableFilter>;
+  projectId?: InputMaybe<IntFilter>;
+  quantity?: InputMaybe<FloatFilter>;
+  receivedAt?: InputMaybe<DateTimeFilter>;
+  receivedById?: InputMaybe<IntNullableFilter>;
+  supplier?: InputMaybe<StringFilter>;
+};
+
+export type MaterialEntryUpdateManyMutationInput = {
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  imageUrls?: InputMaybe<Scalars['JSON']>;
+  name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  note?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  quantity?: InputMaybe<FloatFieldUpdateOperationsInput>;
+  receivedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  supplier?: InputMaybe<StringFieldUpdateOperationsInput>;
+};
+
+export type MaterialEntryUpdateManyWithWhereWithoutProjectInput = {
+  data: MaterialEntryUpdateManyMutationInput;
+  where: MaterialEntryScalarWhereInput;
+};
+
+export type MaterialEntryUpdateManyWithWhereWithoutReceivedByInput = {
+  data: MaterialEntryUpdateManyMutationInput;
+  where: MaterialEntryScalarWhereInput;
+};
+
+export type MaterialEntryUpdateManyWithoutProjectNestedInput = {
+  connect?: InputMaybe<Array<MaterialEntryWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<MaterialEntryCreateOrConnectWithoutProjectInput>>;
+  create?: InputMaybe<Array<MaterialEntryCreateWithoutProjectInput>>;
+  createMany?: InputMaybe<MaterialEntryCreateManyProjectInputEnvelope>;
+  delete?: InputMaybe<Array<MaterialEntryWhereUniqueInput>>;
+  deleteMany?: InputMaybe<Array<MaterialEntryScalarWhereInput>>;
+  disconnect?: InputMaybe<Array<MaterialEntryWhereUniqueInput>>;
+  set?: InputMaybe<Array<MaterialEntryWhereUniqueInput>>;
+  update?: InputMaybe<Array<MaterialEntryUpdateWithWhereUniqueWithoutProjectInput>>;
+  updateMany?: InputMaybe<Array<MaterialEntryUpdateManyWithWhereWithoutProjectInput>>;
+  upsert?: InputMaybe<Array<MaterialEntryUpsertWithWhereUniqueWithoutProjectInput>>;
+};
+
+export type MaterialEntryUpdateManyWithoutReceivedByNestedInput = {
+  connect?: InputMaybe<Array<MaterialEntryWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<MaterialEntryCreateOrConnectWithoutReceivedByInput>>;
+  create?: InputMaybe<Array<MaterialEntryCreateWithoutReceivedByInput>>;
+  createMany?: InputMaybe<MaterialEntryCreateManyReceivedByInputEnvelope>;
+  delete?: InputMaybe<Array<MaterialEntryWhereUniqueInput>>;
+  deleteMany?: InputMaybe<Array<MaterialEntryScalarWhereInput>>;
+  disconnect?: InputMaybe<Array<MaterialEntryWhereUniqueInput>>;
+  set?: InputMaybe<Array<MaterialEntryWhereUniqueInput>>;
+  update?: InputMaybe<Array<MaterialEntryUpdateWithWhereUniqueWithoutReceivedByInput>>;
+  updateMany?: InputMaybe<Array<MaterialEntryUpdateManyWithWhereWithoutReceivedByInput>>;
+  upsert?: InputMaybe<Array<MaterialEntryUpsertWithWhereUniqueWithoutReceivedByInput>>;
+};
+
+export type MaterialEntryUpdateWithWhereUniqueWithoutProjectInput = {
+  data: MaterialEntryUpdateWithoutProjectInput;
+  where: MaterialEntryWhereUniqueInput;
+};
+
+export type MaterialEntryUpdateWithWhereUniqueWithoutReceivedByInput = {
+  data: MaterialEntryUpdateWithoutReceivedByInput;
+  where: MaterialEntryWhereUniqueInput;
+};
+
+export type MaterialEntryUpdateWithoutProjectInput = {
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  imageUrls?: InputMaybe<Scalars['JSON']>;
+  name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  note?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  quantity?: InputMaybe<FloatFieldUpdateOperationsInput>;
+  receivedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  receivedBy?: InputMaybe<UserUpdateOneWithoutReceivedMaterialsNestedInput>;
+  supplier?: InputMaybe<StringFieldUpdateOperationsInput>;
+};
+
+export type MaterialEntryUpdateWithoutReceivedByInput = {
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  imageUrls?: InputMaybe<Scalars['JSON']>;
+  name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  note?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  project?: InputMaybe<ProjectUpdateOneRequiredWithoutMaterialsNestedInput>;
+  quantity?: InputMaybe<FloatFieldUpdateOperationsInput>;
+  receivedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  supplier?: InputMaybe<StringFieldUpdateOperationsInput>;
+};
+
+export type MaterialEntryUpsertWithWhereUniqueWithoutProjectInput = {
+  create: MaterialEntryCreateWithoutProjectInput;
+  update: MaterialEntryUpdateWithoutProjectInput;
+  where: MaterialEntryWhereUniqueInput;
+};
+
+export type MaterialEntryUpsertWithWhereUniqueWithoutReceivedByInput = {
+  create: MaterialEntryCreateWithoutReceivedByInput;
+  update: MaterialEntryUpdateWithoutReceivedByInput;
+  where: MaterialEntryWhereUniqueInput;
+};
+
+export type MaterialEntryWhereInput = {
+  AND?: InputMaybe<Array<MaterialEntryWhereInput>>;
+  NOT?: InputMaybe<Array<MaterialEntryWhereInput>>;
+  OR?: InputMaybe<Array<MaterialEntryWhereInput>>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  id?: InputMaybe<IntFilter>;
+  imageUrls?: InputMaybe<JsonNullableFilter>;
+  name?: InputMaybe<StringFilter>;
+  note?: InputMaybe<StringNullableFilter>;
+  project?: InputMaybe<ProjectRelationFilter>;
+  projectId?: InputMaybe<IntFilter>;
+  quantity?: InputMaybe<FloatFilter>;
+  receivedAt?: InputMaybe<DateTimeFilter>;
+  receivedBy?: InputMaybe<UserNullableRelationFilter>;
+  receivedById?: InputMaybe<IntNullableFilter>;
+  supplier?: InputMaybe<StringFilter>;
+};
+
+export type MaterialEntryWhereUniqueInput = {
+  AND?: InputMaybe<Array<MaterialEntryWhereInput>>;
+  NOT?: InputMaybe<Array<MaterialEntryWhereInput>>;
+  OR?: InputMaybe<Array<MaterialEntryWhereInput>>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  id?: InputMaybe<Scalars['Int']>;
+  imageUrls?: InputMaybe<JsonNullableFilter>;
+  name?: InputMaybe<StringFilter>;
+  note?: InputMaybe<StringNullableFilter>;
+  project?: InputMaybe<ProjectRelationFilter>;
+  projectId?: InputMaybe<IntFilter>;
+  quantity?: InputMaybe<FloatFilter>;
+  receivedAt?: InputMaybe<DateTimeFilter>;
+  receivedBy?: InputMaybe<UserNullableRelationFilter>;
+  receivedById?: InputMaybe<IntNullableFilter>;
+  supplier?: InputMaybe<StringFilter>;
+};
+
 export type MeDto = {
   __typename?: 'MeDto';
   _count: UserCount;
   about?: Maybe<Scalars['String']>;
+  constructionLogs?: Maybe<Array<ConstructionLog>>;
   createdAt: Scalars['DateTime'];
   email: Scalars['String'];
   emailVerified: Scalars['Boolean'];
   expiresAt?: Maybe<Scalars['DateTime']>;
   firstName: Scalars['String'];
-  githubUrl?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
   isPremium: Scalars['Boolean'];
   lastName: Scalars['String'];
-  linkedinUrl?: Maybe<Scalars['String']>;
+  logCommentReplies?: Maybe<Array<LogCommentReply>>;
+  logComments?: Maybe<Array<LogComment>>;
   logs?: Maybe<Array<Log>>;
   nickname?: Maybe<Scalars['String']>;
   password: Scalars['String'];
   peopleFollowingMe: Array<User>;
   peopleImFollowing: Array<User>;
   profilePicture?: Maybe<Scalars['String']>;
+  projectResponsible?: Maybe<Array<Project>>;
   public: Scalars['Boolean'];
+  receivedMaterials?: Maybe<Array<MaterialEntry>>;
+  responsibleInspections?: Maybe<Array<PermitInspection>>;
   role: Role;
   storageMemberships?: Maybe<Array<StorageMember>>;
   subscriptionId?: Maybe<Scalars['String']>;
-  twitterUrl?: Maybe<Scalars['String']>;
   updatedAt: Scalars['DateTime'];
   willExpireAt?: Maybe<Scalars['DateTime']>;
 };
 
 export type Mutation = {
   __typename?: 'Mutation';
+  addConstructionLog: ConstructionLog;
+  addConstructionLogWithFile: ConstructionLog;
+  addLogComment: LogComment;
+  addLogCommentReply: LogCommentReply;
   addMemberToStorage: Storage;
+  addPermitInspection: PermitInspection;
+  addProjectDocument: ProjectDocument;
   createContainer: BaseResult;
+  createInsurance: Subcontractor;
   createItem: BaseResult;
+  createProject: Project;
   createStorage: Storage;
+  createSubcontractor: Subcontractor;
   createUser: User;
   createUserWithoutPassword: BaseResult;
+  deleteConstructionLog: ConstructionLog;
+  editItem: BaseResult;
   login: LoginResult;
   refreshToken: Scalars['String'];
+  removeProjectDocument: ProjectDocument;
   removeStorage: Storage;
   requestPasswordReset: BaseResult;
   resetPassword: BaseResult;
   sendEmail: BaseResult;
   updateUser: User;
+  uploadInsurance: Insurance;
+};
+
+
+export type MutationAddConstructionLogArgs = {
+  data: ConstructionLogCreateInput;
+  projectId: Scalars['Int'];
+};
+
+
+export type MutationAddConstructionLogWithFileArgs = {
+  description: Scalars['String'];
+  projectId: Scalars['Int'];
+  title: Scalars['String'];
+  type: LogType;
+};
+
+
+export type MutationAddLogCommentArgs = {
+  content: Scalars['String'];
+  logId: Scalars['Int'];
+};
+
+
+export type MutationAddLogCommentReplyArgs = {
+  commentId: Scalars['Int'];
+  content: Scalars['String'];
 };
 
 
@@ -825,12 +2102,35 @@ export type MutationAddMemberToStorageArgs = {
 };
 
 
+export type MutationAddPermitInspectionArgs = {
+  fileUrl: Scalars['String'];
+  kind: PermitKind;
+  number: Scalars['String'];
+  projectId: Scalars['Int'];
+  status: PermitStatus;
+};
+
+
+export type MutationAddProjectDocumentArgs = {
+  fileUrl: Scalars['String'];
+  name: Scalars['String'];
+  projectId: Scalars['Int'];
+  type: DocumentType;
+};
+
+
 export type MutationCreateContainerArgs = {
   code: Scalars['String'];
   description: Scalars['String'];
   name: Scalars['String'];
   qrCode: Scalars['String'];
   storageId: Scalars['Float'];
+};
+
+
+export type MutationCreateInsuranceArgs = {
+  data: InsuranceCreateInput;
+  subcontractorId: Scalars['Int'];
 };
 
 
@@ -844,8 +2144,18 @@ export type MutationCreateItemArgs = {
 };
 
 
+export type MutationCreateProjectArgs = {
+  data: ProjectCreateInput;
+};
+
+
 export type MutationCreateStorageArgs = {
   name: Scalars['String'];
+};
+
+
+export type MutationCreateSubcontractorArgs = {
+  data: SubcontractorCreateInput;
 };
 
 
@@ -859,8 +2169,28 @@ export type MutationCreateUserWithoutPasswordArgs = {
 };
 
 
+export type MutationDeleteConstructionLogArgs = {
+  logId: Scalars['Int'];
+};
+
+
+export type MutationEditItemArgs = {
+  category: Scalars['String'];
+  description: Scalars['String'];
+  id: Scalars['Float'];
+  imageUrl: Scalars['String'];
+  name: Scalars['String'];
+  quantity: Scalars['Float'];
+};
+
+
 export type MutationLoginArgs = {
   user: LoginUserInput;
+};
+
+
+export type MutationRemoveProjectDocumentArgs = {
+  id: Scalars['Int'];
 };
 
 
@@ -893,6 +2223,13 @@ export type MutationUpdateUserArgs = {
   data: UserUpdateInput;
 };
 
+
+export type MutationUploadInsuranceArgs = {
+  company: Scalars['String'];
+  expiration: Scalars['String'];
+  subcontractorId: Scalars['Int'];
+};
+
 export type NestedBoolFilter = {
   equals?: InputMaybe<Scalars['Boolean']>;
   not?: InputMaybe<NestedBoolFilter>;
@@ -920,11 +2257,53 @@ export type NestedDateTimeNullableFilter = {
   notIn?: InputMaybe<Array<Scalars['DateTime']>>;
 };
 
+export type NestedEnumDocumentTypeFilter = {
+  equals?: InputMaybe<DocumentType>;
+  in?: InputMaybe<Array<DocumentType>>;
+  not?: InputMaybe<NestedEnumDocumentTypeFilter>;
+  notIn?: InputMaybe<Array<DocumentType>>;
+};
+
 export type NestedEnumLogActionFilter = {
   equals?: InputMaybe<LogAction>;
   in?: InputMaybe<Array<LogAction>>;
   not?: InputMaybe<NestedEnumLogActionFilter>;
   notIn?: InputMaybe<Array<LogAction>>;
+};
+
+export type NestedEnumLogTypeFilter = {
+  equals?: InputMaybe<LogType>;
+  in?: InputMaybe<Array<LogType>>;
+  not?: InputMaybe<NestedEnumLogTypeFilter>;
+  notIn?: InputMaybe<Array<LogType>>;
+};
+
+export type NestedEnumPermitKindFilter = {
+  equals?: InputMaybe<PermitKind>;
+  in?: InputMaybe<Array<PermitKind>>;
+  not?: InputMaybe<NestedEnumPermitKindFilter>;
+  notIn?: InputMaybe<Array<PermitKind>>;
+};
+
+export type NestedEnumPermitStatusFilter = {
+  equals?: InputMaybe<PermitStatus>;
+  in?: InputMaybe<Array<PermitStatus>>;
+  not?: InputMaybe<NestedEnumPermitStatusFilter>;
+  notIn?: InputMaybe<Array<PermitStatus>>;
+};
+
+export type NestedEnumPhotoCategoryFilter = {
+  equals?: InputMaybe<PhotoCategory>;
+  in?: InputMaybe<Array<PhotoCategory>>;
+  not?: InputMaybe<NestedEnumPhotoCategoryFilter>;
+  notIn?: InputMaybe<Array<PhotoCategory>>;
+};
+
+export type NestedEnumProjectStatusFilter = {
+  equals?: InputMaybe<ProjectStatus>;
+  in?: InputMaybe<Array<ProjectStatus>>;
+  not?: InputMaybe<NestedEnumProjectStatusFilter>;
+  notIn?: InputMaybe<Array<ProjectStatus>>;
 };
 
 export type NestedEnumRoleFilter = {
@@ -939,6 +2318,17 @@ export type NestedEnumStorageRoleFilter = {
   in?: InputMaybe<Array<StorageRole>>;
   not?: InputMaybe<NestedEnumStorageRoleFilter>;
   notIn?: InputMaybe<Array<StorageRole>>;
+};
+
+export type NestedFloatFilter = {
+  equals?: InputMaybe<Scalars['Float']>;
+  gt?: InputMaybe<Scalars['Float']>;
+  gte?: InputMaybe<Scalars['Float']>;
+  in?: InputMaybe<Array<Scalars['Float']>>;
+  lt?: InputMaybe<Scalars['Float']>;
+  lte?: InputMaybe<Scalars['Float']>;
+  not?: InputMaybe<NestedFloatFilter>;
+  notIn?: InputMaybe<Array<Scalars['Float']>>;
 };
 
 export type NestedIntFilter = {
@@ -999,17 +2389,1049 @@ export type NullableStringFieldUpdateOperationsInput = {
   set?: InputMaybe<Scalars['String']>;
 };
 
+export enum NullsOrder {
+  First = 'first',
+  Last = 'last'
+}
+
+export type PermitInspection = {
+  __typename?: 'PermitInspection';
+  approvedAt?: Maybe<Scalars['DateTime']>;
+  createdAt: Scalars['DateTime'];
+  fileUrl?: Maybe<Scalars['String']>;
+  id: Scalars['ID'];
+  kind: PermitKind;
+  number: Scalars['String'];
+  project: Project;
+  projectId: Scalars['Int'];
+  requestedAt?: Maybe<Scalars['DateTime']>;
+  responsible?: Maybe<User>;
+  responsibleId?: Maybe<Scalars['Int']>;
+  status: PermitStatus;
+  updatedAt: Scalars['DateTime'];
+};
+
+export type PermitInspectionCreateManyProjectInput = {
+  approvedAt?: InputMaybe<Scalars['DateTime']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  fileUrl?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['Int']>;
+  kind: PermitKind;
+  number: Scalars['String'];
+  requestedAt?: InputMaybe<Scalars['DateTime']>;
+  responsibleId?: InputMaybe<Scalars['Int']>;
+  status?: InputMaybe<PermitStatus>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type PermitInspectionCreateManyProjectInputEnvelope = {
+  data: Array<PermitInspectionCreateManyProjectInput>;
+  skipDuplicates?: InputMaybe<Scalars['Boolean']>;
+};
+
+export type PermitInspectionCreateManyResponsibleInput = {
+  approvedAt?: InputMaybe<Scalars['DateTime']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  fileUrl?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['Int']>;
+  kind: PermitKind;
+  number: Scalars['String'];
+  projectId: Scalars['Int'];
+  requestedAt?: InputMaybe<Scalars['DateTime']>;
+  status?: InputMaybe<PermitStatus>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type PermitInspectionCreateManyResponsibleInputEnvelope = {
+  data: Array<PermitInspectionCreateManyResponsibleInput>;
+  skipDuplicates?: InputMaybe<Scalars['Boolean']>;
+};
+
+export type PermitInspectionCreateNestedManyWithoutProjectInput = {
+  connect?: InputMaybe<Array<PermitInspectionWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<PermitInspectionCreateOrConnectWithoutProjectInput>>;
+  create?: InputMaybe<Array<PermitInspectionCreateWithoutProjectInput>>;
+  createMany?: InputMaybe<PermitInspectionCreateManyProjectInputEnvelope>;
+};
+
+export type PermitInspectionCreateNestedManyWithoutResponsibleInput = {
+  connect?: InputMaybe<Array<PermitInspectionWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<PermitInspectionCreateOrConnectWithoutResponsibleInput>>;
+  create?: InputMaybe<Array<PermitInspectionCreateWithoutResponsibleInput>>;
+  createMany?: InputMaybe<PermitInspectionCreateManyResponsibleInputEnvelope>;
+};
+
+export type PermitInspectionCreateOrConnectWithoutProjectInput = {
+  create: PermitInspectionCreateWithoutProjectInput;
+  where: PermitInspectionWhereUniqueInput;
+};
+
+export type PermitInspectionCreateOrConnectWithoutResponsibleInput = {
+  create: PermitInspectionCreateWithoutResponsibleInput;
+  where: PermitInspectionWhereUniqueInput;
+};
+
+export type PermitInspectionCreateWithoutProjectInput = {
+  approvedAt?: InputMaybe<Scalars['DateTime']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  fileUrl?: InputMaybe<Scalars['String']>;
+  kind: PermitKind;
+  number: Scalars['String'];
+  requestedAt?: InputMaybe<Scalars['DateTime']>;
+  responsible?: InputMaybe<UserCreateNestedOneWithoutResponsibleInspectionsInput>;
+  status?: InputMaybe<PermitStatus>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type PermitInspectionCreateWithoutResponsibleInput = {
+  approvedAt?: InputMaybe<Scalars['DateTime']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  fileUrl?: InputMaybe<Scalars['String']>;
+  kind: PermitKind;
+  number: Scalars['String'];
+  project: ProjectCreateNestedOneWithoutPermitsInput;
+  requestedAt?: InputMaybe<Scalars['DateTime']>;
+  status?: InputMaybe<PermitStatus>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type PermitInspectionListRelationFilter = {
+  every?: InputMaybe<PermitInspectionWhereInput>;
+  none?: InputMaybe<PermitInspectionWhereInput>;
+  some?: InputMaybe<PermitInspectionWhereInput>;
+};
+
+export type PermitInspectionOrderByRelationAggregateInput = {
+  _count?: InputMaybe<SortOrder>;
+};
+
+export type PermitInspectionScalarWhereInput = {
+  AND?: InputMaybe<Array<PermitInspectionScalarWhereInput>>;
+  NOT?: InputMaybe<Array<PermitInspectionScalarWhereInput>>;
+  OR?: InputMaybe<Array<PermitInspectionScalarWhereInput>>;
+  approvedAt?: InputMaybe<DateTimeNullableFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  fileUrl?: InputMaybe<StringNullableFilter>;
+  id?: InputMaybe<IntFilter>;
+  kind?: InputMaybe<EnumPermitKindFilter>;
+  number?: InputMaybe<StringFilter>;
+  projectId?: InputMaybe<IntFilter>;
+  requestedAt?: InputMaybe<DateTimeNullableFilter>;
+  responsibleId?: InputMaybe<IntNullableFilter>;
+  status?: InputMaybe<EnumPermitStatusFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
+};
+
+export type PermitInspectionUpdateManyMutationInput = {
+  approvedAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  fileUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  kind?: InputMaybe<EnumPermitKindFieldUpdateOperationsInput>;
+  number?: InputMaybe<StringFieldUpdateOperationsInput>;
+  requestedAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
+  status?: InputMaybe<EnumPermitStatusFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type PermitInspectionUpdateManyWithWhereWithoutProjectInput = {
+  data: PermitInspectionUpdateManyMutationInput;
+  where: PermitInspectionScalarWhereInput;
+};
+
+export type PermitInspectionUpdateManyWithWhereWithoutResponsibleInput = {
+  data: PermitInspectionUpdateManyMutationInput;
+  where: PermitInspectionScalarWhereInput;
+};
+
+export type PermitInspectionUpdateManyWithoutProjectNestedInput = {
+  connect?: InputMaybe<Array<PermitInspectionWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<PermitInspectionCreateOrConnectWithoutProjectInput>>;
+  create?: InputMaybe<Array<PermitInspectionCreateWithoutProjectInput>>;
+  createMany?: InputMaybe<PermitInspectionCreateManyProjectInputEnvelope>;
+  delete?: InputMaybe<Array<PermitInspectionWhereUniqueInput>>;
+  deleteMany?: InputMaybe<Array<PermitInspectionScalarWhereInput>>;
+  disconnect?: InputMaybe<Array<PermitInspectionWhereUniqueInput>>;
+  set?: InputMaybe<Array<PermitInspectionWhereUniqueInput>>;
+  update?: InputMaybe<Array<PermitInspectionUpdateWithWhereUniqueWithoutProjectInput>>;
+  updateMany?: InputMaybe<Array<PermitInspectionUpdateManyWithWhereWithoutProjectInput>>;
+  upsert?: InputMaybe<Array<PermitInspectionUpsertWithWhereUniqueWithoutProjectInput>>;
+};
+
+export type PermitInspectionUpdateManyWithoutResponsibleNestedInput = {
+  connect?: InputMaybe<Array<PermitInspectionWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<PermitInspectionCreateOrConnectWithoutResponsibleInput>>;
+  create?: InputMaybe<Array<PermitInspectionCreateWithoutResponsibleInput>>;
+  createMany?: InputMaybe<PermitInspectionCreateManyResponsibleInputEnvelope>;
+  delete?: InputMaybe<Array<PermitInspectionWhereUniqueInput>>;
+  deleteMany?: InputMaybe<Array<PermitInspectionScalarWhereInput>>;
+  disconnect?: InputMaybe<Array<PermitInspectionWhereUniqueInput>>;
+  set?: InputMaybe<Array<PermitInspectionWhereUniqueInput>>;
+  update?: InputMaybe<Array<PermitInspectionUpdateWithWhereUniqueWithoutResponsibleInput>>;
+  updateMany?: InputMaybe<Array<PermitInspectionUpdateManyWithWhereWithoutResponsibleInput>>;
+  upsert?: InputMaybe<Array<PermitInspectionUpsertWithWhereUniqueWithoutResponsibleInput>>;
+};
+
+export type PermitInspectionUpdateWithWhereUniqueWithoutProjectInput = {
+  data: PermitInspectionUpdateWithoutProjectInput;
+  where: PermitInspectionWhereUniqueInput;
+};
+
+export type PermitInspectionUpdateWithWhereUniqueWithoutResponsibleInput = {
+  data: PermitInspectionUpdateWithoutResponsibleInput;
+  where: PermitInspectionWhereUniqueInput;
+};
+
+export type PermitInspectionUpdateWithoutProjectInput = {
+  approvedAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  fileUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  kind?: InputMaybe<EnumPermitKindFieldUpdateOperationsInput>;
+  number?: InputMaybe<StringFieldUpdateOperationsInput>;
+  requestedAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
+  responsible?: InputMaybe<UserUpdateOneWithoutResponsibleInspectionsNestedInput>;
+  status?: InputMaybe<EnumPermitStatusFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type PermitInspectionUpdateWithoutResponsibleInput = {
+  approvedAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  fileUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  kind?: InputMaybe<EnumPermitKindFieldUpdateOperationsInput>;
+  number?: InputMaybe<StringFieldUpdateOperationsInput>;
+  project?: InputMaybe<ProjectUpdateOneRequiredWithoutPermitsNestedInput>;
+  requestedAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
+  status?: InputMaybe<EnumPermitStatusFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type PermitInspectionUpsertWithWhereUniqueWithoutProjectInput = {
+  create: PermitInspectionCreateWithoutProjectInput;
+  update: PermitInspectionUpdateWithoutProjectInput;
+  where: PermitInspectionWhereUniqueInput;
+};
+
+export type PermitInspectionUpsertWithWhereUniqueWithoutResponsibleInput = {
+  create: PermitInspectionCreateWithoutResponsibleInput;
+  update: PermitInspectionUpdateWithoutResponsibleInput;
+  where: PermitInspectionWhereUniqueInput;
+};
+
+export type PermitInspectionWhereInput = {
+  AND?: InputMaybe<Array<PermitInspectionWhereInput>>;
+  NOT?: InputMaybe<Array<PermitInspectionWhereInput>>;
+  OR?: InputMaybe<Array<PermitInspectionWhereInput>>;
+  approvedAt?: InputMaybe<DateTimeNullableFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  fileUrl?: InputMaybe<StringNullableFilter>;
+  id?: InputMaybe<IntFilter>;
+  kind?: InputMaybe<EnumPermitKindFilter>;
+  number?: InputMaybe<StringFilter>;
+  project?: InputMaybe<ProjectRelationFilter>;
+  projectId?: InputMaybe<IntFilter>;
+  requestedAt?: InputMaybe<DateTimeNullableFilter>;
+  responsible?: InputMaybe<UserNullableRelationFilter>;
+  responsibleId?: InputMaybe<IntNullableFilter>;
+  status?: InputMaybe<EnumPermitStatusFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
+};
+
+export type PermitInspectionWhereUniqueInput = {
+  AND?: InputMaybe<Array<PermitInspectionWhereInput>>;
+  NOT?: InputMaybe<Array<PermitInspectionWhereInput>>;
+  OR?: InputMaybe<Array<PermitInspectionWhereInput>>;
+  approvedAt?: InputMaybe<DateTimeNullableFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  fileUrl?: InputMaybe<StringNullableFilter>;
+  id?: InputMaybe<Scalars['Int']>;
+  kind?: InputMaybe<EnumPermitKindFilter>;
+  number?: InputMaybe<StringFilter>;
+  project?: InputMaybe<ProjectRelationFilter>;
+  projectId?: InputMaybe<IntFilter>;
+  requestedAt?: InputMaybe<DateTimeNullableFilter>;
+  responsible?: InputMaybe<UserNullableRelationFilter>;
+  responsibleId?: InputMaybe<IntNullableFilter>;
+  status?: InputMaybe<EnumPermitStatusFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
+};
+
+export enum PermitKind {
+  BuildingPermit = 'BUILDING_PERMIT',
+  Concrete = 'CONCRETE',
+  Electrical = 'ELECTRICAL',
+  Flooring = 'FLOORING',
+  Framing = 'FRAMING',
+  Hvac = 'HVAC',
+  InspectionReport = 'INSPECTION_REPORT',
+  Other = 'OTHER',
+  Plumbing = 'PLUMBING',
+  Roofing = 'ROOFING'
+}
+
+export enum PermitStatus {
+  Approved = 'APPROVED',
+  Rejected = 'REJECTED',
+  Required = 'REQUIRED',
+  Sent = 'SENT'
+}
+
+export enum PhotoCategory {
+  After = 'AFTER',
+  Before = 'BEFORE',
+  During = 'DURING',
+  Inspection = 'INSPECTION',
+  Issue = 'ISSUE'
+}
+
+export type Project = {
+  __typename?: 'Project';
+  _count: ProjectCount;
+  client: Scalars['String'];
+  createdAt: Scalars['DateTime'];
+  documents?: Maybe<Array<ProjectDocument>>;
+  endDate?: Maybe<Scalars['DateTime']>;
+  id: Scalars['ID'];
+  location: Scalars['String'];
+  logs?: Maybe<Array<ConstructionLog>>;
+  materials?: Maybe<Array<MaterialEntry>>;
+  name: Scalars['String'];
+  permits?: Maybe<Array<PermitInspection>>;
+  photos?: Maybe<Array<ProjectPhoto>>;
+  responsible: User;
+  responsibleId: Scalars['Int'];
+  startDate: Scalars['DateTime'];
+  status: ProjectStatus;
+  updatedAt: Scalars['DateTime'];
+};
+
+export type ProjectCount = {
+  __typename?: 'ProjectCount';
+  documents: Scalars['Int'];
+  logs: Scalars['Int'];
+  materials: Scalars['Int'];
+  permits: Scalars['Int'];
+  photos: Scalars['Int'];
+};
+
+export type ProjectCreateInput = {
+  client: Scalars['String'];
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  documents?: InputMaybe<ProjectDocumentCreateNestedManyWithoutProjectInput>;
+  endDate?: InputMaybe<Scalars['DateTime']>;
+  location: Scalars['String'];
+  logs?: InputMaybe<ConstructionLogCreateNestedManyWithoutProjectInput>;
+  materials?: InputMaybe<MaterialEntryCreateNestedManyWithoutProjectInput>;
+  name: Scalars['String'];
+  permits?: InputMaybe<PermitInspectionCreateNestedManyWithoutProjectInput>;
+  photos?: InputMaybe<ProjectPhotoCreateNestedManyWithoutProjectInput>;
+  responsible: UserCreateNestedOneWithoutProjectResponsibleInput;
+  startDate: Scalars['DateTime'];
+  status?: InputMaybe<ProjectStatus>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type ProjectCreateManyResponsibleInput = {
+  client: Scalars['String'];
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  endDate?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['Int']>;
+  location: Scalars['String'];
+  name: Scalars['String'];
+  startDate: Scalars['DateTime'];
+  status?: InputMaybe<ProjectStatus>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type ProjectCreateManyResponsibleInputEnvelope = {
+  data: Array<ProjectCreateManyResponsibleInput>;
+  skipDuplicates?: InputMaybe<Scalars['Boolean']>;
+};
+
+export type ProjectCreateNestedManyWithoutResponsibleInput = {
+  connect?: InputMaybe<Array<ProjectWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<ProjectCreateOrConnectWithoutResponsibleInput>>;
+  create?: InputMaybe<Array<ProjectCreateWithoutResponsibleInput>>;
+  createMany?: InputMaybe<ProjectCreateManyResponsibleInputEnvelope>;
+};
+
+export type ProjectCreateNestedOneWithoutLogsInput = {
+  connect?: InputMaybe<ProjectWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<ProjectCreateOrConnectWithoutLogsInput>;
+  create?: InputMaybe<ProjectCreateWithoutLogsInput>;
+};
+
+export type ProjectCreateNestedOneWithoutMaterialsInput = {
+  connect?: InputMaybe<ProjectWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<ProjectCreateOrConnectWithoutMaterialsInput>;
+  create?: InputMaybe<ProjectCreateWithoutMaterialsInput>;
+};
+
+export type ProjectCreateNestedOneWithoutPermitsInput = {
+  connect?: InputMaybe<ProjectWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<ProjectCreateOrConnectWithoutPermitsInput>;
+  create?: InputMaybe<ProjectCreateWithoutPermitsInput>;
+};
+
+export type ProjectCreateOrConnectWithoutLogsInput = {
+  create: ProjectCreateWithoutLogsInput;
+  where: ProjectWhereUniqueInput;
+};
+
+export type ProjectCreateOrConnectWithoutMaterialsInput = {
+  create: ProjectCreateWithoutMaterialsInput;
+  where: ProjectWhereUniqueInput;
+};
+
+export type ProjectCreateOrConnectWithoutPermitsInput = {
+  create: ProjectCreateWithoutPermitsInput;
+  where: ProjectWhereUniqueInput;
+};
+
+export type ProjectCreateOrConnectWithoutResponsibleInput = {
+  create: ProjectCreateWithoutResponsibleInput;
+  where: ProjectWhereUniqueInput;
+};
+
+export type ProjectCreateWithoutLogsInput = {
+  client: Scalars['String'];
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  documents?: InputMaybe<ProjectDocumentCreateNestedManyWithoutProjectInput>;
+  endDate?: InputMaybe<Scalars['DateTime']>;
+  location: Scalars['String'];
+  materials?: InputMaybe<MaterialEntryCreateNestedManyWithoutProjectInput>;
+  name: Scalars['String'];
+  permits?: InputMaybe<PermitInspectionCreateNestedManyWithoutProjectInput>;
+  photos?: InputMaybe<ProjectPhotoCreateNestedManyWithoutProjectInput>;
+  responsible: UserCreateNestedOneWithoutProjectResponsibleInput;
+  startDate: Scalars['DateTime'];
+  status?: InputMaybe<ProjectStatus>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type ProjectCreateWithoutMaterialsInput = {
+  client: Scalars['String'];
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  documents?: InputMaybe<ProjectDocumentCreateNestedManyWithoutProjectInput>;
+  endDate?: InputMaybe<Scalars['DateTime']>;
+  location: Scalars['String'];
+  logs?: InputMaybe<ConstructionLogCreateNestedManyWithoutProjectInput>;
+  name: Scalars['String'];
+  permits?: InputMaybe<PermitInspectionCreateNestedManyWithoutProjectInput>;
+  photos?: InputMaybe<ProjectPhotoCreateNestedManyWithoutProjectInput>;
+  responsible: UserCreateNestedOneWithoutProjectResponsibleInput;
+  startDate: Scalars['DateTime'];
+  status?: InputMaybe<ProjectStatus>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type ProjectCreateWithoutPermitsInput = {
+  client: Scalars['String'];
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  documents?: InputMaybe<ProjectDocumentCreateNestedManyWithoutProjectInput>;
+  endDate?: InputMaybe<Scalars['DateTime']>;
+  location: Scalars['String'];
+  logs?: InputMaybe<ConstructionLogCreateNestedManyWithoutProjectInput>;
+  materials?: InputMaybe<MaterialEntryCreateNestedManyWithoutProjectInput>;
+  name: Scalars['String'];
+  photos?: InputMaybe<ProjectPhotoCreateNestedManyWithoutProjectInput>;
+  responsible: UserCreateNestedOneWithoutProjectResponsibleInput;
+  startDate: Scalars['DateTime'];
+  status?: InputMaybe<ProjectStatus>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type ProjectCreateWithoutResponsibleInput = {
+  client: Scalars['String'];
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  documents?: InputMaybe<ProjectDocumentCreateNestedManyWithoutProjectInput>;
+  endDate?: InputMaybe<Scalars['DateTime']>;
+  location: Scalars['String'];
+  logs?: InputMaybe<ConstructionLogCreateNestedManyWithoutProjectInput>;
+  materials?: InputMaybe<MaterialEntryCreateNestedManyWithoutProjectInput>;
+  name: Scalars['String'];
+  permits?: InputMaybe<PermitInspectionCreateNestedManyWithoutProjectInput>;
+  photos?: InputMaybe<ProjectPhotoCreateNestedManyWithoutProjectInput>;
+  startDate: Scalars['DateTime'];
+  status?: InputMaybe<ProjectStatus>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type ProjectDocument = {
+  __typename?: 'ProjectDocument';
+  createdAt: Scalars['DateTime'];
+  fileUrl: Scalars['String'];
+  id: Scalars['ID'];
+  name: Scalars['String'];
+  project: Project;
+  projectId: Scalars['Int'];
+  type: DocumentType;
+};
+
+export type ProjectDocumentCreateManyProjectInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  fileUrl: Scalars['String'];
+  id?: InputMaybe<Scalars['Int']>;
+  name: Scalars['String'];
+  type: DocumentType;
+};
+
+export type ProjectDocumentCreateManyProjectInputEnvelope = {
+  data: Array<ProjectDocumentCreateManyProjectInput>;
+  skipDuplicates?: InputMaybe<Scalars['Boolean']>;
+};
+
+export type ProjectDocumentCreateNestedManyWithoutProjectInput = {
+  connect?: InputMaybe<Array<ProjectDocumentWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<ProjectDocumentCreateOrConnectWithoutProjectInput>>;
+  create?: InputMaybe<Array<ProjectDocumentCreateWithoutProjectInput>>;
+  createMany?: InputMaybe<ProjectDocumentCreateManyProjectInputEnvelope>;
+};
+
+export type ProjectDocumentCreateOrConnectWithoutProjectInput = {
+  create: ProjectDocumentCreateWithoutProjectInput;
+  where: ProjectDocumentWhereUniqueInput;
+};
+
+export type ProjectDocumentCreateWithoutProjectInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  fileUrl: Scalars['String'];
+  name: Scalars['String'];
+  type: DocumentType;
+};
+
+export type ProjectDocumentListRelationFilter = {
+  every?: InputMaybe<ProjectDocumentWhereInput>;
+  none?: InputMaybe<ProjectDocumentWhereInput>;
+  some?: InputMaybe<ProjectDocumentWhereInput>;
+};
+
+export type ProjectDocumentOrderByRelationAggregateInput = {
+  _count?: InputMaybe<SortOrder>;
+};
+
+export type ProjectDocumentScalarWhereInput = {
+  AND?: InputMaybe<Array<ProjectDocumentScalarWhereInput>>;
+  NOT?: InputMaybe<Array<ProjectDocumentScalarWhereInput>>;
+  OR?: InputMaybe<Array<ProjectDocumentScalarWhereInput>>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  fileUrl?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IntFilter>;
+  name?: InputMaybe<StringFilter>;
+  projectId?: InputMaybe<IntFilter>;
+  type?: InputMaybe<EnumDocumentTypeFilter>;
+};
+
+export type ProjectDocumentUpdateManyMutationInput = {
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  fileUrl?: InputMaybe<StringFieldUpdateOperationsInput>;
+  name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  type?: InputMaybe<EnumDocumentTypeFieldUpdateOperationsInput>;
+};
+
+export type ProjectDocumentUpdateManyWithWhereWithoutProjectInput = {
+  data: ProjectDocumentUpdateManyMutationInput;
+  where: ProjectDocumentScalarWhereInput;
+};
+
+export type ProjectDocumentUpdateManyWithoutProjectNestedInput = {
+  connect?: InputMaybe<Array<ProjectDocumentWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<ProjectDocumentCreateOrConnectWithoutProjectInput>>;
+  create?: InputMaybe<Array<ProjectDocumentCreateWithoutProjectInput>>;
+  createMany?: InputMaybe<ProjectDocumentCreateManyProjectInputEnvelope>;
+  delete?: InputMaybe<Array<ProjectDocumentWhereUniqueInput>>;
+  deleteMany?: InputMaybe<Array<ProjectDocumentScalarWhereInput>>;
+  disconnect?: InputMaybe<Array<ProjectDocumentWhereUniqueInput>>;
+  set?: InputMaybe<Array<ProjectDocumentWhereUniqueInput>>;
+  update?: InputMaybe<Array<ProjectDocumentUpdateWithWhereUniqueWithoutProjectInput>>;
+  updateMany?: InputMaybe<Array<ProjectDocumentUpdateManyWithWhereWithoutProjectInput>>;
+  upsert?: InputMaybe<Array<ProjectDocumentUpsertWithWhereUniqueWithoutProjectInput>>;
+};
+
+export type ProjectDocumentUpdateWithWhereUniqueWithoutProjectInput = {
+  data: ProjectDocumentUpdateWithoutProjectInput;
+  where: ProjectDocumentWhereUniqueInput;
+};
+
+export type ProjectDocumentUpdateWithoutProjectInput = {
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  fileUrl?: InputMaybe<StringFieldUpdateOperationsInput>;
+  name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  type?: InputMaybe<EnumDocumentTypeFieldUpdateOperationsInput>;
+};
+
+export type ProjectDocumentUpsertWithWhereUniqueWithoutProjectInput = {
+  create: ProjectDocumentCreateWithoutProjectInput;
+  update: ProjectDocumentUpdateWithoutProjectInput;
+  where: ProjectDocumentWhereUniqueInput;
+};
+
+export type ProjectDocumentWhereInput = {
+  AND?: InputMaybe<Array<ProjectDocumentWhereInput>>;
+  NOT?: InputMaybe<Array<ProjectDocumentWhereInput>>;
+  OR?: InputMaybe<Array<ProjectDocumentWhereInput>>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  fileUrl?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IntFilter>;
+  name?: InputMaybe<StringFilter>;
+  project?: InputMaybe<ProjectRelationFilter>;
+  projectId?: InputMaybe<IntFilter>;
+  type?: InputMaybe<EnumDocumentTypeFilter>;
+};
+
+export type ProjectDocumentWhereUniqueInput = {
+  AND?: InputMaybe<Array<ProjectDocumentWhereInput>>;
+  NOT?: InputMaybe<Array<ProjectDocumentWhereInput>>;
+  OR?: InputMaybe<Array<ProjectDocumentWhereInput>>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  fileUrl?: InputMaybe<StringFilter>;
+  id?: InputMaybe<Scalars['Int']>;
+  name?: InputMaybe<StringFilter>;
+  project?: InputMaybe<ProjectRelationFilter>;
+  projectId?: InputMaybe<IntFilter>;
+  type?: InputMaybe<EnumDocumentTypeFilter>;
+};
+
+export type ProjectListRelationFilter = {
+  every?: InputMaybe<ProjectWhereInput>;
+  none?: InputMaybe<ProjectWhereInput>;
+  some?: InputMaybe<ProjectWhereInput>;
+};
+
+export type ProjectOrderByRelationAggregateInput = {
+  _count?: InputMaybe<SortOrder>;
+};
+
+export type ProjectOrderByWithRelationInput = {
+  client?: InputMaybe<SortOrder>;
+  createdAt?: InputMaybe<SortOrder>;
+  documents?: InputMaybe<ProjectDocumentOrderByRelationAggregateInput>;
+  endDate?: InputMaybe<SortOrderInput>;
+  id?: InputMaybe<SortOrder>;
+  location?: InputMaybe<SortOrder>;
+  logs?: InputMaybe<ConstructionLogOrderByRelationAggregateInput>;
+  materials?: InputMaybe<MaterialEntryOrderByRelationAggregateInput>;
+  name?: InputMaybe<SortOrder>;
+  permits?: InputMaybe<PermitInspectionOrderByRelationAggregateInput>;
+  photos?: InputMaybe<ProjectPhotoOrderByRelationAggregateInput>;
+  responsible?: InputMaybe<UserOrderByWithRelationInput>;
+  responsibleId?: InputMaybe<SortOrder>;
+  startDate?: InputMaybe<SortOrder>;
+  status?: InputMaybe<SortOrder>;
+  updatedAt?: InputMaybe<SortOrder>;
+};
+
+export type ProjectPhoto = {
+  __typename?: 'ProjectPhoto';
+  caption?: Maybe<Scalars['String']>;
+  category: PhotoCategory;
+  createdAt: Scalars['DateTime'];
+  id: Scalars['ID'];
+  imageUrl: Scalars['String'];
+  project: Project;
+  projectId: Scalars['Int'];
+  stage?: Maybe<Scalars['String']>;
+};
+
+export type ProjectPhotoCreateManyProjectInput = {
+  caption?: InputMaybe<Scalars['String']>;
+  category: PhotoCategory;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['Int']>;
+  imageUrl: Scalars['String'];
+  stage?: InputMaybe<Scalars['String']>;
+};
+
+export type ProjectPhotoCreateManyProjectInputEnvelope = {
+  data: Array<ProjectPhotoCreateManyProjectInput>;
+  skipDuplicates?: InputMaybe<Scalars['Boolean']>;
+};
+
+export type ProjectPhotoCreateNestedManyWithoutProjectInput = {
+  connect?: InputMaybe<Array<ProjectPhotoWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<ProjectPhotoCreateOrConnectWithoutProjectInput>>;
+  create?: InputMaybe<Array<ProjectPhotoCreateWithoutProjectInput>>;
+  createMany?: InputMaybe<ProjectPhotoCreateManyProjectInputEnvelope>;
+};
+
+export type ProjectPhotoCreateOrConnectWithoutProjectInput = {
+  create: ProjectPhotoCreateWithoutProjectInput;
+  where: ProjectPhotoWhereUniqueInput;
+};
+
+export type ProjectPhotoCreateWithoutProjectInput = {
+  caption?: InputMaybe<Scalars['String']>;
+  category: PhotoCategory;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  imageUrl: Scalars['String'];
+  stage?: InputMaybe<Scalars['String']>;
+};
+
+export type ProjectPhotoListRelationFilter = {
+  every?: InputMaybe<ProjectPhotoWhereInput>;
+  none?: InputMaybe<ProjectPhotoWhereInput>;
+  some?: InputMaybe<ProjectPhotoWhereInput>;
+};
+
+export type ProjectPhotoOrderByRelationAggregateInput = {
+  _count?: InputMaybe<SortOrder>;
+};
+
+export type ProjectPhotoScalarWhereInput = {
+  AND?: InputMaybe<Array<ProjectPhotoScalarWhereInput>>;
+  NOT?: InputMaybe<Array<ProjectPhotoScalarWhereInput>>;
+  OR?: InputMaybe<Array<ProjectPhotoScalarWhereInput>>;
+  caption?: InputMaybe<StringNullableFilter>;
+  category?: InputMaybe<EnumPhotoCategoryFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  id?: InputMaybe<IntFilter>;
+  imageUrl?: InputMaybe<StringFilter>;
+  projectId?: InputMaybe<IntFilter>;
+  stage?: InputMaybe<StringNullableFilter>;
+};
+
+export type ProjectPhotoUpdateManyMutationInput = {
+  caption?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  category?: InputMaybe<EnumPhotoCategoryFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  imageUrl?: InputMaybe<StringFieldUpdateOperationsInput>;
+  stage?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+};
+
+export type ProjectPhotoUpdateManyWithWhereWithoutProjectInput = {
+  data: ProjectPhotoUpdateManyMutationInput;
+  where: ProjectPhotoScalarWhereInput;
+};
+
+export type ProjectPhotoUpdateManyWithoutProjectNestedInput = {
+  connect?: InputMaybe<Array<ProjectPhotoWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<ProjectPhotoCreateOrConnectWithoutProjectInput>>;
+  create?: InputMaybe<Array<ProjectPhotoCreateWithoutProjectInput>>;
+  createMany?: InputMaybe<ProjectPhotoCreateManyProjectInputEnvelope>;
+  delete?: InputMaybe<Array<ProjectPhotoWhereUniqueInput>>;
+  deleteMany?: InputMaybe<Array<ProjectPhotoScalarWhereInput>>;
+  disconnect?: InputMaybe<Array<ProjectPhotoWhereUniqueInput>>;
+  set?: InputMaybe<Array<ProjectPhotoWhereUniqueInput>>;
+  update?: InputMaybe<Array<ProjectPhotoUpdateWithWhereUniqueWithoutProjectInput>>;
+  updateMany?: InputMaybe<Array<ProjectPhotoUpdateManyWithWhereWithoutProjectInput>>;
+  upsert?: InputMaybe<Array<ProjectPhotoUpsertWithWhereUniqueWithoutProjectInput>>;
+};
+
+export type ProjectPhotoUpdateWithWhereUniqueWithoutProjectInput = {
+  data: ProjectPhotoUpdateWithoutProjectInput;
+  where: ProjectPhotoWhereUniqueInput;
+};
+
+export type ProjectPhotoUpdateWithoutProjectInput = {
+  caption?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  category?: InputMaybe<EnumPhotoCategoryFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  imageUrl?: InputMaybe<StringFieldUpdateOperationsInput>;
+  stage?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+};
+
+export type ProjectPhotoUpsertWithWhereUniqueWithoutProjectInput = {
+  create: ProjectPhotoCreateWithoutProjectInput;
+  update: ProjectPhotoUpdateWithoutProjectInput;
+  where: ProjectPhotoWhereUniqueInput;
+};
+
+export type ProjectPhotoWhereInput = {
+  AND?: InputMaybe<Array<ProjectPhotoWhereInput>>;
+  NOT?: InputMaybe<Array<ProjectPhotoWhereInput>>;
+  OR?: InputMaybe<Array<ProjectPhotoWhereInput>>;
+  caption?: InputMaybe<StringNullableFilter>;
+  category?: InputMaybe<EnumPhotoCategoryFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  id?: InputMaybe<IntFilter>;
+  imageUrl?: InputMaybe<StringFilter>;
+  project?: InputMaybe<ProjectRelationFilter>;
+  projectId?: InputMaybe<IntFilter>;
+  stage?: InputMaybe<StringNullableFilter>;
+};
+
+export type ProjectPhotoWhereUniqueInput = {
+  AND?: InputMaybe<Array<ProjectPhotoWhereInput>>;
+  NOT?: InputMaybe<Array<ProjectPhotoWhereInput>>;
+  OR?: InputMaybe<Array<ProjectPhotoWhereInput>>;
+  caption?: InputMaybe<StringNullableFilter>;
+  category?: InputMaybe<EnumPhotoCategoryFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  id?: InputMaybe<Scalars['Int']>;
+  imageUrl?: InputMaybe<StringFilter>;
+  project?: InputMaybe<ProjectRelationFilter>;
+  projectId?: InputMaybe<IntFilter>;
+  stage?: InputMaybe<StringNullableFilter>;
+};
+
+export type ProjectRelationFilter = {
+  is?: InputMaybe<ProjectWhereInput>;
+  isNot?: InputMaybe<ProjectWhereInput>;
+};
+
+export enum ProjectScalarFieldEnum {
+  Client = 'client',
+  CreatedAt = 'createdAt',
+  EndDate = 'endDate',
+  Id = 'id',
+  Location = 'location',
+  Name = 'name',
+  ResponsibleId = 'responsibleId',
+  StartDate = 'startDate',
+  Status = 'status',
+  UpdatedAt = 'updatedAt'
+}
+
+export type ProjectScalarWhereInput = {
+  AND?: InputMaybe<Array<ProjectScalarWhereInput>>;
+  NOT?: InputMaybe<Array<ProjectScalarWhereInput>>;
+  OR?: InputMaybe<Array<ProjectScalarWhereInput>>;
+  client?: InputMaybe<StringFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  endDate?: InputMaybe<DateTimeNullableFilter>;
+  id?: InputMaybe<IntFilter>;
+  location?: InputMaybe<StringFilter>;
+  name?: InputMaybe<StringFilter>;
+  responsibleId?: InputMaybe<IntFilter>;
+  startDate?: InputMaybe<DateTimeFilter>;
+  status?: InputMaybe<EnumProjectStatusFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
+};
+
+export enum ProjectStatus {
+  Canceled = 'CANCELED',
+  Executing = 'EXECUTING',
+  Finished = 'FINISHED',
+  OnHold = 'ON_HOLD',
+  Planning = 'PLANNING'
+}
+
+export type ProjectUpdateManyMutationInput = {
+  client?: InputMaybe<StringFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  endDate?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
+  location?: InputMaybe<StringFieldUpdateOperationsInput>;
+  name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  startDate?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  status?: InputMaybe<EnumProjectStatusFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type ProjectUpdateManyWithWhereWithoutResponsibleInput = {
+  data: ProjectUpdateManyMutationInput;
+  where: ProjectScalarWhereInput;
+};
+
+export type ProjectUpdateManyWithoutResponsibleNestedInput = {
+  connect?: InputMaybe<Array<ProjectWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<ProjectCreateOrConnectWithoutResponsibleInput>>;
+  create?: InputMaybe<Array<ProjectCreateWithoutResponsibleInput>>;
+  createMany?: InputMaybe<ProjectCreateManyResponsibleInputEnvelope>;
+  delete?: InputMaybe<Array<ProjectWhereUniqueInput>>;
+  deleteMany?: InputMaybe<Array<ProjectScalarWhereInput>>;
+  disconnect?: InputMaybe<Array<ProjectWhereUniqueInput>>;
+  set?: InputMaybe<Array<ProjectWhereUniqueInput>>;
+  update?: InputMaybe<Array<ProjectUpdateWithWhereUniqueWithoutResponsibleInput>>;
+  updateMany?: InputMaybe<Array<ProjectUpdateManyWithWhereWithoutResponsibleInput>>;
+  upsert?: InputMaybe<Array<ProjectUpsertWithWhereUniqueWithoutResponsibleInput>>;
+};
+
+export type ProjectUpdateOneRequiredWithoutLogsNestedInput = {
+  connect?: InputMaybe<ProjectWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<ProjectCreateOrConnectWithoutLogsInput>;
+  create?: InputMaybe<ProjectCreateWithoutLogsInput>;
+  update?: InputMaybe<ProjectUpdateToOneWithWhereWithoutLogsInput>;
+  upsert?: InputMaybe<ProjectUpsertWithoutLogsInput>;
+};
+
+export type ProjectUpdateOneRequiredWithoutMaterialsNestedInput = {
+  connect?: InputMaybe<ProjectWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<ProjectCreateOrConnectWithoutMaterialsInput>;
+  create?: InputMaybe<ProjectCreateWithoutMaterialsInput>;
+  update?: InputMaybe<ProjectUpdateToOneWithWhereWithoutMaterialsInput>;
+  upsert?: InputMaybe<ProjectUpsertWithoutMaterialsInput>;
+};
+
+export type ProjectUpdateOneRequiredWithoutPermitsNestedInput = {
+  connect?: InputMaybe<ProjectWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<ProjectCreateOrConnectWithoutPermitsInput>;
+  create?: InputMaybe<ProjectCreateWithoutPermitsInput>;
+  update?: InputMaybe<ProjectUpdateToOneWithWhereWithoutPermitsInput>;
+  upsert?: InputMaybe<ProjectUpsertWithoutPermitsInput>;
+};
+
+export type ProjectUpdateToOneWithWhereWithoutLogsInput = {
+  data: ProjectUpdateWithoutLogsInput;
+  where?: InputMaybe<ProjectWhereInput>;
+};
+
+export type ProjectUpdateToOneWithWhereWithoutMaterialsInput = {
+  data: ProjectUpdateWithoutMaterialsInput;
+  where?: InputMaybe<ProjectWhereInput>;
+};
+
+export type ProjectUpdateToOneWithWhereWithoutPermitsInput = {
+  data: ProjectUpdateWithoutPermitsInput;
+  where?: InputMaybe<ProjectWhereInput>;
+};
+
+export type ProjectUpdateWithWhereUniqueWithoutResponsibleInput = {
+  data: ProjectUpdateWithoutResponsibleInput;
+  where: ProjectWhereUniqueInput;
+};
+
+export type ProjectUpdateWithoutLogsInput = {
+  client?: InputMaybe<StringFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  documents?: InputMaybe<ProjectDocumentUpdateManyWithoutProjectNestedInput>;
+  endDate?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
+  location?: InputMaybe<StringFieldUpdateOperationsInput>;
+  materials?: InputMaybe<MaterialEntryUpdateManyWithoutProjectNestedInput>;
+  name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  permits?: InputMaybe<PermitInspectionUpdateManyWithoutProjectNestedInput>;
+  photos?: InputMaybe<ProjectPhotoUpdateManyWithoutProjectNestedInput>;
+  responsible?: InputMaybe<UserUpdateOneRequiredWithoutProjectResponsibleNestedInput>;
+  startDate?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  status?: InputMaybe<EnumProjectStatusFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type ProjectUpdateWithoutMaterialsInput = {
+  client?: InputMaybe<StringFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  documents?: InputMaybe<ProjectDocumentUpdateManyWithoutProjectNestedInput>;
+  endDate?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
+  location?: InputMaybe<StringFieldUpdateOperationsInput>;
+  logs?: InputMaybe<ConstructionLogUpdateManyWithoutProjectNestedInput>;
+  name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  permits?: InputMaybe<PermitInspectionUpdateManyWithoutProjectNestedInput>;
+  photos?: InputMaybe<ProjectPhotoUpdateManyWithoutProjectNestedInput>;
+  responsible?: InputMaybe<UserUpdateOneRequiredWithoutProjectResponsibleNestedInput>;
+  startDate?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  status?: InputMaybe<EnumProjectStatusFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type ProjectUpdateWithoutPermitsInput = {
+  client?: InputMaybe<StringFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  documents?: InputMaybe<ProjectDocumentUpdateManyWithoutProjectNestedInput>;
+  endDate?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
+  location?: InputMaybe<StringFieldUpdateOperationsInput>;
+  logs?: InputMaybe<ConstructionLogUpdateManyWithoutProjectNestedInput>;
+  materials?: InputMaybe<MaterialEntryUpdateManyWithoutProjectNestedInput>;
+  name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  photos?: InputMaybe<ProjectPhotoUpdateManyWithoutProjectNestedInput>;
+  responsible?: InputMaybe<UserUpdateOneRequiredWithoutProjectResponsibleNestedInput>;
+  startDate?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  status?: InputMaybe<EnumProjectStatusFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type ProjectUpdateWithoutResponsibleInput = {
+  client?: InputMaybe<StringFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  documents?: InputMaybe<ProjectDocumentUpdateManyWithoutProjectNestedInput>;
+  endDate?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
+  location?: InputMaybe<StringFieldUpdateOperationsInput>;
+  logs?: InputMaybe<ConstructionLogUpdateManyWithoutProjectNestedInput>;
+  materials?: InputMaybe<MaterialEntryUpdateManyWithoutProjectNestedInput>;
+  name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  permits?: InputMaybe<PermitInspectionUpdateManyWithoutProjectNestedInput>;
+  photos?: InputMaybe<ProjectPhotoUpdateManyWithoutProjectNestedInput>;
+  startDate?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  status?: InputMaybe<EnumProjectStatusFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type ProjectUpsertWithWhereUniqueWithoutResponsibleInput = {
+  create: ProjectCreateWithoutResponsibleInput;
+  update: ProjectUpdateWithoutResponsibleInput;
+  where: ProjectWhereUniqueInput;
+};
+
+export type ProjectUpsertWithoutLogsInput = {
+  create: ProjectCreateWithoutLogsInput;
+  update: ProjectUpdateWithoutLogsInput;
+  where?: InputMaybe<ProjectWhereInput>;
+};
+
+export type ProjectUpsertWithoutMaterialsInput = {
+  create: ProjectCreateWithoutMaterialsInput;
+  update: ProjectUpdateWithoutMaterialsInput;
+  where?: InputMaybe<ProjectWhereInput>;
+};
+
+export type ProjectUpsertWithoutPermitsInput = {
+  create: ProjectCreateWithoutPermitsInput;
+  update: ProjectUpdateWithoutPermitsInput;
+  where?: InputMaybe<ProjectWhereInput>;
+};
+
+export type ProjectWhereInput = {
+  AND?: InputMaybe<Array<ProjectWhereInput>>;
+  NOT?: InputMaybe<Array<ProjectWhereInput>>;
+  OR?: InputMaybe<Array<ProjectWhereInput>>;
+  client?: InputMaybe<StringFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  documents?: InputMaybe<ProjectDocumentListRelationFilter>;
+  endDate?: InputMaybe<DateTimeNullableFilter>;
+  id?: InputMaybe<IntFilter>;
+  location?: InputMaybe<StringFilter>;
+  logs?: InputMaybe<ConstructionLogListRelationFilter>;
+  materials?: InputMaybe<MaterialEntryListRelationFilter>;
+  name?: InputMaybe<StringFilter>;
+  permits?: InputMaybe<PermitInspectionListRelationFilter>;
+  photos?: InputMaybe<ProjectPhotoListRelationFilter>;
+  responsible?: InputMaybe<UserRelationFilter>;
+  responsibleId?: InputMaybe<IntFilter>;
+  startDate?: InputMaybe<DateTimeFilter>;
+  status?: InputMaybe<EnumProjectStatusFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
+};
+
+export type ProjectWhereUniqueInput = {
+  AND?: InputMaybe<Array<ProjectWhereInput>>;
+  NOT?: InputMaybe<Array<ProjectWhereInput>>;
+  OR?: InputMaybe<Array<ProjectWhereInput>>;
+  client?: InputMaybe<StringFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  documents?: InputMaybe<ProjectDocumentListRelationFilter>;
+  endDate?: InputMaybe<DateTimeNullableFilter>;
+  id?: InputMaybe<Scalars['Int']>;
+  location?: InputMaybe<StringFilter>;
+  logs?: InputMaybe<ConstructionLogListRelationFilter>;
+  materials?: InputMaybe<MaterialEntryListRelationFilter>;
+  name?: InputMaybe<StringFilter>;
+  permits?: InputMaybe<PermitInspectionListRelationFilter>;
+  photos?: InputMaybe<ProjectPhotoListRelationFilter>;
+  responsible?: InputMaybe<UserRelationFilter>;
+  responsibleId?: InputMaybe<IntFilter>;
+  startDate?: InputMaybe<DateTimeFilter>;
+  status?: InputMaybe<EnumProjectStatusFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
+};
+
 export type Query = {
   __typename?: 'Query';
   emailAvailable: Scalars['Boolean'];
   getAllContainers: Array<Container>;
   getAllItems: Array<Item>;
+  getAllProjects: Array<Project>;
   getAllStorages: Array<Storage>;
+  getAllSubcontractors: Array<Subcontractor>;
+  getCommentsByLog: Array<LogComment>;
   getContainerByCode: Container;
   getContainerById: Container;
   getDashboardData: DashboardData;
+  getDocumentsByProject: Array<ProjectDocument>;
+  getItemById: Item;
+  getLogByLogId?: Maybe<ConstructionLog>;
+  getLogsByProject: Array<ConstructionLog>;
   getMyStorages: Array<Storage>;
+  getPermitsByProject: Array<PermitInspection>;
+  getProjectById?: Maybe<Project>;
   getStorage: Storage;
+  getSubcontractorById?: Maybe<Subcontractor>;
   me: MeDto;
   users: User;
 };
@@ -1017,6 +3439,21 @@ export type Query = {
 
 export type QueryEmailAvailableArgs = {
   email: Scalars['String'];
+};
+
+
+export type QueryGetAllProjectsArgs = {
+  cursor?: InputMaybe<ProjectWhereUniqueInput>;
+  distinct?: InputMaybe<Array<ProjectScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<ProjectOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  take?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ProjectWhereInput>;
+};
+
+
+export type QueryGetCommentsByLogArgs = {
+  logId: Scalars['Int'];
 };
 
 
@@ -1030,8 +3467,43 @@ export type QueryGetContainerByIdArgs = {
 };
 
 
+export type QueryGetDocumentsByProjectArgs = {
+  projectId: Scalars['Int'];
+};
+
+
+export type QueryGetItemByIdArgs = {
+  id: Scalars['Float'];
+};
+
+
+export type QueryGetLogByLogIdArgs = {
+  logId: Scalars['Int'];
+};
+
+
+export type QueryGetLogsByProjectArgs = {
+  projectId: Scalars['Int'];
+};
+
+
+export type QueryGetPermitsByProjectArgs = {
+  projectId: Scalars['Int'];
+};
+
+
+export type QueryGetProjectByIdArgs = {
+  id: Scalars['Int'];
+};
+
+
 export type QueryGetStorageArgs = {
   id: Scalars['Float'];
+};
+
+
+export type QueryGetSubcontractorByIdArgs = {
+  id: Scalars['Int'];
 };
 
 export enum QueryMode {
@@ -1049,6 +3521,16 @@ export enum Role {
   Admin = 'ADMIN',
   User = 'USER'
 }
+
+export enum SortOrder {
+  Asc = 'asc',
+  Desc = 'desc'
+}
+
+export type SortOrderInput = {
+  nulls?: InputMaybe<NullsOrder>;
+  sort: SortOrder;
+};
 
 export type Storage = {
   __typename?: 'Storage';
@@ -1133,6 +3615,10 @@ export type StorageMemberListRelationFilter = {
   every?: InputMaybe<StorageMemberWhereInput>;
   none?: InputMaybe<StorageMemberWhereInput>;
   some?: InputMaybe<StorageMemberWhereInput>;
+};
+
+export type StorageMemberOrderByRelationAggregateInput = {
+  _count?: InputMaybe<SortOrder>;
 };
 
 export type StorageMemberScalarWhereInput = {
@@ -1318,59 +3804,404 @@ export type StringNullableFilter = {
   startsWith?: InputMaybe<Scalars['String']>;
 };
 
+export type Subcontractor = {
+  __typename?: 'Subcontractor';
+  _count: SubcontractorCount;
+  bankAccount: Scalars['String'];
+  companyName: Scalars['String'];
+  contactName: Scalars['String'];
+  createdAt: Scalars['DateTime'];
+  createdViaPublicForm: Scalars['Boolean'];
+  email: Scalars['String'];
+  id: Scalars['ID'];
+  insurances?: Maybe<Array<Insurance>>;
+  notes?: Maybe<Scalars['String']>;
+  paymentPreference: Scalars['String'];
+  phone: Scalars['String'];
+  priority: Scalars['Boolean'];
+  trade: Scalars['String'];
+  updatedAt: Scalars['DateTime'];
+};
+
+export type SubcontractorCount = {
+  __typename?: 'SubcontractorCount';
+  insurances: Scalars['Int'];
+};
+
+export type SubcontractorCreateInput = {
+  bankAccount: Scalars['String'];
+  companyName: Scalars['String'];
+  contactName: Scalars['String'];
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  createdViaPublicForm?: InputMaybe<Scalars['Boolean']>;
+  email: Scalars['String'];
+  insurances?: InputMaybe<InsuranceCreateNestedManyWithoutSubcontractorInput>;
+  notes?: InputMaybe<Scalars['String']>;
+  paymentPreference: Scalars['String'];
+  phone: Scalars['String'];
+  priority?: InputMaybe<Scalars['Boolean']>;
+  trade: Scalars['String'];
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type SubcontractorCreateNestedOneWithoutInsurancesInput = {
+  connect?: InputMaybe<SubcontractorWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<SubcontractorCreateOrConnectWithoutInsurancesInput>;
+  create?: InputMaybe<SubcontractorCreateWithoutInsurancesInput>;
+};
+
+export type SubcontractorCreateOrConnectWithoutInsurancesInput = {
+  create: SubcontractorCreateWithoutInsurancesInput;
+  where: SubcontractorWhereUniqueInput;
+};
+
+export type SubcontractorCreateWithoutInsurancesInput = {
+  bankAccount: Scalars['String'];
+  companyName: Scalars['String'];
+  contactName: Scalars['String'];
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  createdViaPublicForm?: InputMaybe<Scalars['Boolean']>;
+  email: Scalars['String'];
+  notes?: InputMaybe<Scalars['String']>;
+  paymentPreference: Scalars['String'];
+  phone: Scalars['String'];
+  priority?: InputMaybe<Scalars['Boolean']>;
+  trade: Scalars['String'];
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type SubcontractorRelationFilter = {
+  is?: InputMaybe<SubcontractorWhereInput>;
+  isNot?: InputMaybe<SubcontractorWhereInput>;
+};
+
+export type SubcontractorWhereInput = {
+  AND?: InputMaybe<Array<SubcontractorWhereInput>>;
+  NOT?: InputMaybe<Array<SubcontractorWhereInput>>;
+  OR?: InputMaybe<Array<SubcontractorWhereInput>>;
+  bankAccount?: InputMaybe<StringFilter>;
+  companyName?: InputMaybe<StringFilter>;
+  contactName?: InputMaybe<StringFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  createdViaPublicForm?: InputMaybe<BoolFilter>;
+  email?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IntFilter>;
+  insurances?: InputMaybe<InsuranceListRelationFilter>;
+  notes?: InputMaybe<StringNullableFilter>;
+  paymentPreference?: InputMaybe<StringFilter>;
+  phone?: InputMaybe<StringFilter>;
+  priority?: InputMaybe<BoolFilter>;
+  trade?: InputMaybe<StringFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
+};
+
+export type SubcontractorWhereUniqueInput = {
+  AND?: InputMaybe<Array<SubcontractorWhereInput>>;
+  NOT?: InputMaybe<Array<SubcontractorWhereInput>>;
+  OR?: InputMaybe<Array<SubcontractorWhereInput>>;
+  bankAccount?: InputMaybe<StringFilter>;
+  companyName?: InputMaybe<StringFilter>;
+  contactName?: InputMaybe<StringFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  createdViaPublicForm?: InputMaybe<BoolFilter>;
+  email?: InputMaybe<StringFilter>;
+  id?: InputMaybe<Scalars['Int']>;
+  insurances?: InputMaybe<InsuranceListRelationFilter>;
+  notes?: InputMaybe<StringNullableFilter>;
+  paymentPreference?: InputMaybe<StringFilter>;
+  phone?: InputMaybe<StringFilter>;
+  priority?: InputMaybe<BoolFilter>;
+  trade?: InputMaybe<StringFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
+};
+
 export type User = {
   __typename?: 'User';
   _count: UserCount;
   about?: Maybe<Scalars['String']>;
+  constructionLogs?: Maybe<Array<ConstructionLog>>;
   createdAt: Scalars['DateTime'];
   email: Scalars['String'];
   emailVerified: Scalars['Boolean'];
   expiresAt?: Maybe<Scalars['DateTime']>;
   firstName: Scalars['String'];
-  githubUrl?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
   isPremium: Scalars['Boolean'];
   lastName: Scalars['String'];
-  linkedinUrl?: Maybe<Scalars['String']>;
+  logCommentReplies?: Maybe<Array<LogCommentReply>>;
+  logComments?: Maybe<Array<LogComment>>;
   logs?: Maybe<Array<Log>>;
   nickname?: Maybe<Scalars['String']>;
   password: Scalars['String'];
   profilePicture?: Maybe<Scalars['String']>;
+  projectResponsible?: Maybe<Array<Project>>;
   public: Scalars['Boolean'];
+  receivedMaterials?: Maybe<Array<MaterialEntry>>;
+  responsibleInspections?: Maybe<Array<PermitInspection>>;
   role: Role;
   storageMemberships?: Maybe<Array<StorageMember>>;
   subscriptionId?: Maybe<Scalars['String']>;
-  twitterUrl?: Maybe<Scalars['String']>;
   updatedAt: Scalars['DateTime'];
   willExpireAt?: Maybe<Scalars['DateTime']>;
 };
 
 export type UserCount = {
   __typename?: 'UserCount';
+  constructionLogs: Scalars['Int'];
+  logCommentReplies: Scalars['Int'];
+  logComments: Scalars['Int'];
   logs: Scalars['Int'];
+  projectResponsible: Scalars['Int'];
+  receivedMaterials: Scalars['Int'];
+  responsibleInspections: Scalars['Int'];
   storageMemberships: Scalars['Int'];
 };
 
 export type UserCreateInput = {
+  about?: InputMaybe<Scalars['String']>;
+  constructionLogs?: InputMaybe<ConstructionLogCreateNestedManyWithoutUserInput>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  email: Scalars['String'];
+  emailVerified?: InputMaybe<Scalars['Boolean']>;
+  expiresAt?: InputMaybe<Scalars['DateTime']>;
+  firstName: Scalars['String'];
+  isPremium?: InputMaybe<Scalars['Boolean']>;
+  lastName: Scalars['String'];
+  logCommentReplies?: InputMaybe<LogCommentReplyCreateNestedManyWithoutUserInput>;
+  logComments?: InputMaybe<LogCommentCreateNestedManyWithoutUserInput>;
+  logs?: InputMaybe<LogCreateNestedManyWithoutUserInput>;
+  nickname?: InputMaybe<Scalars['String']>;
+  password: Scalars['String'];
+  profilePicture?: InputMaybe<Scalars['String']>;
+  projectResponsible?: InputMaybe<ProjectCreateNestedManyWithoutResponsibleInput>;
+  public?: InputMaybe<Scalars['Boolean']>;
+  receivedMaterials?: InputMaybe<MaterialEntryCreateNestedManyWithoutReceivedByInput>;
+  responsibleInspections?: InputMaybe<PermitInspectionCreateNestedManyWithoutResponsibleInput>;
+  role?: InputMaybe<Role>;
+  storageMemberships?: InputMaybe<StorageMemberCreateNestedManyWithoutUserInput>;
+  subscriptionId?: InputMaybe<Scalars['String']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  willExpireAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type UserCreateNestedOneWithoutConstructionLogsInput = {
+  connect?: InputMaybe<UserWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<UserCreateOrConnectWithoutConstructionLogsInput>;
+  create?: InputMaybe<UserCreateWithoutConstructionLogsInput>;
+};
+
+export type UserCreateNestedOneWithoutLogCommentRepliesInput = {
+  connect?: InputMaybe<UserWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<UserCreateOrConnectWithoutLogCommentRepliesInput>;
+  create?: InputMaybe<UserCreateWithoutLogCommentRepliesInput>;
+};
+
+export type UserCreateNestedOneWithoutLogCommentsInput = {
+  connect?: InputMaybe<UserWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<UserCreateOrConnectWithoutLogCommentsInput>;
+  create?: InputMaybe<UserCreateWithoutLogCommentsInput>;
+};
+
+export type UserCreateNestedOneWithoutProjectResponsibleInput = {
+  connect?: InputMaybe<UserWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<UserCreateOrConnectWithoutProjectResponsibleInput>;
+  create?: InputMaybe<UserCreateWithoutProjectResponsibleInput>;
+};
+
+export type UserCreateNestedOneWithoutReceivedMaterialsInput = {
+  connect?: InputMaybe<UserWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<UserCreateOrConnectWithoutReceivedMaterialsInput>;
+  create?: InputMaybe<UserCreateWithoutReceivedMaterialsInput>;
+};
+
+export type UserCreateNestedOneWithoutResponsibleInspectionsInput = {
+  connect?: InputMaybe<UserWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<UserCreateOrConnectWithoutResponsibleInspectionsInput>;
+  create?: InputMaybe<UserCreateWithoutResponsibleInspectionsInput>;
+};
+
+export type UserCreateOrConnectWithoutConstructionLogsInput = {
+  create: UserCreateWithoutConstructionLogsInput;
+  where: UserWhereUniqueInput;
+};
+
+export type UserCreateOrConnectWithoutLogCommentRepliesInput = {
+  create: UserCreateWithoutLogCommentRepliesInput;
+  where: UserWhereUniqueInput;
+};
+
+export type UserCreateOrConnectWithoutLogCommentsInput = {
+  create: UserCreateWithoutLogCommentsInput;
+  where: UserWhereUniqueInput;
+};
+
+export type UserCreateOrConnectWithoutProjectResponsibleInput = {
+  create: UserCreateWithoutProjectResponsibleInput;
+  where: UserWhereUniqueInput;
+};
+
+export type UserCreateOrConnectWithoutReceivedMaterialsInput = {
+  create: UserCreateWithoutReceivedMaterialsInput;
+  where: UserWhereUniqueInput;
+};
+
+export type UserCreateOrConnectWithoutResponsibleInspectionsInput = {
+  create: UserCreateWithoutResponsibleInspectionsInput;
+  where: UserWhereUniqueInput;
+};
+
+export type UserCreateWithoutConstructionLogsInput = {
   about?: InputMaybe<Scalars['String']>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   email: Scalars['String'];
   emailVerified?: InputMaybe<Scalars['Boolean']>;
   expiresAt?: InputMaybe<Scalars['DateTime']>;
   firstName: Scalars['String'];
-  githubUrl?: InputMaybe<Scalars['String']>;
   isPremium?: InputMaybe<Scalars['Boolean']>;
   lastName: Scalars['String'];
-  linkedinUrl?: InputMaybe<Scalars['String']>;
+  logCommentReplies?: InputMaybe<LogCommentReplyCreateNestedManyWithoutUserInput>;
+  logComments?: InputMaybe<LogCommentCreateNestedManyWithoutUserInput>;
+  logs?: InputMaybe<LogCreateNestedManyWithoutUserInput>;
+  nickname?: InputMaybe<Scalars['String']>;
+  password: Scalars['String'];
+  profilePicture?: InputMaybe<Scalars['String']>;
+  projectResponsible?: InputMaybe<ProjectCreateNestedManyWithoutResponsibleInput>;
+  public?: InputMaybe<Scalars['Boolean']>;
+  receivedMaterials?: InputMaybe<MaterialEntryCreateNestedManyWithoutReceivedByInput>;
+  responsibleInspections?: InputMaybe<PermitInspectionCreateNestedManyWithoutResponsibleInput>;
+  role?: InputMaybe<Role>;
+  storageMemberships?: InputMaybe<StorageMemberCreateNestedManyWithoutUserInput>;
+  subscriptionId?: InputMaybe<Scalars['String']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  willExpireAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type UserCreateWithoutLogCommentRepliesInput = {
+  about?: InputMaybe<Scalars['String']>;
+  constructionLogs?: InputMaybe<ConstructionLogCreateNestedManyWithoutUserInput>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  email: Scalars['String'];
+  emailVerified?: InputMaybe<Scalars['Boolean']>;
+  expiresAt?: InputMaybe<Scalars['DateTime']>;
+  firstName: Scalars['String'];
+  isPremium?: InputMaybe<Scalars['Boolean']>;
+  lastName: Scalars['String'];
+  logComments?: InputMaybe<LogCommentCreateNestedManyWithoutUserInput>;
+  logs?: InputMaybe<LogCreateNestedManyWithoutUserInput>;
+  nickname?: InputMaybe<Scalars['String']>;
+  password: Scalars['String'];
+  profilePicture?: InputMaybe<Scalars['String']>;
+  projectResponsible?: InputMaybe<ProjectCreateNestedManyWithoutResponsibleInput>;
+  public?: InputMaybe<Scalars['Boolean']>;
+  receivedMaterials?: InputMaybe<MaterialEntryCreateNestedManyWithoutReceivedByInput>;
+  responsibleInspections?: InputMaybe<PermitInspectionCreateNestedManyWithoutResponsibleInput>;
+  role?: InputMaybe<Role>;
+  storageMemberships?: InputMaybe<StorageMemberCreateNestedManyWithoutUserInput>;
+  subscriptionId?: InputMaybe<Scalars['String']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  willExpireAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type UserCreateWithoutLogCommentsInput = {
+  about?: InputMaybe<Scalars['String']>;
+  constructionLogs?: InputMaybe<ConstructionLogCreateNestedManyWithoutUserInput>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  email: Scalars['String'];
+  emailVerified?: InputMaybe<Scalars['Boolean']>;
+  expiresAt?: InputMaybe<Scalars['DateTime']>;
+  firstName: Scalars['String'];
+  isPremium?: InputMaybe<Scalars['Boolean']>;
+  lastName: Scalars['String'];
+  logCommentReplies?: InputMaybe<LogCommentReplyCreateNestedManyWithoutUserInput>;
+  logs?: InputMaybe<LogCreateNestedManyWithoutUserInput>;
+  nickname?: InputMaybe<Scalars['String']>;
+  password: Scalars['String'];
+  profilePicture?: InputMaybe<Scalars['String']>;
+  projectResponsible?: InputMaybe<ProjectCreateNestedManyWithoutResponsibleInput>;
+  public?: InputMaybe<Scalars['Boolean']>;
+  receivedMaterials?: InputMaybe<MaterialEntryCreateNestedManyWithoutReceivedByInput>;
+  responsibleInspections?: InputMaybe<PermitInspectionCreateNestedManyWithoutResponsibleInput>;
+  role?: InputMaybe<Role>;
+  storageMemberships?: InputMaybe<StorageMemberCreateNestedManyWithoutUserInput>;
+  subscriptionId?: InputMaybe<Scalars['String']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  willExpireAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type UserCreateWithoutProjectResponsibleInput = {
+  about?: InputMaybe<Scalars['String']>;
+  constructionLogs?: InputMaybe<ConstructionLogCreateNestedManyWithoutUserInput>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  email: Scalars['String'];
+  emailVerified?: InputMaybe<Scalars['Boolean']>;
+  expiresAt?: InputMaybe<Scalars['DateTime']>;
+  firstName: Scalars['String'];
+  isPremium?: InputMaybe<Scalars['Boolean']>;
+  lastName: Scalars['String'];
+  logCommentReplies?: InputMaybe<LogCommentReplyCreateNestedManyWithoutUserInput>;
+  logComments?: InputMaybe<LogCommentCreateNestedManyWithoutUserInput>;
   logs?: InputMaybe<LogCreateNestedManyWithoutUserInput>;
   nickname?: InputMaybe<Scalars['String']>;
   password: Scalars['String'];
   profilePicture?: InputMaybe<Scalars['String']>;
   public?: InputMaybe<Scalars['Boolean']>;
+  receivedMaterials?: InputMaybe<MaterialEntryCreateNestedManyWithoutReceivedByInput>;
+  responsibleInspections?: InputMaybe<PermitInspectionCreateNestedManyWithoutResponsibleInput>;
   role?: InputMaybe<Role>;
   storageMemberships?: InputMaybe<StorageMemberCreateNestedManyWithoutUserInput>;
   subscriptionId?: InputMaybe<Scalars['String']>;
-  twitterUrl?: InputMaybe<Scalars['String']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  willExpireAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type UserCreateWithoutReceivedMaterialsInput = {
+  about?: InputMaybe<Scalars['String']>;
+  constructionLogs?: InputMaybe<ConstructionLogCreateNestedManyWithoutUserInput>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  email: Scalars['String'];
+  emailVerified?: InputMaybe<Scalars['Boolean']>;
+  expiresAt?: InputMaybe<Scalars['DateTime']>;
+  firstName: Scalars['String'];
+  isPremium?: InputMaybe<Scalars['Boolean']>;
+  lastName: Scalars['String'];
+  logCommentReplies?: InputMaybe<LogCommentReplyCreateNestedManyWithoutUserInput>;
+  logComments?: InputMaybe<LogCommentCreateNestedManyWithoutUserInput>;
+  logs?: InputMaybe<LogCreateNestedManyWithoutUserInput>;
+  nickname?: InputMaybe<Scalars['String']>;
+  password: Scalars['String'];
+  profilePicture?: InputMaybe<Scalars['String']>;
+  projectResponsible?: InputMaybe<ProjectCreateNestedManyWithoutResponsibleInput>;
+  public?: InputMaybe<Scalars['Boolean']>;
+  responsibleInspections?: InputMaybe<PermitInspectionCreateNestedManyWithoutResponsibleInput>;
+  role?: InputMaybe<Role>;
+  storageMemberships?: InputMaybe<StorageMemberCreateNestedManyWithoutUserInput>;
+  subscriptionId?: InputMaybe<Scalars['String']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  willExpireAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type UserCreateWithoutResponsibleInspectionsInput = {
+  about?: InputMaybe<Scalars['String']>;
+  constructionLogs?: InputMaybe<ConstructionLogCreateNestedManyWithoutUserInput>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  email: Scalars['String'];
+  emailVerified?: InputMaybe<Scalars['Boolean']>;
+  expiresAt?: InputMaybe<Scalars['DateTime']>;
+  firstName: Scalars['String'];
+  isPremium?: InputMaybe<Scalars['Boolean']>;
+  lastName: Scalars['String'];
+  logCommentReplies?: InputMaybe<LogCommentReplyCreateNestedManyWithoutUserInput>;
+  logComments?: InputMaybe<LogCommentCreateNestedManyWithoutUserInput>;
+  logs?: InputMaybe<LogCreateNestedManyWithoutUserInput>;
+  nickname?: InputMaybe<Scalars['String']>;
+  password: Scalars['String'];
+  profilePicture?: InputMaybe<Scalars['String']>;
+  projectResponsible?: InputMaybe<ProjectCreateNestedManyWithoutResponsibleInput>;
+  public?: InputMaybe<Scalars['Boolean']>;
+  receivedMaterials?: InputMaybe<MaterialEntryCreateNestedManyWithoutReceivedByInput>;
+  role?: InputMaybe<Role>;
+  storageMemberships?: InputMaybe<StorageMemberCreateNestedManyWithoutUserInput>;
+  subscriptionId?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
   willExpireAt?: InputMaybe<Scalars['DateTime']>;
 };
@@ -1380,6 +4211,34 @@ export type UserNullableRelationFilter = {
   isNot?: InputMaybe<UserWhereInput>;
 };
 
+export type UserOrderByWithRelationInput = {
+  about?: InputMaybe<SortOrderInput>;
+  constructionLogs?: InputMaybe<ConstructionLogOrderByRelationAggregateInput>;
+  createdAt?: InputMaybe<SortOrder>;
+  email?: InputMaybe<SortOrder>;
+  emailVerified?: InputMaybe<SortOrder>;
+  expiresAt?: InputMaybe<SortOrderInput>;
+  firstName?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  isPremium?: InputMaybe<SortOrder>;
+  lastName?: InputMaybe<SortOrder>;
+  logCommentReplies?: InputMaybe<LogCommentReplyOrderByRelationAggregateInput>;
+  logComments?: InputMaybe<LogCommentOrderByRelationAggregateInput>;
+  logs?: InputMaybe<LogOrderByRelationAggregateInput>;
+  nickname?: InputMaybe<SortOrderInput>;
+  password?: InputMaybe<SortOrder>;
+  profilePicture?: InputMaybe<SortOrderInput>;
+  projectResponsible?: InputMaybe<ProjectOrderByRelationAggregateInput>;
+  public?: InputMaybe<SortOrder>;
+  receivedMaterials?: InputMaybe<MaterialEntryOrderByRelationAggregateInput>;
+  responsibleInspections?: InputMaybe<PermitInspectionOrderByRelationAggregateInput>;
+  role?: InputMaybe<SortOrder>;
+  storageMemberships?: InputMaybe<StorageMemberOrderByRelationAggregateInput>;
+  subscriptionId?: InputMaybe<SortOrderInput>;
+  updatedAt?: InputMaybe<SortOrder>;
+  willExpireAt?: InputMaybe<SortOrderInput>;
+};
+
 export type UserRelationFilter = {
   is?: InputMaybe<UserWhereInput>;
   isNot?: InputMaybe<UserWhereInput>;
@@ -1387,26 +4246,303 @@ export type UserRelationFilter = {
 
 export type UserUpdateInput = {
   about?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  constructionLogs?: InputMaybe<ConstructionLogUpdateManyWithoutUserNestedInput>;
   createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   email?: InputMaybe<StringFieldUpdateOperationsInput>;
   emailVerified?: InputMaybe<BoolFieldUpdateOperationsInput>;
   expiresAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
   firstName?: InputMaybe<StringFieldUpdateOperationsInput>;
-  githubUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   isPremium?: InputMaybe<BoolFieldUpdateOperationsInput>;
   lastName?: InputMaybe<StringFieldUpdateOperationsInput>;
-  linkedinUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  logCommentReplies?: InputMaybe<LogCommentReplyUpdateManyWithoutUserNestedInput>;
+  logComments?: InputMaybe<LogCommentUpdateManyWithoutUserNestedInput>;
+  logs?: InputMaybe<LogUpdateManyWithoutUserNestedInput>;
+  nickname?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  password?: InputMaybe<StringFieldUpdateOperationsInput>;
+  profilePicture?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  projectResponsible?: InputMaybe<ProjectUpdateManyWithoutResponsibleNestedInput>;
+  public?: InputMaybe<BoolFieldUpdateOperationsInput>;
+  receivedMaterials?: InputMaybe<MaterialEntryUpdateManyWithoutReceivedByNestedInput>;
+  responsibleInspections?: InputMaybe<PermitInspectionUpdateManyWithoutResponsibleNestedInput>;
+  role?: InputMaybe<EnumRoleFieldUpdateOperationsInput>;
+  storageMemberships?: InputMaybe<StorageMemberUpdateManyWithoutUserNestedInput>;
+  subscriptionId?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  willExpireAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
+};
+
+export type UserUpdateOneRequiredWithoutConstructionLogsNestedInput = {
+  connect?: InputMaybe<UserWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<UserCreateOrConnectWithoutConstructionLogsInput>;
+  create?: InputMaybe<UserCreateWithoutConstructionLogsInput>;
+  update?: InputMaybe<UserUpdateToOneWithWhereWithoutConstructionLogsInput>;
+  upsert?: InputMaybe<UserUpsertWithoutConstructionLogsInput>;
+};
+
+export type UserUpdateOneRequiredWithoutLogCommentRepliesNestedInput = {
+  connect?: InputMaybe<UserWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<UserCreateOrConnectWithoutLogCommentRepliesInput>;
+  create?: InputMaybe<UserCreateWithoutLogCommentRepliesInput>;
+  update?: InputMaybe<UserUpdateToOneWithWhereWithoutLogCommentRepliesInput>;
+  upsert?: InputMaybe<UserUpsertWithoutLogCommentRepliesInput>;
+};
+
+export type UserUpdateOneRequiredWithoutLogCommentsNestedInput = {
+  connect?: InputMaybe<UserWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<UserCreateOrConnectWithoutLogCommentsInput>;
+  create?: InputMaybe<UserCreateWithoutLogCommentsInput>;
+  update?: InputMaybe<UserUpdateToOneWithWhereWithoutLogCommentsInput>;
+  upsert?: InputMaybe<UserUpsertWithoutLogCommentsInput>;
+};
+
+export type UserUpdateOneRequiredWithoutProjectResponsibleNestedInput = {
+  connect?: InputMaybe<UserWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<UserCreateOrConnectWithoutProjectResponsibleInput>;
+  create?: InputMaybe<UserCreateWithoutProjectResponsibleInput>;
+  update?: InputMaybe<UserUpdateToOneWithWhereWithoutProjectResponsibleInput>;
+  upsert?: InputMaybe<UserUpsertWithoutProjectResponsibleInput>;
+};
+
+export type UserUpdateOneWithoutReceivedMaterialsNestedInput = {
+  connect?: InputMaybe<UserWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<UserCreateOrConnectWithoutReceivedMaterialsInput>;
+  create?: InputMaybe<UserCreateWithoutReceivedMaterialsInput>;
+  delete?: InputMaybe<UserWhereInput>;
+  disconnect?: InputMaybe<UserWhereInput>;
+  update?: InputMaybe<UserUpdateToOneWithWhereWithoutReceivedMaterialsInput>;
+  upsert?: InputMaybe<UserUpsertWithoutReceivedMaterialsInput>;
+};
+
+export type UserUpdateOneWithoutResponsibleInspectionsNestedInput = {
+  connect?: InputMaybe<UserWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<UserCreateOrConnectWithoutResponsibleInspectionsInput>;
+  create?: InputMaybe<UserCreateWithoutResponsibleInspectionsInput>;
+  delete?: InputMaybe<UserWhereInput>;
+  disconnect?: InputMaybe<UserWhereInput>;
+  update?: InputMaybe<UserUpdateToOneWithWhereWithoutResponsibleInspectionsInput>;
+  upsert?: InputMaybe<UserUpsertWithoutResponsibleInspectionsInput>;
+};
+
+export type UserUpdateToOneWithWhereWithoutConstructionLogsInput = {
+  data: UserUpdateWithoutConstructionLogsInput;
+  where?: InputMaybe<UserWhereInput>;
+};
+
+export type UserUpdateToOneWithWhereWithoutLogCommentRepliesInput = {
+  data: UserUpdateWithoutLogCommentRepliesInput;
+  where?: InputMaybe<UserWhereInput>;
+};
+
+export type UserUpdateToOneWithWhereWithoutLogCommentsInput = {
+  data: UserUpdateWithoutLogCommentsInput;
+  where?: InputMaybe<UserWhereInput>;
+};
+
+export type UserUpdateToOneWithWhereWithoutProjectResponsibleInput = {
+  data: UserUpdateWithoutProjectResponsibleInput;
+  where?: InputMaybe<UserWhereInput>;
+};
+
+export type UserUpdateToOneWithWhereWithoutReceivedMaterialsInput = {
+  data: UserUpdateWithoutReceivedMaterialsInput;
+  where?: InputMaybe<UserWhereInput>;
+};
+
+export type UserUpdateToOneWithWhereWithoutResponsibleInspectionsInput = {
+  data: UserUpdateWithoutResponsibleInspectionsInput;
+  where?: InputMaybe<UserWhereInput>;
+};
+
+export type UserUpdateWithoutConstructionLogsInput = {
+  about?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  email?: InputMaybe<StringFieldUpdateOperationsInput>;
+  emailVerified?: InputMaybe<BoolFieldUpdateOperationsInput>;
+  expiresAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
+  firstName?: InputMaybe<StringFieldUpdateOperationsInput>;
+  isPremium?: InputMaybe<BoolFieldUpdateOperationsInput>;
+  lastName?: InputMaybe<StringFieldUpdateOperationsInput>;
+  logCommentReplies?: InputMaybe<LogCommentReplyUpdateManyWithoutUserNestedInput>;
+  logComments?: InputMaybe<LogCommentUpdateManyWithoutUserNestedInput>;
+  logs?: InputMaybe<LogUpdateManyWithoutUserNestedInput>;
+  nickname?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  password?: InputMaybe<StringFieldUpdateOperationsInput>;
+  profilePicture?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  projectResponsible?: InputMaybe<ProjectUpdateManyWithoutResponsibleNestedInput>;
+  public?: InputMaybe<BoolFieldUpdateOperationsInput>;
+  receivedMaterials?: InputMaybe<MaterialEntryUpdateManyWithoutReceivedByNestedInput>;
+  responsibleInspections?: InputMaybe<PermitInspectionUpdateManyWithoutResponsibleNestedInput>;
+  role?: InputMaybe<EnumRoleFieldUpdateOperationsInput>;
+  storageMemberships?: InputMaybe<StorageMemberUpdateManyWithoutUserNestedInput>;
+  subscriptionId?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  willExpireAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
+};
+
+export type UserUpdateWithoutLogCommentRepliesInput = {
+  about?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  constructionLogs?: InputMaybe<ConstructionLogUpdateManyWithoutUserNestedInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  email?: InputMaybe<StringFieldUpdateOperationsInput>;
+  emailVerified?: InputMaybe<BoolFieldUpdateOperationsInput>;
+  expiresAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
+  firstName?: InputMaybe<StringFieldUpdateOperationsInput>;
+  isPremium?: InputMaybe<BoolFieldUpdateOperationsInput>;
+  lastName?: InputMaybe<StringFieldUpdateOperationsInput>;
+  logComments?: InputMaybe<LogCommentUpdateManyWithoutUserNestedInput>;
+  logs?: InputMaybe<LogUpdateManyWithoutUserNestedInput>;
+  nickname?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  password?: InputMaybe<StringFieldUpdateOperationsInput>;
+  profilePicture?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  projectResponsible?: InputMaybe<ProjectUpdateManyWithoutResponsibleNestedInput>;
+  public?: InputMaybe<BoolFieldUpdateOperationsInput>;
+  receivedMaterials?: InputMaybe<MaterialEntryUpdateManyWithoutReceivedByNestedInput>;
+  responsibleInspections?: InputMaybe<PermitInspectionUpdateManyWithoutResponsibleNestedInput>;
+  role?: InputMaybe<EnumRoleFieldUpdateOperationsInput>;
+  storageMemberships?: InputMaybe<StorageMemberUpdateManyWithoutUserNestedInput>;
+  subscriptionId?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  willExpireAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
+};
+
+export type UserUpdateWithoutLogCommentsInput = {
+  about?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  constructionLogs?: InputMaybe<ConstructionLogUpdateManyWithoutUserNestedInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  email?: InputMaybe<StringFieldUpdateOperationsInput>;
+  emailVerified?: InputMaybe<BoolFieldUpdateOperationsInput>;
+  expiresAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
+  firstName?: InputMaybe<StringFieldUpdateOperationsInput>;
+  isPremium?: InputMaybe<BoolFieldUpdateOperationsInput>;
+  lastName?: InputMaybe<StringFieldUpdateOperationsInput>;
+  logCommentReplies?: InputMaybe<LogCommentReplyUpdateManyWithoutUserNestedInput>;
+  logs?: InputMaybe<LogUpdateManyWithoutUserNestedInput>;
+  nickname?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  password?: InputMaybe<StringFieldUpdateOperationsInput>;
+  profilePicture?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  projectResponsible?: InputMaybe<ProjectUpdateManyWithoutResponsibleNestedInput>;
+  public?: InputMaybe<BoolFieldUpdateOperationsInput>;
+  receivedMaterials?: InputMaybe<MaterialEntryUpdateManyWithoutReceivedByNestedInput>;
+  responsibleInspections?: InputMaybe<PermitInspectionUpdateManyWithoutResponsibleNestedInput>;
+  role?: InputMaybe<EnumRoleFieldUpdateOperationsInput>;
+  storageMemberships?: InputMaybe<StorageMemberUpdateManyWithoutUserNestedInput>;
+  subscriptionId?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  willExpireAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
+};
+
+export type UserUpdateWithoutProjectResponsibleInput = {
+  about?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  constructionLogs?: InputMaybe<ConstructionLogUpdateManyWithoutUserNestedInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  email?: InputMaybe<StringFieldUpdateOperationsInput>;
+  emailVerified?: InputMaybe<BoolFieldUpdateOperationsInput>;
+  expiresAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
+  firstName?: InputMaybe<StringFieldUpdateOperationsInput>;
+  isPremium?: InputMaybe<BoolFieldUpdateOperationsInput>;
+  lastName?: InputMaybe<StringFieldUpdateOperationsInput>;
+  logCommentReplies?: InputMaybe<LogCommentReplyUpdateManyWithoutUserNestedInput>;
+  logComments?: InputMaybe<LogCommentUpdateManyWithoutUserNestedInput>;
   logs?: InputMaybe<LogUpdateManyWithoutUserNestedInput>;
   nickname?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   password?: InputMaybe<StringFieldUpdateOperationsInput>;
   profilePicture?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   public?: InputMaybe<BoolFieldUpdateOperationsInput>;
+  receivedMaterials?: InputMaybe<MaterialEntryUpdateManyWithoutReceivedByNestedInput>;
+  responsibleInspections?: InputMaybe<PermitInspectionUpdateManyWithoutResponsibleNestedInput>;
   role?: InputMaybe<EnumRoleFieldUpdateOperationsInput>;
   storageMemberships?: InputMaybe<StorageMemberUpdateManyWithoutUserNestedInput>;
   subscriptionId?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  twitterUrl?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   willExpireAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
+};
+
+export type UserUpdateWithoutReceivedMaterialsInput = {
+  about?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  constructionLogs?: InputMaybe<ConstructionLogUpdateManyWithoutUserNestedInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  email?: InputMaybe<StringFieldUpdateOperationsInput>;
+  emailVerified?: InputMaybe<BoolFieldUpdateOperationsInput>;
+  expiresAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
+  firstName?: InputMaybe<StringFieldUpdateOperationsInput>;
+  isPremium?: InputMaybe<BoolFieldUpdateOperationsInput>;
+  lastName?: InputMaybe<StringFieldUpdateOperationsInput>;
+  logCommentReplies?: InputMaybe<LogCommentReplyUpdateManyWithoutUserNestedInput>;
+  logComments?: InputMaybe<LogCommentUpdateManyWithoutUserNestedInput>;
+  logs?: InputMaybe<LogUpdateManyWithoutUserNestedInput>;
+  nickname?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  password?: InputMaybe<StringFieldUpdateOperationsInput>;
+  profilePicture?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  projectResponsible?: InputMaybe<ProjectUpdateManyWithoutResponsibleNestedInput>;
+  public?: InputMaybe<BoolFieldUpdateOperationsInput>;
+  responsibleInspections?: InputMaybe<PermitInspectionUpdateManyWithoutResponsibleNestedInput>;
+  role?: InputMaybe<EnumRoleFieldUpdateOperationsInput>;
+  storageMemberships?: InputMaybe<StorageMemberUpdateManyWithoutUserNestedInput>;
+  subscriptionId?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  willExpireAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
+};
+
+export type UserUpdateWithoutResponsibleInspectionsInput = {
+  about?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  constructionLogs?: InputMaybe<ConstructionLogUpdateManyWithoutUserNestedInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  email?: InputMaybe<StringFieldUpdateOperationsInput>;
+  emailVerified?: InputMaybe<BoolFieldUpdateOperationsInput>;
+  expiresAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
+  firstName?: InputMaybe<StringFieldUpdateOperationsInput>;
+  isPremium?: InputMaybe<BoolFieldUpdateOperationsInput>;
+  lastName?: InputMaybe<StringFieldUpdateOperationsInput>;
+  logCommentReplies?: InputMaybe<LogCommentReplyUpdateManyWithoutUserNestedInput>;
+  logComments?: InputMaybe<LogCommentUpdateManyWithoutUserNestedInput>;
+  logs?: InputMaybe<LogUpdateManyWithoutUserNestedInput>;
+  nickname?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  password?: InputMaybe<StringFieldUpdateOperationsInput>;
+  profilePicture?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  projectResponsible?: InputMaybe<ProjectUpdateManyWithoutResponsibleNestedInput>;
+  public?: InputMaybe<BoolFieldUpdateOperationsInput>;
+  receivedMaterials?: InputMaybe<MaterialEntryUpdateManyWithoutReceivedByNestedInput>;
+  role?: InputMaybe<EnumRoleFieldUpdateOperationsInput>;
+  storageMemberships?: InputMaybe<StorageMemberUpdateManyWithoutUserNestedInput>;
+  subscriptionId?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  willExpireAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
+};
+
+export type UserUpsertWithoutConstructionLogsInput = {
+  create: UserCreateWithoutConstructionLogsInput;
+  update: UserUpdateWithoutConstructionLogsInput;
+  where?: InputMaybe<UserWhereInput>;
+};
+
+export type UserUpsertWithoutLogCommentRepliesInput = {
+  create: UserCreateWithoutLogCommentRepliesInput;
+  update: UserUpdateWithoutLogCommentRepliesInput;
+  where?: InputMaybe<UserWhereInput>;
+};
+
+export type UserUpsertWithoutLogCommentsInput = {
+  create: UserCreateWithoutLogCommentsInput;
+  update: UserUpdateWithoutLogCommentsInput;
+  where?: InputMaybe<UserWhereInput>;
+};
+
+export type UserUpsertWithoutProjectResponsibleInput = {
+  create: UserCreateWithoutProjectResponsibleInput;
+  update: UserUpdateWithoutProjectResponsibleInput;
+  where?: InputMaybe<UserWhereInput>;
+};
+
+export type UserUpsertWithoutReceivedMaterialsInput = {
+  create: UserCreateWithoutReceivedMaterialsInput;
+  update: UserUpdateWithoutReceivedMaterialsInput;
+  where?: InputMaybe<UserWhereInput>;
+};
+
+export type UserUpsertWithoutResponsibleInspectionsInput = {
+  create: UserCreateWithoutResponsibleInspectionsInput;
+  update: UserUpdateWithoutResponsibleInspectionsInput;
+  where?: InputMaybe<UserWhereInput>;
 };
 
 export type UserWhereInput = {
@@ -1414,25 +4550,59 @@ export type UserWhereInput = {
   NOT?: InputMaybe<Array<UserWhereInput>>;
   OR?: InputMaybe<Array<UserWhereInput>>;
   about?: InputMaybe<StringNullableFilter>;
+  constructionLogs?: InputMaybe<ConstructionLogListRelationFilter>;
   createdAt?: InputMaybe<DateTimeFilter>;
   email?: InputMaybe<StringFilter>;
   emailVerified?: InputMaybe<BoolFilter>;
   expiresAt?: InputMaybe<DateTimeNullableFilter>;
   firstName?: InputMaybe<StringFilter>;
-  githubUrl?: InputMaybe<StringNullableFilter>;
   id?: InputMaybe<IntFilter>;
   isPremium?: InputMaybe<BoolFilter>;
   lastName?: InputMaybe<StringFilter>;
-  linkedinUrl?: InputMaybe<StringNullableFilter>;
+  logCommentReplies?: InputMaybe<LogCommentReplyListRelationFilter>;
+  logComments?: InputMaybe<LogCommentListRelationFilter>;
   logs?: InputMaybe<LogListRelationFilter>;
   nickname?: InputMaybe<StringNullableFilter>;
   password?: InputMaybe<StringFilter>;
   profilePicture?: InputMaybe<StringNullableFilter>;
+  projectResponsible?: InputMaybe<ProjectListRelationFilter>;
   public?: InputMaybe<BoolFilter>;
+  receivedMaterials?: InputMaybe<MaterialEntryListRelationFilter>;
+  responsibleInspections?: InputMaybe<PermitInspectionListRelationFilter>;
   role?: InputMaybe<EnumRoleFilter>;
   storageMemberships?: InputMaybe<StorageMemberListRelationFilter>;
   subscriptionId?: InputMaybe<StringNullableFilter>;
-  twitterUrl?: InputMaybe<StringNullableFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
+  willExpireAt?: InputMaybe<DateTimeNullableFilter>;
+};
+
+export type UserWhereUniqueInput = {
+  AND?: InputMaybe<Array<UserWhereInput>>;
+  NOT?: InputMaybe<Array<UserWhereInput>>;
+  OR?: InputMaybe<Array<UserWhereInput>>;
+  about?: InputMaybe<StringNullableFilter>;
+  constructionLogs?: InputMaybe<ConstructionLogListRelationFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  email?: InputMaybe<Scalars['String']>;
+  emailVerified?: InputMaybe<BoolFilter>;
+  expiresAt?: InputMaybe<DateTimeNullableFilter>;
+  firstName?: InputMaybe<StringFilter>;
+  id?: InputMaybe<Scalars['Int']>;
+  isPremium?: InputMaybe<BoolFilter>;
+  lastName?: InputMaybe<StringFilter>;
+  logCommentReplies?: InputMaybe<LogCommentReplyListRelationFilter>;
+  logComments?: InputMaybe<LogCommentListRelationFilter>;
+  logs?: InputMaybe<LogListRelationFilter>;
+  nickname?: InputMaybe<StringNullableFilter>;
+  password?: InputMaybe<StringFilter>;
+  profilePicture?: InputMaybe<StringNullableFilter>;
+  projectResponsible?: InputMaybe<ProjectListRelationFilter>;
+  public?: InputMaybe<BoolFilter>;
+  receivedMaterials?: InputMaybe<MaterialEntryListRelationFilter>;
+  responsibleInspections?: InputMaybe<PermitInspectionListRelationFilter>;
+  role?: InputMaybe<EnumRoleFilter>;
+  storageMemberships?: InputMaybe<StorageMemberListRelationFilter>;
+  subscriptionId?: InputMaybe<StringNullableFilter>;
   updatedAt?: InputMaybe<DateTimeFilter>;
   willExpireAt?: InputMaybe<DateTimeNullableFilter>;
 };
@@ -1478,6 +4648,29 @@ export type ResetPasswordMutationVariables = Exact<{
 
 export type ResetPasswordMutation = { __typename?: 'Mutation', resetPassword: { __typename?: 'BaseResult', success: boolean, message: string } };
 
+export type GetCommentsByLogQueryVariables = Exact<{
+  logId: Scalars['Int'];
+}>;
+
+
+export type GetCommentsByLogQuery = { __typename?: 'Query', getCommentsByLog: Array<{ __typename?: 'LogComment', id: string, content: string, createdAt: any, logId: number, user: { __typename?: 'User', id: string, firstName: string, lastName: string, profilePicture?: string | null }, replies?: Array<{ __typename?: 'LogCommentReply', id: string, content: string, createdAt: any, user: { __typename?: 'User', id: string, firstName: string, lastName: string, profilePicture?: string | null } }> | null }> };
+
+export type AddLogCommentMutationVariables = Exact<{
+  logId: Scalars['Int'];
+  content: Scalars['String'];
+}>;
+
+
+export type AddLogCommentMutation = { __typename?: 'Mutation', addLogComment: { __typename?: 'LogComment', id: string } };
+
+export type AddLogCommentReplyMutationVariables = Exact<{
+  commentId: Scalars['Int'];
+  content: Scalars['String'];
+}>;
+
+
+export type AddLogCommentReplyMutation = { __typename?: 'Mutation', addLogCommentReply: { __typename?: 'LogCommentReply', id: string } };
+
 export type SendEmailMutationVariables = Exact<{
   to: Scalars['String'];
   subject: Scalars['String'];
@@ -1488,6 +4681,96 @@ export type SendEmailMutationVariables = Exact<{
 
 
 export type SendEmailMutation = { __typename?: 'Mutation', sendEmail: { __typename?: 'BaseResult', success: boolean, message: string } };
+
+export type AddProjectDocumentMutationVariables = Exact<{
+  projectId: Scalars['Int'];
+  name: Scalars['String'];
+  fileUrl: Scalars['String'];
+  type: DocumentType;
+}>;
+
+
+export type AddProjectDocumentMutation = { __typename?: 'Mutation', addProjectDocument: { __typename?: 'ProjectDocument', id: string, name: string, fileUrl: string, type: DocumentType, createdAt: any } };
+
+export type GetDocumentsByProjectQueryVariables = Exact<{
+  projectId: Scalars['Int'];
+}>;
+
+
+export type GetDocumentsByProjectQuery = { __typename?: 'Query', getDocumentsByProject: Array<{ __typename?: 'ProjectDocument', id: string, name: string, fileUrl: string, type: DocumentType, createdAt: any }> };
+
+export type RemoveProjectDocumentMutationVariables = Exact<{
+  id: Scalars['Int'];
+}>;
+
+
+export type RemoveProjectDocumentMutation = { __typename?: 'Mutation', removeProjectDocument: { __typename?: 'ProjectDocument', id: string, name: string } };
+
+export type AddPermitMutationVariables = Exact<{
+  projectId: Scalars['Int'];
+  number: Scalars['String'];
+  kind: PermitKind;
+  status: PermitStatus;
+  fileUrl: Scalars['String'];
+}>;
+
+
+export type AddPermitMutation = { __typename?: 'Mutation', addPermitInspection: { __typename?: 'PermitInspection', id: string, number: string, status: PermitStatus, fileUrl?: string | null } };
+
+export type GetPermitsQueryVariables = Exact<{
+  projectId: Scalars['Int'];
+}>;
+
+
+export type GetPermitsQuery = { __typename?: 'Query', getPermitsByProject: Array<{ __typename?: 'PermitInspection', id: string, number: string, kind: PermitKind, status: PermitStatus, fileUrl?: string | null, createdAt: any }> };
+
+export type CreateProjectMutationVariables = Exact<{
+  data: ProjectCreateInput;
+}>;
+
+
+export type CreateProjectMutation = { __typename?: 'Mutation', createProject: { __typename?: 'Project', id: string, name: string, client: string, location: string, status: ProjectStatus, startDate: any, endDate?: any | null, createdAt: any, updatedAt: any } };
+
+export type GetAllProjectsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAllProjectsQuery = { __typename?: 'Query', getAllProjects: Array<{ __typename?: 'Project', id: string, name: string, client: string, location: string, status: ProjectStatus, startDate: any, endDate?: any | null, createdAt: any, updatedAt: any }> };
+
+export type GetProjectByIdQueryVariables = Exact<{
+  id: Scalars['Int'];
+}>;
+
+
+export type GetProjectByIdQuery = { __typename?: 'Query', getProjectById?: { __typename?: 'Project', id: string, name: string, client: string, location: string, status: ProjectStatus, startDate: any, endDate?: any | null, createdAt: any, updatedAt: any } | null };
+
+export type AddConstructionLogMutationVariables = Exact<{
+  projectId: Scalars['Int'];
+  data: ConstructionLogCreateInput;
+}>;
+
+
+export type AddConstructionLogMutation = { __typename?: 'Mutation', addConstructionLog: { __typename?: 'ConstructionLog', id: string, title: string, description: string, type: LogType, images?: any | null, createdAt: any, user: { __typename?: 'User', id: string, firstName: string } } };
+
+export type DeleteConstructionLogMutationVariables = Exact<{
+  logId: Scalars['Int'];
+}>;
+
+
+export type DeleteConstructionLogMutation = { __typename?: 'Mutation', deleteConstructionLog: { __typename?: 'ConstructionLog', id: string } };
+
+export type GetLogsByProjectQueryVariables = Exact<{
+  projectId: Scalars['Int'];
+}>;
+
+
+export type GetLogsByProjectQuery = { __typename?: 'Query', getLogsByProject: Array<{ __typename?: 'ConstructionLog', id: string, title: string, description: string, type: LogType, images?: any | null, createdAt: any, projectId: number }> };
+
+export type GetLogByLogIdQueryVariables = Exact<{
+  logId: Scalars['Int'];
+}>;
+
+
+export type GetLogByLogIdQuery = { __typename?: 'Query', getLogByLogId?: { __typename?: 'ConstructionLog', id: string, title: string, description: string, type: LogType, images?: any | null, createdAt: any, user: { __typename?: 'User', id: string, firstName: string, lastName: string, profilePicture?: string | null }, project: { __typename?: 'Project', id: string, name: string, client: string, location: string, status: ProjectStatus, startDate: any, endDate?: any | null } } | null };
 
 export type GetAllStoragesQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1565,10 +4848,64 @@ export type GetDashboardDataQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetDashboardDataQuery = { __typename?: 'Query', getDashboardData: { __typename?: 'DashboardData', totalStorages: number, totalContainers: number, totalItems: number, recentContainers: Array<{ __typename?: 'RecentContainer', id: number, name: string }> } };
 
+export type EditItemMutationVariables = Exact<{
+  id: Scalars['Float'];
+  name: Scalars['String'];
+  description: Scalars['String'];
+  imageUrl: Scalars['String'];
+  quantity: Scalars['Float'];
+  category: Scalars['String'];
+}>;
+
+
+export type EditItemMutation = { __typename?: 'Mutation', editItem: { __typename?: 'BaseResult', success: boolean, message: string } };
+
+export type GetItemByIdQueryVariables = Exact<{
+  id: Scalars['Float'];
+}>;
+
+
+export type GetItemByIdQuery = { __typename?: 'Query', getItemById: { __typename?: 'Item', id: string, name: string, description: string, imageUrl: string, quantity: number, category: string } };
+
+export type CreateSubcontractorMutationVariables = Exact<{
+  data: SubcontractorCreateInput;
+}>;
+
+
+export type CreateSubcontractorMutation = { __typename?: 'Mutation', createSubcontractor: { __typename?: 'Subcontractor', id: string, companyName: string, contactName: string, email: string, phone: string, trade: string } };
+
+export type GetAllSubcontractorsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAllSubcontractorsQuery = { __typename?: 'Query', getAllSubcontractors: Array<{ __typename?: 'Subcontractor', id: string, companyName: string, contactName: string, email: string, phone: string, trade: string }> };
+
+export type GetSubcontractorByIdQueryVariables = Exact<{
+  id: Scalars['Int'];
+}>;
+
+
+export type GetSubcontractorByIdQuery = { __typename?: 'Query', getSubcontractorById?: { __typename?: 'Subcontractor', id: string, companyName: string, contactName: string, email: string, phone: string, trade: string, bankAccount: string, paymentPreference: string, notes?: string | null, priority: boolean, createdViaPublicForm: boolean, insurances?: Array<{ __typename?: 'Insurance', id: string, company: string, expiration: any, documentUrl: string }> | null } | null };
+
+export type CreateInsuranceMutationVariables = Exact<{
+  subcontractorId: Scalars['Int'];
+  data: InsuranceCreateInput;
+}>;
+
+
+export type CreateInsuranceMutation = { __typename?: 'Mutation', createInsurance: { __typename?: 'Subcontractor', id: string, insurances?: Array<{ __typename?: 'Insurance', id: string, company: string, expiration: any, documentUrl: string }> | null } };
+
+export type CreateSubcontractorInsuranceMutationVariables = Exact<{
+  subcontractorId: Scalars['Int'];
+  data: InsuranceCreateInput;
+}>;
+
+
+export type CreateSubcontractorInsuranceMutation = { __typename?: 'Mutation', createInsurance: { __typename?: 'Subcontractor', id: string, companyName: string, contactName: string, trade: string, email: string, phone: string, insurances?: Array<{ __typename?: 'Insurance', id: string, company: string, expiration: any, documentUrl: string }> | null } };
+
 export type MeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type MeQuery = { __typename?: 'Query', me: { __typename?: 'MeDto', id: string, email: string, firstName: string, lastName: string, nickname?: string | null, isPremium: boolean, subscriptionId?: string | null, expiresAt?: any | null, willExpireAt?: any | null, profilePicture?: string | null, about?: string | null, linkedinUrl?: string | null, twitterUrl?: string | null, githubUrl?: string | null, storageMemberships?: Array<{ __typename?: 'StorageMember', role: StorageRole, storage: { __typename?: 'Storage', id: string, name: string } }> | null } };
+export type MeQuery = { __typename?: 'Query', me: { __typename?: 'MeDto', id: string, email: string, firstName: string, lastName: string, nickname?: string | null, isPremium: boolean, subscriptionId?: string | null, expiresAt?: any | null, willExpireAt?: any | null, profilePicture?: string | null, about?: string | null, storageMemberships?: Array<{ __typename?: 'StorageMember', role: StorageRole, storage: { __typename?: 'Storage', id: string, name: string } }> | null } };
 
 export type UpdateUserMutationVariables = Exact<{
   data: UserUpdateInput;
@@ -1706,6 +5043,92 @@ export const useResetPasswordMutation = <
       (variables?: ResetPasswordMutationVariables) => fetcher<ResetPasswordMutation, ResetPasswordMutationVariables>(client, ResetPasswordDocument, variables, headers)(),
       options
     );
+export const GetCommentsByLogDocument = `
+    query GetCommentsByLog($logId: Int!) {
+  getCommentsByLog(logId: $logId) {
+    id
+    content
+    createdAt
+    logId
+    user {
+      id
+      firstName
+      lastName
+    }
+    user {
+      profilePicture
+      firstName
+      lastName
+      id
+    }
+    replies {
+      id
+      content
+      createdAt
+      user {
+        id
+        firstName
+        lastName
+        profilePicture
+      }
+    }
+  }
+}
+    `;
+export const useGetCommentsByLogQuery = <
+      TData = GetCommentsByLogQuery,
+      TError = unknown
+    >(
+      client: GraphQLClient,
+      variables: GetCommentsByLogQueryVariables,
+      options?: UseQueryOptions<GetCommentsByLogQuery, TError, TData>,
+      headers?: RequestInit['headers']
+    ) =>
+    useQuery<GetCommentsByLogQuery, TError, TData>(
+      ['GetCommentsByLog', variables],
+      fetcher<GetCommentsByLogQuery, GetCommentsByLogQueryVariables>(client, GetCommentsByLogDocument, variables, headers),
+      options
+    );
+export const AddLogCommentDocument = `
+    mutation AddLogComment($logId: Int!, $content: String!) {
+  addLogComment(logId: $logId, content: $content) {
+    id
+  }
+}
+    `;
+export const useAddLogCommentMutation = <
+      TError = unknown,
+      TContext = unknown
+    >(
+      client: GraphQLClient,
+      options?: UseMutationOptions<AddLogCommentMutation, TError, AddLogCommentMutationVariables, TContext>,
+      headers?: RequestInit['headers']
+    ) =>
+    useMutation<AddLogCommentMutation, TError, AddLogCommentMutationVariables, TContext>(
+      ['AddLogComment'],
+      (variables?: AddLogCommentMutationVariables) => fetcher<AddLogCommentMutation, AddLogCommentMutationVariables>(client, AddLogCommentDocument, variables, headers)(),
+      options
+    );
+export const AddLogCommentReplyDocument = `
+    mutation AddLogCommentReply($commentId: Int!, $content: String!) {
+  addLogCommentReply(commentId: $commentId, content: $content) {
+    id
+  }
+}
+    `;
+export const useAddLogCommentReplyMutation = <
+      TError = unknown,
+      TContext = unknown
+    >(
+      client: GraphQLClient,
+      options?: UseMutationOptions<AddLogCommentReplyMutation, TError, AddLogCommentReplyMutationVariables, TContext>,
+      headers?: RequestInit['headers']
+    ) =>
+    useMutation<AddLogCommentReplyMutation, TError, AddLogCommentReplyMutationVariables, TContext>(
+      ['AddLogCommentReply'],
+      (variables?: AddLogCommentReplyMutationVariables) => fetcher<AddLogCommentReplyMutation, AddLogCommentReplyMutationVariables>(client, AddLogCommentReplyDocument, variables, headers)(),
+      options
+    );
 export const SendEmailDocument = `
     mutation SendEmail($to: String!, $subject: String!, $name: String!, $email: String!, $message: String!) {
   sendEmail(
@@ -1731,6 +5154,339 @@ export const useSendEmailMutation = <
     useMutation<SendEmailMutation, TError, SendEmailMutationVariables, TContext>(
       ['SendEmail'],
       (variables?: SendEmailMutationVariables) => fetcher<SendEmailMutation, SendEmailMutationVariables>(client, SendEmailDocument, variables, headers)(),
+      options
+    );
+export const AddProjectDocumentDocument = `
+    mutation AddProjectDocument($projectId: Int!, $name: String!, $fileUrl: String!, $type: DocumentType!) {
+  addProjectDocument(
+    projectId: $projectId
+    name: $name
+    fileUrl: $fileUrl
+    type: $type
+  ) {
+    id
+    name
+    fileUrl
+    type
+    createdAt
+  }
+}
+    `;
+export const useAddProjectDocumentMutation = <
+      TError = unknown,
+      TContext = unknown
+    >(
+      client: GraphQLClient,
+      options?: UseMutationOptions<AddProjectDocumentMutation, TError, AddProjectDocumentMutationVariables, TContext>,
+      headers?: RequestInit['headers']
+    ) =>
+    useMutation<AddProjectDocumentMutation, TError, AddProjectDocumentMutationVariables, TContext>(
+      ['AddProjectDocument'],
+      (variables?: AddProjectDocumentMutationVariables) => fetcher<AddProjectDocumentMutation, AddProjectDocumentMutationVariables>(client, AddProjectDocumentDocument, variables, headers)(),
+      options
+    );
+export const GetDocumentsByProjectDocument = `
+    query GetDocumentsByProject($projectId: Int!) {
+  getDocumentsByProject(projectId: $projectId) {
+    id
+    name
+    fileUrl
+    type
+    createdAt
+  }
+}
+    `;
+export const useGetDocumentsByProjectQuery = <
+      TData = GetDocumentsByProjectQuery,
+      TError = unknown
+    >(
+      client: GraphQLClient,
+      variables: GetDocumentsByProjectQueryVariables,
+      options?: UseQueryOptions<GetDocumentsByProjectQuery, TError, TData>,
+      headers?: RequestInit['headers']
+    ) =>
+    useQuery<GetDocumentsByProjectQuery, TError, TData>(
+      ['GetDocumentsByProject', variables],
+      fetcher<GetDocumentsByProjectQuery, GetDocumentsByProjectQueryVariables>(client, GetDocumentsByProjectDocument, variables, headers),
+      options
+    );
+export const RemoveProjectDocumentDocument = `
+    mutation RemoveProjectDocument($id: Int!) {
+  removeProjectDocument(id: $id) {
+    id
+    name
+  }
+}
+    `;
+export const useRemoveProjectDocumentMutation = <
+      TError = unknown,
+      TContext = unknown
+    >(
+      client: GraphQLClient,
+      options?: UseMutationOptions<RemoveProjectDocumentMutation, TError, RemoveProjectDocumentMutationVariables, TContext>,
+      headers?: RequestInit['headers']
+    ) =>
+    useMutation<RemoveProjectDocumentMutation, TError, RemoveProjectDocumentMutationVariables, TContext>(
+      ['RemoveProjectDocument'],
+      (variables?: RemoveProjectDocumentMutationVariables) => fetcher<RemoveProjectDocumentMutation, RemoveProjectDocumentMutationVariables>(client, RemoveProjectDocumentDocument, variables, headers)(),
+      options
+    );
+export const AddPermitDocument = `
+    mutation AddPermit($projectId: Int!, $number: String!, $kind: PermitKind!, $status: PermitStatus!, $fileUrl: String!) {
+  addPermitInspection(
+    projectId: $projectId
+    number: $number
+    kind: $kind
+    status: $status
+    fileUrl: $fileUrl
+  ) {
+    id
+    number
+    status
+    fileUrl
+  }
+}
+    `;
+export const useAddPermitMutation = <
+      TError = unknown,
+      TContext = unknown
+    >(
+      client: GraphQLClient,
+      options?: UseMutationOptions<AddPermitMutation, TError, AddPermitMutationVariables, TContext>,
+      headers?: RequestInit['headers']
+    ) =>
+    useMutation<AddPermitMutation, TError, AddPermitMutationVariables, TContext>(
+      ['AddPermit'],
+      (variables?: AddPermitMutationVariables) => fetcher<AddPermitMutation, AddPermitMutationVariables>(client, AddPermitDocument, variables, headers)(),
+      options
+    );
+export const GetPermitsDocument = `
+    query GetPermits($projectId: Int!) {
+  getPermitsByProject(projectId: $projectId) {
+    id
+    number
+    kind
+    status
+    fileUrl
+    createdAt
+  }
+}
+    `;
+export const useGetPermitsQuery = <
+      TData = GetPermitsQuery,
+      TError = unknown
+    >(
+      client: GraphQLClient,
+      variables: GetPermitsQueryVariables,
+      options?: UseQueryOptions<GetPermitsQuery, TError, TData>,
+      headers?: RequestInit['headers']
+    ) =>
+    useQuery<GetPermitsQuery, TError, TData>(
+      ['GetPermits', variables],
+      fetcher<GetPermitsQuery, GetPermitsQueryVariables>(client, GetPermitsDocument, variables, headers),
+      options
+    );
+export const CreateProjectDocument = `
+    mutation CreateProject($data: ProjectCreateInput!) {
+  createProject(data: $data) {
+    id
+    name
+    client
+    location
+    status
+    startDate
+    endDate
+    createdAt
+    updatedAt
+  }
+}
+    `;
+export const useCreateProjectMutation = <
+      TError = unknown,
+      TContext = unknown
+    >(
+      client: GraphQLClient,
+      options?: UseMutationOptions<CreateProjectMutation, TError, CreateProjectMutationVariables, TContext>,
+      headers?: RequestInit['headers']
+    ) =>
+    useMutation<CreateProjectMutation, TError, CreateProjectMutationVariables, TContext>(
+      ['CreateProject'],
+      (variables?: CreateProjectMutationVariables) => fetcher<CreateProjectMutation, CreateProjectMutationVariables>(client, CreateProjectDocument, variables, headers)(),
+      options
+    );
+export const GetAllProjectsDocument = `
+    query GetAllProjects {
+  getAllProjects {
+    id
+    name
+    client
+    location
+    status
+    startDate
+    endDate
+    createdAt
+    updatedAt
+  }
+}
+    `;
+export const useGetAllProjectsQuery = <
+      TData = GetAllProjectsQuery,
+      TError = unknown
+    >(
+      client: GraphQLClient,
+      variables?: GetAllProjectsQueryVariables,
+      options?: UseQueryOptions<GetAllProjectsQuery, TError, TData>,
+      headers?: RequestInit['headers']
+    ) =>
+    useQuery<GetAllProjectsQuery, TError, TData>(
+      variables === undefined ? ['GetAllProjects'] : ['GetAllProjects', variables],
+      fetcher<GetAllProjectsQuery, GetAllProjectsQueryVariables>(client, GetAllProjectsDocument, variables, headers),
+      options
+    );
+export const GetProjectByIdDocument = `
+    query GetProjectById($id: Int!) {
+  getProjectById(id: $id) {
+    id
+    name
+    client
+    location
+    status
+    startDate
+    endDate
+    createdAt
+    updatedAt
+  }
+}
+    `;
+export const useGetProjectByIdQuery = <
+      TData = GetProjectByIdQuery,
+      TError = unknown
+    >(
+      client: GraphQLClient,
+      variables: GetProjectByIdQueryVariables,
+      options?: UseQueryOptions<GetProjectByIdQuery, TError, TData>,
+      headers?: RequestInit['headers']
+    ) =>
+    useQuery<GetProjectByIdQuery, TError, TData>(
+      ['GetProjectById', variables],
+      fetcher<GetProjectByIdQuery, GetProjectByIdQueryVariables>(client, GetProjectByIdDocument, variables, headers),
+      options
+    );
+export const AddConstructionLogDocument = `
+    mutation AddConstructionLog($projectId: Int!, $data: ConstructionLogCreateInput!) {
+  addConstructionLog(projectId: $projectId, data: $data) {
+    id
+    title
+    description
+    type
+    images
+    createdAt
+    user {
+      id
+      firstName
+    }
+  }
+}
+    `;
+export const useAddConstructionLogMutation = <
+      TError = unknown,
+      TContext = unknown
+    >(
+      client: GraphQLClient,
+      options?: UseMutationOptions<AddConstructionLogMutation, TError, AddConstructionLogMutationVariables, TContext>,
+      headers?: RequestInit['headers']
+    ) =>
+    useMutation<AddConstructionLogMutation, TError, AddConstructionLogMutationVariables, TContext>(
+      ['AddConstructionLog'],
+      (variables?: AddConstructionLogMutationVariables) => fetcher<AddConstructionLogMutation, AddConstructionLogMutationVariables>(client, AddConstructionLogDocument, variables, headers)(),
+      options
+    );
+export const DeleteConstructionLogDocument = `
+    mutation DeleteConstructionLog($logId: Int!) {
+  deleteConstructionLog(logId: $logId) {
+    id
+  }
+}
+    `;
+export const useDeleteConstructionLogMutation = <
+      TError = unknown,
+      TContext = unknown
+    >(
+      client: GraphQLClient,
+      options?: UseMutationOptions<DeleteConstructionLogMutation, TError, DeleteConstructionLogMutationVariables, TContext>,
+      headers?: RequestInit['headers']
+    ) =>
+    useMutation<DeleteConstructionLogMutation, TError, DeleteConstructionLogMutationVariables, TContext>(
+      ['DeleteConstructionLog'],
+      (variables?: DeleteConstructionLogMutationVariables) => fetcher<DeleteConstructionLogMutation, DeleteConstructionLogMutationVariables>(client, DeleteConstructionLogDocument, variables, headers)(),
+      options
+    );
+export const GetLogsByProjectDocument = `
+    query GetLogsByProject($projectId: Int!) {
+  getLogsByProject(projectId: $projectId) {
+    id
+    title
+    description
+    type
+    images
+    createdAt
+    projectId
+  }
+}
+    `;
+export const useGetLogsByProjectQuery = <
+      TData = GetLogsByProjectQuery,
+      TError = unknown
+    >(
+      client: GraphQLClient,
+      variables: GetLogsByProjectQueryVariables,
+      options?: UseQueryOptions<GetLogsByProjectQuery, TError, TData>,
+      headers?: RequestInit['headers']
+    ) =>
+    useQuery<GetLogsByProjectQuery, TError, TData>(
+      ['GetLogsByProject', variables],
+      fetcher<GetLogsByProjectQuery, GetLogsByProjectQueryVariables>(client, GetLogsByProjectDocument, variables, headers),
+      options
+    );
+export const GetLogByLogIdDocument = `
+    query GetLogByLogId($logId: Int!) {
+  getLogByLogId(logId: $logId) {
+    id
+    title
+    description
+    type
+    images
+    createdAt
+    user {
+      id
+      firstName
+      lastName
+      profilePicture
+    }
+    project {
+      id
+      name
+      client
+      location
+      status
+      startDate
+      endDate
+    }
+  }
+}
+    `;
+export const useGetLogByLogIdQuery = <
+      TData = GetLogByLogIdQuery,
+      TError = unknown
+    >(
+      client: GraphQLClient,
+      variables: GetLogByLogIdQueryVariables,
+      options?: UseQueryOptions<GetLogByLogIdQuery, TError, TData>,
+      headers?: RequestInit['headers']
+    ) =>
+    useQuery<GetLogByLogIdQuery, TError, TData>(
+      ['GetLogByLogId', variables],
+      fetcher<GetLogByLogIdQuery, GetLogByLogIdQueryVariables>(client, GetLogByLogIdDocument, variables, headers),
       options
     );
 export const GetAllStoragesDocument = `
@@ -2063,6 +5819,205 @@ export const useGetDashboardDataQuery = <
       fetcher<GetDashboardDataQuery, GetDashboardDataQueryVariables>(client, GetDashboardDataDocument, variables, headers),
       options
     );
+export const EditItemDocument = `
+    mutation EditItem($id: Float!, $name: String!, $description: String!, $imageUrl: String!, $quantity: Float!, $category: String!) {
+  editItem(
+    id: $id
+    name: $name
+    description: $description
+    imageUrl: $imageUrl
+    quantity: $quantity
+    category: $category
+  ) {
+    success
+    message
+  }
+}
+    `;
+export const useEditItemMutation = <
+      TError = unknown,
+      TContext = unknown
+    >(
+      client: GraphQLClient,
+      options?: UseMutationOptions<EditItemMutation, TError, EditItemMutationVariables, TContext>,
+      headers?: RequestInit['headers']
+    ) =>
+    useMutation<EditItemMutation, TError, EditItemMutationVariables, TContext>(
+      ['EditItem'],
+      (variables?: EditItemMutationVariables) => fetcher<EditItemMutation, EditItemMutationVariables>(client, EditItemDocument, variables, headers)(),
+      options
+    );
+export const GetItemByIdDocument = `
+    query GetItemById($id: Float!) {
+  getItemById(id: $id) {
+    id
+    name
+    description
+    imageUrl
+    quantity
+    category
+  }
+}
+    `;
+export const useGetItemByIdQuery = <
+      TData = GetItemByIdQuery,
+      TError = unknown
+    >(
+      client: GraphQLClient,
+      variables: GetItemByIdQueryVariables,
+      options?: UseQueryOptions<GetItemByIdQuery, TError, TData>,
+      headers?: RequestInit['headers']
+    ) =>
+    useQuery<GetItemByIdQuery, TError, TData>(
+      ['GetItemById', variables],
+      fetcher<GetItemByIdQuery, GetItemByIdQueryVariables>(client, GetItemByIdDocument, variables, headers),
+      options
+    );
+export const CreateSubcontractorDocument = `
+    mutation CreateSubcontractor($data: SubcontractorCreateInput!) {
+  createSubcontractor(data: $data) {
+    id
+    companyName
+    contactName
+    email
+    phone
+    trade
+  }
+}
+    `;
+export const useCreateSubcontractorMutation = <
+      TError = unknown,
+      TContext = unknown
+    >(
+      client: GraphQLClient,
+      options?: UseMutationOptions<CreateSubcontractorMutation, TError, CreateSubcontractorMutationVariables, TContext>,
+      headers?: RequestInit['headers']
+    ) =>
+    useMutation<CreateSubcontractorMutation, TError, CreateSubcontractorMutationVariables, TContext>(
+      ['CreateSubcontractor'],
+      (variables?: CreateSubcontractorMutationVariables) => fetcher<CreateSubcontractorMutation, CreateSubcontractorMutationVariables>(client, CreateSubcontractorDocument, variables, headers)(),
+      options
+    );
+export const GetAllSubcontractorsDocument = `
+    query GetAllSubcontractors {
+  getAllSubcontractors {
+    id
+    companyName
+    contactName
+    email
+    phone
+    trade
+  }
+}
+    `;
+export const useGetAllSubcontractorsQuery = <
+      TData = GetAllSubcontractorsQuery,
+      TError = unknown
+    >(
+      client: GraphQLClient,
+      variables?: GetAllSubcontractorsQueryVariables,
+      options?: UseQueryOptions<GetAllSubcontractorsQuery, TError, TData>,
+      headers?: RequestInit['headers']
+    ) =>
+    useQuery<GetAllSubcontractorsQuery, TError, TData>(
+      variables === undefined ? ['GetAllSubcontractors'] : ['GetAllSubcontractors', variables],
+      fetcher<GetAllSubcontractorsQuery, GetAllSubcontractorsQueryVariables>(client, GetAllSubcontractorsDocument, variables, headers),
+      options
+    );
+export const GetSubcontractorByIdDocument = `
+    query GetSubcontractorById($id: Int!) {
+  getSubcontractorById(id: $id) {
+    id
+    companyName
+    contactName
+    email
+    phone
+    trade
+    bankAccount
+    paymentPreference
+    notes
+    priority
+    createdViaPublicForm
+    insurances {
+      id
+      company
+      expiration
+      documentUrl
+    }
+  }
+}
+    `;
+export const useGetSubcontractorByIdQuery = <
+      TData = GetSubcontractorByIdQuery,
+      TError = unknown
+    >(
+      client: GraphQLClient,
+      variables: GetSubcontractorByIdQueryVariables,
+      options?: UseQueryOptions<GetSubcontractorByIdQuery, TError, TData>,
+      headers?: RequestInit['headers']
+    ) =>
+    useQuery<GetSubcontractorByIdQuery, TError, TData>(
+      ['GetSubcontractorById', variables],
+      fetcher<GetSubcontractorByIdQuery, GetSubcontractorByIdQueryVariables>(client, GetSubcontractorByIdDocument, variables, headers),
+      options
+    );
+export const CreateInsuranceDocument = `
+    mutation CreateInsurance($subcontractorId: Int!, $data: InsuranceCreateInput!) {
+  createInsurance(subcontractorId: $subcontractorId, data: $data) {
+    id
+    insurances {
+      id
+      company
+      expiration
+      documentUrl
+    }
+  }
+}
+    `;
+export const useCreateInsuranceMutation = <
+      TError = unknown,
+      TContext = unknown
+    >(
+      client: GraphQLClient,
+      options?: UseMutationOptions<CreateInsuranceMutation, TError, CreateInsuranceMutationVariables, TContext>,
+      headers?: RequestInit['headers']
+    ) =>
+    useMutation<CreateInsuranceMutation, TError, CreateInsuranceMutationVariables, TContext>(
+      ['CreateInsurance'],
+      (variables?: CreateInsuranceMutationVariables) => fetcher<CreateInsuranceMutation, CreateInsuranceMutationVariables>(client, CreateInsuranceDocument, variables, headers)(),
+      options
+    );
+export const CreateSubcontractorInsuranceDocument = `
+    mutation CreateSubcontractorInsurance($subcontractorId: Int!, $data: InsuranceCreateInput!) {
+  createInsurance(subcontractorId: $subcontractorId, data: $data) {
+    id
+    companyName
+    contactName
+    trade
+    email
+    phone
+    insurances {
+      id
+      company
+      expiration
+      documentUrl
+    }
+  }
+}
+    `;
+export const useCreateSubcontractorInsuranceMutation = <
+      TError = unknown,
+      TContext = unknown
+    >(
+      client: GraphQLClient,
+      options?: UseMutationOptions<CreateSubcontractorInsuranceMutation, TError, CreateSubcontractorInsuranceMutationVariables, TContext>,
+      headers?: RequestInit['headers']
+    ) =>
+    useMutation<CreateSubcontractorInsuranceMutation, TError, CreateSubcontractorInsuranceMutationVariables, TContext>(
+      ['CreateSubcontractorInsurance'],
+      (variables?: CreateSubcontractorInsuranceMutationVariables) => fetcher<CreateSubcontractorInsuranceMutation, CreateSubcontractorInsuranceMutationVariables>(client, CreateSubcontractorInsuranceDocument, variables, headers)(),
+      options
+    );
 export const MeDocument = `
     query Me {
   me {
@@ -2077,9 +6032,6 @@ export const MeDocument = `
     willExpireAt
     profilePicture
     about
-    linkedinUrl
-    twitterUrl
-    githubUrl
     storageMemberships {
       role
       storage {

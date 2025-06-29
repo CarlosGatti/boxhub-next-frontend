@@ -1,0 +1,43 @@
+# src/graphql/LogComment.graphql
+query GetCommentsByLog($logId: Int!) {
+  getCommentsByLog(logId: $logId) {
+    id
+    content
+    createdAt
+    logId
+    user {
+      id
+      firstName
+      lastName
+    }
+    user{
+      profilePicture
+      firstName
+      lastName
+      id
+    }
+    replies {
+      id
+      content
+      createdAt
+      user {
+        id
+        firstName
+        lastName
+        profilePicture
+      }
+    }
+  }
+}
+
+mutation AddLogComment($logId: Int!, $content: String!) {
+  addLogComment(logId: $logId, content: $content) {
+    id
+  }
+}
+
+mutation AddLogCommentReply($commentId: Int!, $content: String!) {
+  addLogCommentReply(commentId: $commentId, content: $content) {
+    id
+  }
+}

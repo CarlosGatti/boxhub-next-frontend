@@ -98,7 +98,7 @@ const AllItemsPage = () => {
                         )}
                         <button
                           className="mt-4 bg-gray-500 text-white px-4 py-2 text-sm font-medium rounded-md hover:bg-gray-600 transition-colors w-full text-center"
-                          onClick={() => router.push(`/qrcode-app/item/edit/${item.id}`)}
+                          onClick={() => router.push(`/qrcode-app/items/edit/${item.id}`)}
                         >
                           Edit Item
                         </button>
