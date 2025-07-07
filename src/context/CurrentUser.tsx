@@ -2,7 +2,7 @@
 import { MeQuery, useMeQuery } from '../generated/graphql'
 import React, { createContext } from 'react'
 
-import graphqlRequestClient from '../lib/graphql.request'
+import {graphqlRequestClient} from '../lib/graphql.request'
 import { parseCookies } from 'nookies'
 
 interface CurrentUserContextProps {

@@ -3,14 +3,14 @@ mutation AddPermit(
   $number: String!
   $kind: PermitKind!
   $status: PermitStatus!
-  $file: Upload!
+  $file: String!
 ) {
   addPermitInspection(
     projectId: $projectId
     number: $number
     kind: $kind
     status: $status
-    file: $file
+    fileUrl: $file
   ) {
     id
     number

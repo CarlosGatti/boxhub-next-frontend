@@ -13,7 +13,7 @@ export const useAuth = () => {
   // Return the values you need
   return {
     login,
-    logout,
+    logout
   }
 }
 

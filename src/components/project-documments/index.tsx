@@ -6,7 +6,7 @@ import {
 } from '../../generated/graphql';
 
 import axios from 'axios';
-import graphqlRequestClient from '../../lib/graphql.request';
+import {graphqlRequestClient} from '../../lib/graphql.request';
 import { useState } from 'react';
 
 type Props = {

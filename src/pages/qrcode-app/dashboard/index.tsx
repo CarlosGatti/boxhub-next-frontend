@@ -12,12 +12,12 @@ import { useGetDashboardDataQuery } from '../../../generated/graphql';
 import { useRouter } from 'next/router';
 
 const DashboardPage = () => {
-  const { data, error, isLoading } = useGetDashboardDataQuery(graphqlRequestClient);
+  const { data } = useGetDashboardDataQuery(graphqlRequestClient);
 
   const router = useRouter();
 
-  if (isLoading) return <p>Loading dashboard...</p>;
-  if (error) return <p>Error loading dashboard: {error.message}</p>;
+  // if (isLoading) return <p>Loading dashboard...</p>;
+  // if (error) return <p>Error loading dashboard: {error.message}</p>;
 
   return (
     <PrivateLayout title="BoxHub | Dashboard" description="Overview of your containers and items">

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { MainContent } from '../../../styles/qrcode';
 import { PrivateLayout } from '../../../layouts/PrivateLayout';
 import axios from 'axios';
-import graphqlRequestClient from '../../../lib/graphql.request';
+import {graphqlRequestClient} from '../../../lib/graphql.request';
 import { useRouter } from 'next/router';
 
 const CreateInsurancePage = () => {

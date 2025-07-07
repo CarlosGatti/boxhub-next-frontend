@@ -4711,7 +4711,7 @@ export type AddPermitMutationVariables = Exact<{
   number: Scalars['String'];
   kind: PermitKind;
   status: PermitStatus;
-  fileUrl: Scalars['String'];
+  file: Scalars['String'];
 }>;
 
 
@@ -5232,13 +5232,13 @@ export const useRemoveProjectDocumentMutation = <
       options
     );
 export const AddPermitDocument = `
-    mutation AddPermit($projectId: Int!, $number: String!, $kind: PermitKind!, $status: PermitStatus!, $fileUrl: String!) {
+    mutation AddPermit($projectId: Int!, $number: String!, $kind: PermitKind!, $status: PermitStatus!, $file: String!) {
   addPermitInspection(
     projectId: $projectId
     number: $number
     kind: $kind
     status: $status
-    fileUrl: $fileUrl
+    fileUrl: $file
   ) {
     id
     number

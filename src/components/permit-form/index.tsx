@@ -5,7 +5,7 @@ import {
 } from '../../generated/graphql';
 
 import axios from 'axios';
-import graphqlRequestClient from '../../lib/graphql.request';
+import {graphqlRequestClient} from '../../lib/graphql.request';
 import { redirect } from 'next/dist/server/api-utils';
 import { useRouter } from 'next/router';
 // components/PermitForm.tsx

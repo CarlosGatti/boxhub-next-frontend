@@ -2,7 +2,7 @@ import { Container, MainContent } from '../../../styles/qrcode';
 import React, { useState } from 'react';
 
 import { PrivateLayout } from '../../../layouts/PrivateLayout';
-import graphqlRequestClient from '../../../lib/graphql.request';
+import {graphqlRequestClient} from '../../../lib/graphql.request';
 import { useCreateSubcontractorMutation } from '../../../generated/graphql';
 
 const CreateSubcontractorPage = () => {

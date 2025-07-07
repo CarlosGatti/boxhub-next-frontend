@@ -19,7 +19,7 @@ import { Communities } from './Communities'
 import { HiOutlineUserGroup } from 'react-icons/hi'
 import { Input } from '../../Input/textInput'
 import { Users } from './Users'
-import graphqlRequestClient from '../../../../lib/graphql.request'
+import {graphqlRequestClient} from '../../../../lib/graphql.request'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 

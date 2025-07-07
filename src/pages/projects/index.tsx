@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { PrivateLayout } from '../../layouts/PrivateLayout';
-import graphqlRequestClient from '../../lib/graphql.request';
+import {graphqlRequestClient} from '../../lib/graphql.request';
 import { useGetAllProjectsQuery } from '../../generated/graphql';
 import { useRouter } from 'next/router';
 

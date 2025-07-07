@@ -3,14 +3,12 @@ import * as yup from 'yup'
 import { GetServerSideProps, NextPage } from 'next'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
-import { AllRightsReserved } from '../../../components/account/AllRightsReserved'
 import { Button } from '../../../components/_ui/Button'
 import Image from 'next/image'
 import { Input } from '../../../components/_ui/Input/textInput'
 import Link from 'next/link'
 import { PublicLayout } from '../../../layouts/PublicLayout'
 import { parseCookies } from 'nookies'
-import { toast } from 'react-toastify'
 import { useAuth } from '../../../hooks'
 import { yupResolver } from '@hookform/resolvers/yup'
 
@@ -25,7 +23,8 @@ const loginSchema = yup.object().shape({
 })
 
 const LoginPage: NextPage = () => {
-  const { login, isLoadingLogin } = useAuth()
+
+  const { login } = useAuth()
 
   const {
     register,
@@ -35,13 +34,8 @@ const LoginPage: NextPage = () => {
     resolver: yupResolver(loginSchema)
   })
 
-  const handleLogin: SubmitHandler<LoginData> = async (values) => {
-    try {
-      await login(values)
-    } catch (error) {
-      console.error('Login error:', error)
-      toast.error('Erro ao fazer login')
-    }
+  const handleLogin: SubmitHandler<LoginData> = (values) => {
+    login(values)
   }
 
   return (
@@ -82,7 +76,7 @@ const LoginPage: NextPage = () => {
             </Link>
           </div>
           </div>
-          <Button type="submit" isLoading={isLoadingLogin} className="w-full">
+          <Button type="submit" className="w-full">
             Sign in
           </Button>
           
@@ -94,10 +88,6 @@ const LoginPage: NextPage = () => {
             Create one
           </Link>
         </div>
-{/* 
-        <div className="mt-10">
-          <AllRightsReserved />
-        </div> */}
       </div>
     </PublicLayout>
   )
@@ -107,7 +97,7 @@ export default LoginPage
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { '@token': token } = parseCookies(ctx)
-
+  console.log('Token from cookies:', token)
   if (token) {
     return {
       redirect: {

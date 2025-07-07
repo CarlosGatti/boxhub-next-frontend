@@ -2,7 +2,7 @@ import { Container, MainContent } from '../../../styles/qrcode';
 import { format, isBefore, isWithinInterval, parseISO } from 'date-fns';
 
 import { PrivateLayout } from '../../../layouts/PrivateLayout';
-import graphqlRequestClient from '../../../lib/graphql.request';
+import {graphqlRequestClient} from '../../../lib/graphql.request';
 import { useEffect } from 'react';
 import { useGetSubcontractorByIdQuery } from '../../../generated/graphql';
 import { useRouter } from 'next/router';

@@ -4,17 +4,14 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import '../styles/tailwind.css'
 
-import { CurrentUserProvider, useCurrentUser } from '../context/CurrentUser'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import type { AppProps } from 'next/app'
 import { AuthProvider } from '../context/AuthContext'
+import { CurrentUserProvider } from '../context/CurrentUser'
 import { GlobalStyle } from '../styles/global'
 import { ToastContainer } from 'react-toastify'
 import { UserProvider } from '../context/UserContext'
-import { parseCookies } from 'nookies'
-import { useAuth } from '../hooks'
-import { useEffect } from 'react'
 
 export const queryClient = new QueryClient({
   defaultOptions: {
