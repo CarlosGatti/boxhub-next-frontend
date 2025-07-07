@@ -2,6 +2,7 @@ import { Container, MainContent } from '../../../styles/qrcode';
 
 import { PermitForm } from '../../../components/permit-form';
 import { PrivateLayout } from '../../../layouts/PrivateLayout';
+import ProjectContentWrapper from '../../../components/project-wrapper/';
 import graphqlRequestClient from '../../../lib/graphql.request';
 import { useGetPermitsQuery } from '../../../generated/graphql';
 import { useRouter } from 'next/router';
@@ -22,6 +23,7 @@ export default function PermitsPage() {
 
   return (
     <PrivateLayout headTitle="Permits / Inspections" metaContent="Manage permits">
+                <ProjectContentWrapper projectId={Number(projectId)}>
       <MainContent>
         <Container>
           <h1 className="text-2xl font-bold mb-6">Permits / Inspections</h1>
@@ -66,7 +68,7 @@ export default function PermitsPage() {
 
         </Container>
       </MainContent>
-
+      </ProjectContentWrapper>
     </PrivateLayout>
   );
 }

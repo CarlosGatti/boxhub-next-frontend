@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-import { BiTask } from "react-icons/bi";
-import { FcTimeline } from 'react-icons/fc';
 import { PrivateLayout } from '../../layouts/PrivateLayout';
 import graphqlRequestClient from '../../lib/graphql.request';
 import { useGetAllProjectsQuery } from '../../generated/graphql';
@@ -26,6 +24,9 @@ const ProjectListPage = () => {
       metaContent="List of all projects"
       metaName="description"
     >
+    
+        {/* Aqui vai o conteúdo real da página */}
+
       <div className="max-w-6xl mx-auto px-4 py-6">
         <h1 className="text-2xl font-bold mb-4">Projects</h1>
 

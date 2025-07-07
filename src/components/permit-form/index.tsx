@@ -23,6 +23,13 @@ export const PermitForm = ({ projectId }: PermitFormProps) => {
         file: null as File | null,
     });
 
+
+    const baseUrl =
+    process.env.NODE_ENV === 'development'
+      ? process.env.NEXT_PUBLIC_FRONTEND_URL_LOCAL
+      : process.env.NEXT_PUBLIC_FRONTEND_URL_PROD;
+
+
     const [uploading, setUploading] = useState(false);
     const { mutateAsync: addPermit } = useAddPermitMutation(graphqlRequestClient);
 
@@ -42,7 +49,7 @@ export const PermitForm = ({ projectId }: PermitFormProps) => {
         const fd = new FormData();
         fd.append('file', file);
         const { data } = await axios.post<{ url: string }>(
-            'http://localhost:3000/uploads/project-permits',
+            baseUrl + '/uploads/project-permits',
             fd,
             { headers: { 'Content-Type': 'multipart/form-data' } },
         );

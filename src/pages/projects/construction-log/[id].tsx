@@ -4,6 +4,7 @@ import { format, parseISO } from 'date-fns';
 import { FaEye } from 'react-icons/fa';
 import { FcTimeline } from 'react-icons/fc';
 import { PrivateLayout } from '../../../layouts/PrivateLayout';
+import ProjectContentWrapper from '../../../components/project-wrapper/';
 import React from 'react';
 import graphqlRequestClient from '../../../lib/graphql.request';
 import { useEffect } from 'react';
@@ -50,6 +51,7 @@ const ConstructionLogPage = () => {
       metaContent="Timeline of construction project logs"
       metaName="description"
     >
+            <ProjectContentWrapper projectId={Number(id)}>
       <div className="max-w-3xl mx-auto px-4 py-6">
         <h1 className="text-2xl font-bold mb-6">Construction Log</h1>
 
@@ -104,7 +106,9 @@ const ConstructionLogPage = () => {
               ))}
           </ul>
         )}
+        
       </div>
+      </ProjectContentWrapper>
     </PrivateLayout>
   );
 };

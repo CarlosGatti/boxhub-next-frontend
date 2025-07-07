@@ -20,6 +20,13 @@ export const ProjectDocumentForm = ({ projectId }: Props) => {
     file: null as File | null,
     type: '' as DocumentType | '',
   });
+
+  const baseUrl =
+  process.env.NODE_ENV === 'development'
+    ? process.env.NEXT_PUBLIC_FRONTEND_URL_LOCAL
+    : process.env.NEXT_PUBLIC_FRONTEND_URL_PROD;
+
+
   const [uploading, setUploading] = useState(false);
 
   const { data, refetch, isLoading } = useGetDocumentsByProjectQuery(
@@ -53,7 +60,7 @@ export const ProjectDocumentForm = ({ projectId }: Props) => {
     const fd = new FormData();
     fd.append('file', file);
     const { data } = await axios.post<{ url: string }>(
-      'http://localhost:3000/uploads/project-documents',
+      baseUrl + '/uploads/project-documents',
       fd,
       { headers: { 'Content-Type': 'multipart/form-data' } }
     );
@@ -92,7 +99,7 @@ export const ProjectDocumentForm = ({ projectId }: Props) => {
                 <p className="font-medium">{doc.name}</p>
                 <p className="text-sm text-gray-600">
                   <a
-                    href={'http://localhost:3000' + doc.fileUrl}
+                    href={baseUrl + doc.fileUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-500 underline"

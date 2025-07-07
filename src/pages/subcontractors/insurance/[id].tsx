@@ -23,6 +23,11 @@ const CreateInsurancePage = () => {
     file: null as File | null,
   });
 
+  const baseUrl =
+  process.env.NODE_ENV === 'development'
+    ? process.env.NEXT_PUBLIC_FRONTEND_URL_LOCAL
+    : process.env.NEXT_PUBLIC_FRONTEND_URL_PROD;
+
   const { mutateAsync: createInsurance, isLoading: submitting } = useCreateInsuranceMutation(graphqlRequestClient);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,7 +42,7 @@ const CreateInsurancePage = () => {
   const uploadFileToServer = async (file: File): Promise<string> => {
     const formData = new FormData();
     formData.append('file', file);
-    const res = await axios.post<{ url: string }>('http://localhost:3000/uploads/insurance', formData);
+    const res = await axios.post<{ url: string }>(baseUrl + '/uploads/insurance', formData);
     return res.data.url;
   };
 

@@ -42,6 +42,11 @@ const SubcontractorDetailsPage = () => {
     valid: 'text-green-600',
   };
 
+  const baseUrl =
+  process.env.NODE_ENV === 'development'
+    ? process.env.NEXT_PUBLIC_FRONTEND_URL_LOCAL
+    : process.env.NEXT_PUBLIC_FRONTEND_URL_PROD;
+
   return (
     <PrivateLayout
       headTitle="Subcontractor Details"
@@ -117,7 +122,9 @@ const SubcontractorDetailsPage = () => {
                             {insurance.documentUrl && (
                               <p>
                                 <a
-                                  href={`http://localhost:3000${insurance.documentUrl}`}
+                                  href={
+                                    baseUrl + insurance.documentUrl
+                                  }
                                   target="_blank"
                                   rel="noopener noreferrer"
                                   className="text-blue-500 underline"
