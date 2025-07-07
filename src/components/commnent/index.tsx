@@ -4,7 +4,7 @@ import {
   useAddLogCommentReplyMutation,
   type LogComment,
 } from '../../generated/graphql';
-import graphqlRequestClient from '../../lib/graphql.request';
+import {graphqlRequestClient} from '../../lib/graphql.request';
 
 export const Comment = ({
   comment,

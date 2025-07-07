@@ -3,7 +3,7 @@ import { ProjectStatus, useCreateProjectMutation } from '../../../generated/grap
 import React, { useState } from 'react';
 
 import { PrivateLayout } from '../../../layouts/PrivateLayout';
-import graphqlRequestClient from '../../../lib/graphql.request';
+import {graphqlRequestClient} from '../../../lib/graphql.request';
 import { useRouter } from 'next/router';
 
 const CreateProjectPage = () => {
