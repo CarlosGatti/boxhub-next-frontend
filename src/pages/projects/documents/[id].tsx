@@ -3,7 +3,7 @@ import { PrivateLayout } from '../../../layouts/PrivateLayout';
 import ProjectContentWrapper from '../../../components/project-wrapper';
 import { ProjectDocumentForm } from '../../../components/project-documments';
 import ProjectSidebar from '../../../components/project-sidebar';
-import graphqlRequestClient from '../../../lib/graphql.request';
+import {graphqlRequestClient} from '../../../lib/graphql.request';
 import {
   useGetProjectByIdQuery
 } from '../../../generated/graphql';

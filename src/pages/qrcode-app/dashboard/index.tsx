@@ -7,7 +7,7 @@ import { MainContent } from '../../../styles/qrcode';
 import { MainLayout } from '../../../layouts/MainLayout';
 import { MenuBar } from '../../../components/_ui/MenuBar';
 import { PrivateLayout } from '../../../layouts/PrivateLayout';
-import graphqlRequestClient from '../../../lib/graphql.request';
+import {graphqlRequestClient} from '../../../lib/graphql.request';
 import { useGetDashboardDataQuery } from '../../../generated/graphql';
 import { useRouter } from 'next/router';
 

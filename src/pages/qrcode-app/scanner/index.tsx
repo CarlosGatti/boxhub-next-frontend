@@ -5,7 +5,7 @@ import { Html5QrcodeScanner } from 'html5-qrcode';
 import Image from 'next/image';
 import Link from 'next/link';
 import { PrivateLayout } from '../../../layouts/PrivateLayout';
-import graphqlRequestClient from '../../../lib/graphql.request';
+import {graphqlRequestClient} from '../../../lib/graphql.request';
 import { useGetContainerByCodeQuery } from '../../../generated/graphql';
 
 const QrCodeScanner = () => {

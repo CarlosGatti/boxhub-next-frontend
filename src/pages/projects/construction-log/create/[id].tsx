@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 import { LogType } from '../../../../generated/graphql';
 import { PrivateLayout } from '../../../../layouts/PrivateLayout';
-import graphqlRequestClient from '../../../../lib/graphql.request';
+import {graphqlRequestClient} from '../../../../lib/graphql.request';
 import { resizeImage } from '../../../../lib/resizeImage';
 import { useAddConstructionLogMutation } from '../../../../generated/graphql';
 import { useRouter } from 'next/router';

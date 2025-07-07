@@ -6,7 +6,7 @@ import { FcTimeline } from 'react-icons/fc';
 import { PrivateLayout } from '../../../layouts/PrivateLayout';
 import ProjectContentWrapper from '../../../components/project-wrapper/';
 import React from 'react';
-import graphqlRequestClient from '../../../lib/graphql.request';
+import {graphqlRequestClient} from '../../../lib/graphql.request';
 import { useEffect } from 'react';
 import { useGetLogsByProjectQuery } from '../../../generated/graphql';
 import { useRouter } from 'next/router';

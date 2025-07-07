@@ -11,7 +11,7 @@ import { CommentInput } from '../../../../components/_ui/CommentInput';
 import { FcTimeline } from 'react-icons/fc';
 import { PrivateLayout } from '../../../../layouts/PrivateLayout';
 import React from 'react';
-import graphqlRequestClient from '../../../../lib/graphql.request';
+import {graphqlRequestClient} from '../../../../lib/graphql.request';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 

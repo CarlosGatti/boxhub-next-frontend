@@ -3,7 +3,7 @@ import { Container, ImageCrop, MainContent } from '../../../styles/qrcode';
 import { Header } from '../../../components/_ui/Header';
 import { PrivateLayout } from '../../../layouts/PrivateLayout';
 import { UploadPhotoWithCrop } from '../../../components/_ui/UploadPhotoWithCrop';
-import graphqlRequestClient from '../../../lib/graphql.request';
+import {graphqlRequestClient} from '../../../lib/graphql.request';
 import { uploadImages } from '../../../lib/imgBB';
 import { useCreateItemMutation } from '../../../generated/graphql';
 import { useRouter } from 'next/router';

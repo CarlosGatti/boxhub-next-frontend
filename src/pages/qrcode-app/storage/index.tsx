@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
 import { Header } from '../../../components/_ui/Header';
 import Link from 'next/link';
 import { PrivateLayout } from '../../../layouts/PrivateLayout';
-import graphqlRequestClient from '../../../lib/graphql.request';
+import {graphqlRequestClient} from '../../../lib/graphql.request';
 
 const ManageStorage = () => {
   const [storages, setStorages] = useState([]);

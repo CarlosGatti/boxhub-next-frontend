@@ -69,7 +69,7 @@ export const PermitForm = ({ projectId }: PermitFormProps) => {
                 number: form.number,
                 kind: form.kind,
                 status: form.status,
-                fileUrl,             // deve existir no resolver
+                file: fileUrl,             // deve existir no resolver
             });
 
             alert('Permit added successfully!');
