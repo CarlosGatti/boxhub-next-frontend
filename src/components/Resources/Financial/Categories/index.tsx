@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { ContainerMain } from '../../containerMain'
 import { Input } from '../../../../components/_ui/Input/textInput'
 import { TransactionFinancialType } from '../../../../generated/graphql'
-import graphqlRequestClient from '../../../../lib/graphql.request'
+import {graphqlRequestClient} from '../../../../lib/graphql.request'
 import { useGetCategoriesQuery } from '../../../../generated/graphql'
 
 type CategoryType = {

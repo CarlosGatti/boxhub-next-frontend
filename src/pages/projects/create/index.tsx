@@ -45,7 +45,10 @@ const CreateProjectPage = () => {
   };
 
   return (
-    <PrivateLayout headTitle="Create Project" metaName="description" metaContent="Form to create new project">
+    <PrivateLayout 
+      title="Create Project"
+      description="Create a new project to manage your tasks and resources"
+    >
       <Container>
         <MainContent>
           <div className="min-h-screen bg-gray-100 flex justify-center">
@@ -53,7 +56,6 @@ const CreateProjectPage = () => {
               <div className="border-b pb-4 mb-4">
                 <h1 className="text-2xl font-bold text-gray-800">New Project</h1>
               </div>
-
               <form className="flex flex-col gap-4 mb-6" onSubmit={handleSubmit}>
                 <Input label="Project Name" name="name" value={form.name} onChange={handleChange} />
                 <Input label="Client Name" name="client" value={form.client} onChange={handleChange} />
@@ -67,7 +69,6 @@ const CreateProjectPage = () => {
                 </Select>
                 <Input label="Start Date" name="startDate" type="date" value={form.startDate} onChange={handleChange} />
                 <Input label="End Date" name="endDate" type="date" value={form.endDate} onChange={handleChange} />
-
                 <button
                   type="submit"
                   className="px-4 py-2 bg-gray-500 text-white font-medium rounded-md hover:bg-gray-600 focus:ring focus:ring-gray-200"
@@ -84,8 +85,15 @@ const CreateProjectPage = () => {
   );
 };
 
-// 🔹 Componentes auxiliares reutilizáveis
-const Input = ({ label, name, value, onChange, type = 'text' }) => (
+interface InputProps {
+  label: string;
+  name: string;
+  value: string | number | undefined;
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
+  type?: string;
+}
+
+const Input: React.FC<InputProps> = ({ label, name, value, onChange, type = 'text' }) => (
   <div className="flex flex-col gap-2">
     <label htmlFor={name} className="text-sm font-medium text-gray-700">{label}</label>
     <input
@@ -99,7 +107,15 @@ const Input = ({ label, name, value, onChange, type = 'text' }) => (
   </div>
 );
 
-const Select = ({ label, name, value, onChange, children }) => (
+interface SelectProps {
+  label: string;
+  name: string;
+  value: string | number | undefined;
+  onChange: React.ChangeEventHandler<HTMLSelectElement>;
+  children: React.ReactNode;
+}
+
+const Select: React.FC<SelectProps> = ({ label, name, value, onChange, children }) => (
   <div className="flex flex-col gap-2">
     <label htmlFor={name} className="text-sm font-medium text-gray-700">{label}</label>
     <select

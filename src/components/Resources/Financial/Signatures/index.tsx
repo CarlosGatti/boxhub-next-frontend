@@ -4,7 +4,7 @@ import { Button } from '../../../_ui/Button'
 import { ContainerMain } from '../../containerMain'
 import { EditButton } from '../../../_ui/ButtonIcon/Edit'
 import Image from 'next/image'
-import graphqlRequestClient from '../../../../lib/graphql.request'
+import {graphqlRequestClient} from '../../../../lib/graphql.request'
 import moment from 'moment'
 import { useGetSubscriptionsQuery } from '../../../../generated/graphql'
 

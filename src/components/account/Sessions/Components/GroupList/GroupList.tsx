@@ -16,7 +16,7 @@ import { HiOutlineUserGroup } from 'react-icons/hi'
 import Link from 'next/link'
 import { MdOutlineGroup } from 'react-icons/md'
 import { PopOverOptions } from '../../../../_ui/ButtonIcon/PopOverOptions'
-import graphqlRequestClient from '../../../../../lib/graphql.request'
+import {graphqlRequestClient} from '../../../../../lib/graphql.request'
 import { toast } from 'react-toastify'
 import { useCurrentUser } from '../../../../../context/CurrentUser'
 

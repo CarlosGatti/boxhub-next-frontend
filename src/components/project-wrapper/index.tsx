@@ -16,7 +16,9 @@ export default function ProjectContentWrapper({
       </aside>
 
       {/* Conteúdo principal flexível */}
-      <main className="flex-1">{children}</main>
+      <div className="ml-4">
+        <main className="flex-1">{children}</main>
+      </div>
     </div>
   );
 }

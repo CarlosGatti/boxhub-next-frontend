@@ -6,7 +6,7 @@ import { MainContent } from '../../../../styles/qrcode';
 import { MenuBar } from '../../../../components/_ui/MenuBar';
 import { PrivateLayout } from '../../../../layouts/PrivateLayout';
 import QRCode from 'qrcode';
-import graphqlRequestClient from '../../../../lib/graphql.request';
+import {graphqlRequestClient} from '../../../../lib/graphql.request';
 import { useCreateContainerMutation } from '../../../../generated/graphql';
 import { useCurrentUser } from '../../../../context/CurrentUser';
 import { useRouter } from 'next/router';

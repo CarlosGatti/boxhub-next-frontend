@@ -25,7 +25,8 @@ export default function PermitsPage() {
     <PrivateLayout headTitle="Permits / Inspections" metaContent="Manage permits">
       <ProjectContentWrapper projectId={Number(projectId)}>
         <MainContent>
-          <Container>
+          {/* <Container> */}
+          <div className="bg-white shadow rounded-lg p-6 space-y-6" py-6>
             <h1 className="text-2xl font-bold mb-6">Permits / Inspections</h1>
             <p className="text-gray-600 mb-4">
               Manage permits and inspections for your project.
@@ -64,9 +65,9 @@ export default function PermitsPage() {
             )}
 
 
+</div>
 
-
-          </Container>
+          {/* </Container> */}
         </MainContent>
       </ProjectContentWrapper>
     </PrivateLayout>

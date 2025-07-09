@@ -25,17 +25,6 @@ export const MainContent = styled.div`
   flex-direction: column;
   width: min(578px, 100%);
   gap: 1rem;
-
-  .publicationsContent {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-
-    @media (max-width: 640px) {
-      padding-left: 20px;
-      padding-right: 20px;
-    }
-    }
 `
 
 export const ImageCrop = styled.div`

@@ -8,7 +8,7 @@ import { DatePickerInput } from '../../../../../components/_ui/Input/datePickerI
 import { Input } from '../../../../../components/_ui/Input/textInput'
 import { UploadPhotoWithCrop } from '../../../../../components/_ui/UploadPhotoWithCrop'
 import { editFormSchema } from './validateForm'
-import graphqlRequestClient from '../../../../../lib/graphql.request'
+import {graphqlRequestClient} from '../../../../../lib/graphql.request'
 import moment from 'moment'
 import { toast } from 'react-toastify'
 import { uploadImages } from '../../../../../lib/imgBB'

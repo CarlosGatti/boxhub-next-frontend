@@ -4,6 +4,7 @@ import React, { createContext } from 'react'
 import { destroyCookie, setCookie } from 'nookies'
 
 import {graphqlRequestClient} from '../lib/graphql.request'
+import { queryClient } from '../pages/_app'
 import { toast } from 'react-toastify'
 import { useRouter } from 'next/router'
 
@@ -28,13 +29,15 @@ export const AuthProvider: React.FC<React.PropsWithChildren> = ({
   const router = useRouter()
 
   const logout = () => {
-    destroyCookie(undefined, '@token')
+    destroyCookie(undefined, '@token', { path: '/' }) 
+    localStorage.clear()
+    queryClient.removeQueries({ queryKey: ['me'] })
     router.push('/account/login')
   }
-
+  
   const login = async (data: LoginUserInput) => {
     try {
-      await _login(
+      _login(
         {
           data,
         },
@@ -44,13 +47,13 @@ export const AuthProvider: React.FC<React.PropsWithChildren> = ({
               setCookie(undefined, '@token', data.login.token, {
                 maxAge: 60 * 60 * 24 * 3,
               })
-              // router.push('/grcode-app/dashboad')
+              window.location.href = '/qrcode-app/dashboard'
             }
           },
           onError() {
             toast.error('Não foi possível acessar sua conta! Tente novamente.')
           },
-        },
+        }
       )
     } catch {
       toast.error('Não foi possível acessar sua conta! Tente novamente.')

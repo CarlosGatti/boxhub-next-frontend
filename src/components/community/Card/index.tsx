@@ -15,7 +15,7 @@ import {
 
 import { Button } from '../../../components/_ui/Button'
 import { MouseEvent } from 'react'
-import graphqlRequestClient from '../../../lib/graphql.request'
+import {graphqlRequestClient} from '../../../lib/graphql.request'
 import { toast } from 'react-toastify'
 import { useCurrentUser } from '../../../context/CurrentUser'
 import { useRouter } from 'next/router'

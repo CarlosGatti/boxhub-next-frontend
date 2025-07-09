@@ -7,7 +7,7 @@ import {
 
 import { Button } from '../../_ui/Button'
 import Link from 'next/link'
-import graphqlRequestClient from '../../../lib/graphql.request'
+import {graphqlRequestClient} from '../../../lib/graphql.request'
 import { toast } from 'react-toastify'
 import { useCurrentUser } from '../../../context/CurrentUser'
 

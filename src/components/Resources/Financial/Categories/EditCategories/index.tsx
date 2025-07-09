@@ -12,7 +12,7 @@ import { Input } from '../../../../../components/_ui/Input/textInput'
 import { Modal } from '../../../../_ui/Modal'
 import { TransactionTypeSelect } from '../../../../_ui/TransactionTypeSelect'
 import { editFormSchema } from './validateForm'
-import graphqlRequestClient from '../../../../../lib/graphql.request'
+import {graphqlRequestClient} from '../../../../../lib/graphql.request'
 import { toast } from 'react-toastify'
 import { yupResolver } from '@hookform/resolvers/yup'
 

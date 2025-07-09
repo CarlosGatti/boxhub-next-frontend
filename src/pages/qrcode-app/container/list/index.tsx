@@ -5,7 +5,7 @@ import { FiPrinter } from 'react-icons/fi'
 import { Header } from '../../../../components/_ui/Header';
 import { PrivateLayout } from '../../../../layouts/PrivateLayout';
 import { QRCodeSVG } from 'qrcode.react';
-import graphqlRequestClient from '../../../../lib/graphql.request';
+import {graphqlRequestClient} from '../../../../lib/graphql.request';
 import { useGetMyStoragesQuery } from '../../../../generated/graphql';
 import { useRouter } from 'next/router';
 

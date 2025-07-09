@@ -6,7 +6,7 @@ import {
 
 import Link from 'next/link';
 import { PrivateLayout } from '../../../../layouts/PrivateLayout';
-import graphqlRequestClient from '../../../../lib/graphql.request';
+import {graphqlRequestClient} from '../../../../lib/graphql.request';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';

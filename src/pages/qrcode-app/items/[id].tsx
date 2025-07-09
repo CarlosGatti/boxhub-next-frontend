@@ -1,6 +1,5 @@
 import { Container, ImageCrop, MainContent } from '../../../styles/qrcode';
 
-import { Header } from '../../../components/_ui/Header';
 import { PrivateLayout } from '../../../layouts/PrivateLayout';
 import { UploadPhotoWithCrop } from '../../../components/_ui/UploadPhotoWithCrop';
 import {graphqlRequestClient} from '../../../lib/graphql.request';
@@ -28,10 +27,21 @@ const AddItemPage = () => {
             return;
         }
 
+        let finalImageUrl = imageUrl;
+
         if (imageUrl && !imageUrl.includes('imgbb')) {
-            const { data } = await uploadImages(imageUrl);
-            setImageUrl(data.url);
+          const { data } = await uploadImages(imageUrl);
+          finalImageUrl = data.url;
         }
+        
+        await createItem({
+          name,
+          description,
+          imageUrl: finalImageUrl,
+          quantity,
+          category,
+          containerId: parseInt(id as string, 10),
+        });
 
         try {
             await createItem({
@@ -44,20 +54,18 @@ const AddItemPage = () => {
             });
 
             alert('Item created successfully!');
-            router.push(`/qrcode-app/items/list`); // Redireciona para a página do container
+            router.replace('/qrcode-app/items/list');
+
         } catch (error) {
             console.error('Error creating item:', error);
             alert('Failed to create item.');
         }
     };
 
-
-
     return (
         <PrivateLayout
             title="Scan QR Code"
             description="Scan QR Code to find a container"
-
         >
             <Container>
                 <MainContent>
@@ -89,14 +97,6 @@ const AddItemPage = () => {
                                 </div>
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700">Image URL:</label>
-                                    {/* <input
-                            type="url"
-                            value={imageUrl}
-                            onChange={(e) => setImageUrl(e.target.value)}
-                            placeholder="Enter image URL"
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                            required
-                        /> */}
                                     <ImageCrop>
                                         <UploadPhotoWithCrop
                                             setBanner={(value: string) => setImageUrl(value)}
@@ -146,11 +146,8 @@ const AddItemPage = () => {
                         </div>
                     </div>
                 </MainContent>
-
             </Container>
         </PrivateLayout>
-
-
     );
 };
 

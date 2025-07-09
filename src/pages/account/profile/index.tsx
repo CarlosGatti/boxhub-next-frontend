@@ -4,12 +4,10 @@ import { useEffect, useState } from 'react'
 import { useMeQuery, useUpdateUserMutation } from '../../../generated/graphql'
 
 import { Button } from '../../../components/_ui/Button'
-import Image from 'next/image'
 import { Input } from '../../../components/_ui/Input/textInput'
-import Link from 'next/link'
 import { PrivateLayout } from '../../../layouts/PrivateLayout'
 import { UploadPhotoWithCrop } from '../../../components/_ui/UploadPhotoWithCrop'
-import graphqlRequestClient from '../../../lib/graphql.request'
+import { graphqlRequestClient } from '../../../lib/graphql.request'
 import { toast } from 'react-toastify'
 import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/router'
@@ -59,7 +57,8 @@ export default function EditUserPage() {
     }
 
     updateUser(
-      { data: 
+      {
+        data:
         {
           firstName: { set: payload.firstName },
           lastName: { set: payload.lastName },
@@ -67,7 +66,7 @@ export default function EditUserPage() {
           email: { set: payload.email },
           profilePicture: { set: payload.profilePicture },
         }
-       },
+      },
       {
         onSuccess: () => {
           toast.success('Profile updated successfully!')
@@ -84,36 +83,31 @@ export default function EditUserPage() {
   }
 
   return (
-    <PrivateLayout>
-         <div className="p-6 bg-white rounded-lg shadow-md max-w-md ">
-    
+    <PrivateLayout
+      title="Edit Profile"
+      description="Update your profile information and keep it current."
+    >
+      <div className="p-6 bg-white rounded-lg shadow-md max-w-md ">
         <h1 className="text-3xl font-semibold text-center mb-2">
           Edit your profile
         </h1>
         <p className="text-gray-600 text-center mb-6">
           Keep your information up to date.
         </p>
-
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-
-
           <UploadPhotoWithCrop
             imageUser={profilePicture}
             setBanner={(value: string) => setProfilePicture(value)}
           />
-          
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Input placeholder="First Name" {...register('firstName')} error={errors.firstName} />
             <Input placeholder="Last Name" {...register('lastName')} error={errors.lastName} />
           </div>
           <Input placeholder="Email" {...register('email')} error={errors.email} />
           <Input placeholder="Username" {...register('nickname')} error={errors.nickname} />
-
-
           <Button type="submit" isLoading={isLoading} className="w-full">
             Save changes
           </Button>
-
         </form>
       </div>
     </PrivateLayout>

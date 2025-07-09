@@ -86,7 +86,7 @@ export const ProjectDocumentForm = ({ projectId }: Props) => {
   };
 
   return (
-    <div className="p-4 border rounded-lg">
+    <div className="p-4 border bg-white rounded-lg shadow-md min-w-[400px]">
       <h2 className="text-lg font-semibold mb-4">Project Documents</h2>
 
       <ul className="space-y-3 mb-4">

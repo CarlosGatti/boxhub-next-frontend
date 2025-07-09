@@ -3,7 +3,7 @@ import { Container, MainContent } from '../../../../styles/qrcode';
 import { Header } from '../../../../components/_ui/Header';
 import Image from 'next/image';
 import { PrivateLayout } from '../../../../layouts/PrivateLayout';
-import graphqlRequestClient from '../../../../lib/graphql.request';
+import {graphqlRequestClient} from '../../../../lib/graphql.request';
 import { useGetAllItemsQuery } from '../../../../generated/graphql';
 import { useRouter } from 'next/router';
 import { useState } from 'react';

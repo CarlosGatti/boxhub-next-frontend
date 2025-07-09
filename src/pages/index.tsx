@@ -3,7 +3,7 @@ import { Cloud, QrCode, Search } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { PublicLayout } from "../layouts/PublicLayout"
-import graphqlRequestClient from "../lib/graphql.request"
+import {graphqlRequestClient} from "../lib/graphql.request"
 import { useSendEmailMutation } from "../generated/graphql"
 import { useState } from "react"
 
