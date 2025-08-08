@@ -1,51 +1,114 @@
-import Link from "next/link"
 import { PublicLayout } from "../../layouts/PublicLayout"
+import { useState } from "react"
 
-export default function GetStartedPage() {
+export default function FreeEstimatePage() {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    projectType: "",
+    message: "",
+  })
+
+  const [submitted, setSubmitted] = useState(false)
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value })
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setSubmitted(true)
+  }
+
   return (
     <PublicLayout>
-      <div className="py-20 px-4 text-center">
-        <h1 className="text-4xl font-bold mb-4">Upgrade to BoxHub Pro</h1>
-        <p className="text-lg text-gray-600 max-w-xl mx-auto mb-12">
-          Choose the plan that best fits your workflow.
+      <div className="py-20 px-4 max-w-3xl mx-auto">
+        <h1 className="text-4xl font-bold text-center mb-6">Request a Free Estimate</h1>
+        <p className="text-lg text-gray-600 text-center mb-10">
+          Tell us about your project and we’ll get back to you with a custom estimate.
         </p>
 
-        <div className="grid gap-6 sm:grid-cols-2 max-w-4xl mx-auto">
-          {/* Free Trial Card */}
-          <div className="border rounded-lg p-6 shadow-md bg-white text-left">
-            <h2 className="text-2xl font-semibold mb-2">Free 14-Day Trial</h2>
-            <p className="text-gray-600 mb-4">Try BoxHub Pro features at no cost.</p>
-            <ul className="text-sm text-gray-700 space-y-2 mb-6">
-              <li>✅ Full feature access</li>
-              <li>✅ No credit card required</li>
-              <li>✅ Cancel anytime</li>
-            </ul>
-            <Link
-              href="/account/create"
-              className="inline-block w-full text-center bg-gray-100 text-gray-900 px-6 py-3 rounded-md hover:bg-gray-200 transition"
-            >
-              Start Free Trial
-            </Link>
+        <form onSubmit={handleSubmit} className="space-y-6 bg-white p-6 rounded-xl shadow-md">
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
+            <input
+              type="text"
+              name="name"
+              required
+              value={form.name}
+              onChange={handleChange}
+              className="mt-1 w-full rounded-md border border-gray-300 px-4 py-2 shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500"
+            />
           </div>
 
-          {/* Pro Plan Card */}
-          <div className="border rounded-lg p-6 shadow-md bg-gray-50 text-left">
-            <h2 className="text-2xl font-semibold mb-2">BoxHub Pro</h2>
-            <p className="text-gray-600 mb-4">$5/month or $50/year</p>
-            <ul className="text-sm text-gray-700 space-y-2 mb-6">
-              <li>✅ Unlimited QR code storage</li>
-              <li>✅ Cloud sync across devices</li>
-              <li>✅ Priority email support</li>
-            </ul>
-            <Link
-              href="/account/create?redirect=paid"
-              className="inline-block w-full text-center bg-black text-white px-6 py-3 rounded-md hover:bg-gray-800 transition"
-            >
-              Subscribe Now
-            </Link>
-
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+            <input
+              type="email"
+              name="email"
+              required
+              value={form.email}
+              onChange={handleChange}
+              className="mt-1 w-full rounded-md border border-gray-300 px-4 py-2 shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500"
+            />
           </div>
-        </div>
+
+          <div>
+            <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone</label>
+            <input
+              type="tel"
+              name="phone"
+              required
+              value={form.phone}
+              onChange={handleChange}
+              className="mt-1 w-full rounded-md border border-gray-300 px-4 py-2 shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="projectType" className="block text-sm font-medium text-gray-700">Project Type</label>
+            <select
+              name="projectType"
+              required
+              value={form.projectType}
+              onChange={handleChange}
+              className="mt-1 w-full rounded-md border border-gray-300 px-4 py-2 shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500"
+            >
+              <option value="">Select a type</option>
+              <option value="Remodeling">Remodeling</option>
+              <option value="New Construction">New Construction</option>
+              <option value="Additions">Additions</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div>
+            <label htmlFor="message" className="block text-sm font-medium text-gray-700">Project Details</label>
+            <textarea
+              name="message"
+              rows={4}
+              value={form.message}
+              onChange={handleChange}
+              placeholder="Tell us more about your project..."
+              className="mt-1 w-full rounded-md border border-gray-300 px-4 py-2 shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500"
+            />
+          </div>
+
+          {submitted && (
+            <div className="text-green-600 font-medium">
+              Thank you! We'll be in touch soon with your estimate.
+            </div>
+          )}
+
+          <button
+            type="submit"
+            disabled={submitted}
+            className="w-full bg-black text-white py-3 rounded-md hover:bg-gray-800 transition"
+          >
+            {submitted ? "Submitted" : "Request Estimate"}
+          </button>
+        </form>
       </div>
     </PublicLayout>
   )

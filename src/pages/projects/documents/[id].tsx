@@ -26,29 +26,21 @@ const CompanyDocumentsPage = () => {
       description="Manage all company documents and resources"
     >
       <ProjectContentWrapper projectId={Number(id)}>
-      <MainContent>
+        <MainContent>
+          {isLoading && <p>Loading…</p>}
 
-
-
-
-
-            {isLoading && <p>Loading…</p>}
-
-            {typeof error === 'object' && error !== null && 'message' in error && (
-              <div>
-                <p className="text-red-600">
-                  Error loading project: {(error as { message: string }).message}
-                </p>
-              </div>
-            )}
-            {data && (
-              <div>
-                <ProjectDocumentForm projectId={Number(id)} />
-              </div>
-            )}
-
-       
-
+          {typeof error === 'object' && error !== null && 'message' in error && (
+            <div>
+              <p className="text-red-600">
+                Error loading project: {(error as { message: string }).message}
+              </p>
+            </div>
+          )}
+          {data && (
+            <div>
+              <ProjectDocumentForm projectId={Number(id)} />
+            </div>
+          )}
         </MainContent>
       </ProjectContentWrapper>
     </PrivateLayout>

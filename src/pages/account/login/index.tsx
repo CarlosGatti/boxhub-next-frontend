@@ -44,7 +44,7 @@ const LoginPage: NextPage = () => {
         <div className="flex justify-center mb-6">
           <Link href="/">
             <Image
-              src="/image/brand/rh-blue.png"
+              src="/image/brand/pires-logo.png"
               alt="BoxHub logo"
               width={120}
               height={60}
@@ -63,23 +63,23 @@ const LoginPage: NextPage = () => {
             {...register('email')}
           />
           <div>
-          <Input
-            type="password"
-            placeholder="Password"
-            error={errors.password}
-            {...register('password')}
-          />
-          
-          <div className="text-right text-sm">
-            <Link href="/account/forgot-password" className="text-blue-600 hover:underline">
-              Forgot your password?
-            </Link>
-          </div>
+            <Input
+              type="password"
+              placeholder="Password"
+              error={errors.password}
+              {...register('password')}
+            />
+
+            <div className="text-right text-sm">
+              <Link href="/account/forgot-password" className="text-blue-600 hover:underline">
+                Forgot your password?
+              </Link>
+            </div>
           </div>
           <Button type="submit" className="w-full">
             Sign in
           </Button>
-          
+
         </form>
 
         <div className="text-center text-sm text-gray-700 mt-4">

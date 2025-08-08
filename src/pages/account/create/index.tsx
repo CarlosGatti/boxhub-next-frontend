@@ -8,7 +8,7 @@ import Link from 'next/link'
 import { ModalServiceTerms } from '../../../components/account/ModalServiceTerms'
 import { PublicLayout } from '../../../layouts/PublicLayout'
 import { UploadPhotoWithCrop } from '../../../components/_ui/UploadPhotoWithCrop'
-import {graphqlRequestClient} from '../../../lib/graphql.request'
+import { graphqlRequestClient } from '../../../lib/graphql.request'
 import { toast } from 'react-toastify'
 import { useCreateUserMutation } from '../../../generated/graphql'
 import { useForm } from 'react-hook-form'
@@ -21,31 +21,31 @@ const createUserSchema = yup.object().shape({
   lastName: yup.string().required('Last name is required'),
   nickname: yup.string().required('Username is required'),
   email: yup
-  .string()
-  .required('Email is required')
-  .email('Invalid email')
-  .test(
-    'email-available',
-    'This email is already in use',
-    async function (value) {
-      if (!value) return false
-      try {
-        const response = await graphqlRequestClient.request(
-          EmailAvailableDocument,
-          { email: value }
-        )
-        const { emailAvailable } = response as { emailAvailable: boolean }
+    .string()
+    .required('Email is required')
+    .email('Invalid email')
+    .test(
+      'email-available',
+      'This email is already in use',
+      async function (value) {
+        if (!value) return false
+        try {
+          const response = await graphqlRequestClient.request(
+            EmailAvailableDocument,
+            { email: value }
+          )
+          const { emailAvailable } = response as { emailAvailable: boolean }
 
-        if (!emailAvailable) {
-          return this.createError({ message: 'This email is already in use' })
+          if (!emailAvailable) {
+            return this.createError({ message: 'This email is already in use' })
+          }
+
+          return true
+        } catch (error) {
+          return this.createError({ message: 'Could not validate email' })
         }
-
-        return true
-      } catch (error) {
-        return this.createError({ message: 'Could not validate email' })
       }
-    }
-  )
+    )
   ,
   password: yup.string().required('Password is required').min(6, 'Min. 6 characters'),
   passwordConfirmation: yup
@@ -65,9 +65,10 @@ export default function RegisterPage() {
     register,
     handleSubmit,
     formState: { errors }
-  } = useForm({ resolver: yupResolver(createUserSchema),
+  } = useForm({
+    resolver: yupResolver(createUserSchema),
     mode: 'onBlur',
-   })
+  })
 
   const { mutate: createUser } = useCreateUserMutation(graphqlRequestClient)
 
@@ -121,7 +122,7 @@ export default function RegisterPage() {
       <div className="max-w-2xl mx-auto py-12 px-4">
         <div className="flex justify-center mb-6">
           <Image
-            src="/image/brand/rh-blue.png"
+            src="/image/brand/pires-logo.png"
             alt="BoxHub logo"
             width={120}
             height={60}
@@ -143,7 +144,7 @@ export default function RegisterPage() {
                 <Input placeholder="Last Name" {...register('lastName')} error={errors.lastName} />
               </div>
               <Input placeholder="Email" {...register('email')} error={errors.email} />
-              
+
               <Input placeholder="Username" {...register('nickname')} error={errors.nickname} />
               <Input type="password" placeholder="Password" {...register('password')} error={errors.password} />
               <Input

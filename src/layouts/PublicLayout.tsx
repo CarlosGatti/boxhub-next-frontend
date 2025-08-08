@@ -13,13 +13,13 @@ export function PublicLayout({ children }: { children: ReactNode }) {
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           <Link href="/" className="flex items-center gap-2">
             <Image
-              src="/image/brand/rh-blue.png"
-              alt="BoxHub logo"
-              width={40}
-              height={40}
-              className="grayscale transition-all duration-300 hover:grayscale-0"
+              src="/image/brand/pires-logo.png"
+              alt="Pires Builders logo"
+              width={140}
+              height={140}
+              className="transition-all duration-300 hover:grayscale-0"
             />
-            <span className="font-semibold hidden sm:inline">BoxHub</span>
+            {/* <span className="font-semibold hidden sm:inline">Pires Builders Inc.</span> */}
           </Link>
 
           {/* Desktop Nav */}
@@ -43,15 +43,15 @@ export function PublicLayout({ children }: { children: ReactNode }) {
         </div>
 
         {isOpen && (
-  <nav className="md:hidden border-t bg-white px-4 py-4 space-y-4 text-lg font-medium transition-all duration-300 ease-in-out">
-    <Link href="/#features" onClick={() => setIsOpen(false)} className="block">Features</Link>
-    <Link href="/get-started" onClick={() => setIsOpen(false)} className="block">Get Started</Link>
-    <Link href="/#usecases" onClick={() => setIsOpen(false)} className="block">Use Cases</Link>
-    <Link href="/#about" onClick={() => setIsOpen(false)} className="block">About</Link>
-    <Link href="/#contact" onClick={() => setIsOpen(false)} className="block">Contact</Link>
-    <Link href="/account/login" onClick={() => setIsOpen(false)} className="block">Login</Link>
-  </nav>
-)}
+          <nav className="md:hidden border-t bg-white px-4 py-4 space-y-4 text-lg font-medium transition-all duration-300 ease-in-out">
+            <Link href="/#features" onClick={() => setIsOpen(false)} className="block">Features</Link>
+            <Link href="/get-started" onClick={() => setIsOpen(false)} className="block">Get Started</Link>
+            <Link href="/#usecases" onClick={() => setIsOpen(false)} className="block">Use Cases</Link>
+            <Link href="/#about" onClick={() => setIsOpen(false)} className="block">About</Link>
+            <Link href="/#contact" onClick={() => setIsOpen(false)} className="block">Contact</Link>
+            <Link href="/account/login" onClick={() => setIsOpen(false)} className="block">Login</Link>
+          </nav>
+        )}
       </header>
 
       <main className="flex-1">{children}</main>

@@ -28,7 +28,7 @@ export function Header() {
           {/* Logo */}
           <Link href="/qrcode-app/dashboard">
             <img
-              src="/image/brand/rh-blue.png"
+              src="/image/brand/pires-logo.png"
               alt="Logo"
               className="h-10 w-10 object-contain"
             />
