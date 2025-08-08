@@ -24,9 +24,9 @@ export function PublicLayout({ children }: { children: ReactNode }) {
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex gap-6 text-sm font-medium">
-            <Link href="/#features" className="hover:text-primary">Features</Link>
+            {/* <Link href="/#features" className="hover:text-primary">Features</Link> */}
             <Link href="/get-started" className="hover:text-primary">Get Started</Link>
-            <Link href="/#usecases" className="hover:text-primary">Use Cases</Link>
+            {/* <Link href="/#usecases" className="hover:text-primary">Use Cases</Link> */}
             <Link href="/#about" className="hover:text-primary">About</Link>
             <Link href="/#contact" className="hover:text-primary">Contact</Link>
             <Link href="/account/login" className="hover:text-primary">Login</Link>
@@ -44,9 +44,9 @@ export function PublicLayout({ children }: { children: ReactNode }) {
 
         {isOpen && (
           <nav className="md:hidden border-t bg-white px-4 py-4 space-y-4 text-lg font-medium transition-all duration-300 ease-in-out">
-            <Link href="/#features" onClick={() => setIsOpen(false)} className="block">Features</Link>
+            {/* <Link href="/#features" onClick={() => setIsOpen(false)} className="block">Features</Link> */}
             <Link href="/get-started" onClick={() => setIsOpen(false)} className="block">Get Started</Link>
-            <Link href="/#usecases" onClick={() => setIsOpen(false)} className="block">Use Cases</Link>
+            {/* <Link href="/#usecases" onClick={() => setIsOpen(false)} className="block">Use Cases</Link> */}
             <Link href="/#about" onClick={() => setIsOpen(false)} className="block">About</Link>
             <Link href="/#contact" onClick={() => setIsOpen(false)} className="block">Contact</Link>
             <Link href="/account/login" onClick={() => setIsOpen(false)} className="block">Login</Link>
@@ -58,7 +58,7 @@ export function PublicLayout({ children }: { children: ReactNode }) {
 
       <footer className="w-full border-t py-6 md:py-8 bg-white">
         <div className="container mx-auto text-center text-sm text-muted-foreground px-4">
-          © 2025 BoxHub - All Rights Reserved.
+          © 2025 Pires Builders Inc. - All Rights Reserved. - Developed by <Link href="https://www.carlosgatti.com" className="text-brand-orange hover:underline">Carlos Gatti</Link>
         </div>
       </footer>
     </div>

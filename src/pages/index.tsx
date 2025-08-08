@@ -31,7 +31,7 @@ function HeroSection() {
                         Build your dream with confidence.
                     </h1>
                     <p className="text-lg md:text-xl text-gray-600 max-w-xl">
-                        Pires Builders Inc delivers top-quality construction and remodeling services across Colorado Springs and beyond.
+                        Pires Builders Inc delivers top-quality construction and remodeling services across Massachusetts and beyond.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
                         <Link href="#contact" className="rounded-lg bg-black text-white px-6 py-3 text-sm font-medium hover:bg-brand-orange transition">
