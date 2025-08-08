@@ -56,23 +56,23 @@ export default class MyDocument extends Document {
           /> */}
 
           
-          <title>BoxHub – Organize, Track & Manage Your Storage Effortlessly</title>
-          <meta name="title" content="BoxHub – Organize, Track & Manage Your Storage Effortlessly" />
-          <meta name="description" content="BoxHub is an intuitive inventory system that uses QR codes to help you manage and locate your personal or business items with ease. Simplify your storage today." />
+          <title>Pires Builders Inc. - Custom Home Builders in Massachusetts</title>
+          <meta name="title" content="Pires Builders Inc. - Custom Home Builders in Massachusetts" />
+          <meta name="description" content="Pires Builders Inc. is a custom home builder in Massachusetts that specializes in building custom homes and remodeling projects." />
 
           
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://metatags.io/" />
-          <meta property="og:title" content="BoxHub – Organize, Track & Manage Your Storage Effortlessly" />
-          <meta property="og:description" content="BoxHub is an intuitive inventory system that uses QR codes to help you manage and locate your personal or business items with ease. Simplify your storage today." />
-          <meta property="og:image" content="https://www.defined.one/image/cia-storage.png" />
+          <meta property="og:title" content="Pires Builders Inc. - Custom Home Builders in Massachusetts" />
+          <meta property="og:description" content="Pires Builders Inc. is a custom home builder in Massachusetts that specializes in building custom homes and remodeling projects." />
+          <meta property="og:image" content="https://www.piresbuildersinc.com/image/drone-cape.jpeg" />
 
           
           <meta property="twitter:card" content="summary_large_image" />
           <meta property="twitter:url" content="https://metatags.io/" />
-          <meta property="twitter:title" content="BoxHub – Organize, Track & Manage Your Storage Effortlessly" />
-          <meta property="twitter:description" content="BoxHub is an intuitive inventory system that uses QR codes to help you manage and locate your personal or business items with ease. Simplify your storage today." />
-          <meta property="og:image" content="https://www.defined.one/image/cia-storage.png" />
+          <meta property="twitter:title" content="Pires Builders Inc. - Custom Home Builders in Massachusetts" />
+          <meta property="twitter:description" content="Pires Builders Inc. is a custom home builder in Massachusetts that specializes in building custom homes and remodeling projects." />
+          <meta property="og:image" content="https://www.piresbuildersinc.com/image/drone-cape.jpeg" />
 
 
           
