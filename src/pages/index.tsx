@@ -14,9 +14,10 @@ export default function LandingPage() {
         <PublicLayout>
             <HeroSection />
             <ServicesSection />
-            <WhyChooseUs />
+            <ProjectsGallery />
             <AboutSection />
             <ContactSection />
+            <CtaBand />
         </PublicLayout>
 
     )
@@ -41,6 +42,7 @@ function HeroSection() {
                             See Our Services
                         </Link>
                     </div>
+
                 </div>
                 <div className="flex-1">
                     <Image
@@ -86,22 +88,41 @@ function ServiceCard({ title, description }: { title: string, description: strin
 }
 
 function WhyChooseUs() {
+    const item = (t: string, d: string) => (
+        <div className="text-center p-6 rounded-xl border bg-white shadow-sm hover:shadow-md transition">
+            <h3 className="text-xl font-semibold text-gray-800">{t}</h3>
+            <p className="text-sm text-gray-600 mt-2">{d}</p>
+        </div>
+    )
     return (
         <section className="w-full py-16 md:py-20 bg-white">
             <div className="container mx-auto px-6">
                 <div className="text-center mb-12">
                     <h2 className="text-3xl md:text-4xl font-semibold text-gray-900">Why Pires Builders?</h2>
+                    <p className="text-gray-600 max-w-2xl mx-auto mt-2">Licensed & insured general contractor serving Massachusetts.</p>
                 </div>
-
                 <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                    <FeatureItem title="Licensed & Insured" description="Peace of mind with every project." />
-                    <FeatureItem title="Transparent Pricing" description="No surprises. Clear and fair estimates." />
-                    <FeatureItem title="Local Expertise" description="We understand Colorado building codes and weather challenges." />
+                    {item("Licensed & Insured", "Peace of mind with every project.")}
+                    {item("Transparent Pricing", "Clear estimates. No surprises.")}
+                    {item("Local Expertise", "We understand Massachusetts codes and permitting.")}
                 </div>
             </div>
         </section>
     )
 }
+
+function CtaBand() {
+    return (
+      <section className="bg-gray-900 text-white py-10">
+        <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          <h3 className="text-2xl font-semibold">Ready to start your project?</h3>
+          <Link href="#contact" className="bg-gray-100 text-gray-900 px-6 py-3 rounded-md font-medium hover:bg-orange-400 transition">
+            Get a Free Estimate
+          </Link>
+        </div>
+      </section>
+    )
+  }
 
 function FeatureItem({ title, description }: { title: string, description: string }) {
     return (
@@ -134,6 +155,7 @@ function AboutSection() {
         </section>
     );
 }
+
 
 function ContactSection() {
     const { mutate: sendEmailMutation, data, isLoading, error } = useSendEmailMutation(graphqlRequestClient);
@@ -244,5 +266,102 @@ function ContactSection() {
                 </div>
             </div>
         </section>
+    );
+}
+
+function ProjectsGallery() {
+    const projects = [
+        {
+            id: 1,
+            title: "Modern Kitchen Renovation",
+            description: "Complete kitchen remodel with custom cabinets and quartz countertops",
+            image: "/projects/kitchen-renovation.jpeg",
+            category: "Renovation"
+        },
+        {
+            id: 2,
+            title: "Custom Home Build",
+            description: "3-bedroom contemporary home with open floor plan",
+            image: "/projects/home-building-custom.jpg",
+            category: "New Construction"
+        },
+        {
+            id: 3,
+            title: "Bathroom Remodel",
+            description: "Luxury bathroom with walk-in shower and double vanity",
+            image: "/projects/bathroom-remodeling.webp",
+            category: "Renovation"
+        },
+        {
+            id: 4,
+            title: "Commercial Office Space",
+            description: "Modern office renovation with open workspace design",
+            image: "/projects/commercial-remodeling.jpg",
+            category: "Commercial"
+        },
+        {
+            id: 5,
+            title: "Deck & Patio Construction",
+            description: "Custom outdoor living space with pergola",
+            image: "/projects/deck-builders.jpg",
+            category: "Outdoor"
+        },
+        {
+            id: 6,
+            title: "Basement Finish",
+            description: "Complete basement transformation into living space",
+            image: "/projects/basement-finish.avif",
+            category: "Renovation"
+        }
+    ];
+
+    return (
+        <section className="w-full py-16 md:py-20 bg-white">
+            <div className="container mx-auto px-6">
+                <div className="text-center mb-12">
+                    <h2 className="text-3xl md:text-4xl font-semibold text-gray-900">Recent Projects</h2>
+                    <p className="text-gray-600 max-w-2xl mx-auto mt-2">
+                        Take a look at some of our latest work and see the quality craftsmanship we bring to every project.
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
+                    {projects.map((project) => (
+                        <ProjectCard key={project.id} project={project} />
+                    ))}
+                </div>
+
+            </div>
+        </section>
+    );
+}
+
+function ProjectCard({ project }: { project: { id: number; title: string; description: string; image: string; category: string } }) {
+    return (
+        <div className="group relative overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-all duration-300">
+            <div className="aspect-[3/2] relative overflow-hidden">
+                <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300" />
+                <div className="absolute top-2 left-2">
+                    <span className="inline-block px-2 py-1 bg-white text-gray-800 text-xs font-medium rounded-full">
+                        {project.category}
+                    </span>
+                </div>
+            </div>
+            
+            <div className="p-3 bg-white">
+                <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-gray-700 transition-colors">
+                    {project.title}
+                </h3>
+                <p className="text-gray-600 text-xs leading-relaxed">
+                    {project.description}
+                </p>
+            </div>
+        </div>
     );
 }
