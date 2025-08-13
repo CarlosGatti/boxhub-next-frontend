@@ -138,18 +138,40 @@ function AboutSection() {
     return (
         <section id="about" className="w-full py-16 md:py-20 bg-gray-50">
             <div className="container mx-auto px-6">
-                <div className="text-center max-w-4xl mx-auto space-y-6">
-                    <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900">
-                        About Pires Builders
-                    </h2>
-                    <p className="text-gray-600 md:text-lg">
-                        With over a decade of experience in the construction industry, Pires Builders Inc is committed to delivering reliable, high-quality construction and remodeling solutions.
-                        Our skilled team takes pride in craftsmanship, attention to detail, and a strong focus on customer satisfaction.
-                    </p>
-                    <p className="text-gray-500 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
-                        From custom home builds to residential renovations and commercial improvements, we handle every project with transparency and professionalism.
-                        At Pires Builders, we don’t just build structures—we build trust and lasting relationships with our clients.
-                    </p>
+                <div className="max-w-6xl mx-auto">
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900">
+                            About Pires Builders
+                        </h2>
+                    </div>
+                    
+                    <div className="grid md:grid-cols-2 gap-12 items-center">
+                        <div className="space-y-6">
+                            <p className="text-gray-600 md:text-lg leading-relaxed">
+                                With over a decade of experience in the construction industry, Pires Builders Inc is committed to delivering reliable, high-quality construction and remodeling solutions.
+                                Our skilled team takes pride in craftsmanship, attention to detail, and a strong focus on customer satisfaction.
+                            </p>
+                            <p className="text-gray-500 text-sm md:text-base leading-relaxed">
+                                From custom home builds to residential renovations and commercial improvements, we handle every project with transparency and professionalism.
+                                At Pires Builders, we don't just build structures—we build trust and lasting relationships with our clients.
+                            </p>
+                        </div>
+                        
+                        <div className="relative">
+                            <Image
+                                src="/landing/keys-house.jpeg"
+                                alt="Pires Builders construction project"
+                                width={300}
+                                height={100}
+                                className="rounded-xl shadow-xl object-cover"
+                                priority
+                            />
+                            <div className="absolute -bottom-4 -left-4 bg-white p-4 rounded-lg shadow-lg">
+                                <p className="text-sm font-semibold text-gray-900">10+ Years</p>
+                                <p className="text-xs text-gray-600">of Excellence</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
