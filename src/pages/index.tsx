@@ -145,8 +145,8 @@ function AboutSection() {
                         </h2>
                     </div>
                     
-                    <div className="grid md:grid-cols-2 gap-12 items-center">
-                        <div className="space-y-6">
+                    <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+                        <div className="space-y-6 order-2 lg:order-1">
                             <p className="text-gray-600 md:text-lg leading-relaxed">
                                 With over a decade of experience in the construction industry, Pires Builders Inc is committed to delivering reliable, high-quality construction and remodeling solutions.
                                 Our skilled team takes pride in craftsmanship, attention to detail, and a strong focus on customer satisfaction.
@@ -157,18 +157,20 @@ function AboutSection() {
                             </p>
                         </div>
                         
-                        <div className="relative">
-                            <Image
-                                src="/landing/keys-house.jpeg"
-                                alt="Pires Builders construction project"
-                                width={300}
-                                height={100}
-                                className="rounded-xl shadow-xl object-cover"
-                                priority
-                            />
-                            <div className="absolute -bottom-4 -left-4 bg-white p-4 rounded-lg shadow-lg">
-                                <p className="text-sm font-semibold text-gray-900">10+ Years</p>
-                                <p className="text-xs text-gray-600">of Excellence</p>
+                        <div className="relative order-1 lg:order-2 flex justify-center lg:justify-end">
+                            <div className="relative">
+                                <Image
+                                    src="/landing/keys-house.jpeg"
+                                    alt="Pires Builders construction project"
+                                    width={400}
+                                    height={300}
+                                    className="rounded-xl shadow-xl object-cover w-full max-w-sm"
+                                    priority
+                                />
+                                <div className="absolute -bottom-3 -left-3 bg-white p-3 rounded-lg shadow-lg">
+                                    <p className="text-sm font-semibold text-gray-900">10+ Years</p>
+                                    <p className="text-xs text-gray-600">of Excellence</p>
+                                </div>
                             </div>
                         </div>
                     </div>
