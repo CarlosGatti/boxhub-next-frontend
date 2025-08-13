@@ -35,7 +35,7 @@ function HeroSection() {
                         Pires Builders Inc delivers top-quality construction and remodeling services across Massachusetts and beyond.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                        <Link href="#contact" className="rounded-lg bg-black text-white px-6 py-3 text-sm font-medium hover:bg-brand-orange transition">
+                        <Link href="/get-started" className="rounded-lg bg-black text-white px-6 py-3 text-sm font-medium hover:bg-brand-orange transition">
                             Get a Free Estimate
                         </Link>
                         <Link href="#services" className="rounded-lg border border-gray-300 px-6 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 transition">
@@ -116,7 +116,7 @@ function CtaBand() {
       <section className="bg-gray-900 text-white py-10">
         <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <h3 className="text-2xl font-semibold">Ready to start your project?</h3>
-          <Link href="#contact" className="bg-gray-100 text-gray-900 px-6 py-3 rounded-md font-medium hover:bg-orange-400 transition">
+          <Link href="/get-started" className="bg-gray-100 text-gray-900 px-6 py-3 rounded-md font-medium hover:bg-orange-400 transition">
             Get a Free Estimate
           </Link>
         </div>
@@ -316,7 +316,7 @@ function ProjectsGallery() {
     ];
 
     return (
-        <section className="w-full py-16 md:py-20 bg-white">
+        <section id="projects" className="w-full py-16 md:py-20 bg-white">
             <div className="container mx-auto px-6">
                 <div className="text-center mb-12">
                     <h2 className="text-3xl md:text-4xl font-semibold text-gray-900">Recent Projects</h2>

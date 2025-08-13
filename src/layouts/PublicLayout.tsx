@@ -25,9 +25,10 @@ export function PublicLayout({ children }: { children: ReactNode }) {
           {/* Desktop Nav */}
           <nav className="hidden md:flex gap-6 text-sm font-medium">
             {/* <Link href="/#features" className="hover:text-primary">Features</Link> */}
-            <Link href="/get-started" className="hover:text-primary">Get Started</Link>
-            {/* <Link href="/#usecases" className="hover:text-primary">Use Cases</Link> */}
+
+
             <Link href="/#about" className="hover:text-primary">About</Link>
+            <Link href="/#projects" className="hover:text-primary">Projects</Link>
             <Link href="/#contact" className="hover:text-primary">Contact</Link>
             <Link href="/account/login" className="hover:text-primary">Login</Link>
           </nav>
