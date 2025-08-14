@@ -53,7 +53,7 @@ const LoginPage: NextPage = () => {
           </Link>
         </div>
 
-        <h1 className="text-2xl font-semibold text-center mb-2">Sign in to BoxHub</h1>
+        <h1 className="text-2xl font-semibold text-center mb-2">Sign in to your project</h1>
         <p className="text-sm text-gray-600 text-center mb-8">Enter your credentials to access your account</p>
 
         <form onSubmit={handleSubmit(handleLogin)} className="space-y-2">
