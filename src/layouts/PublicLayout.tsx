@@ -30,6 +30,7 @@ export function PublicLayout({ children }: { children: ReactNode }) {
             <Link href="/#about" className="hover:text-primary">About</Link>
             <Link href="/#projects" className="hover:text-primary">Projects</Link>
             <Link href="/subcontractors/register" className="hover:text-primary">Partner With Us</Link>
+            <Link href="/faq" className="hover:text-primary">FAQ</Link>
             <Link href="/#contact" className="hover:text-primary">Contact</Link>
             <Link href="/account/login" className="hover:text-primary">Login</Link>
           </nav>
@@ -49,6 +50,7 @@ export function PublicLayout({ children }: { children: ReactNode }) {
             {/* <Link href="/#features" onClick={() => setIsOpen(false)} className="block">Features</Link> */}
             <Link href="/get-started" onClick={() => setIsOpen(false)} className="block">Get Started</Link>
             <Link href="/subcontractors/register" onClick={() => setIsOpen(false)} className="block">Partner With Us</Link>
+            <Link href="/faq" onClick={() => setIsOpen(false)} className="block">FAQ</Link>
             {/* <Link href="/#usecases" onClick={() => setIsOpen(false)} className="block">Use Cases</Link> */}
             <Link href="/#about" onClick={() => setIsOpen(false)} className="block">About</Link>
             <Link href="/#contact" onClick={() => setIsOpen(false)} className="block">Contact</Link>
@@ -86,6 +88,7 @@ export function PublicLayout({ children }: { children: ReactNode }) {
                 <li><Link href="/#projects" className="text-gray-600 hover:text-gray-900 transition">Our Projects</Link></li>
                 <li><Link href="/#services" className="text-gray-600 hover:text-gray-900 transition">Services</Link></li>
                 <li><Link href="/subcontractors/register" className="text-gray-600 hover:text-gray-900 transition">Partner With Us</Link></li>
+                <li><Link href="/faq" className="text-gray-600 hover:text-gray-900 transition">FAQ</Link></li>
                 <li><Link href="/#contact" className="text-gray-600 hover:text-gray-900 transition">Contact</Link></li>
               </ul>
             </div>
