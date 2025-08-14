@@ -10,6 +10,7 @@ import { Section } from '../../components/faq/Section'
 import { generateFaqJsonLd } from '../../lib/seo/faq-jsonld'
 
 export default function FAQPage() {
+  
   const [searchQuery, setSearchQuery] = useState('')
   const [openItems, setOpenItems] = useState<string[]>([])
   const [activeSection, setActiveSection] = useState('')

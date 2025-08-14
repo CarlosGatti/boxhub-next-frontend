@@ -16,7 +16,7 @@ export const faqData: FaqData = {
         {
           id: 'clients-quote',
           question: 'How do I request a quote?',
-          answer: 'Use our "Request a Quote" form to submit a brief description of your project, including address, photos/videos, and desired timeline. We respond within 2 business days with a detailed estimate and project timeline.',
+          answer: 'Use our "Request a Quote" form to submit a brief description of your project, including address, photos/videos, and desired timeline. We respond within 3 business days with a detailed estimate and project timeline.',
           tags: ['quote', 'estimate', 'pricing']
         },
         {

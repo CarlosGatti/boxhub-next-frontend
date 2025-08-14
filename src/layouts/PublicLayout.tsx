@@ -29,6 +29,7 @@ export function PublicLayout({ children }: { children: ReactNode }) {
 
             <Link href="/#about" className="hover:text-primary">About</Link>
             <Link href="/#projects" className="hover:text-primary">Projects</Link>
+            <Link href="/blog" className="hover:text-primary">Blog</Link>
             <Link href="/subcontractors/register" className="hover:text-primary">Partner With Us</Link>
             <Link href="/faq" className="hover:text-primary">FAQ</Link>
             <Link href="/#contact" className="hover:text-primary">Contact</Link>
@@ -49,6 +50,7 @@ export function PublicLayout({ children }: { children: ReactNode }) {
           <nav className="md:hidden border-t bg-white px-4 py-4 space-y-4 text-lg font-medium transition-all duration-300 ease-in-out">
             {/* <Link href="/#features" onClick={() => setIsOpen(false)} className="block">Features</Link> */}
             <Link href="/get-started" onClick={() => setIsOpen(false)} className="block">Get Started</Link>
+            <Link href="/blog" onClick={() => setIsOpen(false)} className="block">Blog</Link>
             <Link href="/subcontractors/register" onClick={() => setIsOpen(false)} className="block">Partner With Us</Link>
             <Link href="/faq" onClick={() => setIsOpen(false)} className="block">FAQ</Link>
             {/* <Link href="/#usecases" onClick={() => setIsOpen(false)} className="block">Use Cases</Link> */}
@@ -87,6 +89,7 @@ export function PublicLayout({ children }: { children: ReactNode }) {
                 <li><Link href="/#about" className="text-gray-600 hover:text-gray-900 transition">About Us</Link></li>
                 <li><Link href="/#projects" className="text-gray-600 hover:text-gray-900 transition">Our Projects</Link></li>
                 <li><Link href="/#services" className="text-gray-600 hover:text-gray-900 transition">Services</Link></li>
+                <li><Link href="/blog" className="text-gray-600 hover:text-gray-900 transition">Blog</Link></li>
                 <li><Link href="/subcontractors/register" className="text-gray-600 hover:text-gray-900 transition">Partner With Us</Link></li>
                 <li><Link href="/faq" className="text-gray-600 hover:text-gray-900 transition">FAQ</Link></li>
                 <li><Link href="/#contact" className="text-gray-600 hover:text-gray-900 transition">Contact</Link></li>
