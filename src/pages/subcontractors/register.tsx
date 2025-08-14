@@ -372,7 +372,7 @@ export default function SubcontractorRegistration() {
                                 <button
                                     type="submit"
                                     disabled={isLoading}
-                                    className="w-full bg-blue-600 text-white py-3 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                                    className="w-full bg-gray-800 text-white py-3 px-4 rounded-md hover:bg-orange-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                                 >
                                     {isLoading ? 'Submitting...' : 'Submit Application'}
                                 </button>
@@ -380,8 +380,8 @@ export default function SubcontractorRegistration() {
                         </form>
 
                         {/* Information Notice */}
-                        <div className="mt-8 p-4 bg-blue-50 border border-blue-200 rounded-md">
-                            <p className="text-sm text-blue-800">
+                        <div className="mt-8 p-4 bg-orange-50 border border-orange-200 rounded-md">
+                            <p className="text-sm text-orange-800">
                                 <strong>Note:</strong> After submitting your application, our team will review your information and contact you within 2-3 business days. 
                                 We may request additional documentation such as insurance certificates, licenses, and references during the review process.
                             </p>
