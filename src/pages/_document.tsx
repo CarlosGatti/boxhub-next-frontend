@@ -42,32 +42,20 @@ export default class MyDocument extends Document {
     return (
       <Html lang="pt-br">
         <Head>
-          {/* <meta property="og:site_name" content="BoxHub" />
-          <meta property="og:title" content="BoxHub" />
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
-            rel="stylesheet"
-          />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap"
-            rel="stylesheet"
-          /> */}
-
-          
+          {/* Favicon básico */}
+          <link rel="icon" href="/favicon.ico" />
           <title>Pires Builders Inc. - Custom Home Builders in Massachusetts</title>
           <meta name="title" content="Pires Builders Inc. - Custom Home Builders in Massachusetts" />
           <meta name="description" content="Pires Builders Inc. is a custom home builder in Massachusetts that specializes in building custom homes and remodeling projects." />
 
-          
+
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://metatags.io/" />
           <meta property="og:title" content="Pires Builders Inc. - Custom Home Builders in Massachusetts" />
           <meta property="og:description" content="Pires Builders Inc. is a custom home builder in Massachusetts that specializes in building custom homes and remodeling projects." />
           <meta property="og:image" content="https://www.piresbuildersinc.com/image/drone-cape.jpeg" />
 
-          
+
           <meta property="twitter:card" content="summary_large_image" />
           <meta property="twitter:url" content="https://metatags.io/" />
           <meta property="twitter:title" content="Pires Builders Inc. - Custom Home Builders in Massachusetts" />
@@ -75,7 +63,7 @@ export default class MyDocument extends Document {
           <meta property="og:image" content="https://www.piresbuildersinc.com/image/drone-cape.jpeg" />
 
 
-          
+
 
         </Head>
         <body>
