@@ -42,3 +42,14 @@
 .focus-ring {
   @apply focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2;
 }
+
+/* Custom text selection colors */
+::selection {
+  background-color: rgba(242, 73, 10, 0.3);
+  color: #1f2937;
+}
+
+::-moz-selection {
+  background-color: rgba(242, 73, 10, 0.3);
+  color: #1f2937;
+}

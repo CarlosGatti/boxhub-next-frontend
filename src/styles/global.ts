@@ -97,12 +97,18 @@ body, input, textarea, button {
   font-family: 'Poppins', sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6, p,a, div, strong, button, input, span {
-    ::selection {
-            background: var(--color-primary);
-            color: #000;
-        }
+/* Global text selection */
+*::selection {
+  background: rgba(242, 73, 10, 0.3);
+  color: #1f2937;
 }
+
+*::-moz-selection {
+  background: rgba(242, 73, 10, 0.3);
+  color: #1f2937;
+}
+
+
 a{
     text-decoration: none;
 }
