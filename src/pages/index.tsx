@@ -318,10 +318,10 @@ function ProjectsGallery() {
         },
         {
             id: 4,
-            title: "Commercial Office Space",
-            description: "Modern office renovation with open workspace design",
+            title: "Addition a New Space",
+            description: "Modern office addirenovation with open workspace design",
             image: "/projects/commercial-remodeling.jpg",
-            category: "Commercial"
+            category: "Addition"
         },
         {
             id: 5,
