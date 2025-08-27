@@ -30,7 +30,7 @@ export function PublicLayout({ children }: { children: ReactNode }) {
             <Link href="/#about" className="hover:text-primary">About</Link>
             <Link href="/#projects" className="hover:text-primary">Projects</Link>
             <Link href="/blog" className="hover:text-primary">Blog</Link>
-            <Link href="/subcontractors/register" className="hover:text-primary">Partner With Us</Link>
+            <Link href="/subcontractors/register" className="hover:text-primary">Work With Us</Link>
             <Link href="/faq" className="hover:text-primary">FAQ</Link>
             <Link href="/#contact" className="hover:text-primary">Contact</Link>
             <Link href="/account/login" className="hover:text-primary">Login</Link>
