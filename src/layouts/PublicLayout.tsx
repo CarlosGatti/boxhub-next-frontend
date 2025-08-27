@@ -3,6 +3,7 @@ import { ReactNode, useState } from "react"
 
 import Image from "next/image"
 import Link from "next/link"
+import { LoginDropdown } from "../components/_ui/Header/LoginDropdown"
 
 export function PublicLayout({ children }: { children: ReactNode }) {
   const [isOpen, setIsOpen] = useState(false)
@@ -33,7 +34,7 @@ export function PublicLayout({ children }: { children: ReactNode }) {
             <Link href="/subcontractors/register" className="hover:text-primary">Work With Us</Link>
             <Link href="/faq" className="hover:text-primary">FAQ</Link>
             <Link href="/#contact" className="hover:text-primary">Contact</Link>
-            <Link href="/account/login" className="hover:text-primary">Login</Link>
+            <LoginDropdown />
           </nav>
 
           {/* Mobile Button */}
