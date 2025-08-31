@@ -11,9 +11,9 @@ import type { AppProps } from 'next/app'
 import { AuthProvider } from '../context/AuthContext'
 import { CurrentUserProvider } from '../context/CurrentUser'
 import { GlobalStyle } from '../styles/global'
+import { HubspotTracking } from '../components/hubspot/HubspotTracking'
 import { ToastContainer } from 'react-toastify'
 import { UserProvider } from '../context/UserContext'
-import { HubspotTracking } from '../components/hubspot/HubspotTracking'
 
 export const queryClient = new QueryClient({
   defaultOptions: {
