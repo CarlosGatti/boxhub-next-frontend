@@ -15,7 +15,7 @@ export function UrgencyBanner() {
             </div>
           </div>
           
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4">ing
             <div className="text-center">
               <div className="text-2xl font-bold">3</div>
               <div className="text-xs opacity-90">Slots Left</div>
