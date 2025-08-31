@@ -1,0 +1,18 @@
+{
+  "client_name": "Pires Builders Inc",
+  "client_contact": "Leandro Pires",
+  "client_email": "<email@client.com>",
+  "scope_period": "Month-to-month",
+  "service_starter_pack": 350,
+  "service_hourly_rate": 35,
+  "service_monthly_flat": 450,
+  "service_payment_terms": "Due upon receipt, Net 7 (ACH/Zelle preferred)",
+  "company_sender": "Carlos Gatti",
+  "company_brand": "Defined / Financial Ops",
+  "company_email": "carlos@<yourdomain>.com",
+  "company_phone": "+1 (857) 350-7504",
+  "company_city_state": "Colorado Springs, CO",
+  "start_date": "<YYYY-MM-DD>",
+  "cancelation_policy": "No long-term contract. Cancel anytime with 7 days' notice.",
+  "notes": "This proposal covers bookkeeping & management reporting only. CPA handles tax returns."
+}
