@@ -63,17 +63,7 @@ export function LeadForm() {
     }
   }
 
-  const formatPhone = (value: string) => {
-    if (!value) return ''
-    
-    // Remove all non-digits
-    const phone = value.replace(/\D/g, '')
-    
-    // Format as (XXX) XXX-XXXX
-    if (phone.length <= 3) return phone
-    if (phone.length <= 6) return `(${phone.slice(0, 3)}) ${phone.slice(3)}`
-    return `(${phone.slice(0, 3)}) ${phone.slice(3, 6)}-${phone.slice(6, 10)}`
-  }
+
 
   return (
     <section id="estimate-form" className="w-full py-16 md:py-20 bg-white">
@@ -160,10 +150,7 @@ export function LeadForm() {
                       errors.phone ? 'border-red-300' : 'border-gray-300'
                     }`}
                     placeholder="(857) 350-7504"
-                    onChange={(e) => {
-                      const formatted = formatPhone(e.target.value || '')
-                      e.target.value = formatted
-                    }}
+
                     aria-invalid={errors.phone ? 'true' : 'false'}
                     aria-describedby={errors.phone ? 'phone-error' : undefined}
                   />
@@ -213,7 +200,7 @@ export function LeadForm() {
                   >
                     <option value="">Select project type</option>
                     <option value="Renovation">Renovation</option>
-                    <option value="New Build">New Construction</option>
+                    <option value="New Construction">New Construction</option>
                     <option value="Maintenance">Maintenance</option>
                   </select>
                   {errors.projectType && (
