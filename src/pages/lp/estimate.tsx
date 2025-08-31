@@ -3,8 +3,8 @@ import { FAQ } from '../../components/lp/FAQ'
 import { FooterMini } from '../../components/lp/FooterMini'
 import Head from 'next/head'
 import { Hero } from '../../components/lp/Hero'
+import { HubspotForm } from '../../components/hubspot/HubspotForm'
 import { LandingHeader } from '../../components/lp/LandingHeader'
-import { LeadForm } from '../../components/lp/LeadForm'
 import { NextPage } from 'next'
 import { SocialProof } from '../../components/lp/SocialProof'
 import { UrgencyBanner } from '../../components/lp/UrgencyBanner'
@@ -103,7 +103,27 @@ const EstimatePage: NextPage = () => {
         <UrgencyBanner />
         <BenefitsSection />
         <SocialProof />
-        <LeadForm />
+        
+        {/* HubSpot Form Section */}
+        <section id="estimate-form" className="w-full py-16 md:py-20 bg-white">
+          <div className="container mx-auto px-6">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">
+                  Get Your Free Estimate
+                </h2>
+                <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                  Fill out the form below and our team will contact you within 24 hours
+                </p>
+              </div>
+
+              <div className="rounded-2xl shadow-xl ring-1 ring-black/5 bg-white p-6">
+                <HubspotForm />
+              </div>
+            </div>
+          </div>
+        </section>
+        
         <FAQ />
         <FooterMini />
       </main>

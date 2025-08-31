@@ -5,9 +5,7 @@ export const leadFormSchema = z.object({
   email: z.string().email('Invalid email'),
   phone: z.string().min(1, 'Phone is required'),
   city: z.string().min(1, 'City is required'),
-  projectType: z.enum(['Renovation', 'New Construction', 'Maintenance'], {
-    errorMap: () => ({ message: 'Please select a valid project type' })
-  }),
+  projectType: z.enum(['Renovation', 'New Construction', 'Maintenance']),
   message: z.string().optional(),
   consent: z.boolean().refine((val) => val === true, {
     message: 'You must agree to be contacted'

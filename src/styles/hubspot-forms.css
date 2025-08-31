@@ -1,0 +1,138 @@
+/* HubSpot Form Styling - Pires Builders Theme */
+
+/* Container */
+.hs-form-frame {
+  font-family: inherit;
+}
+
+/* Form wrapper */
+.hs-form-frame .hs-form {
+  font-family: inherit;
+}
+
+/* Field groups */
+.hs-form-frame .hs-form-field {
+  margin-bottom: 1.5rem;
+}
+
+/* Labels */
+.hs-form-frame .hs-form-field label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.hs-form-frame .hs-form-field label.hs-error-msg {
+  color: #dc2626;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* Inputs, Selects, Textareas */
+.hs-form-frame .hs-form-field input[type="text"],
+.hs-form-frame .hs-form-field input[type="email"],
+.hs-form-frame .hs-form-field input[type="tel"],
+.hs-form-frame .hs-form-field input[type="number"],
+.hs-form-frame .hs-form-field select,
+.hs-form-frame .hs-form-field textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #111827;
+  background-color: #ffffff;
+  transition: all 0.2s ease-in-out;
+  font-family: inherit;
+}
+
+/* Focus states */
+.hs-form-frame .hs-form-field input[type="text"]:focus,
+.hs-form-frame .hs-form-field input[type="email"]:focus,
+.hs-form-frame .hs-form-field input[type="tel"]:focus,
+.hs-form-frame .hs-form-field input[type="number"]:focus,
+.hs-form-frame .hs-form-field select:focus,
+.hs-form-frame .hs-form-field textarea:focus {
+  outline: none;
+  border-color: #f97316;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+}
+
+/* Error states */
+.hs-form-frame .hs-form-field input[type="text"].hs-error,
+.hs-form-frame .hs-form-field input[type="email"].hs-error,
+.hs-form-frame .hs-form-field input[type="tel"].hs-error,
+.hs-form-frame .hs-form-field input[type="number"].hs-error,
+.hs-form-frame .hs-form-field select.hs-error,
+.hs-form-frame .hs-form-field textarea.hs-error {
+  border-color: #dc2626;
+}
+
+/* Submit button */
+.hs-form-frame .hs-button {
+  width: 100%;
+  background-color: #f97316;
+  color: #ffffff;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  font-family: inherit;
+}
+
+.hs-form-frame .hs-button:hover {
+  background-color: #ea580c;
+}
+
+.hs-form-frame .hs-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+}
+
+/* Checkbox and radio */
+.hs-form-frame .hs-form-field input[type="checkbox"],
+.hs-form-frame .hs-form-field input[type="radio"] {
+  margin-right: 0.5rem;
+  accent-color: #f97316;
+}
+
+/* Success message */
+.hs-form-frame .submitted-message {
+  background-color: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #166534;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Loading state */
+.hs-form-frame .hs-form-loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hs-form-frame .hs-form-field input[type="text"],
+  .hs-form-frame .hs-form-field input[type="email"],
+  .hs-form-frame .hs-form-field input[type="tel"],
+  .hs-form-frame .hs-form-field input[type="number"],
+  .hs-form-frame .hs-form-field select,
+  .hs-form-frame .hs-form-field textarea {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+/* Hidden fields */
+.hs-form-frame input[type="hidden"] {
+  display: none;
+}

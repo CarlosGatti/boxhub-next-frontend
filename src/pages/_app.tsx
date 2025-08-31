@@ -3,6 +3,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import '../styles/tailwind.css'
+import '../styles/hubspot-forms.css'
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
@@ -12,6 +13,7 @@ import { CurrentUserProvider } from '../context/CurrentUser'
 import { GlobalStyle } from '../styles/global'
 import { ToastContainer } from 'react-toastify'
 import { UserProvider } from '../context/UserContext'
+import { HubspotTracking } from '../components/hubspot/HubspotTracking'
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -35,6 +37,7 @@ export default function App({
           </CurrentUserProvider>
         </AuthProvider>
         <ToastContainer draggablePercent={60} />
+        <HubspotTracking />
       </QueryClientProvider>
     </>
   )
