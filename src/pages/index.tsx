@@ -281,7 +281,7 @@ function ContactSection() {
                             📧 Email: <a href="mailto:contact@piresbuildersinc.com" className="text-gray-600 hover:underline">contact@piresbuildersinc.com</a>
                         </p>
                         <p className="text-base md:text-lg">
-                            📞 Phone: <a href="tel:+18573507504" className="text-gray-600 hover:underline">+1 (857)350-7504</a>
+                            📞 Phone: <a href="tel:+15083136329" className="text-gray-600 hover:underline">+1 (508) 313-6329</a>
                         </p>
                         <p className="text-base text-gray-500 pt-4">
                             Support available Monday to Friday, 9 AM to 6 PM (MT)

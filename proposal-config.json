@@ -1,0 +1,20 @@
+{
+  "client_name": "Pires Builders Inc",
+  "client_contact": "Leandro Pires",
+  "client_email": "<email@client.com>",
+  "scope_period": "Month-to-month",
+  "company_sender": "Carlos Gatti",
+  "company_brand": "Defined / Growth & Finance",
+  "company_email": "carlos@[seu-dominio].com",
+  "company_phone": "+1 (857) 350-7504",
+  "company_city_state": "Colorado Springs, CO",
+  "start_date": "2024-09-01",
+  "cancelation_policy": "No long-term contract. Cancel anytime with 7 days' notice.",
+  "notes": "Marketing ops + bookkeeping only. CPA handles tax returns and representation.",
+  "pricing_setup_funnel": 800,
+  "pricing_monthly_retainer": 400,
+  "pricing_overage_rate_hour": 25,
+  "deliver_by_day": 10,
+  "todo_client_phone": "Get a dedicated business phone number (VoIP or mobile)",
+  "todo_client_bank": "Open/confirm the business bank account and provide deposit details"
+}

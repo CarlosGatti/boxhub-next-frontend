@@ -118,7 +118,7 @@ export function PublicLayout({ children }: { children: ReactNode }) {
                 </div>
                 <div className="flex items-center gap-2 text-sm text-gray-600">
                   <span>📞</span>
-                  <a href="tel:+18573507504" className="hover:text-gray-900 transition">+1 (857) 350-7504</a>
+                  <a href="tel:+15083136329" className="hover:text-gray-900 transition">+1 (508) 313-6329</a>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-gray-600">
                   <span>🌐</span>
