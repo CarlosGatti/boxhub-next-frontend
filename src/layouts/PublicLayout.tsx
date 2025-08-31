@@ -114,7 +114,7 @@ export function PublicLayout({ children }: { children: ReactNode }) {
               <div className="space-y-3">
                 <div className="flex items-center gap-2 text-sm text-gray-600">
                   <span>📧</span>
-                  <a href="mailto:the@piresbuilders.com" className="hover:text-gray-900 transition">the@piresbuilders.com</a>
+                  <a href="mailto:contact@piresbuildersinc.com" className="hover:text-gray-900 transition">contact@piresbuildersinc.com</a>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-gray-600">
                   <span>📞</span>

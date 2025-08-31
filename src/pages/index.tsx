@@ -278,7 +278,7 @@ function ContactSection() {
                             🌐 Website: <a href="https://piresbuilders.com" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:underline">piresbuilders.com</a>
                         </p>
                         <p className="text-base md:text-lg">
-                            📧 Email: <a href="mailto:the@piresbuilders.com" className="text-gray-600 hover:underline">the@piresbuilders.com</a>
+                            📧 Email: <a href="mailto:contact@piresbuildersinc.com" className="text-gray-600 hover:underline">contact@piresbuildersinc.com</a>
                         </p>
                         <p className="text-base md:text-lg">
                             📞 Phone: <a href="tel:+18573507504" className="text-gray-600 hover:underline">+1 (857)350-7504</a>
