@@ -12,9 +12,9 @@ export function FooterMini() {
               Quality construction and remodeling services in Massachusetts
             </p>
             <div className="space-y-2 text-sm text-gray-300">
-              <p>📞 +1 (857) 350-7504</p>
+              <p>📞 +1 (508) 313-6329</p>
               <p>📧 contact@piresbuildersinc.com</p>
-              <p>🌐 piresbuilders.com</p>
+              <p>🌐 piresbuildersinc.com</p>
             </div>
           </div>
 
