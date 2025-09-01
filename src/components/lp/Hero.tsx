@@ -75,7 +75,7 @@ export function Hero() {
                   </svg>
                 </a>
                 <a
-                  href="tel:+18573507504"
+                  href="tel:+15083136329"
                   className="inline-flex items-center justify-center px-8 py-4 border-2 border-gray-300 text-gray-700 font-semibold text-lg rounded-lg hover:border-orange-600 hover:text-orange-600 transition-colors"
                 >
                   <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
