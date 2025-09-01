@@ -44,8 +44,8 @@ const EstimatePage: NextPage = () => {
               "@type": "LocalBusiness",
               "name": "Pires Builders Inc",
               "description": "Construction and residential remodeling in Massachusetts",
-              "url": "https://piresbuilders.com",
-              "telephone": "+1-857-350-7504",
+              "url": "https://piresbuildersinc.com",
+              "telephone": "+1-508-313-6329",
               "address": {
                 "@type": "PostalAddress",
                 "addressRegion": "MA",
@@ -58,9 +58,9 @@ const EstimatePage: NextPage = () => {
               },
               "openingHours": "Mo-Fr 09:00-18:00",
               "priceRange": "$$",
-              "image": "https://piresbuilders.com/image/brand/pires-logo.png",
+              "image": "https://piresbuildersinc.com/image/brand/pires-logo.png",
               "sameAs": [
-                "https://piresbuilders.com"
+                "https://piresbuildersinc.com"
               ]
             })
           }}

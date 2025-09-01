@@ -149,7 +149,7 @@ export function LeadForm() {
                     className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors ${
                       errors.phone ? 'border-red-300' : 'border-gray-300'
                     }`}
-                    placeholder="(857) 350-7504"
+                    placeholder="(508) 313-6329"
 
                     aria-invalid={errors.phone ? 'true' : 'false'}
                     aria-describedby={errors.phone ? 'phone-error' : undefined}
